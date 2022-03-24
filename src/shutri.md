@@ -3,7 +3,7 @@
 ----
 
 <a href=https://poems.shutri.com>
-  <img src=./titleSmallCircle.jpg alt="Rasta Tau Mile" align="left">
+  <img src=./titleSmallCircle.jpg alt="Rasta Tau Mile" align="right">
 </a>
    <h2>Rasta Tau Mile</h2>
       <p>Poems of self discovery and <a href="https://poems.shutri.com" target="_blank"> more!</a> </p>
