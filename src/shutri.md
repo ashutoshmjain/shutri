@@ -5,9 +5,16 @@
 <a href=https://poems.shutri.com>
   <img src=./titleSmallCircle.jpg alt="Rasta Tau Mile" align="right">
 </a>
-   <h2>Rasta Tau Mile</h2>
-      <p>Poems of self discovery and <a href="https://poems.shutri.com" target="_blank"> more!</a> </p>
-      <iframe src="https://archive.org/embed/rastaTauMile&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+
+## Rasta Tau Mile
+ Poems of self discovery and <a href="https://poems.shutri.com" target="_blank"> more!</a>
+  - Written by Madan Maholvi
+  - Year 1990
+  - Haryana - India
+  - Urdu/ Hindi
+  - Recital by Ashutosh
+
+<iframe src="https://archive.org/embed/rastaTauMile&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 
 
 ----
