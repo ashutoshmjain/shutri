@@ -1,4 +1,4 @@
-<img src="./boardCropped.jpg"  alt="shutri" width="1000" height="200" >
+<center> <h1> The Narrative </h1> </center>
 
 ----
 
@@ -9,6 +9,9 @@
       <p>Poems of self discovery and <a href="https://poems.shutri.com" target="_blank"> more!</a> </p>
       <iframe src="https://archive.org/embed/rastaTauMile&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 
+
+----
+
 <a href=https://gita.shutri.com>
   <img src=./arjunUvaach_circle_small.jpeg  alt="arjunUvaach" align="right" >
 </a>
@@ -16,4 +19,5 @@
       <p>Gita as understood by "Arjun" of this age ..<a href="https://gita.shutri.com" target="_blank"> more! </a> </p>
       <iframe src="https://archive.org/embed/arjunUvaach&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 
+----
 
