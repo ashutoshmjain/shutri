@@ -4,3 +4,10 @@ language = "en"
 multilingual = false
 src = "src"
 title = "shutri"
+
+[output.html]
+google-analytics = "UA-90523130-2"
+default-theme = "light"
+git-repository-url = "https://github.com/ashutoshmjain/shutri"
+cname = "www.shutri.com"
+no-section-label = true
