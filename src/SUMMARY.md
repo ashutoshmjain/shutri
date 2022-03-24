@@ -1,3 +1,4 @@
 # Summary
 
-- [Shutri](./shutri.md)
+- [Current Projects](./shutri.md)
+- [About](./about.md)

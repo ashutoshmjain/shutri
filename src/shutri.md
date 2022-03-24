@@ -1,4 +1,4 @@
-`Shutri` is what is heard; as opposed to what is known inside `Smriti`. In essence `Shutri` is the spoken word - A narrative !
+![](./board.jpg)
 
 ----
 
@@ -24,3 +24,5 @@
           <iframe src="https://archive.org/embed/rastaTauMile&playlist=1&list_width=150" width="350" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
   </div>
 </div>
+
+----
