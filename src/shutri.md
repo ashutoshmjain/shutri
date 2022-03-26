@@ -14,6 +14,8 @@
   - Urdu/ Hindi
   - Recital by Ashutosh
 
+<br>
+
 <center>
 <iframe src="https://archive.org/embed/rastaTauMile&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 </center>
@@ -28,11 +30,11 @@
 ## arjunUvaach
 
 Gita as understood by "Arjun" of this age ..<a href="https://gita.shutri.com" target="_blank"> more! </a> </p>
-- Written by Ashutosh
+- Written & read by Ashutosh
 - Year 2022
-- California - USA
 - English
-- Narrated by Ashutosh
+
+<br>
 
 <center>
    <iframe src="https://archive.org/embed/arjunUvaach&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
