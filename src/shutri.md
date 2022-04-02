@@ -1,9 +1,31 @@
-<center> <h1> The Narrative </h1> </center>
+<center> <h1> Read Aloud </h1> </center>
 
 ----
 
 <a href=https://poems.shutri.com>
-  <img src=./titleSmallCircle.jpg alt="Rasta Tau Mile" align="right">
+  <img src=./fkpTitleCircleSmall.jpeg alt="Fikr Ke Parinde" align="right">
+</a>
+
+## Fikr Ke Parinde
+ Poems of resolve and reflections and <a href="https://poems.shutri.com" target="_blank"> more!</a>
+  - Written by Madan Maholvi
+  - Year 1989
+  - Haryana - India
+  - Urdu/ Hindi
+  - Recital by Ashutosh
+
+<br>
+
+</br>
+<center>
+<iframe src="https://archive.org/embed/fikrKeParinde&playlist=1&list_width=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+</center>
+
+
+----
+
+<a href=https://poems.shutri.com>
+  <img src=./rtmTitleCircle.jpg alt="Rasta Tau Mile" align="right">
 </a>
 
 ## Rasta Tau Mile
@@ -45,17 +67,17 @@ Gita as understood by "Arjun" of this age ..<a href="https://gita.shutri.com" ta
 
 ## devdas
 
-Devdas is porobably the only story that has been turned into a motion picture ten times.
-- Written by Shart Chandra
+Devdas is probably the only story that has been turned into a motion picture ten times.
+- Written by Sarat Chandra
 - Year 1901 at the age of 17
 - Bengali
 - Hindi translation from Bolti Pustak
 
 <br>
 
+</br>
 <center>
 <iframe src="https://archive.org/embed/by1316&playlist=1" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 </center>
 
 ----
-
