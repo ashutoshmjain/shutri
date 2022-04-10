@@ -1,4 +1,4 @@
-<center> <h1> Read Aloud </h1> </center>
+<center> <h1>Read@loud</h1> </center>
 
 ----
 
@@ -63,21 +63,4 @@ Gita as understood by "Arjun" of this age ..<a href="https://gita.shutri.com" ta
 </center>
 
 ----
-<img src=./devdasCoverSmall.jpeg  alt="devdas" align="right" >
-
-## devdas
-
-Devdas is probably the only story that has been turned into a motion picture ten times.
-- Written by Sarat Chandra
-- Year 1901 at the age of 17
-- Bengali
-- Hindi translation from Bolti Pustak
-
-<br>
-
-</br>
-<center>
-<iframe src="https://archive.org/embed/by1316&playlist=1" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
-</center>
-
 ----
