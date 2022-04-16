@@ -12,7 +12,7 @@
   - Year 1989
   - Haryana - India
   - Urdu/ Hindi
-  - Recital by Ashutosh
+  - Poems Read by Ashutosh
 
 <br>
 
@@ -34,7 +34,7 @@
   - Year 1990
   - Haryana - India
   - Urdu/ Hindi
-  - Recital by Ashutosh
+  - Read aloud  by Ashutosh
 
 <br>
 
@@ -46,7 +46,7 @@
 ----
 
 <a href=https://gita.shutri.com>
-  <img src=./arjunUvaach_circle_small.jpeg  alt="arjunUvaach" align="right" >
+  <img src=./arjunUvaach_circle_small.jpeg alt="arjunUvaach" align="right">
 </a>
 
 ## arjunUvaach
@@ -63,4 +63,24 @@ Gita as understood by "Arjun" of this age ..<a href="https://gita.shutri.com" ta
 </center>
 
 ----
+
+<a href=https://gita.shutri.com>
+  <img src=./NaadTitle.png  alt="Naad Yoga" align="right" >
+</a>
+
+## Naad Yoga
+
+Chakras and Naad Yoga  ..<a href="https://gita.shutri.com" target="_blank"> more! </a> </p>
+- Written & read by Ashutosh
+- Year 2022
+- English
+
+<br>
+
+<center>
+
+<iframe src="https://archive.org/embed/01-naad-yoga&playlist=1&list_height=150" width="500" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+</center>
+
+-
 ----
