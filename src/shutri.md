@@ -76,10 +76,10 @@ Chakras and Naad Yoga  ..<a href="https://gita.shutri.com" target="_blank"> more
 - English
 
 <br>
-
+</br>
 <center>
 
-<iframe src="https://archive.org/embed/01-naad-yoga&playlist=1&list_height=150" width="500" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+<iframe src="https://archive.org/embed/01-naad-yoga&playlist=1&list_height=150" width="650" height="300" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 </center>
 
 -
