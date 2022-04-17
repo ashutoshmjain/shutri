@@ -3,7 +3,7 @@ authors = ["ashutosh jain"]
 language = "en"
 multilingual = false
 src = "src"
-title = "shutri"
+title = "Read@louds"
 
 [output.html]
 google-analytics = "UA-90523130-2"

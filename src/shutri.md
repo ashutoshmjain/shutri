@@ -1,4 +1,3 @@
-<center> <h1>Read@loud</h1> </center>
 
 ----
 
