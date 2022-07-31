@@ -7,5 +7,34 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.words": [
+			"Arth",
+			"Ashtadhyayi",
+			"Aurveda",
+			"Chakras",
+			"Dravya",
+			"Dvaipayana",
+			"Ganit",
+			"Gurukuls",
+			"Jyotish",
+			"Kala",
+			"Kiparsky",
+			"Naad",
+			"Panini",
+			"Panini's",
+			"Parashara",
+			"Parashra",
+			"Sahitya",
+			"Sangeet",
+			"Shruti",
+			"Upashama",
+			"Vaidik",
+			"Vyakarna",
+			"Vyasa",
+			"Vyasas",
+			"Yazna",
+			"Yogies"
+		]
+	}
 }
