@@ -7,9 +7,18 @@
  {:block/name "about shutri",
   :block/created-at 1664771610775,
   :block/updated-at 1664771610775}
+ {:block/name "after pay",
+  :block/created-at 1664819807654,
+  :block/updated-at 1664819807654}
  {:block/name "b",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "block",
+  :block/created-at 1664818921557,
+  :block/updated-at 1664818921557}
+ {:block/name "blocks-chain",
+  :block/created-at 1664818873067,
+  :block/updated-at 1664827320571}
  {:block/name "c",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -25,6 +34,15 @@
  {:block/name "contents",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "desire",
+  :block/created-at 1664810013655,
+  :block/updated-at 1664810013655}
+ {:block/name "developers economy",
+  :block/created-at 1664823206244,
+  :block/updated-at 1664823206244}
+ {:block/name "digital commerce",
+  :block/created-at 1664819120054,
+  :block/updated-at 1664819120054}
  {:block/name "dimensions",
   :block/created-at 1664774095250,
   :block/updated-at 1664774095250}
@@ -34,6 +52,12 @@
  {:block/name "done",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "epic games",
+  :block/created-at 1664819100544,
+  :block/updated-at 1664819100544}
+ {:block/name "faceboo",
+  :block/created-at 1664821914020,
+  :block/updated-at 1664821914020}
  {:block/name "favorites",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -46,27 +70,66 @@
  {:block/name "in-progress",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "instagram",
+  :block/created-at 1664821926957,
+  :block/updated-at 1664821926957}
+ {:block/name "jack dorsey",
+  :block/created-at 1664818941341,
+  :block/updated-at 1664818941341}
+ {:block/name "karma",
+  :block/created-at 1664810013654,
+  :block/updated-at 1664810013654}
  {:block/name "later",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "linkedin",
+  :block/created-at 1664822096201,
+  :block/updated-at 1664822096201}
  {:block/name "linux",
   :block/created-at 1664774408063,
   :block/updated-at 1664774408063}
  {:block/name "logseq",
   :block/created-at 1664772984758,
   :block/updated-at 1664775332121}
+ {:block/name "longshot",
+  :block/created-at 1664777764735,
+  :block/updated-at 1664777764735}
+ {:block/name "mac",
+  :block/created-at 1664820430243,
+  :block/updated-at 1664820430243}
+ {:block/name "mark down",
+  :block/created-at 1664809093454,
+  :block/updated-at 1664809093454}
  {:block/name "mdbook",
   :block/created-at 1664773073866,
   :block/updated-at 1664773073866}
+ {:block/name "medium",
+  :block/created-at 1664822085654,
+  :block/updated-at 1664822085654}
+ {:block/name "meta",
+  :block/created-at 1664819020554,
+  :block/updated-at 1664819020554}
  {:block/name "narratives",
   :block/created-at 1664771610771,
   :block/updated-at 1664771610771}
+ {:block/name "nix",
+  :block/created-at 1664812996359,
+  :block/updated-at 1664812996359}
  {:block/name "now",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "obsedian",
+  :block/created-at 1664777764735,
+  :block/updated-at 1664777764735}
  {:block/name "oct 2nd, 2022",
   :block/created-at 1664771610682,
-  :block/updated-at 1664775014648}
+  :block/updated-at 1664809248070}
+ {:block/name "oct 3rd, 2022",
+  :block/created-at 1664808465409,
+  :block/updated-at 1664832073995}
+ {:block/name "quora",
+  :block/created-at 1664827090875,
+  :block/updated-at 1664827090875}
  {:block/name "shutri",
   :block/created-at 1664771611201,
   :block/updated-at 1664771611201}
@@ -76,6 +139,15 @@
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664771611333}
+ {:block/name "social media platform",
+  :block/created-at 1664822297747,
+  :block/updated-at 1664822297747}
+ {:block/name "spirituality in technology",
+  :block/created-at 1664809110990,
+  :block/updated-at 1664809110990}
+ {:block/name "square",
+  :block/created-at 1664819928223,
+  :block/updated-at 1664819928223}
  {:block/name "stablecoins",
   :block/created-at 1664774095385,
   :block/updated-at 1664774095385}
@@ -85,9 +157,21 @@
  {:block/name "threefriends",
   :block/created-at 1664774095420,
   :block/updated-at 1664774095420}
+ {:block/name "tim sweeny",
+  :block/created-at 1664820025824,
+  :block/updated-at 1664820025824}
  {:block/name "todo",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "twitter",
+  :block/created-at 1664821933261,
+  :block/updated-at 1664821933261}
+ {:block/name "unreal engine",
+  :block/created-at 1664819714452,
+  :block/updated-at 1664819714452}
+ {:block/name "vim",
+  :block/created-at 1664809164963,
+  :block/updated-at 1664809164963}
  {:block/name "vscode",
   :block/created-at 1664775014644,
   :block/updated-at 1664775014644}
@@ -97,6 +181,12 @@
  {:block/name "waiting",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "windows",
+  :block/created-at 1664820437389,
+  :block/updated-at 1664820437389}
  {:block/name "workflow",
-  :block/created-at 1664773087629, 
-  :block/updated-at 1664773087629}]
+  :block/created-at 1664773087629,
+  :block/updated-at 1664773087629}
+ {:block/name "writers economy",
+  :block/created-at 1664820504803, 
+  :block/updated-at 1664820504803}]

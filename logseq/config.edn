@@ -227,6 +227,7 @@
 
  ;; Enable all your properties to have corresponding pages
  :property-pages/enabled? true
+ :zotero/settings-v2 {"default" {:type-id "10232052", :zotero-linked-attachment-base-directory ""}}
 
  ;; Properties to exclude from having property pages
  ;; E.g.:property-pages/excludelist #{:duration :author}
