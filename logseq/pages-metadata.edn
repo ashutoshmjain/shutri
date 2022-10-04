@@ -16,9 +16,6 @@
  {:block/name "block",
   :block/created-at 1664818921557,
   :block/updated-at 1664818921557}
- {:block/name "blocks-chain",
-  :block/created-at 1664818873067,
-  :block/updated-at 1664827320571}
  {:block/name "btc",
   :block/created-at 1664922332106,
   :block/updated-at 1664922332106}
@@ -34,18 +31,12 @@
  {:block/name "card",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
- {:block/name "contents",
-  :block/created-at 1664772116346,
-  :block/updated-at 1664772116346}
  {:block/name "creative sellers licence",
   :block/created-at 1664833916959,
   :block/updated-at 1664833916959}
  {:block/name "desire",
   :block/created-at 1664810013655,
   :block/updated-at 1664810013655}
- {:block/name "developers economy",
-  :block/created-at 1664823206244,
-  :block/updated-at 1664922626203}
  {:block/name "digital commerce",
   :block/created-at 1664819120054,
   :block/updated-at 1664819120054}
@@ -95,8 +86,8 @@
   :block/created-at 1664774408063,
   :block/updated-at 1664774408063}
  {:block/name "logseq",
-  :block/created-at 1664772984758,
-  :block/updated-at 1664922688942}
+  :block/created-at 1664926358562,
+  :block/updated-at 1664926358562}
  {:block/name "longshot",
   :block/created-at 1664777764735,
   :block/updated-at 1664777764735}
@@ -178,6 +169,9 @@
  {:block/name "unreal engine",
   :block/created-at 1664819714452,
   :block/updated-at 1664819714452}
+ {:block/name "using logseq with multiple git repos",
+  :block/created-at 1664923357808,
+  :block/updated-at 1664923357808}
  {:block/name "vim",
   :block/created-at 1664809164963,
   :block/updated-at 1664809164963}
