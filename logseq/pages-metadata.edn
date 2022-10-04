@@ -19,6 +19,9 @@
  {:block/name "blocks-chain",
   :block/created-at 1664818873067,
   :block/updated-at 1664827320571}
+ {:block/name "btc",
+  :block/created-at 1664922332106,
+  :block/updated-at 1664922332106}
  {:block/name "c",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -42,7 +45,7 @@
   :block/updated-at 1664810013655}
  {:block/name "developers economy",
   :block/created-at 1664823206244,
-  :block/updated-at 1664823206244}
+  :block/updated-at 1664922626203}
  {:block/name "digital commerce",
   :block/created-at 1664819120054,
   :block/updated-at 1664819120054}
@@ -93,7 +96,7 @@
   :block/updated-at 1664774408063}
  {:block/name "logseq",
   :block/created-at 1664772984758,
-  :block/updated-at 1664775332121}
+  :block/updated-at 1664922688942}
  {:block/name "longshot",
   :block/created-at 1664777764735,
   :block/updated-at 1664777764735}
@@ -144,7 +147,7 @@
   :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
-  :block/updated-at 1664771611333}
+  :block/updated-at 1664922486017}
  {:block/name "social media platform",
   :block/created-at 1664822297747,
   :block/updated-at 1664822297747}
