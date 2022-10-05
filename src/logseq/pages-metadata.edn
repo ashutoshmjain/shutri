@@ -37,9 +37,12 @@
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1664926986962}
- {:block/name "creative sellers licence",
+ {:block/name "creative sellers license",
+  :block/created-at 1664946911072,
+  :block/updated-at 1664946911072}
+ {:block/name "creativesellerslicense",
   :block/created-at 1664833916959,
-  :block/updated-at 1664833916959}
+  :block/updated-at 1664947136060}
  {:block/name "desire",
   :block/created-at 1664810013655,
   :block/updated-at 1664810013655}
@@ -132,22 +135,19 @@
   :block/updated-at 1664809248070}
  {:block/name "oct 3rd, 2022",
   :block/created-at 1664808465409,
-  :block/updated-at 1664918359810}
+  :block/updated-at 1664947660981}
  {:block/name "oct 4th, 2022",
   :block/created-at 1664915585946,
-  :block/updated-at 1664918302129}
+  :block/updated-at 1664946139416}
  {:block/name "quora",
   :block/created-at 1664827090875,
   :block/updated-at 1664827090875}
  {:block/name "shutri",
   :block/created-at 1664771611201,
   :block/updated-at 1664771611201}
- {:block/name "smarter",
-  :block/created-at 1664771611331,
-  :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
-  :block/updated-at 1664922486017}
+  :block/updated-at 1664945670938}
  {:block/name "social media platform",
   :block/created-at 1664822297747,
   :block/updated-at 1664822297747}
