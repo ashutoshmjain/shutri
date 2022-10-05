@@ -3,7 +3,7 @@
   :block/updated-at 1664772116346}
  {:block/name "about",
   :block/created-at 1664771610910,
-  :block/updated-at 1664984811964}
+  :block/updated-at 1664771610910}
  {:block/name "about shutri",
   :block/created-at 1664771610775,
   :block/updated-at 1664771610775}
@@ -37,18 +37,12 @@
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1664926986962}
- {:block/name "creative sellers licence",
-  :block/created-at 1664833916959,
-  :block/updated-at 1664833916959}
  {:block/name "creative sellers license",
-  :block/created-at 1664979561930,
-  :block/updated-at 1664979561930}
+  :block/created-at 1664946911072,
+  :block/updated-at 1664946911072}
  {:block/name "creativesellerslicense",
   :block/created-at 1664833916959,
   :block/updated-at 1664947136060}
- {:block/name "deepmind",
-  :block/created-at 1664983645784,
-  :block/updated-at 1664983645784}
  {:block/name "desire",
   :block/created-at 1664810013655,
   :block/updated-at 1664810013655}
@@ -67,9 +61,6 @@
  {:block/name "done",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
- {:block/name "elon",
-  :block/created-at 1664983645784,
-  :block/updated-at 1664983645784}
  {:block/name "epic games",
   :block/created-at 1664819100544,
   :block/updated-at 1664819100544}
@@ -85,9 +76,6 @@
  {:block/name "github",
   :block/created-at 1664773050556,
   :block/updated-at 1664773050556}
- {:block/name "google",
-  :block/created-at 1664983645785,
-  :block/updated-at 1664983645785}
  {:block/name "in-progress",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -130,15 +118,6 @@
  {:block/name "meta",
   :block/created-at 1664819020554,
   :block/updated-at 1664819020554}
- {:block/name "mindland",
-  :block/created-at 1664983645783,
-  :block/updated-at 1664983645783}
- {:block/name "mindlang",
-  :block/created-at 1664982366304,
-  :block/updated-at 1664984399287}
- {:block/name "myquotes",
-  :block/created-at 1664982656203,
-  :block/updated-at 1664982656203}
  {:block/name "narratives",
   :block/created-at 1664771610771,
   :block/updated-at 1664771610771}
@@ -153,28 +132,19 @@
   :block/updated-at 1664777764735}
  {:block/name "oct 2nd, 2022",
   :block/created-at 1664771610682,
-  :block/updated-at 1664979802381}
+  :block/updated-at 1664809248070}
  {:block/name "oct 3rd, 2022",
   :block/created-at 1664808465409,
   :block/updated-at 1664947660981}
  {:block/name "oct 4th, 2022",
   :block/created-at 1664915585946,
-  :block/updated-at 1664979682205}
- {:block/name "oct 5th, 2022",
-  :block/created-at 1664979560521,
-  :block/updated-at 1664984480434}
- {:block/name "oct 6th, 2022",
-  :block/created-at 1664979838531,
-  :block/updated-at 1664979838531}
+  :block/updated-at 1664946139416}
  {:block/name "quora",
   :block/created-at 1664827090875,
   :block/updated-at 1664827090875}
  {:block/name "shutri",
   :block/created-at 1664771611201,
   :block/updated-at 1664771611201}
- {:block/name "smarter",
-  :block/created-at 1664771611331,
-  :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664945670938}
@@ -199,9 +169,6 @@
  {:block/name "tim sweeny",
   :block/created-at 1664820025824,
   :block/updated-at 1664820025824}
- {:block/name "to",
-  :block/created-at 1664979699679,
-  :block/updated-at 1664979699679}
  {:block/name "todo",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
