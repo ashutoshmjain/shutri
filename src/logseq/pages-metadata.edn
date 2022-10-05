@@ -43,9 +43,6 @@
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1664926986962}
- {:block/name "creative sellers licence",
-  :block/created-at 1664833916959,
-  :block/updated-at 1664833916959}
  {:block/name "creative sellers license",
   :block/created-at 1664979561930,
   :block/updated-at 1664979561930}
@@ -171,10 +168,7 @@
   :block/updated-at 1664979682205}
  {:block/name "oct 5th, 2022",
   :block/created-at 1664979560521,
-  :block/updated-at 1665002072901}
- {:block/name "oct 6th, 2022",
-  :block/created-at 1664979838531,
-  :block/updated-at 1664979838531}
+  :block/updated-at 1665005249081}
  {:block/name "onlineretail",
   :block/created-at 1664999577321,
   :block/updated-at 1664999577321}
@@ -184,9 +178,6 @@
  {:block/name "shutri",
   :block/created-at 1664771611201,
   :block/updated-at 1664771611201}
- {:block/name "smarter",
-  :block/created-at 1664771611331,
-  :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664945670938}
@@ -211,9 +202,6 @@
  {:block/name "tim sweeny",
   :block/created-at 1664820025824,
   :block/updated-at 1664820025824}
- {:block/name "to",
-  :block/created-at 1664979699679,
-  :block/updated-at 1664979699679}
  {:block/name "todo",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
