@@ -21,7 +21,7 @@
   :block/updated-at 1664926781197}
  {:block/name "btc",
   :block/created-at 1664932804594,
-  :block/updated-at 1664932804594}
+  :block/updated-at 1665086787223}
  {:block/name "c",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -46,9 +46,15 @@
  {:block/name "creative sellers license",
   :block/created-at 1664979561930,
   :block/updated-at 1664979561930}
+ {:block/name "creativeeconomy",
+  :block/created-at 1665086935444,
+  :block/updated-at 1665086935444}
  {:block/name "creativesellerslicense",
   :block/created-at 1664833916959,
   :block/updated-at 1664947136060}
+ {:block/name "cryptonicshift",
+  :block/created-at 1665087967658,
+  :block/updated-at 1665088109072}
  {:block/name "deepmind",
   :block/created-at 1664983645784,
   :block/updated-at 1664983645784}
@@ -124,6 +130,9 @@
  {:block/name "mac",
   :block/created-at 1664820430243,
   :block/updated-at 1664820430243}
+ {:block/name "macropolitics",
+  :block/created-at 1665086040345,
+  :block/updated-at 1665088345931}
  {:block/name "mark down",
   :block/created-at 1664809093454,
   :block/updated-at 1664809093454}
@@ -142,6 +151,9 @@
  {:block/name "mindlang",
   :block/created-at 1664982366304,
   :block/updated-at 1664984399287}
+ {:block/name "moneyisinformation",
+  :block/created-at 1665089628524,
+  :block/updated-at 1665089696558}
  {:block/name "myquotes",
   :block/created-at 1664982656203,
   :block/updated-at 1664982656203}
@@ -168,10 +180,10 @@
   :block/updated-at 1664979682205}
  {:block/name "oct 5th, 2022",
   :block/created-at 1664979560521,
-  :block/updated-at 1665005249081}
- {:block/name "onlineretail",
-  :block/created-at 1664999577321,
-  :block/updated-at 1664999577321}
+  :block/updated-at 1665086041054}
+ {:block/name "oct 6th, 2022",
+  :block/created-at 1665085319203,
+  :block/updated-at 1665089559754}
  {:block/name "quora",
   :block/created-at 1664827090875,
   :block/updated-at 1664827090875}
