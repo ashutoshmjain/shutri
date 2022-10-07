@@ -1,0 +1,2 @@
+- #toolHint [[Logseq]] shift+click open the page in right panel. Panel is automatically created. Which means you don't need to create a side pane (like most windows managers) and then give command to open a page. Saves you from unnecessary workload to bog your mind from doing what it wants to do v/s what the tool wants you to do.
+- TODO
