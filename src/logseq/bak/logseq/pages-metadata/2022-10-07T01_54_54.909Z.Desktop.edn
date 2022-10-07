@@ -43,18 +43,12 @@
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1664926986962}
- {:block/name "creaticeeconomy",
-  :block/created-at 1665107633193,
-  :block/updated-at 1665107633193}
- {:block/name "creative sellers licence",
-  :block/created-at 1664833916959,
-  :block/updated-at 1664833916959}
  {:block/name "creative sellers license",
   :block/created-at 1664979561930,
   :block/updated-at 1664979561930}
  {:block/name "creativeeconomy",
-  :block/created-at 1665107220942,
-  :block/updated-at 1665107220942}
+  :block/created-at 1665086935444,
+  :block/updated-at 1665086935444}
  {:block/name "creativesellerslicense",
   :block/created-at 1664833916959,
   :block/updated-at 1664947136060}
@@ -157,9 +151,6 @@
  {:block/name "mindlang",
   :block/created-at 1664982366304,
   :block/updated-at 1664984399287}
- {:block/name "money@information",
-  :block/created-at 1665107633191,
-  :block/updated-at 1665107633191}
  {:block/name "moneyisinformation",
   :block/created-at 1665089628524,
   :block/updated-at 1665089696558}
@@ -193,18 +184,12 @@
  {:block/name "oct 6th, 2022",
   :block/created-at 1665085319203,
   :block/updated-at 1665089559754}
- {:block/name "onlineretail",
-  :block/created-at 1664999577321,
-  :block/updated-at 1664999577321}
  {:block/name "quora",
   :block/created-at 1664827090875,
   :block/updated-at 1664827090875}
  {:block/name "shutri",
   :block/created-at 1664771611201,
   :block/updated-at 1664771611201}
- {:block/name "smarter",
-  :block/created-at 1664771611331,
-  :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664945670938}
@@ -223,18 +208,12 @@
  {:block/name "summary",
   :block/created-at 1664771610779,
   :block/updated-at 1664771610779}
- {:block/name "thewar",
-  :block/created-at 1665107633192,
-  :block/updated-at 1665107633192}
  {:block/name "threefriends",
   :block/created-at 1664774095420,
   :block/updated-at 1664774095420}
  {:block/name "tim sweeny",
   :block/created-at 1664820025824,
   :block/updated-at 1664820025824}
- {:block/name "to",
-  :block/created-at 1664979699679,
-  :block/updated-at 1664979699679}
  {:block/name "todo",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
