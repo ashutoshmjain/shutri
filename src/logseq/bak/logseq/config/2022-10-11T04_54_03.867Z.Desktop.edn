@@ -44,7 +44,7 @@
  ;; https://github.com/logseq/awesome-logseq#css-themes
  ;; Example:
  ;; :custom-css-url "@import url('https://cdn.jsdelivr.net/gh/dracula/logseq@master/custom.css');"
- :custom-css-url "@import url('https://cdn.jsdelivr.net/gh/pengx17/logseq-laurel-theme@master/custom.css');"
+
  ;; Set Bullet indentation when exporting
  ;; default option: tab
  ;; Possible options are for `:sidebar` are
@@ -57,7 +57,7 @@
  ;; When :all-pages-public? true, export repo would export all pages within that repo.
  ;; Regardless of whether you've set any page to public or not.
  ;; Example:
- :publishing/all-pages-public? true
+ ;; :publishing/all-pages-public? true
 
  ;; Specify default home page and sidebar status for Logseq
  ;; If not specified, Logseq default opens journals page on startup
@@ -71,7 +71,7 @@
  ;; 1. Setup page "Changelog" as home page and "Contents" in sidebar
  ;; :default-home {:page "Changelog", :sidebar "Contents"}
  ;; 2. Setup page "Jun 3rd, 2021" as home page without sidebar
- :default-home {:page "spotLight"}
+ ;; :default-home {:page "Jun 3rd, 2021"}
  ;; 3. Setup page "home" as home page with multiple pages in sidebar
  ;; :default-home {:page "home" :sidebar ["page a" "page b"]}
 
@@ -227,6 +227,9 @@
 
  ;; Enable all your properties to have corresponding pages
  :property-pages/enabled? true
+ :zotero/settings-v2 {"default" {:type-id "10232052", :zotero-linked-attachment-base-directory ""}}
+ :feature/enable-timetracking? false
+ :editor/logical-outdenting? true
 
  ;; Properties to exclude from having property pages
  ;; E.g.:property-pages/excludelist #{:duration :author}

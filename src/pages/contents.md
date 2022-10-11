@@ -1,4 +1,3 @@
-- [[whatIsThis]]
 - ## Start your journey into logSeq
   id:: 63407d80-d186-4e4d-9edb-90aaa678bb63
   link:: https://youtu.be/asEesjv0kTs
