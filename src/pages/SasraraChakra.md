@@ -1,0 +1,2 @@
+- Sahsrara Chakra is the top most Chakra in human body as per the descriptions of [[Hath Yoga]].  We control one thousand (Sahsra - in Sanskrit) through this Chakra.  In a way, this is how we engage with our physical reality  - Our [[tinyBox]]]
+-

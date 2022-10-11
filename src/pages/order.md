@@ -1,0 +1,1 @@
+- We perceive [[order]] when physical reality is structured as per our [[mindGraph]].  Other wise we perceive [[chaos]]

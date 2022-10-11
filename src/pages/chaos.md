@@ -1,0 +1,1 @@
+- Chaos is our efforts to structure the reality as per our [[mindGraph]]. Chaos is a prerequisite of [[order]] and vice versa.  Our [[sensoryReality]] is chaotic till we make peace with it through [[compassion]]

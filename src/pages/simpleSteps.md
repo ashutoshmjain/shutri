@@ -1,0 +1,7 @@
+- I use manual publishing to [[github]] pages.
+	- Export the graph to a folder on your machine.
+	- Add a [[workTree]] to your local git folder to replicate the gh pages branch in a separate folder.
+	- Copy the export to gh pages git folder.
+	- Git add , git commit and git push
+	- Keep in mind , when you publish new export , you need to delete the contents of gh pages git folder on your machine.
+	- I know this is not syncing in your mind .. may be I will do a [[tutorial]] on this later

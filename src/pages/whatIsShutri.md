@@ -1,2 +1,2 @@
-- Shutri (adj.) is a serious thought said un-seriously ;  Or a un-seriously said thought taken like a joke.  But #Shutri is NOT meaningless. It's a intervention on mundane thoughts of a [[deadMind]]
--
+- Shutri (adj.) is a serious thing said un-seriously ;  Or a un-seriously said thought taken  seriously.  But a ‘Shutri’  is NOT meaningless. It's a intervention on mundane thoughts of a [[deadMind]]
+- Why did I name this website [[shutri.com]] ?

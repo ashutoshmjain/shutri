@@ -13,9 +13,6 @@
  {:block/name "after pay",
   :block/created-at 1664819807654,
   :block/updated-at 1664819807654}
- {:block/name "ai",
-  :block/created-at 1665503307133,
-  :block/updated-at 1665503307133}
  {:block/name "article",
   :block/created-at 1665175545964,
   :block/updated-at 1665175545964}
@@ -49,33 +46,18 @@
  {:block/name "card",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
- {:block/name "chaos",
-  :block/created-at 1665504552688,
-  :block/updated-at 1665507635126}
  {:block/name "clojure",
   :block/created-at 1665175546239,
   :block/updated-at 1665175546239}
- {:block/name "compassion",
-  :block/created-at 1665506766391,
-  :block/updated-at 1665507174577}
  {:block/name "concretecracksfiller",
   :block/created-at 1664996319142,
   :block/updated-at 1664996319142}
  {:block/name "concretejoitsealant",
   :block/created-at 1664996341265,
   :block/updated-at 1664996341265}
- {:block/name "connection",
-  :block/created-at 1665504422501,
-  :block/updated-at 1665504552691}
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1665464913107}
- {:block/name "creaticeeconomy",
-  :block/created-at 1665107633193,
-  :block/updated-at 1665107633193}
- {:block/name "creative sellers licence",
-  :block/created-at 1664833916959,
-  :block/updated-at 1664833916959}
  {:block/name "creative sellers license",
   :block/created-at 1664979561930,
   :block/updated-at 1664979561930}
@@ -93,7 +75,7 @@
   :block/updated-at 1665088109072}
  {:block/name "deadmind",
   :block/created-at 1665464826542,
-  :block/updated-at 1665503754669}
+  :block/updated-at 1665464826542}
  {:block/name "deepmind",
   :block/created-at 1664983645784,
   :block/updated-at 1664983645784}
@@ -119,17 +101,14 @@
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
  {:block/name "double bracket",
-  :block/created-at 1665469055520,
-  :block/updated-at 1665469055520}
+  :block/created-at 1665466193797,
+  :block/updated-at 1665466193797}
  {:block/name "edn",
   :block/created-at 1665175546232,
   :block/updated-at 1665175546232}
  {:block/name "elon",
   :block/created-at 1664983645784,
   :block/updated-at 1664983645784}
- {:block/name "entrystream",
-  :block/created-at 1665502863323,
-  :block/updated-at 1665509703092}
  {:block/name "epic games",
   :block/created-at 1664819100544,
   :block/updated-at 1664819100544}
@@ -139,9 +118,6 @@
  {:block/name "favorites",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
- {:block/name "fitness",
-  :block/created-at 1665506705655,
-  :block/updated-at 1665506705655}
  {:block/name "geopolitical",
   :block/created-at 1664999715514,
   :block/updated-at 1664999715514}
@@ -154,24 +130,15 @@
  {:block/name "google",
   :block/created-at 1664983645785,
   :block/updated-at 1664983645785}
- {:block/name "gpt3",
-  :block/created-at 1665503035742,
-  :block/updated-at 1665503322925}
  {:block/name "haseeb qureshi",
   :block/created-at 1665175545963,
   :block/updated-at 1665175545963}
  {:block/name "hashtag",
-  :block/created-at 1665469055521,
-  :block/updated-at 1665469055521}
+  :block/created-at 1665466112232,
+  :block/updated-at 1665466112232}
  {:block/name "hastag",
   :block/created-at 1665249242238,
   :block/updated-at 1665249242238}
- {:block/name "hath yoga",
-  :block/created-at 1665503817481,
-  :block/updated-at 1665505895202}
- {:block/name "heartchakra",
-  :block/created-at 1665507124917,
-  :block/updated-at 1665507124917}
  {:block/name "in-progress",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -186,7 +153,7 @@
   :block/updated-at 1665175546231}
  {:block/name "karma",
   :block/created-at 1664810013654,
-  :block/updated-at 1665505755932}
+  :block/updated-at 1664810013654}
  {:block/name "later",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -229,27 +196,15 @@
  {:block/name "meta",
   :block/created-at 1664819020554,
   :block/updated-at 1664819020554}
- {:block/name "metaverse",
-  :block/created-at 1665504238382,
-  :block/updated-at 1665506459734}
- {:block/name "mindgraph",
-  :block/created-at 1665502863321,
-  :block/updated-at 1665503232816}
  {:block/name "mindland",
   :block/created-at 1664983645783,
   :block/updated-at 1664983645783}
  {:block/name "mindlang",
   :block/created-at 1664982366304,
   :block/updated-at 1664984399287}
- {:block/name "money@information",
-  :block/created-at 1665107633191,
-  :block/updated-at 1665107633191}
  {:block/name "moneyisinformation",
   :block/created-at 1665089628524,
   :block/updated-at 1665089696558}
- {:block/name "mooladhara",
-  :block/created-at 1665505869144,
-  :block/updated-at 1665505869144}
  {:block/name "myquotes",
   :block/created-at 1664982656203,
   :block/updated-at 1664982656203}
@@ -271,9 +226,6 @@
  {:block/name "oct 10th, 2022",
   :block/created-at 1665423275943,
   :block/updated-at 1665439186656}
- {:block/name "oct 11th, 2022",
-  :block/created-at 1665502564979,
-  :block/updated-at 1665502564979}
  {:block/name "oct 1st, 2022",
   :block/created-at 1665175545894,
   :block/updated-at 1665249416497}
@@ -298,15 +250,6 @@
  {:block/name "oct 8th, 2022",
   :block/created-at 1665249241764,
   :block/updated-at 1665352500393}
- {:block/name "oct 9th, 2022",
-  :block/created-at 1665301338695,
-  :block/updated-at 1665301338695}
- {:block/name "onlineretail",
-  :block/created-at 1664999577321,
-  :block/updated-at 1664999577321}
- {:block/name "order",
-  :block/created-at 1665504537781,
-  :block/updated-at 1665507514817}
  {:block/name "producer",
   :block/created-at 1665175545817,
   :block/updated-at 1665175545817}
@@ -316,36 +259,15 @@
  {:block/name "quora",
   :block/created-at 1664827090875,
   :block/updated-at 1664827090875}
- {:block/name "realverse",
-  :block/created-at 1665504325689,
-  :block/updated-at 1665506584256}
  {:block/name "reasonbasedtesting",
   :block/created-at 1665169898314,
   :block/updated-at 1665169898314}
- {:block/name "sahsrara",
-  :block/created-at 1665505887577,
-  :block/updated-at 1665505887577}
- {:block/name "sasrarachakra",
-  :block/created-at 1665503905595,
-  :block/updated-at 1665505772514}
- {:block/name "sensoryreality",
-  :block/created-at 1665506572356,
-  :block/updated-at 1665506775911}
  {:block/name "sep 30th, 2022",
   :block/created-at 1665175546268,
   :block/updated-at 1665175546268}
  {:block/name "shutri",
   :block/created-at 1664771611201,
   :block/updated-at 1664771611201}
- {:block/name "shutri.com",
-  :block/created-at 1665505997605,
-  :block/updated-at 1665510196635}
- {:block/name "simplesteps",
-  :block/created-at 1665504908523,
-  :block/updated-at 1665505243399}
- {:block/name "smarter",
-  :block/created-at 1664771611331,
-  :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664945670938}
@@ -357,7 +279,7 @@
   :block/updated-at 1664809110990}
  {:block/name "spotlight",
   :block/created-at 1665464210367,
-  :block/updated-at 1665510259853}
+  :block/updated-at 1665466841029}
  {:block/name "square",
   :block/created-at 1664819928223,
   :block/updated-at 1664819928223}
@@ -370,30 +292,18 @@
  {:block/name "test<",
   :block/created-at 1665464043975,
   :block/updated-at 1665464043975}
- {:block/name "thewar",
-  :block/created-at 1665107633192,
-  :block/updated-at 1665107633192}
  {:block/name "threefriends",
   :block/created-at 1664774095420,
   :block/updated-at 1664774095420}
  {:block/name "tim sweeny",
   :block/created-at 1664820025824,
   :block/updated-at 1664820025824}
- {:block/name "tinybox",
-  :block/created-at 1665503867758,
-  :block/updated-at 1665503867758}
- {:block/name "to",
-  :block/created-at 1664979699679,
-  :block/updated-at 1664979699679}
  {:block/name "todo",
   :block/created-at 1664772116346,
   :block/updated-at 1665189351268}
  {:block/name "toolhint",
   :block/created-at 1665181343229,
   :block/updated-at 1665181343229}
- {:block/name "tutorial",
-  :block/created-at 1665505243399,
-  :block/updated-at 1665505243399}
  {:block/name "twitter",
   :block/created-at 1664821933261,
   :block/updated-at 1664821933261}
@@ -409,9 +319,6 @@
  {:block/name "unreal engine",
   :block/created-at 1664819714452,
   :block/updated-at 1664819714452}
- {:block/name "verticalstack",
-  :block/created-at 1665504827742,
-  :block/updated-at 1665504827742}
  {:block/name "video",
   :block/created-at 1665175545815,
   :block/updated-at 1665175545815}
@@ -429,22 +336,16 @@
   :block/updated-at 1664772116346}
  {:block/name "whatisshutri",
   :block/created-at 1665464338129,
-  :block/updated-at 1665509314163}
+  :block/updated-at 1665464826545}
  {:block/name "whatisthis",
   :block/created-at 1665438832055,
-  :block/updated-at 1665509953937}
+  :block/updated-at 1665466502881}
  {:block/name "windows",
   :block/created-at 1664820437389,
   :block/updated-at 1664820437389}
  {:block/name "workflow",
   :block/created-at 1664773087629,
   :block/updated-at 1664773087629}
- {:block/name "worktree",
-  :block/created-at 1665505004408,
-  :block/updated-at 1665505004408}
  {:block/name "writers economy",
-  :block/created-at 1664820504803,
-  :block/updated-at 1664820504803}
- {:block/name "yoga",
-  :block/created-at 1665503795626, 
-  :block/updated-at 1665503795626}]
+  :block/created-at 1664820504803, 
+  :block/updated-at 1664820504803}]

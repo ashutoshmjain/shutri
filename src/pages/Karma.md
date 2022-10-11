@@ -1,1 +1,1 @@
-- My daily chores
+- Karma is the [[Yoga]] of mind. In [[Hath Yoga]] , Karma is the only way to connect with our [[tinyBox]] , with active and engaged [[SasraraChakra]].

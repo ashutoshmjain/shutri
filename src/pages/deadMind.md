@@ -1,0 +1,1 @@
+- A dead mind is the one that doesn't want to engage in [[Karma]].
