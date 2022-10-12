@@ -43,8 +43,8 @@
  ;; You may find a list of awesome logseq themes here:
  ;; https://github.com/logseq/awesome-logseq#css-themes
  ;; Example:
- ;; :custom-css-url "@import url('https://cdn.jsdelivr.net/gh/dracula/logseq@master/custom.css');"
- :custom-css-url "@import url('https://cdn.jsdelivr.net/gh/pengx17/logseq-laurel-theme@master/custom.css');"
+ :custom-css-url "@import url('https://cdn.jsdelivr.net/gh/dracula/logseq@master/custom.css');"
+ ;; :custom-css-url "@import url('https://cdn.jsdelivr.net/gh/pengx17/logseq-laurel-theme@master/custom.css');"
  ;; Set Bullet indentation when exporting
  ;; default option: tab
  ;; Possible options are for `:sidebar` are
