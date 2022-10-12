@@ -1,0 +1,4 @@
+- [[whatIsThis]]
+- [[whatIsShutri]]
+- What is [[spotLight]]
+	- Spot light is this middle pane.  This is the Shutri, I have brewing up. Something I am saying to engage you. #whatIsShutri
