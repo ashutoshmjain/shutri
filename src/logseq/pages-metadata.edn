@@ -73,12 +73,6 @@
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1665464913107}
- {:block/name "creaticeeconomy",
-  :block/created-at 1665107633193,
-  :block/updated-at 1665107633193}
- {:block/name "creative sellers licence",
-  :block/created-at 1664833916959,
-  :block/updated-at 1664833916959}
  {:block/name "creative sellers license",
   :block/created-at 1664979561930,
   :block/updated-at 1664979561930}
@@ -265,9 +259,6 @@
  {:block/name "mindlang",
   :block/created-at 1664982366304,
   :block/updated-at 1664984399287}
- {:block/name "money@information",
-  :block/created-at 1665107633191,
-  :block/updated-at 1665107633191}
  {:block/name "moneyisinformation",
   :block/created-at 1665089628524,
   :block/updated-at 1665089696558}
@@ -325,12 +316,6 @@
  {:block/name "oct 8th, 2022",
   :block/created-at 1665249241764,
   :block/updated-at 1665352500393}
- {:block/name "oct 9th, 2022",
-  :block/created-at 1665301338695,
-  :block/updated-at 1665301338695}
- {:block/name "onlineretail",
-  :block/created-at 1664999577321,
-  :block/updated-at 1664999577321}
  {:block/name "order",
   :block/created-at 1665526483779,
   :block/updated-at 1665526483779}
@@ -373,9 +358,6 @@
  {:block/name "simplesteps",
   :block/created-at 1665526484481,
   :block/updated-at 1665526484481}
- {:block/name "smarter",
-  :block/created-at 1664771611331,
-  :block/updated-at 1664771611331}
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664945670938}
@@ -387,7 +369,7 @@
   :block/updated-at 1664809110990}
  {:block/name "spotlight",
   :block/created-at 1665464210367,
-  :block/updated-at 1665530135584}
+  :block/updated-at 1665543570903}
  {:block/name "square",
   :block/created-at 1664819928223,
   :block/updated-at 1664819928223}
@@ -400,9 +382,6 @@
  {:block/name "test<",
   :block/created-at 1665464043975,
   :block/updated-at 1665464043975}
- {:block/name "thewar",
-  :block/created-at 1665107633192,
-  :block/updated-at 1665107633192}
  {:block/name "threefriends",
   :block/created-at 1664774095420,
   :block/updated-at 1664774095420}
@@ -412,9 +391,6 @@
  {:block/name "tinybox",
   :block/created-at 1665526483675,
   :block/updated-at 1665526483675}
- {:block/name "to",
-  :block/created-at 1664979699679,
-  :block/updated-at 1664979699679}
  {:block/name "todo",
   :block/created-at 1664772116346,
   :block/updated-at 1665189351268}

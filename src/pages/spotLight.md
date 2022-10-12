@@ -8,4 +8,7 @@
 	  They say [[compassion]] is the best fitness strategy 🙃
 	  #+END_CAUTION
 	- I try to publish my spotLight every day. But some days are meh ..
+	- #+BEGIN_TIP
+	  You can always get back here on `spotLight` by clicking the `HOME` button on the top ..
+	  #+END_TIP
 - In you want to learn or collaborate , please drop me a note at amj@shutri.com
