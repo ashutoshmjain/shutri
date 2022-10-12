@@ -7,7 +7,7 @@
   
   Non fiction, should have a similar multi route strategy to unlock knowledge.
   #+END_QUOTE
-- That means a book should unfold in many possible direction from a single page. For example in this case that  page is [[spotLight]]
+- That means a book should unfold in many possible direction from a single page. For example in this case - the home page `spotLight`
 - To do this we need a writing style that's upside down with traditional form of writing. I call it [[mindGraph]]
 - The good news is we now have [[graphDatabases]] that can do this. And thankfully we have [[Logseq]] to turn [[blocks]] of text into a graph.
 - Want to know more about my [[graphJourney]] ?

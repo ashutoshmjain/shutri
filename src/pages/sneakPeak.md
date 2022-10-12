@@ -1,0 +1,1 @@
+- Just hover your mouse over the link and it will open a window right on the link to view the contents.  Unlike other tools, logseq sneak view is very persistent. You can read really long text in the sneak view and even click on the links with in.  It helps to solve the mess of links.
