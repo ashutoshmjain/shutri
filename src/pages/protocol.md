@@ -1,0 +1,1 @@
+- a set of agreements, to help communicate.
