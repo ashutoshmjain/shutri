@@ -1,0 +1,4 @@
+- eMail is [[asynchronous]] and [[distributed]] . Well you may say that it has already been centralized like the gmail or icloud mail but there are still many many providers. And the amazing thing is , even [[gmail]] works with [[iCloud]] email. Even [[Apple]] couldn't wall garden it.
+- This is very different from social media platforms. For example if you restrict yourself into [[instagram]] or [[tickTok]] , how do you send connect insta to tikTok ?
+- Even bigger problem is , what if Insta is shut down in your country ? Or [[Meta]] - the company decides to block you out ? You can take all your emails with you and easily set up your own [[mail-server]] ,  can you set up your own [[facebook]] server ?
+- Similarly, once upon a time , the [[internet]] was totally decentralized. It is been increasingly centralized now by the likes of [[google]] . How do you make it [[decentralized]] again ? Wanna know ?

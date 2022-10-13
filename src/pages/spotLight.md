@@ -11,4 +11,4 @@
 	- #+BEGIN_TIP
 	  You can always get back here on `spotLight` by clicking the `HOME` button on the top ..
 	  #+END_TIP
-- In you want to learn or collaborate , please drop me a note at amj@shutri.com
+- If you want to learn or collaborate , please drop me an oldf-ashioned [[email]] at amj@shutri.com
