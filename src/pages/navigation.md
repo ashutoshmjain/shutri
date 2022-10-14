@@ -1,6 +1,12 @@
 - First focus on two icons. One on the top left and another on the top right, of your screen. Both these open a pane on your screen. Need I say,  that the left one does on the left side of the screen and right one --- you got it.  So this website has three panes.
 - The left side is a "canned" pane that helps you interact with the graph. I don't change much there cuz I don't know how to do that.
-- The right side is more interesting. If you click on the icon on the extreme right top of your screen, you will see a vertical pane with  menu items such as "content", "Page graph" and help. They too are canned 😃   ....  But there is a cool thing in the left side pane - it is a [[verticalStack]] . 
+- The right side is more interesting. If you click on the icon on the extreme right top of your screen, you will see a vertical pane with  menu items such as "content", "Page graph" and help. They too are canned 😃   ....  But there is a cool thing in the left side pane - it is a [[verticalStack]] .  #card
+  card-last-interval:: -1
+  card-repeats:: 1
+  card-ease-factor:: 2.5
+  card-next-schedule:: 2022-10-14T07:00:00.000Z
+  card-last-reviewed:: 2022-10-14T04:41:48.866Z
+  card-last-score:: 1
   #+BEGIN_TIP
   Understanding vertical stack is probably the most important part of this game . Trust me, I can't stress more !
   #+END_TIP
