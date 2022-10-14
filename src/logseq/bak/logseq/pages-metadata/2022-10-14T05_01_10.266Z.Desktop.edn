@@ -16,12 +16,21 @@
  {:block/name "ai",
   :block/created-at 1665526483585,
   :block/updated-at 1665526483585}
+ {:block/name "apple",
+  :block/created-at 1665618399714,
+  :block/updated-at 1665618399714}
  {:block/name "article",
   :block/created-at 1665175545964,
   :block/updated-at 1665175545964}
+ {:block/name "asynchronous",
+  :block/created-at 1665618249791,
+  :block/updated-at 1665618249791}
  {:block/name "b",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
+ {:block/name "bitcoin",
+  :block/created-at 1665633836053,
+  :block/updated-at 1665633836053}
  {:block/name "bittorrent",
   :block/created-at 1665249242240,
   :block/updated-at 1665249242240}
@@ -55,6 +64,9 @@
  {:block/name "chaos",
   :block/created-at 1665526483783,
   :block/updated-at 1665526483783}
+ {:block/name "clientserver",
+  :block/created-at 1665633639914,
+  :block/updated-at 1665633639914}
  {:block/name "clojure",
   :block/created-at 1665175546239,
   :block/updated-at 1665175546239}
@@ -94,6 +106,12 @@
  {:block/name "deadmind",
   :block/created-at 1665464826542,
   :block/updated-at 1665503754669}
+ {:block/name "decentralized",
+  :block/created-at 1665618744287,
+  :block/updated-at 1665619122462}
+ {:block/name "decetralized",
+  :block/created-at 1665634041403,
+  :block/updated-at 1665634041403}
  {:block/name "deepmind",
   :block/created-at 1664983645784,
   :block/updated-at 1664983645784}
@@ -112,6 +130,9 @@
  {:block/name "dimensions",
   :block/created-at 1664774095250,
   :block/updated-at 1664774095250}
+ {:block/name "distributed",
+  :block/created-at 1665618258647,
+  :block/updated-at 1665618258647}
  {:block/name "doing",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -127,6 +148,12 @@
  {:block/name "elon",
   :block/created-at 1664983645784,
   :block/updated-at 1664983645784}
+ {:block/name "email",
+  :block/created-at 1665618184266,
+  :block/updated-at 1665618763384}
+ {:block/name "english",
+  :block/created-at 1665618885019,
+  :block/updated-at 1665618885019}
  {:block/name "entrystream",
   :block/created-at 1665526484065,
   :block/updated-at 1665526484065}
@@ -136,12 +163,18 @@
  {:block/name "faceboo",
   :block/created-at 1664821914020,
   :block/updated-at 1664821914020}
+ {:block/name "facebook",
+  :block/created-at 1665618611422,
+  :block/updated-at 1665618611422}
  {:block/name "favorites",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
  {:block/name "fitness",
   :block/created-at 1665526484371,
   :block/updated-at 1665526484371}
+ {:block/name "flow",
+  :block/created-at 1665605748843,
+  :block/updated-at 1665605748843}
  {:block/name "geopolitical",
   :block/created-at 1664999715514,
   :block/updated-at 1664999715514}
@@ -151,12 +184,18 @@
  {:block/name "github",
   :block/created-at 1664773050556,
   :block/updated-at 1664773050556}
+ {:block/name "gmail",
+  :block/created-at 1665618373206,
+  :block/updated-at 1665618373206}
  {:block/name "goal",
   :block/created-at 1665530446665,
-  :block/updated-at 1665535067396}
+  :block/updated-at 1665597676130}
  {:block/name "google",
   :block/created-at 1664983645785,
   :block/updated-at 1664983645785}
+ {:block/name "gossip",
+  :block/created-at 1665633938400,
+  :block/updated-at 1665633938400}
  {:block/name "gpt3",
   :block/created-at 1665526483589,
   :block/updated-at 1665526483589}
@@ -184,12 +223,21 @@
  {:block/name "heartchakra",
   :block/created-at 1665526483870,
   :block/updated-at 1665526483870}
+ {:block/name "hyperlink",
+  :block/created-at 1665605750169,
+  :block/updated-at 1665605750169}
+ {:block/name "icloud",
+  :block/created-at 1665618385385,
+  :block/updated-at 1665618385385}
  {:block/name "in-progress",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
  {:block/name "instagram",
   :block/created-at 1664821926957,
   :block/updated-at 1664821926957}
+ {:block/name "internet",
+  :block/created-at 1665618763382,
+  :block/updated-at 1665618763382}
  {:block/name "jack dorsey",
   :block/created-at 1664818941341,
   :block/updated-at 1664818941341}
@@ -229,6 +277,9 @@
  {:block/name "macropolitics",
   :block/created-at 1665086040345,
   :block/updated-at 1665088345931}
+ {:block/name "mail-server",
+  :block/created-at 1665618583836,
+  :block/updated-at 1665618583836}
  {:block/name "malli",
   :block/created-at 1665175546237,
   :block/updated-at 1665175546237}
@@ -271,6 +322,9 @@
  {:block/name "narratives",
   :block/created-at 1664771610771,
   :block/updated-at 1664771610771}
+ {:block/name "navigation",
+  :block/created-at 1665605749041,
+  :block/updated-at 1665722508971}
  {:block/name "neo4j",
   :block/created-at 1665535148617,
   :block/updated-at 1665535148617}
@@ -292,6 +346,12 @@
  {:block/name "oct 11th, 2022",
   :block/created-at 1665502564979,
   :block/updated-at 1665502564979}
+ {:block/name "oct 12th, 2022",
+  :block/created-at 1665578456037,
+  :block/updated-at 1665578456037}
+ {:block/name "oct 13th, 2022",
+  :block/created-at 1665722240290,
+  :block/updated-at 1665722240290}
  {:block/name "oct 1st, 2022",
   :block/created-at 1665175545894,
   :block/updated-at 1665249416497}
@@ -319,18 +379,30 @@
  {:block/name "order",
   :block/created-at 1665526483779,
   :block/updated-at 1665526483779}
+ {:block/name "poems",
+  :block/created-at 1665595852053,
+  :block/updated-at 1665598850165}
  {:block/name "producer",
   :block/created-at 1665175545817,
   :block/updated-at 1665175545817}
  {:block/name "programming",
   :block/created-at 1665535330680,
-  :block/updated-at 1665535330680}
+  :block/updated-at 1665636221714}
+ {:block/name "protocol",
+  :block/created-at 1665618848533,
+  :block/updated-at 1665636272432}
+ {:block/name "python",
+  :block/created-at 1665619044407,
+  :block/updated-at 1665619044407}
  {:block/name "quest",
   :block/created-at 1665175545933,
   :block/updated-at 1665175545933}
  {:block/name "quora",
   :block/created-at 1664827090875,
   :block/updated-at 1664827090875}
+ {:block/name "read@louds",
+  :block/created-at 1664771611201,
+  :block/updated-at 1665597518545}
  {:block/name "realverse",
   :block/created-at 1665526483868,
   :block/updated-at 1665526483868}
@@ -349,9 +421,6 @@
  {:block/name "sep 30th, 2022",
   :block/created-at 1665175546268,
   :block/updated-at 1665175546268}
- {:block/name "shutri",
-  :block/created-at 1664771611201,
-  :block/updated-at 1664771611201}
  {:block/name "shutri.com",
   :block/created-at 1665526484420,
   :block/updated-at 1665530446666}
@@ -361,6 +430,9 @@
  {:block/name "smartercontract",
   :block/created-at 1664771611333,
   :block/updated-at 1664945670938}
+ {:block/name "sneakpeak",
+  :block/created-at 1665605749038,
+  :block/updated-at 1665605749038}
  {:block/name "social media platform",
   :block/created-at 1664822297747,
   :block/updated-at 1664822297747}
@@ -369,7 +441,7 @@
   :block/updated-at 1664809110990}
  {:block/name "spotlight",
   :block/created-at 1665464210367,
-  :block/updated-at 1665530135584}
+  :block/updated-at 1665618184268}
  {:block/name "square",
   :block/created-at 1664819928223,
   :block/updated-at 1664819928223}
@@ -379,12 +451,27 @@
  {:block/name "summary",
   :block/created-at 1664771610779,
   :block/updated-at 1664771610779}
+ {:block/name "tcp",
+  :block/created-at 1665619101330,
+  :block/updated-at 1665634360567}
  {:block/name "test<",
   :block/created-at 1665464043975,
   :block/updated-at 1665464043975}
+ {:block/name "testing vertical stack 1",
+  :block/created-at 1665605748622,
+  :block/updated-at 1665605748622}
+ {:block/name "testing vertical stack 2",
+  :block/created-at 1665605748643,
+  :block/updated-at 1665605748643}
+ {:block/name "testing vertical stack 3",
+  :block/created-at 1665605748744,
+  :block/updated-at 1665605748744}
  {:block/name "threefriends",
   :block/created-at 1664774095420,
   :block/updated-at 1664774095420}
+ {:block/name "ticktok",
+  :block/created-at 1665618463814,
+  :block/updated-at 1665618463814}
  {:block/name "tim sweeny",
   :block/created-at 1664820025824,
   :block/updated-at 1664820025824}
@@ -417,7 +504,7 @@
   :block/updated-at 1664819714452}
  {:block/name "verticalstack",
   :block/created-at 1665526484690,
-  :block/updated-at 1665526484690}
+  :block/updated-at 1665582365034}
  {:block/name "video",
   :block/created-at 1665175545815,
   :block/updated-at 1665175545815}
@@ -438,7 +525,7 @@
   :block/updated-at 1665509314163}
  {:block/name "whatisthis",
   :block/created-at 1665438832055,
-  :block/updated-at 1665530004368}
+  :block/updated-at 1665618045466}
  {:block/name "windows",
   :block/created-at 1664820437389,
   :block/updated-at 1664820437389}
