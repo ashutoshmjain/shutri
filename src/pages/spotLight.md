@@ -1,3 +1,4 @@
+- ![boardCropped.jpg](../assets/boardCropped_1666036998969_0.jpg)
 - [[whatIsThis]]  - What is this website about !
 - [[whatIsShutri]]  - What does ‘Shutri’ mean.
 - What is [[spotLight]]
@@ -11,4 +12,4 @@
 	- #+BEGIN_TIP
 	  You can always get back here on `spotLight` by clicking the `HOME` button on the top ..
 	  #+END_TIP
-- If you want to learn or collaborate , please drop me an oldf-ashioned [[email]] at amj@shutri.com
+- If you want to learn or collaborate , please drop me an oldf-fashioned [[email]] at amj@shutri.com
