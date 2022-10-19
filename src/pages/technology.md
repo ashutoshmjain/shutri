@@ -1,0 +1,11 @@
+- If it took us say five thousand years from the wheel to a car, it had probably taken fifty thousand to evolve the ‘wheels’, for [[knowledge]] is never a straight line. It is a curve that curls up exponentially with time.
+- When I say technology, it is not necessarily the information technology eg coding or gadgets. Coding and gadgets are also "technology". It could be engineering for some. For others it could be spirituality or even travel.
+- The Y axis of this curve is technology.
+- As the knowledge curve gets near vertical, the technology grows exponentially with very little passage of time.
+- When the knowledge curve gets absolute vertical, the time stops. And we experience an infinite growth in technology.
+- It is as if we passed through a [[knowledgeWormHole]].
+- I call this shift, a quantum jump.
+- There are three [[existentialQuestions]]
+	- How far are we from the quantum jump ?
+	- Who will make it to the other side ?
+	- How do I make sure I am part of the ride ?

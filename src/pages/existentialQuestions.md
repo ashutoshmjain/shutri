@@ -1,0 +1,7 @@
+- There are three existential questions
+	- How far are we from the quantum jump ?
+		- Not far. In fact it is Now. In this very moment.
+	- Who will make it to the other side ?
+		- Those who give up the past and embrace the future.
+	- How do I make sure I am part of the ride ?
+		- This is a tricky question ! Because it is different for everyone. I can only share [[myExperience]].  You will need to figure out your own.

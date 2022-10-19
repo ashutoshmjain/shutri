@@ -1,2 +1,2 @@
 - Talking to someone unknown in [[metaVerse]] is hard.  In our normal life - the [[realVerse]], we engage through talking,  Entry steam is a way to connect with someone offline without talking.   Think of it as somewhat curated content that allows you start making a [[connection]].
-- Thus [[mindGraph]] must have an entry stream in metaVerse to allow people make a connection. mindGraph  in itself is an essential technology enabler of metaverses.
+- Thus [[mindGraph]] must have an entry stream in metaVerse , to allow people make a connection. mindGraph,  in itself is an essential technology enabler of metaverses.

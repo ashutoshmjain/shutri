@@ -1,0 +1,3 @@
+- A knowledge worm hole is a sudden event when manifestation happens.
+- It's the point when the remaining pieces of puzzle automagically fit together to make a picture.
+- The cycle of new conscious reality begins.
