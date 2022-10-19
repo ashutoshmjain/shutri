@@ -1,1 +1,3 @@
-- Connections are hard to make (particularly in [[metaVerse]] ) because the moment we have access to entire [[mindGraph]] , we attempt to curate it the way our mind thinks. We want to create an [[order]] in [[chaos]].
+- When we read a narrative or watch a video, only some of the points rhyme with our mind. If there are many, we click the like button. Our [[quest]] is to fructify our own ideas. We borrow [[blocks]] or sub-ideas from others. Thus blocks are a great way to make connection.
+- In other words, when a similar block exists in two [[mindGraph]]s , a connection is formed. When there are very many connections , a relationship is formed.
+- Effectively mindGraphs may be joined to form a [[graphCloud]].

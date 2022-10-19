@@ -1,2 +1,8 @@
 - A mind is a big mesh of neurons. Big means really really big. A human mind has around 300x number of synapses compared to [[GPT3]].  We can never know what all is going on in our mind.
-- [[Logseq]] takes the burden of managing the  folders, pages and the rigor of capturing , to allow us build a garden of our mind. I call it a mindGraph.
+- A mindGraph is representation of our brain in digital format.
+- An idea is a node in mind and it is represented by a page in mindGraph.
+- Every idea is made of sub-ideas , in digital format of mind - mindgraph, these sub ideas are represented by the blocks of text.
+- One sub-idea may be part of many full blown ideas.  Similarly a block (of text) may be linked to many pages.
+- Most of the ideas are dormant. They take shape when we come across a situation in the physical world. Similarly most of the pages in mindGraph are half done. Means there are linked references but you have not taken time to structure them in a page.  You may do that when the need arise. Those linked blocks are always there for you to merge in to the pages , to restructure them.
+- In a way, the linked blocks are the stream that build a page.
+- Sub Ideas or the [[blocks]] also present an opportunity to form [[connection]] with other minds.
