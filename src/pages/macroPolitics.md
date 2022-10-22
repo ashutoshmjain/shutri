@@ -1,5 +1,5 @@
 title:: macroPolitics
-cryptonicShift:: chapter-one
+cryptonicShift:: chapter-01
 
 - [[geoPolitical]] situation has split the world in two major camps. On one side we have the camp led by China and Russia that is mostly manufacturing world. I don't want to divide the world into "developing and developed world because by definition this criterion is derogatory.  On the other side we have a world which is led by consumption. This consumptive world also has the designers who are great in designing the products for more consumption.
 	- The manufacturing world comprises developed nations such as China , Russia and Middle East that manufacture using the cheap resources they have. For example China harnesses the cheap labor whereas Russia and middle East harness the cheap resources of carbon based energy - oil.
