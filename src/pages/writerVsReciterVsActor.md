@@ -1,0 +1,27 @@
+- Reciting was the fundamental art.
+- Writing was a response to democratize information.
+- Writing saw a huge technology leap.
+- The questions are
+	- the audio content catching up fast enough ?
+	- Has it already caught up ?
+	- Has the innovation stopped in text ?
+- The wrinkle is - where does video fit in?
+	- Has the public consumption totally moved to video?
+	- If actor is the face of communication then are the art-forms of writing and reciting obsolete.
+		- Or is it a cyclic trend.
+		- If yes - have we reached equilibrium ?
+	- Does the rise of actor mean creation of a new meta-verse?
+- What kinds of senses and organs are primary cognitive drivers of these three art-forms?
+	- Eyes and hands - writing - engages eyes and hands.
+		- Easy to create , hard to consume.
+		- Easy to search
+		- Least immersive
+	- Ears and tongue - Reciting - engages only ears.
+		- Hard to create , easy to consume.
+		- Hard to search
+		- Immersive
+	- Eyes, ears and tongue - acting - engages eyes and ears.
+		- Hardest to create, Hardest to consume.
+		- Hardest to search.
+		- Very immersive
+	-

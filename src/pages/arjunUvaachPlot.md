@@ -1,0 +1,16 @@
+- Birth of `Krishna` .The idea of compassion leads to `Maharish Parasara` start living a tolerant life. It opens up avenues for the Ausras to start organizing. `Shantanu` meets `Satyawati`. `Bheeshma Pratizna`.
+- At the same time `Ugrasen` too is aging and there starts a daily battle of control with son. `Kansa` starts taking arbitrary decisions. Incarnation of `Vishnu` into supreme intelligence because future is likely need it soon. The idea of most involved yet uninvolved. Or fully one with the knowledge. Embodiment of entire knowledge.
+- `Ved Vyasa` sees it as compassion losing to evil. How to restore faith in the very writer of `Vedas`.
+- `Krishnas` ideological battle. To be compassionate of not to be. Is fitness cruelty of objectivity or is it compassion with trust in divine response? Or is it something else ? What is `Karm Yoga` ? Are both `Arjuna` and `Vyasa` not `Karm Yogi` ? How to show them unless the situation arises in real world ? Truth must happen in real.
+- `Krishna` already has tools of astrology to set up an experiment with help from `Satyavati`
+	- A test between good and evil. Standard bollywood plot. A battle - a toss - a way to summon the forces of nature to take a call.
+	- Probability play or superior intelligence ?
+- What would `Krsna` do ?
+	- What is righteous
+	- What is `Karma`
+	- Why win or loss are secondary - what is the third vantage?
+	- Divya drishti to both `Arjuna` and `Vyasa` - the nyaan yogi and the naad yogi - to show them both the meaning of `Karm Yoga`
+	- Both `Nyaan` and `Naad Yoga` are accomplished only by `Karm Yoga` - rather `Nishkaam Karm Yoga`
+	- `Bhakti` only in own soul.
+	- `Atma` is the knowledge
+	- The writer v/s an actor.  `Arjuna` is acting the quest of `Vyasa`. A writer is living an actor for the ultimate quest. VyasaOvaach is arjunUvaach.

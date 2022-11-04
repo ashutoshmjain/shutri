@@ -10,9 +10,6 @@
  {:block/name "adi",
   :block/created-at 1665169747605,
   :block/updated-at 1665169747605}
- {:block/name "after pay",
-  :block/created-at 1664819807654,
-  :block/updated-at 1664819807654}
  {:block/name "ai",
   :block/created-at 1665526483585,
   :block/updated-at 1665526483585}
@@ -34,9 +31,6 @@
  {:block/name "bittorrent",
   :block/created-at 1665249242240,
   :block/updated-at 1665249242240}
- {:block/name "block",
-  :block/created-at 1664818921557,
-  :block/updated-at 1664818921557}
  {:block/name "blocks",
   :block/created-at 1665535009616,
   :block/updated-at 1665535009616}
@@ -81,7 +75,10 @@
   :block/updated-at 1664996341265}
  {:block/name "connection",
   :block/created-at 1665526483981,
-  :block/updated-at 1665526483981}
+  :block/updated-at 1666142212994}
+ {:block/name "consciousbeings",
+  :block/created-at 1666229706452,
+  :block/updated-at 1666229706452}
  {:block/name "contents",
   :block/created-at 1664926986962,
   :block/updated-at 1665464913107}
@@ -99,7 +96,7 @@
   :block/updated-at 1665175545932}
  {:block/name "cryptonicshift",
   :block/created-at 1665087967658,
-  :block/updated-at 1665088109072}
+  :block/updated-at 1666392578290}
  {:block/name "cypher",
   :block/created-at 1665535229482,
   :block/updated-at 1665535229482}
@@ -124,9 +121,6 @@
  {:block/name "developers economy",
   :block/created-at 1664926781179,
   :block/updated-at 1664926781179}
- {:block/name "digital commerce",
-  :block/created-at 1664819120054,
-  :block/updated-at 1664819120054}
  {:block/name "dimensions",
   :block/created-at 1664774095250,
   :block/updated-at 1664774095250}
@@ -156,10 +150,10 @@
   :block/updated-at 1665618885019}
  {:block/name "entrystream",
   :block/created-at 1665526484065,
-  :block/updated-at 1665526484065}
- {:block/name "epic games",
-  :block/created-at 1664819100544,
-  :block/updated-at 1664819100544}
+  :block/updated-at 1666216693475}
+ {:block/name "existentialquestions",
+  :block/created-at 1666229706178,
+  :block/updated-at 1666229706178}
  {:block/name "faceboo",
   :block/created-at 1664821914020,
   :block/updated-at 1664821914020}
@@ -175,6 +169,9 @@
  {:block/name "flow",
   :block/created-at 1665605748843,
   :block/updated-at 1665605748843}
+ {:block/name "garbagecollection",
+  :block/created-at 1666229706454,
+  :block/updated-at 1666229706454}
  {:block/name "geopolitical",
   :block/created-at 1664999715514,
   :block/updated-at 1664999715514}
@@ -189,7 +186,7 @@
   :block/updated-at 1665618373206}
  {:block/name "goal",
   :block/created-at 1665530446665,
-  :block/updated-at 1665597676130}
+  :block/updated-at 1666139430735}
  {:block/name "google",
   :block/created-at 1664983645785,
   :block/updated-at 1664983645785}
@@ -199,6 +196,9 @@
  {:block/name "gpt3",
   :block/created-at 1665526483589,
   :block/updated-at 1665526483589}
+ {:block/name "graphcloud",
+  :block/created-at 1666144426026,
+  :block/updated-at 1666144426026}
  {:block/name "graphdatabases",
   :block/created-at 1665534974059,
   :block/updated-at 1665534974059}
@@ -250,6 +250,12 @@
  {:block/name "kindle",
   :block/created-at 1665534505203,
   :block/updated-at 1665534505203}
+ {:block/name "knowledge",
+  :block/created-at 1666229706456,
+  :block/updated-at 1666229706456}
+ {:block/name "knowledgewormhole",
+  :block/created-at 1666229706599,
+  :block/updated-at 1666229706599}
  {:block/name "later",
   :block/created-at 1664772116346,
   :block/updated-at 1664772116346}
@@ -264,7 +270,7 @@
   :block/updated-at 1664774408063}
  {:block/name "logseq",
   :block/created-at 1664926358562,
-  :block/updated-at 1664926358562}
+  :block/updated-at 1666136513752}
  {:block/name "longshot",
   :block/created-at 1664777764735,
   :block/updated-at 1664777764735}
@@ -276,7 +282,7 @@
   :block/updated-at 1665273177202}
  {:block/name "macropolitics",
   :block/created-at 1665086040345,
-  :block/updated-at 1665088345931}
+  :block/updated-at 1666392334076}
  {:block/name "mail-server",
   :block/created-at 1665618583836,
   :block/updated-at 1665618583836}
@@ -303,7 +309,7 @@
   :block/updated-at 1665526483977}
  {:block/name "mindgraph",
   :block/created-at 1665526483781,
-  :block/updated-at 1665526483781}
+  :block/updated-at 1666141663347}
  {:block/name "mindland",
   :block/created-at 1664983645783,
   :block/updated-at 1664983645783}
@@ -312,10 +318,13 @@
   :block/updated-at 1664984399287}
  {:block/name "moneyisinformation",
   :block/created-at 1665089628524,
-  :block/updated-at 1665089696558}
+  :block/updated-at 1666392152216}
  {:block/name "mooladhara",
   :block/created-at 1665526483636,
   :block/updated-at 1665526483636}
+ {:block/name "myexperience",
+  :block/created-at 1666229706173,
+  :block/updated-at 1666229706173}
  {:block/name "myquotes",
   :block/created-at 1664982656203,
   :block/updated-at 1664982656203}
@@ -352,15 +361,24 @@
  {:block/name "oct 13th, 2022",
   :block/created-at 1665722240290,
   :block/updated-at 1665722240290}
+ {:block/name "oct 14th, 2022",
+  :block/created-at 1665776938158,
+  :block/updated-at 1665776938158}
+ {:block/name "oct 16th, 2022",
+  :block/created-at 1665972925967,
+  :block/updated-at 1665972925967}
+ {:block/name "oct 18th, 2022",
+  :block/created-at 1666134845953,
+  :block/updated-at 1666134845953}
  {:block/name "oct 1st, 2022",
   :block/created-at 1665175545894,
-  :block/updated-at 1665249416497}
+  :block/updated-at 1665974915148}
  {:block/name "oct 2nd, 2022",
   :block/created-at 1664771610682,
   :block/updated-at 1664979802381}
  {:block/name "oct 3rd, 2022",
   :block/created-at 1664808465409,
-  :block/updated-at 1664947660981}
+  :block/updated-at 1665974885953}
  {:block/name "oct 4th, 2022",
   :block/created-at 1664915585946,
   :block/updated-at 1665168555542}
@@ -372,7 +390,7 @@
   :block/updated-at 1665089559754}
  {:block/name "oct 7th, 2022",
   :block/created-at 1665168455851,
-  :block/updated-at 1665188338508}
+  :block/updated-at 1665974018518}
  {:block/name "oct 8th, 2022",
   :block/created-at 1665249241764,
   :block/updated-at 1665352500393}
@@ -381,7 +399,7 @@
   :block/updated-at 1665526483779}
  {:block/name "poems",
   :block/created-at 1665595852053,
-  :block/updated-at 1665598850165}
+  :block/updated-at 1666391465855}
  {:block/name "producer",
   :block/created-at 1665175545817,
   :block/updated-at 1665175545817}
@@ -394,6 +412,9 @@
  {:block/name "python",
   :block/created-at 1665619044407,
   :block/updated-at 1665619044407}
+ {:block/name "quantumjump",
+  :block/created-at 1666229706653,
+  :block/updated-at 1666229706653}
  {:block/name "quest",
   :block/created-at 1665175545933,
   :block/updated-at 1665175545933}
@@ -423,7 +444,7 @@
   :block/updated-at 1665175546268}
  {:block/name "shutri.com",
   :block/created-at 1665526484420,
-  :block/updated-at 1665530446666}
+  :block/updated-at 1666138567031}
  {:block/name "simplesteps",
   :block/created-at 1665526484481,
   :block/updated-at 1665526484481}
@@ -441,7 +462,7 @@
   :block/updated-at 1664809110990}
  {:block/name "spotlight",
   :block/created-at 1665464210367,
-  :block/updated-at 1665618184268}
+  :block/updated-at 1666216584407}
  {:block/name "square",
   :block/created-at 1664819928223,
   :block/updated-at 1664819928223}
@@ -454,6 +475,9 @@
  {:block/name "tcp",
   :block/created-at 1665619101330,
   :block/updated-at 1665634360567}
+ {:block/name "technology",
+  :block/created-at 1666229706650,
+  :block/updated-at 1666229706650}
  {:block/name "test<",
   :block/created-at 1665464043975,
   :block/updated-at 1665464043975}
@@ -466,6 +490,9 @@
  {:block/name "testing vertical stack 3",
   :block/created-at 1665605748744,
   :block/updated-at 1665605748744}
+ {:block/name "thegradualshift",
+  :block/created-at 1666392349935,
+  :block/updated-at 1666396975252}
  {:block/name "threefriends",
   :block/created-at 1664774095420,
   :block/updated-at 1664774095420}
@@ -525,7 +552,7 @@
   :block/updated-at 1665509314163}
  {:block/name "whatisthis",
   :block/created-at 1665438832055,
-  :block/updated-at 1665618045466}
+  :block/updated-at 1666135242505}
  {:block/name "windows",
   :block/created-at 1664820437389,
   :block/updated-at 1664820437389}
