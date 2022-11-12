@@ -1,0 +1,8 @@
+- There are currently three blockchains serving as the back bone for a global #intertNet
+	- Bitcoin network - Killer app is global reserve currency #btc
+	- Ethereum  - Killer app - web 2 infrastructure such as name service , and a scalable model for stable coins.  Most of the transactional currencies and #defi will build on #eth or the side chains such as #polygon . These scalable transactional currencies will be issued by businesses (apps) or the nations. Each with unique set of features.
+	- Solana - Highly scalable for #NFT s as a killer app for retail and service.  Highly scalable for #IOT based internet where 5g is just one of the many connection technologies.  The move of #helium5G to #Solana is a proofpoint.
+- There will be many more core blockchains and they will of course complete with each other for say coming decade but pretty soon they will be part of core infrastructure - just like roads and railways and bridges. This plumbing is being explored and built as I write this. Thus next five years are really exciting time. It also offers a great business and investment opportunity.
+- The big driver for #Solana is going to be the #creaticeEconomy
+- Together , these five or six core and global block chains shall address the core services of #interNation
+- I know #btc maximalists call all other coins #shitCoins but they miss out that a reserve currency has no meaning unless there are hundreds (if not thousands) currencies feeding into it.  Each of these branch currencies solve a specific problem in the real world..

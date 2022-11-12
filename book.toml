@@ -6,7 +6,6 @@ src = "src"
 title = "Read@louds"
 
 [output.html]
-google-analytics = "UA-90523130-2"
 default-theme = "light"
 git-repository-url = "https://github.com/ashutoshmjain/shutri"
 cname = "www.shutri.com"

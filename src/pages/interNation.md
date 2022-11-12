@@ -1,0 +1,14 @@
+- The internet is great. It is a great tool for information exchange say #email  ,  commerce - retail and finance, collaboration - meetings apps , social media ; education  and entertainment .. In a way it is a nation spread over and across geographical boundaries.
+- The amazing thing is it is supporting all the main characteristics of a nation without any Taxes .  In a way what is a nation - It is a geo fence that allows you to trade freely , educate yourself, entertain and collaborate , and of course the physical infrastructure of schools and roads and electricity and thousand other things.  A nation has a purpose. The template is well set.  The question really is what next ? How do we go beyond the national boundaries without sacrificing the privileges that come with the national citizenship. We really don't want to sacrifice what we have already build because it works and it's good.
+- The simple answer is, we must recognize another layer of organization. Just the way we didn't sacrifice family or race or religion just to become a national citizen , we really don't need to sacrifice any of these for the next layer of human organization.
+- This next layer of organization is what I call interNation.
+- Some people called it "global village" , some called it "open internet" but all those names don't really address the seriousness of this new layer.
+- To convert the notion of open global village , we really need two things
+	- an interNation identity.
+	- an interNation reserve currency.
+	- and a notion of acceptance that nations, religions, races and families must flourish to their max potential under this new layer.
+	- This new layer need to address three primary challenges that are beyond geographical limits
+		- Climate change
+		- Pandemic response
+		- Global supply chains.
+- Once we agree that this new layer is inevitable, the question is what are the pieces that we need. And that's where #blockchains based internet fits in.

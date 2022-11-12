@@ -7,7 +7,7 @@
 - Applications that  use these protocols are [[decentralized]] by design.
 - And rooted deep under such applications is a protocol called [[gossip]]  - no kidding.
 - The question is why is [[decetralized]] better ? And the answer is our [[realVerse]] is [[decetralized]]
-- And that is the reason the [[metaVerse]] must be [[decentralized]] because in [[metaVerse]] , we are are trying to build something like our [[realVerse]]
+- And that is the reason the [[metaVerse]] must be [[decentralized]] because in [[metaVerse]] , we are trying to build something like our [[realVerse]]
 - The question is how is our current computing landscape different from what we want to build.  ?
 - The simplest answer is [[realVerse]] is active ,  the computer screen or TV for that matter , are passive. You sit and watch TV. [[metaVerse]] needs to be active like [[realVerse]]
 - You walk through it. You learn by interacting with the stuff around. It must not be controlled by one corporation. It must have a [[creativeEconomy]]
