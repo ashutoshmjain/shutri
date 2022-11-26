@@ -1,0 +1,5 @@
+- QBP stands for quarterly business results publishing.
+- For companies regulated by SEC, quarterly reporting is a standard requirement, but what about other companies.  Since we have broadened the definition of a buyer as an [[investor]] , they do have right to know the financial situation of a seller because one must know their ability to support the product.
+- Even for SEC regulated companies, the business results are stored in a centralized databases of SEC or companies like Yahoo Finance or the exchanges such as NASDAQ. These organizations are prone to hacks or simply lose data if they go out of business.
+- How to make sure such important data is available in decentralized format and is distributed to make it fault tolerant.
+- This is a process that any responsible business must adherer to and they must ensure the format of reporting is standardized.

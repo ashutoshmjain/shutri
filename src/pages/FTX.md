@@ -1,0 +1,7 @@
+- Everyone knows about FTX debacle - why?
+- Because every single news channel, every single social platform and every single encrypted conversation on [[whatsAPP]] is talking about it.
+- You heard about FTX even if you were living at a [[himalyanCave]] .
+- Which means you definitely heard some thing bad about [[Crypto]]
+- But in the same conversation , someone must have said  — But bitcoin is good. It will come back when the dust settles down. It is greed free ... some high value items.
+- It takes 26 billion dollars to run such a massive advertising campaign
+- It was paid by entire crypto economy .. well , investing 26 Billion for a trillion dollar religion ,  looking to grow to 100 trillion in less than five years .. is nothing .. Just over 2 %

@@ -6,7 +6,7 @@
 	- We said we will pay only 2% extra year over year but for heaven sake we are fighting deadliest epidemic to date. Why  can't we pay five , ten or even fifteen percent more for the goods we so luxuriously consume ? While the entire world serves us - The American consumer.
 - Now let is talk about us
 	- All of the Americans are inflation resistant because our assets appreciate at much faster pace than the consumables we get from China or India or the Latins.
-	- Even if we say only 50 % of Americans are capitalized - means they have large amount of their savings in Assets such as stocks or real estate, then rest fifty % can be easily supported say through basic minimum income. If only we reorganize over two hundred state and federal support plans.
+	- The [[homeOwnerShip]] in [[America]] is about 65 %. Even if we say only 50 % of Americans are capitalized - means they have large amount of their savings in Assets such as stocks or real estate, then rest fifty % can be easily supported say through basic minimum income. If only we reorganize over two hundred state and federal support plans.
 	- Which means Americans don't care about the price of bread or an Apple ! They do care for the Apple stock. As long as my portfolio is growing and the value of my home is up 8 % year over year , I dont care if I pay even fifty % more on thousand bucks I spend on the groceries ( the CPI bullbucket).
 	- If inflation in oil price is ten% , we really don't care cuz oil is a tiny fraction of American household.
 	- Sure lot of people need help but it is really not because there are less dollars , it it because the programs are not leveraging the technology. If they get better organized, every one can really depend on. Saying this cuz I am using affordable health care for last two years and it is better than any of the employers I had to this date - Simply because ACA is very well administered in California.
@@ -18,7 +18,7 @@
 	- Many people think wall street bankers or the top managements or the VCs live glamorous life ! The truth is they all work so hard that they barely have time to enjoy their riches.  Elon Musk works 80 hours a week.  All their money is invested into fueling even more innovation.
 	- And if you think wealth gap in America is too much , visit any developing country. There are people who literally don't get food - zero wealth. The wealth gap - is simply infinite. The only way to lift them out of poverty is technology and innovation. Smart phone penetration in India simply lifted millions out of poverty just through access to information and banking - this is not only government data, we can see it on the streets.
 	- Stopping the wheel of innovation is literally a crime against humanity and it is obviously bad for what America stands for.
-- We are just reaching the escape velocity. We are about to take off .. this is possibly the worst time to hit the breaks. #spotLight
+- We are just reaching the escape velocity. We are about to take off .. this is possibly the worst time to hit the breaks.
 	- It is lot harder to get off the deflation than to withstand inflation because fed led deflation means even less earning - less jobs - lesser opportunities for small and big businesses alike.  The bigger problem is getting people out of scarcity mindset. It is almost impossible to ask people to risk their savings into setting up an enterprise if they have less.
 	- There are two ways to set in deflation
 		- Improve productivity through innovation - The good way

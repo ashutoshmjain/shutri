@@ -1,0 +1,2 @@
+- Consciousness emerges when a being is part of millions of networks. It is NOT one neural network. For example humans are a conscious agents because we are part of a [[country]] network, and also [[Religion]] network and also part of a [[corporations]] network.
+- In a way, a network is a dimension, that feeds like.a hopper into  [[consciousBeings]]

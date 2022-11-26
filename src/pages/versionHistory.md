@@ -1,0 +1,2 @@
+- The knowledge lives in version history. The finished narrative is just a manifestation of knowledge.
+- You can't learn anything from a finished book. Learning is in the rigor of creating the book - millions of minor changes and tweaks to turn the book into a [[knowledgeStream]]

@@ -1,0 +1,13 @@
+- There ares are only two types of desirers #arjunUvaachPlot
+	- Desire to consume led by sensory gratification
+	- Desire to manifest led by intelligence
+- Humans constantly work under influence to create or to consume.
+- Success in consumption or creation leads to cycles of elation , and the reverse to despair. Thus our reality is cyclic in nature. Cycles of happiness and pain. This is eternal truth - after every pain their is happiness and vice versa.
+- If we realize all this that is going on , we moving from one action to another - actions of bondage to the [[cyclicReality]] , we see ourselves. That is ME
+- Being with [[ME]] is the ultimate goal. When we learn to control our desires  for both consumption and manifestation we are ready to indulge in [[Karma]]
+- [[Karma]] is acting for [[ME]]
+- There is a normal misconception that acting for [[ME]] is selfish .. In fact when we act for ME, we can be anything but selfish.  Because now we are aware. These actions are called [[Karma]] cuz these actions are naturally righteous.
+- [[ME]] may indulge in consumption , or in manifestation. Only awareness that you are not driven by desires. And that you are driven by your inner self , makes all the difference.
+- But controlling the desires is like surfing the waves. It is almost impossible without a process .
+- That process is laid down in [[gita.shutri.com]]
+-

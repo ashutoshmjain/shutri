@@ -1,0 +1,5 @@
+- The complimentary business processes is a DAO supported by its own coin. The coin sale is source of funds to conceive and design high level CBPs.
+- Each of the CBP may have its own coin offering for governance and operations.
+- Sellers can choose a set of CBPs to run based on the nature of their organization or industry.
+- The infrastructure nodes to be run by the sellers.
+- Each CBP will have [[lighteningBTC]] for operations.

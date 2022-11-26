@@ -1,0 +1,1 @@
+- knowledge field - just like electro magnetic field is a built like two waves at right angle phase.

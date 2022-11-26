@@ -1,0 +1,3 @@
+- A cognitive unit may take 1 to 5 [[sensoryInputs]]
+- Based on the basic rule - maximize [[joy]] , the cognitive unit directs an [[action]]
+-

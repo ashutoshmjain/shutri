@@ -6,3 +6,4 @@
 - Most of the ideas are dormant. They take shape when we come across a situation in the physical world. Similarly most of the pages in mindGraph are half done. Means there are linked references but you have not taken time to structure them in a page.  You may do that when the need arise. Those linked blocks are always there for you to merge in to the pages , to restructure them.
 - In a way, the linked blocks are the stream that build a page.
 - Sub Ideas or the [[blocks]] also present an opportunity to form [[connection]] with other minds.
+- The question is why anyone would scavenge a mindGraph ? That is where [[knowledgeStream]] comes in !

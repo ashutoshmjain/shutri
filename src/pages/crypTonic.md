@@ -2,4 +2,8 @@
 - That said, I am a. keen observer of technology; and the trends I am seeing, make me a believer.
 - This segment, is to jot down the maze of thoughts on this topic, running wild in my mind. Mostly question but also some insights ..
 - The first obvious question is - kinda the big elephant in the room - Do we need digital currency ! okay ya , I know digital is NOT the word that many Crypto-maximalists like .. so the rephrased question is do we need [[cryptoCurrencies]] ? #spotLight  - if your answer is a big NO , then ask your 1995 self - Did you need an [[email]] back then ?
+	- And this will answer ye why [[crypto is a reincarnation of religion]]
+	- [[FTX]] - a 26 Billion dollar worth of advertising campaign for [[btc]]
+	- [[enviroNetworkState]] a protocol idea to avert the environmental crisis using the ideas of [[networkState]]
+	- [[functionPlacement]] of crypto
 - [[changingWorldOrder]] by [[rayDalio]] my two cents.

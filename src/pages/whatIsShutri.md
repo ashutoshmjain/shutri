@@ -1,2 +1,5 @@
-- Shutri (adj.) is a serious thing said un-seriously ;  Or a un-seriously said thought taken  seriously.  But a ‘Shutri’  is NOT meaningless. It's a intervention on mundane thoughts of a [[deadMind]]
-- Why did I name this website [[shutri.com]] ?
+- Urban Dict
+	- Shutri (adj.) is a serious thing said un-seriously ;  Or a un-seriously said thought taken  seriously.  But a ‘Shutri’  is NOT meaningless. It's a intervention on mundane thoughts of a [[deadMind]]
+- Formal Dict
+	- `Shruti`  meant the spoken word when the humans used to sustain knowledge, only in the vocal format. Maybe because scribing was difficult. With the advent of writing tools, many  `Shruties`  were scribed. In essence the scriptures were born out of  `Shruties` . The words that got written down, entered the collective memory of humanity. Such written down early scriptures were called  `Smrities` . For example  `Manu Smriti`  is among the oldest written down scripture, trans-encoded from  `Shruti`  to  `Smriti` . The Sanskrit word  `Shruti`  got deformed into  `Shutri`  in Hindi with passage of time. It is important to bear in mind that every thing that we talk (chatter) is NOT  `Shruti` .  `Shruties`  were consciously identified pieces of wisdom, preserved through formal recital to enable passage of knowledge from one generation to the next. [If you really wanna know more !](https://gita.shutri.com/prologue.html)
+- Why did I name this website [[shutriDotCom]] ?

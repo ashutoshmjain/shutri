@@ -1,0 +1,1 @@
+- Present is where we engage our senses, to explore our [[tinyBox]] . The [[sensoryReality]] in present is bigger than any possible predictions of the future. Future is like the urls. You can search any url. Present is the web site that you search - the innards of the website where you engage your mind.

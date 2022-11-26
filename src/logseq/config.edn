@@ -229,6 +229,8 @@
  :property-pages/enabled? true
  :feature/enable-timetracking? false
  :feature/enable-journals? false
+ :editor/logical-outdenting? true
+ :editor/perferred-pasting-file? true
 
  ;; Properties to exclude from having property pages
  ;; E.g.:property-pages/excludelist #{:duration :author}

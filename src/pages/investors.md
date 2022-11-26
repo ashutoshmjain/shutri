@@ -1,0 +1,3 @@
+- Investor is someone who commits his money and time. Buying a product , buying a service or buying a stock are all same - you are committing your money and time. Important thing is both must be committed together. Thus investor is someone who would use a product after buying - means they are investing their time on the product. Same with youtube video.  Technically you do commit your money on the you tube video because the videos are supported by [[shamelessPromotions]] in hope for getting your dollars.
+- I mean if I am cheap to not pay for the content, content has no other way to support itself - it has to go through [[shamelessPromotions]]
+-

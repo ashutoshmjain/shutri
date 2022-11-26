@@ -11,3 +11,4 @@
   When you press `Shift + Click` on the next link , the open pages in side pane (vertical stack) move down. They are still open. You can simply scroll down to see them.  Which means all the  links that you open in side pane, are always there for a quick look. This is what make the reading so much fun.
   #+END_TIP
 - If you understood vertical stack. You are now ready to get into the [[flow]]
+- Vertical Stack is ion a way [[reverseJournal]]
