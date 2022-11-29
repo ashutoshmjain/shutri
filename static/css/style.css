@@ -26608,7 +26608,7 @@ div[data-refs-self*='"card"'] {
 }
 
 .bullet-container .bullet {
-    #background-color: var(--ls-block-bullet-color, #394b59);
+    # background-color: var(--ls-block-bullet-color, #394b59);
     border-radius: 50%;
     height: 6px;
     transition: transform .2s;
