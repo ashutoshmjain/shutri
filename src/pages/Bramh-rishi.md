@@ -1,0 +1,1 @@
+- The scriptures point to seven Bramh-rishies. [[Vaśiṣṭha]] , Vishwamitra (Kausik), Atri, Bhardwaja ..

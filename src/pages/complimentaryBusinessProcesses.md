@@ -1,4 +1,8 @@
-- A complimentary business process is a process that is implemented by businesses , non-profits,  nation and network states , to allow their [[investors]] access to open and free information. #spotLight
+- #+BEGIN_PINNED
+  A complimentary business process is a process that is implemented by businesses , non-profits,  nation and network states , to allow their investors access to open and free information
+  #+END_PINNED . 
+  #spotLight
+- # Beyond - ERP
 - Complimentary Business Processes are based on immutable, coercion free and timely information to [[investors]] to render [[investorRights]]
 - [[realReviews]] is an example of a complimentary business process (CBP).  Another example is #QBP
 - The CBPs are conceived and coded through funding from both [[creators]] and [[investors]]  - [[humanEntities]] and they are always open source.

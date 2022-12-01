@@ -1,0 +1,1 @@
+- Turning an epic, such as [[Maha-Bharata]] into a graph is called epic graph

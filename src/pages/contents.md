@@ -1,5 +1,6 @@
-- ## Start your journey into logSeq
-  id:: 63407d80-d186-4e4d-9edb-90aaa678bb63
+- [[whatIsThis]]  - What is this website about !
+- [[whatIsShutri]]  - What does ‘Shutri’ mean.
+- Start your journey into logSeq
   link:: https://youtu.be/asEesjv0kTs
   producer:: Dario Da Silva
   tags:: [[LogSeq]]

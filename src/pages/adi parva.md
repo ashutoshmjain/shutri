@@ -1,0 +1,1 @@
+- The first book of [[Maha-Bharata]] written by Krishna [[Dwaipayana]]

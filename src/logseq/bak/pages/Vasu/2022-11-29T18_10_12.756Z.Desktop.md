@@ -1,0 +1,2 @@
+- Another name for [[Uparichara]]
+- He was called Uprichara - means someone who travels above - because [[Indra]] had given him a [[crystal car]] , that could fly above people. #Imagination . [[VedVyasa]] not only imagined a character but also named him accordingly.

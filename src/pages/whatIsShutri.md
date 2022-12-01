@@ -1,3 +1,4 @@
+- # Shutri
 - Urban Dict
 	- Shutri (adj.) is a serious thing said un-seriously ;  Or a un-seriously said thought taken  seriously.  But a ‘Shutri’  is NOT meaningless. It's a intervention on mundane thoughts of a [[deadMind]]
 - Formal Dict

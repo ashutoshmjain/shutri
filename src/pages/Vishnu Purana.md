@@ -1,0 +1,3 @@
+- Spoken by  `Maharishi` [[Parāśara]] ,  `Vishnu Purana`  was later scribed into text by his son  Krishna [[Dwaipayana]]  .  `Purana`  means the ancient stories.  `Vishnu Purana`  is thus ancient stories of  [[Vishnu]]  - One of the three primal forces of existence.
+-
+-
