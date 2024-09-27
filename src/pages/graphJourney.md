@@ -1,9 +1,0 @@
-- Graph databases were quite a hype couple years back. I also caught the bug and started learning [[neo4J]] - a native graph database.
-- After understanding the core concepts , I delved a little bit into [[graphQueryLanguage]].  Neo4J has its on graph query script. It is called [[cypher]] .
-- [[cypher]] is  simple and straight forward. You don't need any [[programming]] experience to learn this language.
-- Anyways, that was in 2018. I tried lots of models but then my interest faded away cuz I decided to be a full time writer.
-- Writing long text on internet is a pain. That is somewhat made easy by [[mdbook]].   It can turn your [[markdown]] pages into a book. And it lets you publish in [[github]] pages.
-- But it is still like a traditional book. In fact not even that. It is like technical documentation.  hardly any fun to read unless the readers are forced into it say because of work or education. That sure isn't the way.
-- Then I stumbled on [[Logseq]] . It is story how I got to logseq.  Here is my [[quest]]
-- As I realized logseq is a graph engine that turns [[hashtag]]s into nodes on a graph ; that was it.  I though ,  I found a new mechanism to tell a narrative.
-- One that adapts to the new medium  - internet ; and is probably the best way to take the text into metaverse.

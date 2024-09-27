@@ -1,1 +1,0 @@
-- Programming languages are the way humans instruct computers to do certain things.  Computers don't talk to each other in programming languages. They use protocols like [[tcp]] or [[gossip]] to talk to each other.

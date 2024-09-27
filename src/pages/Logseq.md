@@ -1,6 +1,0 @@
-- Logseq is a  personal knowledge management tool. It is simply the upside down view of what we have been doing to-date. In the bygone world, writer was expected to create a folder structure , a hierarchy of thoughts. The problem was many ideas belonged to many articles in different folders. Not only this, remembering the folder structure was a pain in itself. If you went on a vacation, by the time you came back , you forgot where the hell are buried your most precious ideas.
-- The good news is we now have [[graphDatabases]] that can do this. And thankfully we have Logseq to turn [[blocks]] of text into a graph.
-- It takes the burden of managing the  folders, pages and the rigor of capturing , to allow us build a garden of our mind. I call it a [[mindGraph]]
-- Don't think  you should start brain harvesting when  you wanna become a writer. In fact the chances of your becoming a good writer are dependent on how organized you are at harvesting your own brain.
-- Logseq converts the art of writing from a [[desire]] to a [[Karma]].
-- The best part is you can publish a snapshot of your graph to the web. There are many ways to publish logseq to the web. Some of them use [[github]] actions and others try to publish the content in "hugo" format.  I am doing it manually, without any gh actions or tools.  Here are my [[simpleSteps]] ..

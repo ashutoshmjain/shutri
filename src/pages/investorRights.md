@@ -1,1 +1,0 @@
-- As an investor, who provides time and money for your products, I have a fundamental right to the [[realReviews]]

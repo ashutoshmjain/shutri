@@ -1,5 +1,0 @@
-- How to build a graph pedia ?
-- The end goal is say if I search for `Krishna` , I should we able to get one page, that gives me links to all the books (in public domain) , where `Krishna` is mentioned.  And then I should be able to add my informed curation on top ..
-- Same way, if I search for San Fran, I should be able to get all the references from all the books. I know there will be millions of references and someone can simply do a PhD on San Fran.
-- Use distributed hash graph to point to knowledge streams. It will act something like a DNS for people and places across all the knowledge streams. Ninety percent of searches are for the people and places , but unfortunately google can't get to curated content on all the people and places in all the books. It mostly throws you a page on wikipedia which is curated by humans with bias and limited information.
-- knowledge streams will use a torrent type of system to allow people to subscribe. With options to sync.

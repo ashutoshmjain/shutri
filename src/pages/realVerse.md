@@ -1,1 +1,0 @@
-- A set of technologies and space that got built by simple rules of evolution. We live in a [[tinyBox]] with in this [[sensoryReality]] . We also call it physical world.

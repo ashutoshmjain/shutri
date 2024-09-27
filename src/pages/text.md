@@ -1,5 +1,0 @@
-- #+BEGIN_PINNED
-  When the world moved from spoken word to the written ; "Text" was the new medium.
-  #+END_PINNED
-- # Text
-- It was somewhat similar to our migration from analog to digital. It not only needed the tools, but it also meant the population must learn reading and writing beyond a select class of sages and super sages - just the way we needed mass adoption of computers in early nineties and smart phones later. In a way, the ‘texting revolution’ was even bigger jump forward (than the digital internet), because we are talking thousands of years in the past. In an estimate, a hundred page long book, printed on human size frame with colors of  `Henna`  (to replicate wall carvings of caves) used to cost a gold [[coin]] . The question was to bring the cost down to a silver coin. And bring the size down to a tenth of the human size. An order of magnitude reduction in size and an order of magnitude reduction in cost. Does it sound like a journey from mainframes to to the smartphone? #quantumJump

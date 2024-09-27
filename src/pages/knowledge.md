@@ -1,4 +1,0 @@
-- Knowledge can't be perceived by our senses.  But we can know it through three characteristics.
-	- It self manifests into conscious beings for a purpose. A conscious being has a [[mindGraph]]
-	- It is held in the network of [[consciousBeings]].
-	- It always stays current through an active [[garbageCollection]] process.

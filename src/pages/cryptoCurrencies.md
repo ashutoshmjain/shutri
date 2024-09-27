@@ -1,1 +1,0 @@
-- I think using the word crypto currencies is only half the story.  It's kind of a misnomer.  At the same time I don't want to indulge in the idea of web 3 to web 5.  What we should rather say is the word #interNation . What do I mean from Inter-nation ?

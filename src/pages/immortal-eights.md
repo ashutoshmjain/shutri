@@ -1,1 +1,0 @@
-- In Hindu scriptures, there are frequent mentions of eight  `Chiranjeevies` . The literal meaning is the one who lives for very long time such that they may be seen as immortals. Among them are Ved Vyasa, Parshu Rama, Ashwathama, Vibishana, Krupacharya, Hanumaan, Mahabali and Markandeya.

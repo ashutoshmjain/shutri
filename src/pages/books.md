@@ -1,8 +1,0 @@
-- The written word was invented to safeguard wisdom of scriptures.
-- That continued for a long time but writing and reading was difficult.
-- Stories were still told vocally.
-- [[Dwaipayana]] was the first to bring a narrative to the books . The first written narrative was [[Maha-Bharata]]
-- In a way, he turned the book in a virtual reality , with characters and places that one could imagine in their mind.
-- But, `Ved Vyasa` tested the story in physical reality before writing,.
-- Truth is what happens in real world. Only truth has the staying power.
-- A physical truth , expressed in written format, in the format of fiction is thus the [[firstVR]]

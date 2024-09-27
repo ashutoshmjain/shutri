@@ -1,2 +1,0 @@
-- A reality that we perceive with our senses that evolved with time.  Evolution is based on simple set of rules - such as survival of the fittest.  [[fitness]] rules may be based on the selfish greed but we notice that a compassionate species is fitter when it comes to survival. In a way [[compassion]] is the best fitness strategy.
--

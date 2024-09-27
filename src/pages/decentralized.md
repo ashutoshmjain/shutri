@@ -1,4 +1,0 @@
-- At the core of  decentralization is a the [[protocol]] . A protocol is how we communicate. For example, In [[English]] speaking world we say Good Morning. That  kinda means hello. In India we say `Namaste` in Hindi. In this case a language is a pre-agreed words that mean something  to both the parties who are talking. This pre-agreed arrangement of communication is a protocol.
-- Now computers don't talk in [[programming]] languages. They don't talk  to each other in [[python]] .  They mostly use a protocol called [[tcp]] to connect. There is a problem though - wanna know ?
-- Just like `Namste` is a Hindi protocol for `Good morning` in English , same way computer protocols such as #tcp or #gossip are also implemented in some programming language.  The old ones are mostly in C but there are new protocols showing up on daily basis. Some of the crypto protocols are now being written on Ethereum use javascript.
--

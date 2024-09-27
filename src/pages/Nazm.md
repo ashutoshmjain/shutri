@@ -1,2 +1,0 @@
-- `Nazm`  represents a freedom from the rule based poetry. The idea is to have the writer as much leeway as she needs to express a thought. That is the reason  `Nazm`  was proclaimed to be the voice of progressive  `Tarakki Yafta`  poets. It was embraced by likes of  [[`Kaifi Azmi`]]  in his early days as an expression of the progressive movement.
--

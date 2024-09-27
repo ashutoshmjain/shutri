@@ -1,1 +1,0 @@
-- The [[quantumJump]] is now. This very moment, what we call [[present]]

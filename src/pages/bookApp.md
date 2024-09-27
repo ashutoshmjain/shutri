@@ -1,1 +1,0 @@
-- A book app that is versioned managed and released to software release management process.

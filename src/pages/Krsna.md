@@ -1,1 +1,0 @@
-- `Krasna`  is eighth incarnation of  [[Vishnu]] . Also known as   `Krishna`  in north India in which case his name is same as the author of  [[Maha-Bharata]]  —  Krishna [[Dwaipayana]] . In a way  `Krsna`  is the embodiment of  `Krishna Dwaipayna's`  knowledge such that only  `Vishnu` , in his complete incarnation, could perform this role

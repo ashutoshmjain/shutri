@@ -1,3 +1,0 @@
-- joy is the amplitude of the [[knowledgeField]]
-- cognitive machine's default goal is to maximize joy.
--

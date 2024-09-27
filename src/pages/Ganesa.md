@@ -1,5 +1,0 @@
-- `Ganesa`  is the deity of intelligence. The legend says that  `Ma Parvati`  - wife of  [[Siva]] , created a humanoid from her skin scrub.  `Siva`  unhappy with the limited intelligence of this humanoid (as he couldn't even contextualize that  `Siva`  was  `Parvati's`  husband, implanted an elephant head on him to invoke superior intelligence. 
-  
-  An elephant has three times the number of neurons verses a human brain. To compare with current largest artificial intelligence systems, a human brain is around 300 times the size of largest neural networks of our time such as [[GPT3]] . Thus  `Ganesa`  had around 1000x natural(not artificial) intelligence verses the largest of our artificial intelligences! 
-  
-  In Hindu tradition, it is considered auspicious to remember  `Ganesa`  at the initiation of any major project. He is known to be the biggest problem solver, obviously on account of his superior intelligence.
