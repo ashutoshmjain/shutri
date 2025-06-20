@@ -1,5 +1,0 @@
-
-  User-agent: *
-  Allow: /
-  Sitemap: https://ifaq.npub.pro/sitemap.txt
-  
