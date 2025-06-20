@@ -1,1 +1,1 @@
-nostr feed using npub.pro
+Bhagavad Gita - poetic rendition.
