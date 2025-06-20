@@ -1,0 +1,22 @@
+{
+  "name": "Śruti: The Gita Listening Room",
+  "short_name": "Śruti",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F1E9",
+  "theme_color": "#4A553A",
+  "description": "An immersive audio experience of the Bhagavad Gita.",
+  "icons": [
+    {
+      "src": "/icon-192x192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512x512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ]
+}
+
