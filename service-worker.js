@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sruti-gita-v1';
+const CACHE_NAME = 'sruti-gita-v2'; // Changed cache version
 const urlsToCache = [
   '/',
   '/index.html',
@@ -19,25 +19,9 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
-        // It's better to cache audio on demand, but for simplicity, we add them here.
-        // For a production app, you might want a more sophisticated caching strategy.
+        console.log('Opened cache and caching initial assets');
         return cache.addAll(urlsToCache);
       })
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
   );
 });
 
@@ -48,10 +32,32 @@ self.addEventListener('activate', event => {
             return Promise.all(
                 cacheNames.map(cacheName => {
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        console.log('Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
             );
+        })
+    );
+});
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.open(CACHE_NAME).then(cache => {
+            return cache.match(event.request).then(response => {
+                // Stale-While-Revalidate Strategy
+                const fetchPromise = fetch(event.request).then(networkResponse => {
+                    // If we got a valid response, update the cache
+                    if (networkResponse) {
+                       cache.put(event.request, networkResponse.clone());
+                    }
+                    return networkResponse;
+                });
+
+                // Return the cached response immediately if available,
+                // and let the fetch happen in the background.
+                return response || fetchPromise;
+            });
         })
     );
 });
