@@ -25,11 +25,30 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .fade-in { animation: fadeIn 0.7s ease-in-out forwards; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .welcome-button { transition: all 0.3s ease; }
+        .welcome-button:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body class="text-stone-800 antialiased">
-
-    <div class="relative min-h-screen md:flex">
+    
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-[#F4F1E9]">
+        <div class="fade-in">
+            <h1 class="text-6xl md:text-7xl font-bold text-[#4A553A] mb-2" style="font-family: 'Lora', serif;">Śruti</h1>
+            <p class="text-xl text-stone-600 mb-12">An immersive listening experience of the Bhagavad Gita.</p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row justify-center">
+                <button id="random-clip-button" class="welcome-button bg-[#4A553A] text-white font-semibold py-4 px-8 rounded-lg shadow-md text-lg">
+                    Listen to a Random Clip
+                </button>
+                <button id="browse-chapters-button" class="welcome-button bg-white text-stone-800 font-semibold py-4 px-8 rounded-lg shadow-md border border-stone-300 text-lg">
+                    Browse All Chapters
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main App Container -->
+    <div id="main-app" class="relative min-h-screen md:flex hidden">
         <!-- Overlay for mobile menu -->
         <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
 
@@ -97,10 +116,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const gitaAudioData = [
+             const gitaAudioData = [
                 {
-                    chapter: 1, title: "Arjuna's Dilemma", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg01.mp3",
-                    text: `<p>Verse 1:<br>Dhṛtarāṣṭra inquired, his words taking flight,<br>O Sañjaya, tell, after assembling for the fight,<br>My sons and those of Pāṇḍu, on Kurukṣetra's sacred ground,<br>What deeds unfolded there, what actions could be found?</p><p>Verse 2:<br>Sañjaya then spoke, his voice serene and deep,<br>O King (Dhṛtarāṣṭra), Duryodhana, his watchful vigil to keep,<br>Observed the Pāṇḍava force, in battle lines arrayed,<br>And to his trusted teacher (Droṇa), these very words he conveyed.</p><p>Verse 3:<br>O my respected guru (Droṇa), did Duryodhana declare,<br>Behold the mighty army, beyond compare,<br>Of Pāṇḍu's noble sons, so skillfully aligned,<br>By your own brilliant student, of Drupada's mind.</p><p>Verse 4:<br>Within this grand formation, brave archers stand with might,<br>As strong as Bhīma, Arjuna, prepared to fiercely fight.<br>Great warriors also gather: Yuyudhāna, bold and true,<br>With Virāṭa and Drupada, a valiant, noble crew.</p><p>Verse 5:<br>And heroes strong and potent, their prowess well-renowned,<br>Like Dhṛṣṭaketu, Cekitāna, on battlefields are found.<br>With Kāśirāja, Purujit, and Kuntibhoja brave,<br>And Śaibya, ready for the war, their lives they freely gave.</p><p>Verse 6:<br>The mighty Yudhāmanyu, of strength that knows no end,<br>With Uttamaujā powerful, their loyal support they lend.</p><p>Verse 7:<br>But for your kind attention, O Brahmin of great fame,<br>The captains of my forces, I shall now distinctly name,<br>Those specially qualified, their leadership to show,<br>To guide our mighty warriors, wherever they may go.</p><p>Verse 8:<br>There are such noble figures, like you, revered and wise,<br>With Bhīṣma, Karṇa, Kṛpa, whose valor never dies.</p><p>Verse 9:<br>And many other heroes, with courage burning bright,<br>Prepared to sacrifice their lives, for me and for my right.<br>With weapons armed, and skill in warfare keen,<br>In military science, their expertise has been.</p><p>Verse 10:<br>Our strength is vast, unmeasured, a boundless, surging tide,<br>By Grandfather Bhīṣma protected, our forces stand with pride.<br>But the strength of the Pāṇḍavas, though guarded by Bhīma's hand,<br>Is limited and finite, across this sacred land.</p><p>Verse 11:<br>(Duryodhna addressing his ranks at large)<br>Now, all of you assembled, your steadfast support must lend,<br>To Grandfather Bhīṣma's guidance, your energies extend.</p><p>Verse 12:<br>Then Bhīṣma, grandsire valiant, of Kuru's noble race,<br>The grandfather of warriors, in that momentous place,<br>Blew his great conchshell loudly, a lion's mighty roar,<br>And filled Duryodhana's spirit with joy unknown before.</p><p>Verse 13:<br>Then conchshells and kettle drums, with bugles, trumpets high,<br>And horns resounded suddenly, throughout the earth and sky.</p><p>Verse 14:<br>Upon the other side then, their conchshells did resound,<br>Lord Kṛṣṇa and Arjuna, on chariot holy ground,<br>Drawn by white steeds of glory, their sacred duty bound,<br>Their transcendental instruments, their victory did propound.</p><p>Verse 15:<br>Lord Kṛṣṇa blew His Pāñcajanya, a sound divine and grand,<br>Arjuna blew Devadatta, across the waiting land.</p><p>Verses 16-18:<br>King Yudhiṣṭhira, Kuntī's son, his Ananta-vijaya blew,<br>Nakula and Sahadeva, their Sughoṣa, strong and new,<br>And Maṇipuṣpaka sounded, a vibrant, echoing call.<br>The archer King of Kāśī, renowned by one and all,<br>Śikhaṇḍī, mighty fighter, with Dhṛṣṭadyumna near,<br>And Virāṭa, unconquerable, dispelling every fear.</p><p>Verse 19:<br>The blowing of these conchshells, a clamorous, rising tide,<br>Vibrating through the heavens, and earth on every side.</p><p>Verse 20:<br>Then Arjuna, son of Pāṇḍu, in his chariot did reside,<br>His banner marked with Hanumān, with valor and with pride.<br>He took his mighty bow then, and arrows made him ready,<br>And seeing Dhṛtarāṣṭra's sons, his voice grew firm and steady.</p><p>Verses 21-22:<br>Arjuna spoke, O Krishna, infallible and true,<br>Pray draw my chariot forward, these armies to review.<br>Between the ranks of battle, let it swiftly glide,<br>That I may see those present, who have come to fight with pride,<br>And those with whom in this great war, my strength I must employ,<br>In this momentous trial of arms, where fates we shall deploy.</p><p>Verse 23:<br>Let me behold those warriors, who gather on this field,<br>With hearts intent on battle, their destinies revealed.<br>Those who have come to please him, the evil-minded one,<br>The son of Dhṛtarāṣṭra, whose wicked deeds are done.</p><p>Verse 24:<br>Sañjaya then recounted, to Bharata's noble line,<br>Lord Kṛṣṇa, by Arjuna's words, did swiftly now incline.</p><p>Verse 25:<br>He drove the splendid chariot, with skill beyond compare,<br>Right in the midst of armies, suspended in the air.</p><p>Verse 26:<br>There Arjuna then witnessed, a sight that caused him pain,<br>Within the opposing forces, again and yet again,<br>His fathers, grandfathers present, teachers of great skill,<br>Maternal uncles, brothers too, his heart began to chill.</p><p>Verse 27:<br>When Kuntī's noble son, Arjuna, cast his gaze,<br>On all these different kinsmen, in battle's fierce displays,<br>His heart was overwhelmed with compassion's gentle sway,<br>And thus to Lord Kṛṣṇa, these words he did convey.</p><p>Verse 28:<br>Arjuna said, O Kṛṣṇa dear, as I behold this sight,<br>My friends and close relations, prepared to fiercely fight,<br>The limbs upon my body, begin to quake and reel,<br>And in my parched and anxious mouth, no moisture can I feel.</p><p>Verse 29:<br>My very frame is trembling, my hair stands on its end,<br>The Gāṇḍīva, my mighty bow, its grip I can't defend,<br>It slips from my weakening hand, my skin with fever burns,<br>As dread and apprehension, to every nerve returns.</p><p>Verse 30:<br>I cannot stand here longer, my strength has ebbed away,<br>My memory is fading, in this distressing day.<br>Misfortune's signs surround me, O Kṛṣṇa, slayer of the foe,<br>In this impending conflict, where seeds of sorrow grow.</p><p>Verse 31:<br>No good can I envision, from slaying my own kin,<br>In this destructive battle, where loss will soon begin.<br>Nor can I wish for victory, or kingdom's fleeting claim,<br>Nor happiness that follows, this act of cruelest aim.</p><p>Verses 32-35:<br>O Govinda, tell me truly, of what avail to me,<br>Are kingdom, joy, or even life, in this calamity?<br>When those for whom we long , stand ready here to die,<br>O Madhusūdana, as moments swiftly fly.<br>Our teachers, fathers, grandsons, maternal uncles too,<br>And fathers-in-law assembled, a sorrowful review.<br>Brothers-in-law and kinsmen, prepared to face their fate,<br>To give up life and fortune, before my eyes they wait.</p><p>Verse 36:<br>Sin will surely overcome us, if we these men should slay,<br>These aggressors who confront us, upon this fateful day.<br>Therefore it is not proper, to spill their precious blood,<br>What gain, O Kṛṣṇa, husband of fortune's gentle flood?<br>How could we find true happiness, by kin's untimely end,<br>On this Kurukṣetra battlefield, where sorrows now descend?</p><p>Verses 37-38:<br>O Janārdana, though these men, by greed's dark force possessed,<br>See no fault in family strife, or friendships dispossessed,<br>Why should we, who clearly see, the crime of family's fall,<br>Engage in such vile actions, and answer to sin's call?</p><p>Verse 39:<br>With the destruction of the clan, tradition fades away,<br>The ancient family customs, in utter disarray.<br>And when the dynasty is lost, and ancient ways are gone,<br>The rest of the afflicted house, in irreligion is drawn.</p><p>Verse 40:<br>When irreligion flourishes, O Kṛṣṇa, dark and deep,<br>The women of the household, their purity can't keep.<br>And from this degradation, O Vṛṣṇi's noble heir,<br>Unwanted progeny arises, causing deep despair.</p><p>Verse 41:<br>An increase in unwanted births, brings hellish life's domain,<br>To families and those who break, tradition's binding chain.</p><p>Verse 42:<br>By evil deeds committed, by those who wreck the clan,<br>And cause the birth of unwanted ones, a most unholy plan,<br>All community projects fail, and welfare's gentle hand,<br>And family's cherished harmony, are ruined across the land.</p><p>Verse 43:<br>O Kṛṣṇa, sustainer of all, the people's guiding light,<br>Through disciplic succession, I've heard with all my might,<br>That those whose family customs, are utterly destroyed,<br>Forever in the hellish realms, their wretchedness employed.</p><p>Verse 44:<br>Alas, how strange this seems to me, that we are now prepared,<br>To perpetrate such sinful acts, our conscience unprepared.<br>Driven by the craving for a kingdom's fleeting bliss,<br>We stand intent on killing, our own dear kith and kiss.</p><p>Verse 45:<br>Better for me if Dhṛtarāṣṭra's sons, with weapons in their hold,<br>Should slay me unarmed, unresisting, my story to be told,<br>Upon this field of battle, where fates will soon align,<br>Than I should raise my hand against, this family of mine.</p><p>Verse 46:<br>Sañjaya then recounted, Thus spoke Arjuna brave,<br>Upon the Kurukṣetra field, where warriors sought their grave.<br>He cast aside his mighty bow, with arrows sharp and keen,<br>And sank down on his chariot, with sorrow's painful scene,<br>His mind overwhelmed with anguish, his spirit filled with grief,<br>As war's grim reality, brought him no relief.</p>`
+                    chapter: 1, title: "Arjuna's Dilemma", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg01.mp3", text: `<p>Verse 1:<br>Dhṛtarāṣṭra inquired, his words taking flight,<br>O Sañjaya, tell, after assembling for the fight,<br>My sons and those of Pāṇḍu, on Kurukṣetra's sacred ground,<br>What deeds unfolded there, what actions could be found?</p><p>Verse 2:<br>Sañjaya then spoke, his voice serene and deep,<br>O King (Dhṛtarāṣṭra), Duryodhana, his watchful vigil to keep,<br>Observed the Pāṇḍava force, in battle lines arrayed,<br>And to his trusted teacher (Droṇa), these very words he conveyed.</p><p>Verse 3:<br>O my respected guru (Droṇa), did Duryodhana declare,<br>Behold the mighty army, beyond compare,<br>Of Pāṇḍu's noble sons, so skillfully aligned,<br>By your own brilliant student, of Drupada's mind.</p><p>Verse 4:<br>Within this grand formation, brave archers stand with might,<br>As strong as Bhīma, Arjuna, prepared to fiercely fight.<br>Great warriors also gather: Yuyudhāna, bold and true,<br>With Virāṭa and Drupada, a valiant, noble crew.</p><p>Verse 5:<br>And heroes strong and potent, their prowess well-renowned,<br>Like Dhṛṣṭaketu, Cekitāna, on battlefields are found.<br>With Kāśirāja, Purujit, and Kuntibhoja brave,<br>And Śaibya, ready for the war, their lives they freely gave.</p><p>Verse 6:<br>The mighty Yudhāmanyu, of strength that knows no end,<br>With Uttamaujā powerful, their loyal support they lend.</p><p>Verse 7:<br>But for your kind attention, O Brahmin of great fame,<br>The captains of my forces, I shall now distinctly name,<br>Those specially qualified, their leadership to show,<br>To guide our mighty warriors, wherever they may go.</p><p>Verse 8:<br>There are such noble figures, like you, revered and wise,<br>With Bhīṣma, Karṇa, Kṛpa, whose valor never dies.</p><p>Verse 9:<br>And many other heroes, with courage burning bright,<br>Prepared to sacrifice their lives, for me and for my right.<br>With weapons armed, and skill in warfare keen,<br>In military science, their expertise has been.</p><p>Verse 10:<br>Our strength is vast, unmeasured, a boundless, surging tide,<br>By Grandfather Bhīṣma protected, our forces stand with pride.<br>But the strength of the Pāṇḍavas, though guarded by Bhīma's hand,<br>Is limited and finite, across this sacred land.</p><p>Verse 11:<br>(Duryodhna addressing his ranks at large)<br>Now, all of you assembled, your steadfast support must lend,<br>To Grandfather Bhīṣma's guidance, your energies extend.</p><p>Verse 12:<br>Then Bhīṣma, grandsire valiant, of Kuru's noble race,<br>The grandfather of warriors, in that momentous place,<br>Blew his great conchshell loudly, a lion's mighty roar,<br>And filled Duryodhana's spirit with joy unknown before.</p><p>Verse 13:<br>Then conchshells and kettle drums, with bugles, trumpets high,<br>And horns resounded suddenly, throughout the earth and sky.</p><p>Verse 14:<br>Upon the other side then, their conchshells did resound,<br>Lord Kṛṣṇa and Arjuna, on chariot holy ground,<br>Drawn by white steeds of glory, their sacred duty bound,<br>Their transcendental instruments, their victory did propound.</p><p>Verse 15:<br>Lord Kṛṣṇa blew His Pāñcajanya, a sound divine and grand,<br>Arjuna blew Devadatta, across the waiting land.</p><p>Verses 16-18:<br>King Yudhiṣṭhira, Kuntī's son, his Ananta-vijaya blew,<br>Nakula and Sahadeva, their Sughoṣa, strong and new,<br>And Maṇipuṣpaka sounded, a vibrant, echoing call.<br>The archer King of Kāśī, renowned by one and all,<br>Śikhaṇḍī, mighty fighter, with Dhṛṣṭadyumna near,<br>And Virāṭa, unconquerable, dispelling every fear.</p><p>Verse 19:<br>The blowing of these conchshells, a clamorous, rising tide,<br>Vibrating through the heavens, and earth on every side.</p><p>Verse 20:<br>Then Arjuna, son of Pāṇḍu, in his chariot did reside,<br>His banner marked with Hanumān, with valor and with pride.<br>He took his mighty bow then, and arrows made him ready,<br>And seeing Dhṛtarāṣṭra's sons, his voice grew firm and steady.</p><p>Verses 21-22:<br>Arjuna spoke, O Krishna, infallible and true,<br>Pray draw my chariot forward, these armies to review.<br>Between the ranks of battle, let it swiftly glide,<br>That I may see those present, who have come to fight with pride,<br>And those with whom in this great war, my strength I must employ,<br>In this momentous trial of arms, where fates we shall deploy.</p><p>Verse 23:<br>Let me behold those warriors, who gather on this field,<br>With hearts intent on battle, their destinies revealed.<br>Those who have come to please him, the evil-minded one,<br>The son of Dhṛtarāṣṭra, whose wicked deeds are done.</p><p>Verse 24:<br>Sañjaya then recounted, to Bharata's noble line,<br>Lord Kṛṣṇa, by Arjuna's words, did swiftly now incline.</p><p>Verse 25:<br>He drove the splendid chariot, with skill beyond compare,<br>Right in the midst of armies, suspended in the air.</p><p>Verse 26:<br>There Arjuna then witnessed, a sight that caused him pain,<br>Within the opposing forces, again and yet again,<br>His fathers, grandfathers present, teachers of great skill,<br>Maternal uncles, brothers too, his heart began to chill.</p><p>Verse 27:<br>When Kuntī's noble son, Arjuna, cast his gaze,<br>On all these different kinsmen, in battle's fierce displays,<br>His heart was overwhelmed with compassion's gentle sway,<br>And thus to Lord Kṛṣṇa, these words he did convey.</p><p>Verse 28:<br>Arjuna said, O Kṛṣṇa dear, as I behold this sight,<br>My friends and close relations, prepared to fiercely fight,<br>The limbs upon my body, begin to quake and reel,<br>And in my parched and anxious mouth, no moisture can I feel.</p><p>Verse 29:<br>My very frame is trembling, my hair stands on its end,<br>The Gāṇḍīva, my mighty bow, its grip I can't defend,<br>It slips from my weakening hand, my skin with fever burns,<br>As dread and apprehension, to every nerve returns.</p><p>Verse 30:<br>I cannot stand here longer, my strength has ebbed away,<br>My memory is fading, in this distressing day.<br>Misfortune's signs surround me, O Kṛṣṇa, slayer of the foe,<br>In this impending conflict, where seeds of sorrow grow.</p><p>Verse 31:<br>No good can I envision, from slaying my own kin,<br>In this destructive battle, where loss will soon begin.<br>Nor can I wish for victory, or kingdom's fleeting claim,<br>Nor happiness that follows, this act of cruelest aim.</p><p>Verses 32-35:<br>O Govinda, tell me truly, of what avail to me,<br>Are kingdom, joy, or even life, in this calamity?<br>When those for whom we long , stand ready here to die,<br>O Madhusūdana, as moments swiftly fly.<br>Our teachers, fathers, grandsons, maternal uncles too,<br>And fathers-in-law assembled, a sorrowful review.<br>Brothers-in-law and kinsmen, prepared to face their fate,<br>To give up life and fortune, before my eyes they wait.</p><p>Verse 36:<br>Sin will surely overcome us, if we these men should slay,<br>These aggressors who confront us, upon this fateful day.<br>Therefore it is not proper, to spill their precious blood,<br>What gain, O Kṛṣṇa, husband of fortune's gentle flood?<br>How could we find true happiness, by kin's untimely end,<br>On this Kurukṣetra battlefield, where sorrows now descend?</p><p>Verses 37-38:<br>O Janārdana, though these men, by greed's dark force possessed,<br>See no fault in family strife, or friendships dispossessed,<br>Why should we, who clearly see, the crime of family's fall,<br>Engage in such vile actions, and answer to sin's call?</p><p>Verse 39:<br>With the destruction of the clan, tradition fades away,<br>The ancient family customs, in utter disarray.<br>And when the dynasty is lost, and ancient ways are gone,<br>The rest of the afflicted house, in irreligion is drawn.</p><p>Verse 40:<br>When irreligion flourishes, O Kṛṣṇa, dark and deep,<br>The women of the household, their purity can't keep.<br>And from this degradation, O Vṛṣṇi's noble heir,<br>Unwanted progeny arises, causing deep despair.</p><p>Verse 41:<br>An increase in unwanted births, brings hellish life's domain,<br>To families and those who break, tradition's binding chain.</p><p>Verse 42:<br>By evil deeds committed, by those who wreck the clan,<br>And cause the birth of unwanted ones, a most unholy plan,<br>All community projects fail, and welfare's gentle hand,<br>And family's cherished harmony, are ruined across the land.</p><p>Verse 43:<br>O Kṛṣṇa, sustainer of all, the people's guiding light,<br>Through disciplic succession, I've heard with all my might,<br>That those whose family customs, are utterly destroyed,<br>Forever in the hellish realms, their wretchedness employed.</p><p>Verse 44:<br>Alas, how strange this seems to me, that we are now prepared,<br>To perpetrate such sinful acts, our conscience unprepared.<br>Driven by the craving for a kingdom's fleeting bliss,<br>We stand intent on killing, our own dear kith and kiss.</p><p>Verse 45:<br>Better for me if Dhṛtarāṣṭra's sons, with weapons in their hold,<br>Should slay me unarmed, unresisting, my story to be told,<br>Upon this field of battle, where fates will soon align,<br>Than I should raise my hand against, this family of mine.</p><p>Verse 46:<br>Sañjaya then recounted, Thus spoke Arjuna brave,<br>Upon the Kurukṣetra field, where warriors sought their grave.<br>He cast aside his mighty bow, with arrows sharp and keen,<br>And sank down on his chariot, with sorrow's painful scene,<br>His mind overwhelmed with anguish, his spirit filled with grief,<br>As war's grim reality, brought him no relief.</p>`
                 },
                 {
                     chapter: 2,
@@ -154,6 +172,10 @@
             
             const aboutPageContent = `<h3>Our Mission</h3><p>Welcome to <strong>Śruti</strong>, a digital space dedicated to an immersive auditory experience of the Bhagavad Gita. The name itself, <em>Śruti</em>, refers to knowledge that is heard—a wisdom passed down through sound, resonating with us on a primal level. This project honors that tradition, presenting a poetic English rendition of the Gita designed to be listened to, reflected upon, and felt.</p><p>The Bhagavad Gita is the first scribed source of <em>Karmyoga</em> and a foundational <em>Smriti</em>—a collective memory embedded within us all. It is a universal conversation between the mortal (represented by Arjuna's questions) and the divine (represented by Krishna's wisdom). This dialogue transcends religion, race, and profession; it speaks to the core of the human condition.</p><p>Our goal is to offer this timeless wisdom in a clean, modern, and accessible format, free from the distractions of the modern web. This is a space for focus, learning, and introspection.</p><h3>A Note from the Author</h3><p>I created this rendition of the Gita out of a personal need—to understand this profound text in a way that felt authentic to me. The existing translations, while valuable, often felt dense and archaic. I wanted to hear the Gita's wisdom in a rhythm and voice that resonated with the way we communicate today. This project is the result of that journey.</p><p>This web application is designed to be a "clean internet" experience. It is free of cookies, trackers, and advertisements. It is simply a quiet room for you to listen, read, and explore.</p><h3>How to Use This App</h3><ul class="list-disc list-inside"><li><strong>Playlist Navigation:</strong> On the left (or in the slide-out menu on mobile), you will find the chapter playlist. Click on any chapter to begin the audio and display the corresponding text.</li><li><strong>Read Along:</strong> As the audio plays, you can read the full poetic transcript in the main content area.</li><li><strong>AI-Powered Insights:</strong> At the bottom of each chapter's text, you'll find an input box. If a particular concept or verse sparks your curiosity, you can ask a question. Our integrated AI will provide a detailed explanation based on the context of the chapter you are listening to.</li><li><strong>Offline Experience (PWA):</strong> This app is a Progressive Web App (PWA). After your first visit, the audio and text for all chapters will be saved to your device, allowing you to listen and read offline. You can also "Add to Home Screen" on your mobile device for an app-like experience.</li></ul><h3>Listen on Your Favorite Platform</h3><ul class="list-disc list-inside"><li><a href="#" class="text-blue-600 hover:underline">Link to Spotify Podcast</a></li><li><a href="#" class="text-blue-600 hover:underline">Link to Apple Podcasts</a></li><li><a href="#" class="text-blue-600 hover:underline">Link to Google Podcasts</a></li></ul><h3>Support This Project</h3><div class="text-center p-4 mt-4 border border-dashed border-stone-400 rounded-lg"><p><em>Your donation widget or link would go here.</em></p></div>`;
 
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const mainApp = document.getElementById('main-app');
+            const randomClipButton = document.getElementById('random-clip-button');
+            const browseChaptersButton = document.getElementById('browse-chapters-button');
             const playlistContainer = document.getElementById('playlist-container');
             const audioPlayer = document.getElementById('audio-player');
             const chapterTitle = document.getElementById('chapter-title');
@@ -170,6 +192,48 @@
             const menuOverlay = document.getElementById('menu-overlay');
             const offlineNotice = document.getElementById('offline-notice');
             let currentChapterData = null;
+            let randomClipTimeout = null;
+
+            function showMainApp() {
+                welcomeScreen.classList.add('hidden');
+                mainApp.classList.remove('hidden');
+                mainApp.classList.add('flex');
+            }
+
+            browseChaptersButton.addEventListener('click', () => {
+                showMainApp();
+                loadChapter(gitaAudioData[0], false);
+            });
+
+            randomClipButton.addEventListener('click', playRandomClip);
+
+            function playRandomClip() {
+                showMainApp();
+                if (randomClipTimeout) clearTimeout(randomClipTimeout);
+
+                const randomChapter = gitaAudioData[Math.floor(Math.random() * gitaAudioData.length)];
+                
+                const tempAudio = new Audio(randomChapter.audioSrc);
+                tempAudio.addEventListener('loadedmetadata', () => {
+                    const duration = tempAudio.duration;
+                    const clipLength = 240; // 4 minutes
+                    let randomStartTime = 0;
+                    if (duration > clipLength) {
+                        const maxStartTime = duration - clipLength;
+                        randomStartTime = Math.random() * maxStartTime;
+                    }
+                    
+                    loadChapter(randomChapter, false);
+                    audioPlayer.currentTime = randomStartTime;
+                    audioPlayer.play().catch(e => console.log("Autoplay prevented."));
+
+                    if (duration > clipLength) {
+                         randomClipTimeout = setTimeout(() => {
+                            audioPlayer.pause();
+                        }, clipLength * 1000);
+                    }
+                });
+            }
 
             function openMenu() {
                 playlistPanel.classList.remove('-translate-x-full');
@@ -182,6 +246,9 @@
             }
 
             function showAboutPage() {
+                if (randomClipTimeout) clearTimeout(randomClipTimeout);
+                audioPlayer.pause();
+                
                 document.querySelectorAll('.playlist-item, #about-button').forEach(item => item.classList.remove('active'));
                 aboutButton.classList.add('active');
                 
@@ -195,6 +262,7 @@
             }
 
             function loadChapter(chapterData, autoplay = true) {
+                if (randomClipTimeout) clearTimeout(randomClipTimeout);
                 currentChapterData = chapterData;
                 
                 playerArea.classList.remove('hidden');
@@ -206,7 +274,7 @@
                 textArea.scrollTop = 0;
                 
                 if (autoplay) {
-                    audioPlayer.play().catch(e => console.log("Autoplay prevented. User must interact first."));
+                    audioPlayer.play().catch(e => console.log("Autoplay prevented."));
                 }
 
                 document.querySelectorAll('.playlist-item, #about-button').forEach(item => item.classList.remove('active'));
@@ -290,10 +358,6 @@
                 if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
                     return result.candidates[0].content.parts[0].text;
                 } else { throw new Error("Invalid API response structure."); }
-            }
-            
-            if(gitaAudioData.length > 0){
-                loadChapter(gitaAudioData[0], false);
             }
         });
     </script>
