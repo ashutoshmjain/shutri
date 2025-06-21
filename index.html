@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
-    <!-- PWA Manifest Link -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#F4F1E9">
 
@@ -19,22 +18,23 @@
         .prose-styles p, .prose-styles ul { margin-bottom: 1.25em; }
         .prose-styles h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.5rem; margin-bottom: 1rem; color: #4A553A; }
         .playlist-item { transition: background-color 0.3s, color 0.3s; }
-        .playlist-item.active { background-color: #4A553A; color: #FFFFFF; }
+        .playlist-item.active, .about-button.active { background-color: #4A553A; color: #FFFFFF; }
         audio::-webkit-media-controls-panel { background-color: #E8E2D9; }
         .gemini-button:disabled { background-color: #b5bba9; cursor: not-allowed; }
         .spinner { border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top-color: #fff; width: 16px; height: 16px; animation: spin 1s ease-in-out infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .fade-in { animation: fadeIn 0.7s ease-in-out forwards; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .menu-open { transform: translateX(0%); }
-        .menu-closed { transform: translateX(-100%); }
     </style>
 </head>
 <body class="text-stone-800 antialiased">
 
     <div class="relative min-h-screen md:flex">
+        <!-- Overlay for mobile menu -->
+        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+
         <!-- Mobile Header -->
-        <div class="md:hidden flex justify-between items-center p-4 bg-white border-b border-stone-200 sticky top-0 z-30">
+        <div class="md:hidden flex justify-between items-center p-4 bg-white border-b border-stone-200 sticky top-0 z-20">
             <h1 class="text-xl font-bold text-[#4A553A]">Śruti</h1>
             <button id="mobile-menu-button" class="p-2">
                 <svg class="w-6 h-6 text-stone-700" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Left Panel: Playlist -->
-        <aside id="playlist-panel" class="fixed inset-y-0 left-0 z-40 w-4/5 max-w-sm bg-white border-r border-stone-200 flex flex-col transition-transform duration-300 ease-in-out menu-closed md:relative md:w-1/3 lg:w-1/4 xl:w-1/5 md:translate-x-0">
+        <aside id="playlist-panel" class="fixed inset-y-0 left-0 z-40 w-4/5 max-w-sm bg-white border-r border-stone-200 flex flex-col transition-transform duration-300 ease-in-out -translate-x-full md:relative md:translate-x-0 md:flex-shrink-0 md:w-1/3 lg:w-1/4 xl:w-1/5">
             <div class="p-6 border-b border-stone-200 hidden md:block">
                 <h1 class="text-3xl font-bold text-[#4A553A]">Śruti</h1>
                 <p class="text-sm text-stone-500 mt-1">The Gita Listening Room</p>
@@ -51,14 +51,14 @@
                 <!-- Playlist items will be dynamically inserted here -->
             </nav>
             <div class="p-4 border-t border-stone-200">
-                <button id="about-button" class="playlist-item w-full text-left p-4 hover:bg-stone-100 transition-colors">
-                    <span class="font-semibold text-lg">About this Project</span>
+                <button id="about-button" class="w-full text-left p-4 rounded-md hover:bg-stone-100 transition-colors font-semibold text-stone-700">
+                    About this Project
                 </button>
             </div>
         </aside>
 
         <!-- Right Panel: Content -->
-        <main class="w-full md:w-2/3 lg:w-3/4 xl:w-4/5 h-screen overflow-y-auto bg-[#F4F1E9] flex flex-col">
+        <main class="w-full h-full overflow-y-auto bg-[#F4F1E9] flex flex-col">
             <div class="p-6 md:p-10 lg:p-12 flex-grow">
                 <div class="max-w-4xl mx-auto h-full flex flex-col">
                     <div id="player-area" class="mb-8">
@@ -90,117 +90,86 @@
     </div>
 
     <script>
-        // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
+                navigator.serviceWorker.register('/service-worker.js').then(reg => console.log('SW registered.')).catch(err => console.log('SW registration failed: ', err));
             });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
              const gitaAudioData = [
-                {
-                    chapter: 1,
-                    title: "Arjuna's Dilemma",
-                    audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg01.mp3",
-                    text: `<p>Verse 1:<br>Dhṛtarāṣṭra inquired...` // Full text omitted for brevity
-                },
-                // ... other chapters
+                { chapter: 1, title: "Arjuna's Dilemma", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg01.mp3", text: `<p>Verse 1:<br>Dhṛtarāṣṭra inquired, his words taking flight...` },
+                { chapter: 2, title: "Transcendental Knowledge", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg02.mp3", text: `<p>Verse 1:<br>Thus spoke Sañjaya, his heart with sorrow deep...` },
+                { chapter: 3, title: "Path of Action", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg03.mp3", text: `<p>Verse 3.01<br>Arjuna spake with visage all distraught...` },
+                { chapter: 4, title: "Path of Knowledge", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg04.mp3", text: `<p>Verse 4.1<br>The Blessed Lord spoke, words clear and bright...` },
+                { chapter: 5, title: "Path of Renunciation", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg05.mp3", text: `<p>Renunciation of deeds, O Krishna, you commend...` },
+                { chapter: 6, title: "Path of Meditation", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg06.mp3", text: `<p>Verse 6-1. He who unscath'd by craving's fevered breath...` },
+                { chapter: 7, title: "Knowledge of the Absolute", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg07.mp3", text: `<p>The blessed Lord in solemn accents spake...` },
+                { chapter: 8, title: "Attaining the Supreme", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg08.mp3", text: `<p>Arjuna then inquired with earnest grace...` },
+                { chapter: 9, title: "The Most Confidential Knowledge", audioSrc: "https://raw.githubusercontent.com/ashutoshmjain/shutri/main/audio/bg09.mp3", text: `<p>The blessed Lord then spake with loving art...` }
             ];
             
-            const aboutPageContent = `
-                <h3>Our Mission</h3>
-                <p>Welcome to <strong>Śruti</strong>, a digital space dedicated to an immersive auditory experience of the Bhagavad Gita. The name itself, <em>Śruti</em>, refers to knowledge that is heard—a wisdom passed down through sound, resonating with us on a primal level. This project honors that tradition, presenting a poetic English rendition of the Gita designed to be listened to, reflected upon, and felt.</p>
-                <p>The Bhagavad Gita is the first scribed source of <em>Karmyoga</em> and a foundational <em>Smriti</em>—a collective memory embedded within us all. It is a universal conversation between the mortal (represented by Arjuna's questions) and the divine (represented by Krishna's wisdom). This dialogue transcends religion, race, and profession; it speaks to the core of the human condition.</p>
-                <p>Our goal is to offer this timeless wisdom in a clean, modern, and accessible format, free from the distractions of the modern web. This is a space for focus, learning, and introspection.</p>
-                <h3>A Note from the Author</h3>
-                <p>I created this rendition of the Gita out of a personal need—to understand this profound text in a way that felt authentic to me. The existing translations, while valuable, often felt dense and archaic. I wanted to hear the Gita's wisdom in a rhythm and voice that resonated with the way we communicate today. This project is the result of that journey.</p>
-                <p>This web application is designed to be a "clean internet" experience. It is free of cookies, trackers, and advertisements. It is simply a quiet room for you to listen, read, and explore.</p>
-                <h3>How to Use This App</h3>
-                <ul class="list-disc list-inside">
-                    <li><strong>Playlist Navigation:</strong> On the left (or in the slide-out menu on mobile), you will find the chapter playlist. Click on any chapter to begin the audio and display the corresponding text.</li>
-                    <li><strong>Read Along:</strong> As the audio plays, you can read the full poetic transcript in the main content area.</li>
-                    <li><strong>AI-Powered Insights:</strong> At the bottom of each chapter's text, you'll find an input box. If a particular concept or verse sparks your curiosity, you can ask a question. Our integrated AI will provide a detailed explanation based on the context of the chapter you are listening to.</li>
-                    <li><strong>Offline Experience (PWA):</strong> This app is a Progressive Web App (PWA). After your first visit, the audio and text for all chapters will be saved to your device, allowing you to listen and read offline. You can also "Add to Home Screen" on your mobile device for an app-like experience.</li>
-                </ul>
-                <h3>Listen on Your Favorite Platform</h3>
-                <p>You can also find this poetic rendition as a podcast on all major platforms.</p>
-                <ul class="list-disc list-inside">
-                    <li><a href="#" class="text-blue-600 hover:underline">Link to Spotify Podcast</a></li>
-                    <li><a href="#" class="text-blue-600 hover:underline">Link to Apple Podcasts</a></li>
-                    <li><a href="#" class="text-blue-600 hover:underline">Link to Google Podcasts</a></li>
-                </ul>
-                <h3>Support This Project</h3>
-                <p>This project is a labor of love, offered for free to all who seek it. If you find value in this work, please consider supporting its continued development and hosting.</p>
-                <div class="text-center p-4 mt-4 border border-dashed border-stone-400 rounded-lg">
-                <p><em>
-                <lightning-widget 
-                     name="Thanks for supporting the publication" 
-                     accent="#f9ce00" 
-                     to="shutosha@primal.net" 
-                     image="https://nostrcheck.me/media/5af0794606a15b5641e25aa23d04af4cb0d7d5e68b11cacb47e56a4698fca8c4/49ff6d00cb5bc819cd19f77783d4815fbd46a5b99b6fbdead1eaecfab798187b.webp" 
-                     />
-                <script src="https://embed.twentyuno.net/js/app.js"></script>
-                </em></p>
-                </div>
-            `;
-
+            const aboutPageContent = `<h3>Our Mission</h3><p>Welcome to <strong>Śruti</strong>, a digital space dedicated to an immersive auditory experience of the Bhagavad Gita...</p><h3>A Note from the Author</h3><p>I created this rendition of the Gita out of a personal need...</p><h3>How to Use This App</h3><ul class="list-disc list-inside"><li><strong>Playlist Navigation:</strong>...</li><li><strong>Read Along:</strong>...</li><li><strong>AI-Powered Insights:</strong>...</li><li><strong>Offline Experience (PWA):</strong>...</li></ul><h3>Listen on Your Favorite Platform</h3><ul class="list-disc list-inside"><li><a href="#" class="text-blue-600 hover:underline">Link to Spotify Podcast</a></li><li><a href="#" class="text-blue-600 hover:underline">Link to Apple Podcasts</a></li><li><a href="#" class="text-blue-600 hover:underline">Link to Google Podcasts</a></li></ul><h3>Support This Project</h3><div class="text-center p-4 mt-4 border border-dashed border-stone-400 rounded-lg"><p><em>Your donation widget or link would go here.</em></p></div>`;
 
             const playlistContainer = document.getElementById('playlist-container');
             const audioPlayer = document.getElementById('audio-player');
             const chapterTitle = document.getElementById('chapter-title');
             const textArea = document.getElementById('text-area');
             const geminiInteraction = document.getElementById('gemini-interaction');
+            const geminiButton = document.getElementById('gemini-button');
+            const geminiInput = document.getElementById('gemini-input');
+            const explanationContainer = document.getElementById('explanation-container');
+            const explanationContent = document.getElementById('explanation-content');
             const aboutButton = document.getElementById('about-button');
             const playerArea = document.getElementById('player-area');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const playlistPanel = document.getElementById('playlist-panel');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const offlineNotice = document.getElementById('offline-notice');
             let currentChapterData = null;
+
+            function openMenu() {
+                playlistPanel.classList.remove('-translate-x-full');
+                menuOverlay.classList.remove('hidden');
+            }
+
+            function closeMenu() {
+                playlistPanel.classList.add('-translate-x-full');
+                menuOverlay.classList.add('hidden');
+            }
 
             function showAboutPage() {
                 document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
                 aboutButton.classList.add('active');
-                
                 chapterTitle.textContent = 'About This Project';
                 textArea.innerHTML = `<div class="fade-in">${aboutPageContent}</div>`;
                 textArea.scrollTop = 0;
-                
                 playerArea.classList.add('hidden');
                 geminiInteraction.classList.add('hidden');
-
-                if(window.innerWidth < 768) {
-                    playlistPanel.classList.add('menu-closed');
-                }
+                closeMenu();
             }
 
             function loadChapter(chapterData, autoplay = true) {
                 currentChapterData = chapterData;
-                
                 playerArea.classList.remove('hidden');
                 geminiInteraction.classList.remove('hidden');
-
                 chapterTitle.textContent = `Chapter ${chapterData.chapter}: ${chapterData.title}`;
                 audioPlayer.src = chapterData.audioSrc;
                 textArea.innerHTML = `<div class="fade-in">${chapterData.text.replace(/<p>/g, '<p class="mb-4">')}</div>`;
                 textArea.scrollTop = 0;
                 
                 if (autoplay) {
-                    audioPlayer.play().catch(e => console.log("Autoplay prevented by browser. User must interact first."));
+                    audioPlayer.play().catch(e => console.log("Autoplay prevented. User must interact first."));
                 }
 
-                document.querySelectorAll('.playlist-item').forEach(item => {
-                    item.classList.toggle('active', item.dataset.chapter == chapterData.chapter);
-                });
-
-                if(window.innerWidth < 768) {
-                    playlistPanel.classList.add('menu-closed');
-                }
+                document.querySelectorAll('.playlist-item, #about-button').forEach(item => item.classList.remove('active'));
+                const activePlaylistItem = playlistContainer.querySelector(`[data-chapter='${chapterData.chapter}']`);
+                if(activePlaylistItem) activePlaylistItem.classList.add('active');
+                
+                explanationContainer.classList.add('hidden');
+                geminiInput.value = '';
+                closeMenu();
+                checkOnlineStatus();
             }
 
             gitaAudioData.forEach(chapterData => {
@@ -213,11 +182,68 @@
             });
 
             aboutButton.addEventListener('click', showAboutPage);
-            mobileMenuButton.addEventListener('click', () => {
-                playlistPanel.classList.toggle('menu-closed');
-            });
+            mobileMenuButton.addEventListener('click', openMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+
+            async function handleGeminiClick() {
+                if (!currentChapterData || !geminiInput.value.trim()) {
+                    alert("Please select a chapter and enter a question.");
+                    return;
+                }
+                const cleanText = currentChapterData.text.replace(/<[^>]*>/g, ' ');
+                const context = `The user is listening to a poetic English rendition of Chapter ${currentChapterData.chapter} of the Bhagavad Gita, titled "${currentChapterData.title}". The full text is: "${cleanText}"`;
+                const prompt = `${context} Based on this, please answer the user's question in a clear and insightful way: "${geminiInput.value.trim()}"`;
+                
+                setLoading(geminiButton, true);
+                explanationContainer.classList.remove('hidden');
+                explanationContent.innerHTML = '<p>Generating insight...</p>';
+                try {
+                    const resultText = await callGeminiAPI(prompt);
+                    explanationContent.innerHTML = `<div class="fade-in">${resultText.replace(/\n/g, '<br>')}</div>`;
+                } catch (error) {
+                    explanationContent.innerHTML = `<p class="text-red-600">Sorry, an error occurred. Please try again.</p>`;
+                    console.error("Gemini API Error:", error);
+                } finally {
+                    setLoading(geminiButton, false);
+                }
+            }
+            geminiButton.addEventListener('click', handleGeminiClick);
             
-            // ... (rest of the script for Gemini, etc. remains the same)
+            function setLoading(button, isLoading) {
+                button.disabled = isLoading;
+                if (isLoading) {
+                    button.dataset.originalText = button.innerHTML;
+                    button.innerHTML = '<div class="spinner mx-auto"></div>';
+                } else {
+                    button.innerHTML = button.dataset.originalText;
+                }
+            }
+
+            function checkOnlineStatus() {
+                if (!navigator.onLine) {
+                    geminiButton.disabled = true;
+                    geminiInput.disabled = true;
+                    offlineNotice.classList.remove('hidden');
+                } else {
+                    geminiButton.disabled = false;
+                    geminiInput.disabled = false;
+                    offlineNotice.classList.add('hidden');
+                }
+            }
+            window.addEventListener('online', checkOnlineStatus);
+            window.addEventListener('offline', checkOnlineStatus);
+            
+            async function callGeminiAPI(prompt) {
+                const apiKey = "YOUR_API_KEY_HERE"; // IMPORTANT: Replace with your actual API key
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!response.ok) throw new Error(`API call failed: ${response.status}`);
+                const result = await response.json();
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    return result.candidates[0].content.parts[0].text;
+                } else { throw new Error("Invalid API response structure."); }
+            }
             
             if(gitaAudioData.length > 0){
                 loadChapter(gitaAudioData[0], false);
