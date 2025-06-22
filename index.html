@@ -455,7 +455,7 @@
             window.addEventListener('offline', checkOnlineStatus);
             
             async function callGeminiAPI(prompt) {
-                const apiKey = "YOUR_API_KEY_HERE"; 
+                const apiKey = "AIzaSyCzXwDm3rda4byBe2w6CFjMt2K-09n7ceQ"; 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
                 const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
                 
