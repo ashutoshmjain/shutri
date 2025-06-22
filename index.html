@@ -25,67 +25,91 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .fade-in { animation: fadeIn 0.7s ease-in-out forwards; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .welcome-button { transition: all 0.3s ease; }
-        .welcome-button:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        /* --- Styles for Orbiting Circles Layout --- */
 
-        /* --- New styles for concentric circles --- */
-        #concentric-container {
-            transform-style: preserve-3d;
-            animation: slow-spin 90s linear infinite;
+        /* The main container for the orbiting circles */
+        #circle-orbit-container {
+            width: 340px; /* Adjust size of the entire orbit */
+            height: 340px;
         }
 
+        /* The central image, now styled as a circle */
+        .central-image {
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 15px rgba(74, 85, 58, 0.4);
+            width: 120px; /* Adjust size of the central image */
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        /* Shared style for all orbiting chapter circles */
         .chapter-circle {
             position: absolute;
-            margin: auto; /* Keeps it centered */
-            border: 2px solid rgba(74, 85, 58, 0.3); /* #4A553A with opacity */
+            width: 60px;  /* Size of the smaller chapter circles */
+            height: 60px;
+            background-color: #ffffff;
+            border: 2px solid #E8E2D9;
             border-radius: 50%;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Positions text at the top */
+            align-items: center;
             color: #4A553A;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-weight: 600;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            /* Positioned from the center of the parent */
+            top: 50%;
+            left: 50%;
+            margin: -30px; /* Half of the width/height to truly center it */
         }
 
         .chapter-circle:hover {
             background-color: #4A553A;
             color: #FFFFFF;
             border-color: #4A553A;
-            transform: scale(1.03);
-            z-index: 20; /* Bring hovered circle to the front */
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: scale(1.1);
+            z-index: 20;
         }
 
-        .chapter-label {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            padding-top: 10px; /* Spacing from the top edge */
-            font-size: 0.875rem; /* 14px */
+        /* This is the logic for placing the 9 circles.
+          Each circle is rotated by an angle (40deg increments), then moved outwards (translated), 
+          and then its content is rotated back to keep the number upright.
+        */
+        [data-chapter="1"] { transform: rotate(0deg)   translate(170px) rotate(0deg); }
+        [data-chapter="2"] { transform: rotate(40deg)  translate(170px) rotate(-40deg); }
+        [data-chapter="3"] { transform: rotate(80deg)  translate(170px) rotate(-80deg); }
+        [data-chapter="4"] { transform: rotate(120deg) translate(170px) rotate(-120deg); }
+        [data-chapter="5"] { transform: rotate(160deg) translate(170px) rotate(-160deg); }
+        [data-chapter="6"] { transform: rotate(200deg) translate(170px) rotate(-200deg); }
+        [data-chapter="7"] { transform: rotate(240deg) translate(170px) rotate(-240deg); }
+        [data-chapter="8"] { transform: rotate(280deg) translate(170px) rotate(-280deg); }
+        [data-chapter="9"] { transform: rotate(320deg) translate(170px) rotate(-320deg); }
+
+        /* Media query for smaller screens to reduce the orbit size */
+        @media (max-width: 480px) {
+            #circle-orbit-container {
+                width: 300px;
+                height: 300px;
+            }
+            .central-image {
+                width: 100px;
+                height: 100px;
+            }
+            [data-chapter="1"] { transform: rotate(0deg)   translate(150px) rotate(0deg); }
+            [data-chapter="2"] { transform: rotate(40deg)  translate(150px) rotate(-40deg); }
+            [data-chapter="3"] { transform: rotate(80deg)  translate(150px) rotate(-80deg); }
+            [data-chapter="4"] { transform: rotate(120deg) translate(150px) rotate(-120deg); }
+            [data-chapter="5"] { transform: rotate(160deg) translate(150px) rotate(-160deg); }
+            [data-chapter="6"] { transform: rotate(200deg) translate(150px) rotate(-200deg); }
+            [data-chapter="7"] { transform: rotate(240deg) translate(150px) rotate(-240deg); }
+            [data-chapter="8"] { transform: rotate(280deg) translate(150px) rotate(-280deg); }
+            [data-chapter="9"] { transform: rotate(320deg) translate(150px) rotate(-320deg); }
         }
 
-        .chapter-circle:hover .chapter-label {
-            opacity: 1;
-        }
-
-        /* Sizes for each of the 9 circles */
-        .circle-1 { width: 100%; height: 100%; }
-        .circle-2 { width: 90%; height: 90%; }
-        .circle-3 { width: 80%; height: 80%; }
-        .circle-4 { width: 70%; height: 70%; }
-        .circle-5 { width: 60%; height: 60%; }
-        .circle-6 { width: 50%; height: 50%; }
-        .circle-7 { width: 40%; height: 40%; }
-        .circle-8 { width: 30%; height: 30%; }
-        .circle-9 { width: 20%; height: 20%; }
-
-
-        /* Animation for a slow, continuous rotation */
-        @keyframes slow-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body class="text-stone-800 antialiased overflow-hidden h-screen">
@@ -122,18 +146,18 @@
                             Select a chapter to begin your listening experience.
                         </p>
                 
-                        <div id="concentric-container" class="relative w-full max-w-[600px] aspect-square flex items-center justify-center">
-                            <img src="https://gita.shutri.com/conkshells.png" alt="An illustration of two conch shells" class="relative z-10 w-24 md:w-32 h-auto">
+                        <div id="circle-orbit-container" class="relative flex items-center justify-center">
+                            <img src="https://gita.shutri.com/conkshells.png" alt="An illustration of two conch shells" class="central-image">
                 
-                            <a href="#" class="chapter-circle circle-1" data-chapter="1"><span class="chapter-label">Chapter 1</span></a>
-                            <a href="#" class="chapter-circle circle-2" data-chapter="2"><span class="chapter-label">Chapter 2</span></a>
-                            <a href="#" class="chapter-circle circle-3" data-chapter="3"><span class="chapter-label">Chapter 3</span></a>
-                            <a href="#" class="chapter-circle circle-4" data-chapter="4"><span class="chapter-label">Chapter 4</span></a>
-                            <a href="#" class="chapter-circle circle-5" data-chapter="5"><span class="chapter-label">Chapter 5</span></a>
-                            <a href="#" class="chapter-circle circle-6" data-chapter="6"><span class="chapter-label">Chapter 6</span></a>
-                            <a href="#" class="chapter-circle circle-7" data-chapter="7"><span class="chapter-label">Chapter 7</span></a>
-                            <a href="#" class="chapter-circle circle-8" data-chapter="8"><span class="chapter-label">Chapter 8</span></a>
-                            <a href="#" class="chapter-circle circle-9" data-chapter="9"><span class="chapter-label">Chapter 9</span></a>
+                            <a href="#" class="chapter-circle" data-chapter="1">1</a>
+                            <a href="#" class="chapter-circle" data-chapter="2">2</a>
+                            <a href="#" class="chapter-circle" data-chapter="3">3</a>
+                            <a href="#" class="chapter-circle" data-chapter="4">4</a>
+                            <a href="#" class="chapter-circle" data-chapter="5">5</a>
+                            <a href="#" class="chapter-circle" data-chapter="6">6</a>
+                            <a href="#" class="chapter-circle" data-chapter="7">7</a>
+                            <a href="#" class="chapter-circle" data-chapter="8">8</a>
+                            <a href="#" class="chapter-circle" data-chapter="9">9</a>
                         </div>
                     </div>
                 </div>
@@ -249,7 +273,6 @@
             const headerTitle = document.getElementById('header-title');
             const playerArea = document.getElementById('player-area');
             let currentChapterData = null;
-            let randomClipTimeout = null;
 
             // UI Functions
             const openMenu = () => {
@@ -265,7 +288,6 @@
                 listeningRoom.classList.remove('hidden');
             };
             const showInvocationPage = () => {
-                if (randomClipTimeout) clearTimeout(randomClipTimeout);
                 audioPlayer.pause();
                 listeningRoom.classList.add('hidden');
                 invocationPage.classList.remove('hidden');
@@ -274,7 +296,6 @@
                 closeMenu();
             };
             const loadChapter = (chapterData, autoplay = true) => {
-                if (randomClipTimeout) clearTimeout(randomClipTimeout);
                 currentChapterData = chapterData;
                 showListeningRoom();
                 
@@ -337,14 +358,14 @@
             });
             playlistContainer.appendChild(aboutButton);
 
-            // === New JavaScript for Concentric Circles ===
-            const concentricContainer = document.getElementById('concentric-container');
-            if (concentricContainer) {
-                const chapterCircles = concentricContainer.querySelectorAll('.chapter-circle');
+            // JavaScript for Orbiting Circles
+            const orbitContainer = document.getElementById('circle-orbit-container');
+            if (orbitContainer) {
+                const chapterCircles = orbitContainer.querySelectorAll('.chapter-circle');
 
                 chapterCircles.forEach(circle => {
                     circle.addEventListener('click', (e) => {
-                        e.preventDefault(); // Prevent the link from navigating
+                        e.preventDefault(); 
 
                         const chapterNumber = parseInt(circle.dataset.chapter, 10);
                         const chapterData = gitaAudioData.find(ch => ch.chapter === chapterNumber);
@@ -355,9 +376,7 @@
                     });
                 });
             }
-            // === End of New JavaScript ===
-
-
+            
             async function handleGeminiClick() {
                 if (!currentChapterData || !geminiInput.value.trim()) {
                     alert("Please select a chapter and enter a question.");
@@ -409,7 +428,7 @@
             async function callGeminiAPI(prompt) {
                 // IMPORTANT: Remember to replace with your actual, secured API key.
                 const apiKey = "YOUR_API_KEY_HERE"; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
                 const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
                 
                 try {
@@ -420,7 +439,6 @@
                     });
                     
                     if (!response.ok) {
-                        // Log the detailed error from the API response if possible
                         const errorBody = await response.text();
                         console.error("API Error Response:", errorBody);
                         throw new Error(`API call failed: ${response.status}`);
@@ -431,18 +449,15 @@
                     if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
                         return result.candidates[0].content.parts[0].text;
                     } else {
-                        // Handle cases where the API response is valid but doesn't contain the expected text
                         console.error("Invalid API response structure:", result);
                         if (result.candidates?.[0]?.finishReason) {
-                            // Check if the content was blocked
                             return `The request was processed but no content was returned. Reason: ${result.candidates[0].finishReason}. This might be due to safety settings.`;
                         }
                         throw new Error("Invalid API response structure.");
                     }
                 } catch (error) {
-                    // This will catch network errors and the errors thrown above
                     console.error("Error in callGeminiAPI:", error);
-                    throw error; // Re-throw the error to be caught by handleGeminiClick
+                    throw error;
                 }
             }
         });
