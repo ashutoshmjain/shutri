@@ -27,6 +27,65 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .welcome-button { transition: all 0.3s ease; }
         .welcome-button:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        /* --- New styles for concentric circles --- */
+        #concentric-container {
+            transform-style: preserve-3d;
+            animation: slow-spin 90s linear infinite;
+        }
+
+        .chapter-circle {
+            position: absolute;
+            margin: auto; /* Keeps it centered */
+            border: 2px solid rgba(74, 85, 58, 0.3); /* #4A553A with opacity */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Positions text at the top */
+            color: #4A553A;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .chapter-circle:hover {
+            background-color: #4A553A;
+            color: #FFFFFF;
+            border-color: #4A553A;
+            transform: scale(1.03);
+            z-index: 20; /* Bring hovered circle to the front */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .chapter-label {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            padding-top: 10px; /* Spacing from the top edge */
+            font-size: 0.875rem; /* 14px */
+        }
+
+        .chapter-circle:hover .chapter-label {
+            opacity: 1;
+        }
+
+        /* Sizes for each of the 9 circles */
+        .circle-1 { width: 100%; height: 100%; }
+        .circle-2 { width: 90%; height: 90%; }
+        .circle-3 { width: 80%; height: 80%; }
+        .circle-4 { width: 70%; height: 70%; }
+        .circle-5 { width: 60%; height: 60%; }
+        .circle-6 { width: 50%; height: 50%; }
+        .circle-7 { width: 40%; height: 40%; }
+        .circle-8 { width: 30%; height: 30%; }
+        .circle-9 { width: 20%; height: 20%; }
+
+
+        /* Animation for a slow, continuous rotation */
+        @keyframes slow-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="text-stone-800 antialiased overflow-hidden h-screen">
@@ -54,28 +113,30 @@
                 <div class="w-10"></div> </header>
 
             <main class="flex-1 overflow-y-auto">
-                <div id="invocation-page" class="min-h-full flex flex-col items-center justify-center text-center p-8">
-                    <div class="fade-in max-w-2xl">
-                        <img src="https://gita.shutri.com/conkshells.png" alt="An illustration of two conch shells" class="mx-auto mb-6 w-40 h-auto">
-
-                        <h1 class="text-5xl md:text-6xl font-bold text-[#4A553A] mb-3" style="font-family: 'Lora', serif;">
+                <div id="invocation-page" class="min-h-full flex flex-col items-center justify-center text-center p-4 overflow-hidden">
+                    <div class="fade-in max-w-2xl w-full flex flex-col items-center">
+                        <h1 class="text-3xl md:text-4xl font-bold text-[#4A553A] mb-4" style="font-family: 'Lora', serif;">
                             Bhagavad Gita
                         </h1>
-                        <p class="text-xl text-stone-600 mb-10">
-                            An immersive listening experience
+                        <p class="text-lg text-stone-600 mb-8">
+                            Select a chapter to begin your listening experience.
                         </p>
-
-                        <div class="space-y-4 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row justify-center">
-                            <button id="random-clip-button" class="welcome-button bg-[#4A553A] text-white font-semibold py-4 px-8 rounded-lg shadow-md text-lg">
-                                Listen to a Random Clip
-                            </button>
-                            <button id="browse-chapters-button" class="welcome-button bg-white text-stone-800 font-semibold py-4 px-8 rounded-lg shadow-md border border-stone-300 text-lg">
-                                Browse All Chapters
-                            </button>
+                
+                        <div id="concentric-container" class="relative w-full max-w-[600px] aspect-square flex items-center justify-center">
+                            <img src="https://gita.shutri.com/conkshells.png" alt="An illustration of two conch shells" class="relative z-10 w-24 md:w-32 h-auto">
+                
+                            <a href="#" class="chapter-circle circle-1" data-chapter="1"><span class="chapter-label">Chapter 1</span></a>
+                            <a href="#" class="chapter-circle circle-2" data-chapter="2"><span class="chapter-label">Chapter 2</span></a>
+                            <a href="#" class="chapter-circle circle-3" data-chapter="3"><span class="chapter-label">Chapter 3</span></a>
+                            <a href="#" class="chapter-circle circle-4" data-chapter="4"><span class="chapter-label">Chapter 4</span></a>
+                            <a href="#" class="chapter-circle circle-5" data-chapter="5"><span class="chapter-label">Chapter 5</span></a>
+                            <a href="#" class="chapter-circle circle-6" data-chapter="6"><span class="chapter-label">Chapter 6</span></a>
+                            <a href="#" class="chapter-circle circle-7" data-chapter="7"><span class="chapter-label">Chapter 7</span></a>
+                            <a href="#" class="chapter-circle circle-8" data-chapter="8"><span class="chapter-label">Chapter 8</span></a>
+                            <a href="#" class="chapter-circle circle-9" data-chapter="9"><span class="chapter-label">Chapter 9</span></a>
                         </div>
                     </div>
                 </div>
-
                 <div id="listening-room" class="hidden p-6 md:p-10 lg:p-12">
                     <div class="max-w-4xl mx-auto">
                         <div id="player-area" class="mb-8">
@@ -171,8 +232,6 @@
             // Selectors
             const invocationPage = document.getElementById('invocation-page');
             const listeningRoom = document.getElementById('listening-room');
-            const randomClipButton = document.getElementById('random-clip-button');
-            const browseChaptersButton = document.getElementById('browse-chapters-button');
             const playlistContainer = document.getElementById('playlist-container');
             const audioPlayer = document.getElementById('audio-player');
             const chapterTitle = document.getElementById('chapter-title');
@@ -242,8 +301,6 @@
             };
 
             // Event Listeners
-            browseChaptersButton.addEventListener('click', openMenu);
-            randomClipButton.addEventListener('click', playRandomClip);
             mobileMenuButton.addEventListener('click', openMenu);
             closeMenuButton.addEventListener('click', closeMenu);
             menuOverlay.addEventListener('click', closeMenu);
@@ -280,30 +337,26 @@
             });
             playlistContainer.appendChild(aboutButton);
 
-            function playRandomClip() {
-                if (randomClipTimeout) clearTimeout(randomClipTimeout);
-                const randomChapter = gitaAudioData[Math.floor(Math.random() * gitaAudioData.length)];
-                
-                const tempAudio = new Audio(randomChapter.audioSrc);
-                tempAudio.addEventListener('loadedmetadata', () => {
-                    const duration = tempAudio.duration;
-                    const clipLength = 240; // 4 minutes
-                    let randomStartTime = 0;
-                    if (duration > clipLength) {
-                        randomStartTime = Math.random() * (duration - clipLength);
-                    }
-                    
-                    loadChapter(randomChapter, false);
-                    audioPlayer.currentTime = randomStartTime;
-                    audioPlayer.play().catch(e => console.log("Autoplay prevented."));
+            // === New JavaScript for Concentric Circles ===
+            const concentricContainer = document.getElementById('concentric-container');
+            if (concentricContainer) {
+                const chapterCircles = concentricContainer.querySelectorAll('.chapter-circle');
 
-                    if (duration > clipLength) {
-                         randomClipTimeout = setTimeout(() => {
-                            audioPlayer.pause();
-                        }, clipLength * 1000);
-                    }
+                chapterCircles.forEach(circle => {
+                    circle.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent the link from navigating
+
+                        const chapterNumber = parseInt(circle.dataset.chapter, 10);
+                        const chapterData = gitaAudioData.find(ch => ch.chapter === chapterNumber);
+
+                        if (chapterData) {
+                            loadChapter(chapterData);
+                        }
+                    });
                 });
             }
+            // === End of New JavaScript ===
+
 
             async function handleGeminiClick() {
                 if (!currentChapterData || !geminiInput.value.trim()) {
@@ -354,15 +407,43 @@
             window.addEventListener('offline', checkOnlineStatus);
             
             async function callGeminiAPI(prompt) {
-                const apiKey = "YOUR_API_KEY_HERE"; // IMPORTANT: Replace with your actual API key
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                // IMPORTANT: Remember to replace with your actual, secured API key.
+                const apiKey = "YOUR_API_KEY_HERE"; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash:generateContent?key=${apiKey}`;
                 const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                if (!response.ok) throw new Error(`API call failed: ${response.status}`);
-                const result = await response.json();
-                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    return result.candidates[0].content.parts[0].text;
-                } else { throw new Error("Invalid API response structure."); }
+                
+                try {
+                    const response = await fetch(apiUrl, { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' }, 
+                        body: JSON.stringify(payload) 
+                    });
+                    
+                    if (!response.ok) {
+                        // Log the detailed error from the API response if possible
+                        const errorBody = await response.text();
+                        console.error("API Error Response:", errorBody);
+                        throw new Error(`API call failed: ${response.status}`);
+                    }
+                    
+                    const result = await response.json();
+                    
+                    if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        // Handle cases where the API response is valid but doesn't contain the expected text
+                        console.error("Invalid API response structure:", result);
+                        if (result.candidates?.[0]?.finishReason) {
+                            // Check if the content was blocked
+                            return `The request was processed but no content was returned. Reason: ${result.candidates[0].finishReason}. This might be due to safety settings.`;
+                        }
+                        throw new Error("Invalid API response structure.");
+                    }
+                } catch (error) {
+                    // This will catch network errors and the errors thrown above
+                    console.error("Error in callGeminiAPI:", error);
+                    throw error; // Re-throw the error to be caught by handleGeminiClick
+                }
             }
         });
     </script>
