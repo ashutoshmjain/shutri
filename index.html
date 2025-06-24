@@ -138,7 +138,7 @@
                 <button id="mobile-menu-button" class="p-2">
                     <svg class="w-6 h-6 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
-                <p id="header-title" class="text-lg font-semibold text-white">Gita : Select a chapter to listen</p>
+                <p id="header-title" class="text-lg font-semibold text-white">Om</p>
                 <div class="w-10"></div> 
             </header>
 
@@ -306,7 +306,7 @@
                 audioPlayer.pause();
                 listeningRoom.classList.add('hidden');
                 invocationPage.classList.remove('hidden');
-                headerTitle.textContent = "Gita : Select a chapter to listen";
+                headerTitle.textContent = "Om";
                 document.querySelectorAll('.playlist-item, .about-button').forEach(item => item.classList.remove('active'));
                 closeMenu();
             };
