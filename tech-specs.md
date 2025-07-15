@@ -4,13 +4,17 @@
 
 ### 1.1. Core Concept
 
-`shutri` is a Rust application designed for text-based audio editing. It integrates the audio processing capabilities of SoX (Sound eXchange) with the text-editing power of Vim (Vi Improved). The core idea is to replace the traditional, often cumbersome, waveform-based audio editing with a more efficient and precise text-based workflow.
+`shutri` is a Rust application for text-based audio editing, integrating the audio processing power of SoX (Sound eXchange) with the efficiency of the Vim editor. The core concept is to transform the traditionally cumbersome process of waveform manipulation into a precise, text-driven workflow.
 
-The primary workflow is as follows:
+The primary workflow consists of four main stages:
 
-1.  **Import & Transcribe:** The user provides an audio file (e.g., `.mp3`). `shutri` uses an external transcription service (initially, Gemini) to convert the audio into a time-stamped transcript. Each segment of transcribed text is associated with a precise start and end time, forming a "clip."
-2.  **Edit:** The user edits this transcript file within Vim. The editing process primarily involves manipulating the time-stamps to adjust the audio clips. The transcribed text serves as a searchable and navigable guide to the audio content.
-3.  **Export:** Once the editing is complete, `shutri` uses SoX to concatenate the edited audio clips into a final, seamless audio file.
+1.  **Import:** A user-provided MP3 audio file is imported into the `shutri` library. To ensure timestamp accuracy and enable parallel processing, the audio is immediately split into fixed-duration (e.g., 30-second) "chunks."
+
+2.  **Transcribe:** Each audio chunk is sent to the Gemini API for transcription. This chunk-based approach mitigates the timestamp drift often found in long-form transcriptions and allows for faster, parallelized API requests. The result is a series of clips—text snippets with corresponding start and end times—grouped under their parent chunk.
+
+3.  **Edit:** The transcription is presented to the user as a structured text file inside Vim. In this interface, the user can finely adjust the timestamps of each clip, delete unwanted clips by deleting lines, and navigate the audio by searching for text. The chunk timestamps are fixed, but the clip timestamps within them are fully editable. The Vim plugin allows the user to play back both the original audio chunks (for context) and the edited clips (for preview).
+
+4.  **Export:** Once editing is complete, `shutri` reads the modified text file. It uses the final timestamps to extract the corresponding audio segments from the original file and concatenates them into a new, seamless MP3 audio file.
 
 ### 1.2. The Problem with Waveform-Based Editing
 
@@ -25,7 +29,6 @@ Traditional Digital Audio Workstations (DAWs) and audio editors rely on a visual
 By converting audio to a time-stamped transcript, we transform the editing process into a text-manipulation task. This allows us to leverage the powerful and highly efficient text-editing capabilities of Vim, including:
 
 *   **Advanced Search and Navigation:** Instantly jump to any part of the audio by searching for specific words or phrases.
-*   **Programmable Editing:** Use Vim's macros and scripting capabilities to automate repetitive editing tasks.
 *   **Keyboard-Centric Workflow:** A faster and more ergonomic workflow for users familiar with Vim's keybindings.
 
 ---
@@ -70,9 +73,8 @@ The `shutri` system is composed of three main components:
 
 ### 3.1. Runtime Dependencies (for Users)
 
-*   **SoX (Sound eXchange):** Required for all audio manipulation tasks (clipping, concatenation, playback). Must be installed and available in the system's `PATH`.
+*   **SoX (Sound eXchange):** Required for all audio manipulation tasks (clipping, concatenation, playback). Must be installed and available in the system's `PATH`. For Version 1, `shutri` will focus exclusively on the MP3 format.
 *   **Vim/Neovim:** A compatible version of Vim or Neovim is required for the editing workflow.
-*   **FFmpeg (Optional but Recommended):** While SoX will be the primary tool for audio manipulation, FFmpeg may be used for initial import and conversion from a wider range of audio/video formats.
 
 ### 3.2. Development Dependencies (for the Worker)
 
@@ -101,35 +103,53 @@ A central directory at `~/.shutri/` will be used to manage all assets, organized
 
 #### 4.1.1. Project Files (`.shutri`)
 
-A `.shutri` file is a text file that represents the state of an editing project. Each line in the file corresponds to an audio clip and follows this format:
+A `.shutri` file is a text file that represents the state of an editing project. To make navigation easier, the file is visually structured into the chunks that were used for transcription.
 
-```
-[start_time] text [end_time]
-```
+Lines starting with `//` are treated as comments. They are used to delineate the chunks and to provide informational notes to the user. The chunk-level timestamps in these comments are for reference only and should not be edited.
 
-*   **`start_time` / `end_time`:** Time-stamps in `MM:SS.ms` format (e.g., `00:01.234`).
+Each editable line corresponds to an audio clip and follows this format:
+`[start_time] text [end_time]`
+
+*   **`start_time` / `end_time`:** Time-stamps in `MM:SS.ms` format (e.g., `00:01.234`). **Important:** All timestamps are absolute, relative to the beginning of the original audio file.
 *   **`text`:** The transcribed text for the clip.
 
-Lines starting with `//` are treated as comments and are ignored during processing.
+**Example Vim Interface (`.shutri` file):**
+
+```vim
+" Project: podcast_episode_1.mp3
+"
+" Keybindings:
+"  <Leader>p : Play current clip (preview your edit)
+"  <Leader>c : Play current chunk (hear the original audio)
+" =============================================================================
+
+// --- CHUNK 1 (00:00.000 - 00:30.000) ---
+[00:01.123] This is a valid clip. [00:05.450]
+[00:28.200] This clip extends beyond the chunk boundary due to AI drift. [00:31.500] // INFO: Review recommended.
+
+// --- CHUNK 2 (00:30.000 - 01:00.000) ---
+[00:30.500] ...and from there I moved to the city. [00:36.900]
+```
+*The Vim plugin will highlight the line containing the `// INFO` comment to draw the user's attention to it for review.*
 
 ### 4.2. Operations
 
-#### 4.2.1. Import (`shutri -i <file>`)
+#### 4.2.1. Import (`shutri -i <file.mp3>`)
 
-1.  The user specifies an audio file to import.
+1.  The user specifies an MP3 audio file to import.
 2.  `shutri` copies the file to `~/.shutri/imports/`.
-3.  The audio file is split into smaller chunks (e.g., 30 seconds each) using SoX. This is done to improve the efficiency of transcription and to allow for parallel processing.
+3.  The audio file is split into smaller chunks (e.g., 30 seconds each) using SoX.
 
 **Pseudocode (Rust):**
 
 ```rust
 mod audio {
     fn import_audio(file_path: &Path) -> Result<Project, Error> {
-        // 1. Validate file format (mp3, wav, etc.)
+        // 1. Validate file is in MP3 format.
         // 2. Create a new project directory in `~/.shutri/projects/`
         // 3. Copy the original file to `~/.shutri/imports/`
         // 4. Use SoX to split the audio into chunks
-        //    - `sox <input_file> <output_chunk> trim <start> <duration>`
+        //    - `sox <input.mp3> <output_chunk.mp3> trim <start> <duration>`
         // 5. Return a new `Project` struct
     }
 }
@@ -138,8 +158,9 @@ mod audio {
 #### 4.2.2. Transcribe (`shutri -t <file>`)
 
 1.  `shutri` sends each audio chunk to the Gemini API for transcription.
-2.  The transcription results, including time-stamps, are cached in `~/.shutri/cache/`. The cache key will be a hash of the audio chunk's content.
-3.  A `.shutri` project file is generated from the cached transcriptions.
+2.  The transcription results are cached in `~/.shutri/cache/`.
+3.  Before writing the `.shutri` file, a boundary check is performed. If a clip's end time exceeds its chunk's end time, an informational comment (`// INFO: Review recommended.`) is appended to the line.
+4.  The final, structured `.shutri` project file is generated.
 
 **Pseudocode (Rust):**
 
@@ -147,12 +168,10 @@ mod audio {
 mod transcription {
     async fn transcribe_project(project: &mut Project) -> Result<(), Error> {
         // 1. For each audio chunk in the project:
-        // 2.   - Calculate the hash of the chunk file.
-        // 3.   - Check if a cached transcription exists for this hash.
-        // 4.   - If not, send the chunk to the Gemini API.
-        // 5.   - Store the transcription result in the cache.
-        // 6.   - Add the transcription to the `Project` struct.
-        // 7. Write the `Project` data to a `.shutri` file.
+        // 2.   - Get transcription from cache or Gemini API.
+        // 3. For each clip in the transcription:
+        // 4.   - If clip_end_time > chunk_end_time, append informational comment.
+        // 5. Write the `Project` data to a `.shutri` file.
     }
 }
 ```
@@ -160,36 +179,36 @@ mod transcription {
 #### 4.2.3. Edit (`shutri -v <file>`)
 
 1.  `shutri` invokes Vim, opening the `.shutri` project file.
-2.  The user edits the file, adjusting time-stamps, deleting lines (clips), or adding comments.
-3.  The Vim plugin provides keybindings for enhanced functionality:
-    *   `<Leader>p`: Play the current clip.
-    *   `<Leader>P`: Play all clips from the current one to the end.
-    *   `<Leader>s`: Stop playback.
-    *   `<Leader>[`, `<Leader>]`: Nudge the start time of the current clip.
-    *   `<Leader>{`, `<Leader>}`: Nudge the end time of the current clip.
+2.  The user edits the file, adjusting clip time-stamps, deleting lines, or adding personal comments.
+3.  The Vim plugin provides keybindings for an enhanced editing workflow:
+    *   **Playback Controls:**
+        *   `<Leader>c`: **Play Chunk**. Plays the original, unmodified audio chunk.
+        *   `<Leader>p`: **Play Clip**. Plays the audio segment for the current line to preview an edit.
+        *   `<Leader>s`: Stop all playback.
+    *   **Timestamp Nudging:**
+        *   `<Leader>[`, `<Leader>]`: Nudge the start time of the current clip.
+        *   `<Leader>{`, `<Leader>}`: Nudge the end time of the current clip.
 
 **Vimscript (for the plugin):**
 
 ```vim
-" Play the current clip
+" Play the current clip (previews the edit)
 nnoremap <Leader>p :call ShutriPlayClip()<CR>
 
-function! ShutriPlayClip()
-    " Get the current line
-    let line = getline('.')
-    " Parse start and end times
-    " ...
-    " Call SoX to play the clip
-    " system('sox <input_file> -d trim <start> =<end>')
-endfunction
+" Play the current chunk (provides context)
+nnoremap <Leader>c :call ShutriPlayChunk()<CR>
+
+" Highlight lines needing review
+highlight ShutriReview ctermbg=yellow guibg=yellow
+match ShutriReview /\/\/ INFO: Review recommended./
 ```
 
 #### 4.2.4. Export (`shutri -e <file>`)
 
-1.  `shutri` reads the edited `.shutri` project file.
-2.  It uses SoX to extract each audio clip from the original imported file based on the (potentially modified) time-stamps.
-3.  The extracted clips are concatenated in the order they appear in the `.shutri` file.
-4.  The final, combined audio is saved to the `~/.shutri/exports/` directory.
+1.  `shutri` reads the edited `.shutri` project file, ignoring all comment lines.
+2.  It uses SoX to extract each audio clip from the original imported file based on the final time-stamps.
+3.  The extracted clips are concatenated in order.
+4.  The final, combined audio is saved to the `~/.shutri/exports/` directory as an MP3 file.
 
 **Pseudocode (Rust):**
 
@@ -200,10 +219,10 @@ mod audio {
         // 2. For each line (clip) in the file:
         // 3.   - Parse the start and end times.
         // 4.   - Use SoX to extract the audio segment:
-        //        `sox <original_file> <clip_file> trim <start> =<end>`
+        //        `sox <original.mp3> <clip.mp3> trim <start> =<end>`
         // 5. Create a list of the extracted clip files.
         // 6. Use SoX to concatenate the clips:
-        //    `sox <clip1> <clip2> ... <output_file>`
+        //    `sox <clip1.mp3> <clip2.mp3> ... <output.mp3>`
         // 7. Clean up the temporary clip files.
     }
 }
@@ -215,15 +234,22 @@ mod audio {
 
 ### 5.1. Invocation
 
-The primary invocation is `shutri <file>`. This will:
+The primary invocation is `shutri <file.mp3>`. This will:
 
-1.  Detect if a project for `<file>` already exists.
-2.  If not, it will automatically import and transcribe the file in the background, showing progress on the command line.
+1.  Detect if a project for the file already exists.
+2.  If not, it will automatically import and transcribe the file.
 3.  Once transcription is complete, it will open the project in Vim.
+
+#### 5.1.1. User Experience
+
+For long-running operations like import and transcription, the CLI must provide clear, continuous feedback to the user.
+
+*   **Status Updates:** Display simple, human-readable messages for each major step (e.g., "Importing audio...", "Splitting into 3 chunks...", "Transcribing chunk 1 of 3...").
+*   **Engaging Feedback:** During the transcription phase, which can be time-consuming, the CLI should display a series of engaging, humorous, or informative messages to keep the user entertained and aware that the process is still running. This is similar to the experience provided by modern interactive CLIs.
 
 ### 5.2. Command-Line Options
 
-*   `shutri -i, --import <file>`: Import an audio file.
+*   `shutri -i, --import <file.mp3>`: Import an audio file.
 *   `shutri -t, --transcribe <project>`: Transcribe an imported project.
 *   `shutri -e, --export <project>`: Export a project to a final audio file.
 *   `shutri -v, --edit <project>`: Open a project in Vim for editing.
@@ -251,8 +277,7 @@ The `shutri` crate will be organized into the following modules:
 
 Errors will be handled using the `anyhow` and `thiserror` crates. A custom `Error` enum will be defined to represent all possible error conditions, such as:
 
-*   File not found.
-*   Invalid audio format.
+*   File not found or invalid format (not MP3).
 *   SoX command failed.
 *   API request failed.
 *   Invalid project file format.
@@ -277,99 +302,95 @@ The testing strategy will include:
 
 *   **Unit Tests:** For individual functions in each module (e.g., parsing time-stamps, validating project files).
 *   **Integration Tests:** For workflows that involve multiple modules (e.g., the full import-transcribe-export process). These tests will use mock objects for the Gemini API to avoid making real network requests.
-*   **End-to-End Tests:** A suite of shell scripts that will test the `shutri` CLI from the user's perspective, using small, sample audio files.
+*   **End-to-End Tests:** A suite of shell scripts that will test the `shutri` CLI from the user's perspective, using small, sample MP3 files.
 
 ---
 
 ## 10. Development Plan
 
-This project will be developed in a series of testable milestones. Each milestone will result in a functional piece of the application that can be tested independently via the CLI.
+This project will be developed in a series of testable milestones. Each milestone builds directly on the previous one, ensuring a logical and verifiable development process that delivers interactive value early.
 
 ### Milestone 1: Project Setup and Core Data Structures
 
 *   **Goal:** Initialize the Rust project and define the core data structures.
 *   **Tasks:**
     *   Run `cargo init` to create the project structure.
-    *   Add initial dependencies to `Cargo.toml` (`clap`, `serde`, `anyhow`, `thiserror`).
-    *   Create the module files as outlined in Section 6.
-    *   Define the `Project` struct in `project.rs` and other core data types.
-*   **Testable Outcome:**
-    *   The project compiles successfully.
-    *   Unit tests for the `Project` struct and its methods pass.
+    *   Add initial dependencies to `Cargo.toml`.
+    *   Define the `Project` struct and other core data types.
+*   **Testable Outcome:** The project compiles successfully. Unit tests for the data structures pass.
 
 ### Milestone 2: Audio Import and Chunking
 
-*   **Goal:** Implement the ability to import an audio file and split it into manageable chunks.
+*   **Goal:** Implement the ability to import an MP3 file and split it into manageable chunks.
 *   **Tasks:**
     *   Implement the `import_audio` function in `audio.rs`.
     *   Use `std::process::Command` to call the `sox` command-line tool.
-    *   Create the necessary directory structure in `~/.shutri/`.
     *   Implement the `shutri -i, --import` CLI command.
-*   **Testable Outcome:**
-    *   Run `shutri --import <path/to/audio.mp3>`.
-    *   Verify that the audio file is copied to `~/.shutri/imports/`.
-    *   Verify that the audio file is split into multiple chunk files in a corresponding project directory.
+*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory.
 
-### Milestone 3: Mocked Transcription
+### Milestone 3: Mocked Transcription File Generation
 
-*   **Goal:** Generate a `.shutri` project file from an imported audio project using a mocked transcription service.
+*   **Goal:** Generate a `.shutri` project file with valid, mock data corresponding to a real audio project.
 *   **Tasks:**
-    *   Implement the `transcribe_project` function in `transcription.rs`.
-    *   Create a mock transcription function that returns dummy text and time-stamps for each audio chunk.
-    *   Implement the `shutri -t, --transcribe` CLI command.
-*   **Testable Outcome:**
-    *   Run `shutri --transcribe <project_name>`.
-    *   Verify that a `<project_name>.shutri` file is created.
-    *   Verify that the `.shutri` file contains lines in the format `[start_time] text [end_time]`.
+    *   Implement a mock transcription function that generates dummy text but with **valid timestamps** that fall within the chunk boundaries of a real project from Milestone 2.
+    *   Implement the boundary check logic to append informational comments.
+*   **Testable Outcome:** Running `shutri --transcribe --mock <project_name>` generates a correctly formatted `.shutri` file that is ready for interactive use.
 
-### Milestone 4: Audio Export
+### Milestone 4: Vim Integration & Playback
 
-*   **Goal:** Combine audio clips based on a `.shutri` file to produce a final audio file.
+*   **Goal:** Create the core interactive editing loop within Vim.
+*   **Tasks:**
+    *   Create the basic Vim plugin (`shutri.vim`) with highlight and match rules.
+    *   Implement the `ShutriPlayClip()` and `ShutriPlayChunk()` functions in Vimscript, which will call the main `shutri` binary.
+    *   Implement the `shutri -v, --edit` command.
+*   **Testable Outcome:** Running `shutri --edit <project_name>` opens Vim. Boundary-crossing clips are highlighted. `<Leader>p` and `<Leader>c` play the correct audio from the real audio file.
+
+### Milestone 5: Audio Export
+
+*   **Goal:** Combine the edited audio clips into a final MP3 file.
 *   **Tasks:**
     *   Implement the `export_project` function in `audio.rs`.
-    *   Parse the `.shutri` file to get the list of clips and their time-stamps.
-    *   Use `sox` to extract and concatenate the audio clips.
     *   Implement the `shutri -e, --export` CLI command.
-*   **Testable Outcome:**
-    *   Run `shutri --export <project_name>`.
-    *   Verify that a final audio file is created in `~/.shutri/exports/`.
-    *   Listen to the exported audio to ensure the clips are combined correctly.
-
-### Milestone 5: Vim Integration (Basic Playback)
-
-*   **Goal:** Allow the user to play back individual audio clips from within Vim.
-*   **Tasks:**
-    *   Create a basic Vim plugin (`shutri.vim`).
-    *   Implement the `ShutriPlayClip()` function in Vimscript.
-    *   This function will call `shutri` with special arguments to play a specific time range of the original audio file.
-    *   Implement the `shutri -v, --edit` command to open the project in Vim.
-*   **Testable Outcome:**
-    *   Run `shutri --edit <project_name>`.
-    *   Inside Vim, place the cursor on a clip line and press `<Leader>p`.
-    *   Verify that the corresponding audio clip plays.
+*   **Testable Outcome:** Running `shutri --export <project_name>` on a (mock or real) edited project generates a final MP3 file. The audio content matches the edits made.
 
 ### Milestone 6: Real Transcription Service
 
 *   **Goal:** Replace the mock transcription service with a real implementation using the Gemini API.
 *   **Tasks:**
     *   Use the `reqwest` crate to make HTTP requests to the Gemini API.
-    *   Implement API key management and configuration (`~/.config/shutri/config.toml`).
-    *   Implement the caching logic described in Section 4.2.2.
-*   **Testable Outcome:**
-    *   Configure the Gemini API key.
-    *   Run `shutri --transcribe <project_name> --no-cache`.
-    *   Verify that the `.shutri` file is populated with a real transcription of the audio.
+    *   Implement API key management and configuration.
+    *   Implement caching logic.
+*   **Testable Outcome:** Running `shutri --transcribe <project_name> --no-cache` populates the `.shutri` file with a real transcription.
 
 ### Milestone 7: Polish and Finalize
 
 *   **Goal:** Finalize the CLI, implement robust error handling, and improve the user experience.
 *   **Tasks:**
-    *   Implement the main `shutri <file>` invocation.
+    *   Implement the main `shutri <file.mp3>` invocation.
+    *   Implement the engaging command-line feedback as described in Section 5.1.1.
     *   Add comprehensive error handling and user-friendly error messages.
-    *   Implement the remaining CLI options (`--debug`, etc.).
-    *   Write end-to-end tests using shell scripts.
-    *   Create documentation (README, user guide).
-*   **Testable Outcome:**
-    *   The application is fully functional and robust.
-    *   All CLI commands and options work as expected.
-    *   The end-to-end test suite passes.
+    *   Write end-to-end tests and create documentation.
+*   **Testable Outcome:** The application is fully functional, robust, and user-friendly. The end-to-end test suite passes.
+---
+
+## 11. Future Directions
+
+This section outlines potential features and enhancements that could be considered for future versions of `shutri`, beyond the core functionality described in this document.
+
+### 11.1. Programmable Editing & Effects
+
+While the initial version focuses on manual, precise editing, the text-based nature of the `.shutri` file opens up powerful possibilities for automation. Future versions could introduce features for "programmable editing," where the user can apply changes to multiple clips at once using scripts or commands.
+
+Examples include:
+
+*   **Automated Filler Word Removal:** A command to find and delete all clips that only contain "um," "uh," or other specified filler words.
+*   **Silence Adjustment:** A function to automatically shorten or lengthen silences between clips to meet a specific duration.
+*   **Applying Audio Effects:** The `.shutri` format could be extended to support applying SoX effects to specific clips.
+
+### 11.2. Advanced Vim Integration
+
+The Vim plugin could be enhanced with more sophisticated features, such as:
+
+*   **Visual Highlighting:** Highlighting the currently playing clip or chunk in the Vim buffer.
+*   **Multi-Clip Operations:** Allowing users to visually select multiple lines (clips) and perform actions on them, such as playing them in sequence or deleting them all at once.
+*   **Speaker Identification:** If the transcription service provides speaker diarization, this information could be displayed in the `.shutri` file, allowing for speaker-specific edits.
