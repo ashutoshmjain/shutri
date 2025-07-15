@@ -396,9 +396,13 @@ The project's quality process is designed for automation, providing clear, conti
 
 ## 11. Development Plan
 
-This project will be developed in a series of testable milestones. Each milestone builds directly on the previous one, ensuring a logical and verifiable development process that delivers interactive value early.
+This project will be developed in three distinct phases: **Prototype**, **Dev**, and **User**. Each phase consists of a series of testable milestones. This phased approach allows us to manage quality, gather feedback, and track our primary metric: **Defect Density**. Our goal is to reduce defect density by 75% in each successive phase.
 
-### Milestone 1: Project Setup and Core Data Structures
+### Phase 1: Prototype
+
+This phase focuses on building the core functionality of `shutri` and validating the text-based audio editing concept. The milestones are designed to create a functional, end-to-end proof of concept.
+
+#### Milestone 1: Project Setup and Core Data Structures
 
 *   **Goal:** Initialize the Rust project and define the core data structures.
 *   **Tasks:**
@@ -407,7 +411,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Define the `Project` struct and other core data types.
 *   **Testable Outcome:** The project compiles successfully. Unit tests for the data structures pass. The milestone's code passes the documentation standard check.
 
-### Milestone 2: Audio Import and Chunking
+#### Milestone 2: Audio Import and Chunking
 
 *   **Goal:** Implement the ability to import an MP3 file and split it into manageable chunks.
 *   **Tasks:**
@@ -416,7 +420,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement the `shutri -i, --import` CLI command.
 *   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory. The milestone's code passes the documentation standard check.
 
-### Milestone 3: Mocked Transcription File Generation
+#### Milestone 3: Mocked Transcription File Generation
 
 *   **Goal:** Generate a `.shutri` project file with valid, mock data corresponding to a real audio project.
 *   **Tasks:**
@@ -424,7 +428,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement the boundary check logic to append informational comments.
 *   **Testable Outcome:** Running `shutri --transcribe --mock <project_name>` generates a correctly formatted `.shutri` file that is ready for interactive use. The milestone's code passes the documentation standard check.
 
-### Milestone 4: Vim Integration & Playback
+#### Milestone 4: Vim Integration & Playback
 
 *   **Goal:** Create the core interactive editing loop within Vim.
 *   **Tasks:**
@@ -433,7 +437,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement the `shutri -v, --edit` command.
 *   **Testable Outcome:** Running `shutri --edit <project_name>` opens Vim. Boundary-crossing clips are highlighted. `<Leader>p` and `<Leader>c` play the correct audio from the real audio file. The milestone's code passes the documentation standard check.
 
-### Milestone 5: Audio Export
+#### Milestone 5: Audio Export
 
 *   **Goal:** Combine the edited audio clips into a final MP3 file.
 *   **Tasks:**
@@ -441,7 +445,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement the `shutri -e, --export` CLI command.
 *   **Testable Outcome:** Running `shutri --export <project_name>` on a (mock or real) edited project generates a final MP3 file. The audio content matches the edits made. The milestone's code passes the documentation standard check.
 
-### Milestone 6: Real Transcription Service & Authentication
+#### Milestone 6: Real Transcription Service & Authentication
 
 *   **Goal:** Implement the real transcription service, including both manual and interactive authentication methods.
 *   **Tasks:**
@@ -452,7 +456,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement caching logic.
 *   **Testable Outcome:** Running `shutri --transcribe <project_name> --no-cache` populates the `.shutri` file with a real transcription, using either authentication method. The milestone's code passes the documentation standard check.
 
-### Milestone 7: Polish and Finalize
+#### Milestone 7: Polish and Finalize
 
 *   **Goal:** Finalize the CLI, implement robust error handling, and improve the user experience.
 *   **Tasks:**
@@ -462,6 +466,60 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Create the `install.sh` script with dependency checks.
     *   Write end-to-end tests and create documentation.
 *   **Testable Outcome:** The application is fully functional, robust, and user-friendly. The end-to-end test suite passes. The milestone's code passes the documentation standard check.
+
+### Phase 2: Dev
+
+This phase focuses on expanding the features, stability, and reach of the application. We will build upon the validated prototype to create a more robust and feature-rich tool.
+
+#### Milestone 8: Alpha Release & Community Feedback
+
+*   **Goal:** Package the application for an alpha release and gather initial feedback from a small group of technical users.
+*   **Tasks:**
+    *   Create a stable `v0.1.0-alpha` release.
+    *   Write comprehensive documentation for installation and usage.
+    *   Recruit alpha testers from relevant online communities (e.g., Rust forums, podcasting groups).
+*   **Testable Outcome:** At least 10 users have successfully installed and used `shutri` to edit a real audio file. A feedback survey is completed by at least 5 users.
+
+#### Milestone 9: Feature Complete & API Stability
+
+*   **Goal:** Implement the "Future Directions" features and stabilize the internal API.
+*   **Tasks:**
+    *   Implement programmable editing features (e.g., filler word removal).
+    *   Enhance the Vim plugin with advanced features (e.g., visual highlighting).
+    *   Refactor the codebase to establish a stable internal API for future development.
+*   **Testable Outcome:** The new features are covered by integration tests. The API is documented and versioned.
+
+#### Milestone 10: Cross-Platform Support
+
+*   **Goal:** Add support for macOS and Windows.
+*   **Tasks:**
+    *   Create dedicated installation scripts (e.g., Homebrew for macOS, Chocolatey/Scoop for Windows).
+    *   Set up CI/CD pipelines to test the application on all three platforms (Linux, macOS, Windows).
+    *   Resolve any platform-specific issues.
+*   **Testable Outcome:** The application can be successfully installed and run on all three target platforms. The end-to-end test suite passes on each platform.
+
+### Phase 3: User
+
+This phase focuses on preparing the application for a wider audience, including non-technical users. The emphasis is on user experience, stability, and long-term support.
+
+#### Milestone 11: Beta Release & User Acceptance Testing (UAT)
+
+*   **Goal:** A wider public beta to gather feedback from non-technical users.
+*   **Tasks:**
+    *   Create a `v0.9.0-beta` release.
+    *   Simplify the installation and setup process.
+    *   Create user-friendly documentation and tutorials.
+    *   Actively solicit feedback through a public beta program.
+*   **Testable Outcome:** The application is successfully used by at least 50 beta testers. The defect density is at least 75% lower than in the Dev phase.
+
+#### Milestone 12: General Availability (GA) & Long-Term Support (LTS)
+
+*   **Goal:** The official 1.0 release, with a commitment to long-term support.
+*   **Tasks:**
+    *   Create the `v1.0.0` release.
+    *   Establish a clear process for bug reporting and feature requests.
+    *   Define a long-term support (LTS) policy.
+*   **Testable Outcome:** The `v1.0.0` release is published. The project has a public issue tracker and a defined support plan. The defect density is at least 75% lower than in the Beta phase.
 
 ---
 

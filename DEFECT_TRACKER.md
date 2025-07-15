@@ -2,6 +2,13 @@
 
 This document tracks primary defects and formal approvals for each milestone of the `shutri` project, in accordance with the Quality and Defect Management strategy outlined in `tech-specs.md`.
 
+## Quality Metric: Defect Density
+
+The key metric we will track to measure quality across the project lifecycle is **Defect Density**.
+
+*   **Formula:** `Defect Density = (Number of Primary Defects) / (Lines of Code)`
+*   **Goal:** We aim to reduce the defect density by **75%** in each successive project phase (Prototype -> Dev -> User). This goal reflects our commitment to a "shift-left" quality strategy, where we focus on improving our processes and code quality over time.
+
 ## Instructions
 
 1.  **Milestone Approval:** Before starting a new milestone, the "Testable Outcome" for the previous milestone must be met and signed off below.
@@ -9,119 +16,132 @@ This document tracks primary defects and formal approvals for each milestone of 
 
 ---
 
-## Milestone 1: Project Setup and Core Data Structures
+## Phase 1: Prototype
 
-### Approval
+### Milestone 1: Project Setup and Core Data Structures
 
-*   **Testable Outcome:** The project compiles successfully. Unit tests for the data structures pass. The milestone's code passes the documentation standard check (`cargo doc --fail-on-warnings`).
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M1-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
 
----
+### Milestone 2: Audio Import and Chunking
 
-## Milestone 2: Audio Import and Chunking
-
-### Approval
-
-*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory. The milestone's code passes the documentation standard check.
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M2-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
 
----
+### Milestone 3: Mocked Transcription File Generation
 
-## Milestone 3: Mocked Transcription File Generation
-
-### Approval
-
-*   **Testable Outcome:** Running `shutri --transcribe --mock <project_name>` generates a correctly formatted `.shutri` file that is ready for interactive use. The milestone's code passes the documentation standard check.
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M3-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
 
----
+### Milestone 4: Vim Integration & Playback
 
-## Milestone 4: Vim Integration & Playback
-
-### Approval
-
-*   **Testable Outcome:** Running `shutri --edit <project_name>` opens Vim. Boundary-crossing clips are highlighted. `<Leader>p` and `<Leader>c` play the correct audio from the real audio file. The milestone's code passes the documentation standard check.
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M4-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
 
----
+### Milestone 5: Audio Export
 
-## Milestone 5: Audio Export
-
-### Approval
-
-*   **Testable Outcome:** Running `shutri --export <project_name>` on a (mock or real) edited project generates a final MP3 file. The audio content matches the edits made. The milestone's code passes the documentation standard check.
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M5-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
 
----
+### Milestone 6: Real Transcription Service & Authentication
 
-## Milestone 6: Real Transcription Service & Authentication
-
-### Approval
-
-*   **Testable Outcome:** Running `shutri --transcribe <project_name> --no-cache` populates the `.shutri` file with a real transcription, using either authentication method. The milestone's code passes the documentation standard check.
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M6-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
 
----
+### Milestone 7: Polish and Finalize
 
-## Milestone 7: Polish and Finalize
-
-### Approval
-
-*   **Testable Outcome:** The application is fully functional, robust, and user-friendly. The end-to-end test suite passes. The milestone's code passes the documentation standard check.
-*   **Status:** PENDING
+*   **Approval Status:** PENDING
 *   **Approved By:** `(Your Name/Handle)`
 *   **Date:** `(YYYY-MM-DD)`
-
-### Defect Log
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
 | M7-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
+
+---
+
+## Phase 2: Dev
+
+### Milestone 8: Alpha Release & Community Feedback
+
+*   **Approval Status:** PENDING
+*   **Approved By:** `(Your Name/Handle)`
+*   **Date:** `(YYYY-MM-DD)`
+
+| Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
+| :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
+| M8-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
+
+### Milestone 9: Feature Complete & API Stability
+
+*   **Approval Status:** PENDING
+*   **Approved By:** `(Your Name/Handle)`
+*   **Date:** `(YYYY-MM-DD)`
+
+| Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
+| :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
+| M9-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
+
+### Milestone 10: Cross-Platform Support
+
+*   **Approval Status:** PENDING
+*   **Approved By:** `(Your Name/Handle)`
+*   **Date:** `(YYYY-MM-DD)`
+
+| Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
+| :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
+| M10-001   | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
+
+---
+
+## Phase 3: User
+
+### Milestone 11: Beta Release & User Acceptance Testing (UAT)
+
+*   **Approval Status:** PENDING
+*   **Approved By:** `(Your Name/Handle)`
+*   **Date:** `(YYYY-MM-DD)`
+
+| Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
+| :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
+| M11-001   | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
+
+### Milestone 12: General Availability (GA) & Long-Term Support (LTS)
+
+*   **Approval Status:** PENDING
+*   **Approved By:** `(Your Name/Handle)`
+*   **Date:** `(YYYY-MM-DD)`
+
+| Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
+| :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
+| M12-001   | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
