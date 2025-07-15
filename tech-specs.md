@@ -6,6 +6,8 @@
 
 `shutri` is a Rust application for text-based audio editing, integrating the audio processing power of SoX (Sound eXchange) with the efficiency of the Vim editor. The core concept is to transform the traditionally cumbersome process of waveform manipulation into a precise, text-driven workflow.
 
+The initial version of `shutri` is specifically targeted for **Debian-based Linux distributions** (e.g., Debian, Ubuntu). All development and testing will be focused on this platform.
+
 The primary workflow consists of four main stages:
 
 1.  **Import:** A user-provided MP3 audio file is imported into the `shutri` library. To ensure timestamp accuracy and enable parallel processing, the audio is immediately split into fixed-duration (e.g., 30-second) "chunks."
@@ -73,8 +75,10 @@ The `shutri` system is composed of three main components:
 
 ### 3.1. Runtime Dependencies (for Users)
 
-*   **SoX (Sound eXchange):** Required for all audio manipulation tasks (clipping, concatenation, playback). Must be installed and available in the system's `PATH`. For Version 1, `shutri` will focus exclusively on the MP3 format.
-*   **Vim/Neovim:** A compatible version of Vim or Neovim is required for the editing workflow.
+*   **`shutri` binary:** The compiled Rust application itself. Users will need to have this binary in their system's `PATH`.
+*   **SoX (Sound eXchange):** Required for all audio manipulation tasks. Must be installed and available in the system's `PATH`. Version 14.4.2 or higher is recommended.
+*   **Vim/Neovim:** A compatible version of Vim (8.0 or higher) or Neovim (0.4 or higher) is required for the editing workflow.
+*   **Configuration File:** Users must configure their Gemini authentication method in `~/.config/shutri/config.toml`. This can be done by adding a developer API key directly or by running `shutri auth login` to sign in with a Google account.
 
 ### 3.2. Development Dependencies (for the Worker)
 
@@ -180,7 +184,8 @@ mod transcription {
 
 1.  `shutri` invokes Vim, opening the `.shutri` project file.
 2.  The user edits the file, adjusting clip time-stamps, deleting lines, or adding personal comments.
-3.  The Vim plugin provides keybindings for an enhanced editing workflow:
+3.  The Vim plugin provides keybindings for an enhanced editing workflow. The core audio processing logic for playback resides in the Rust binary, while the Vimscript functions act as wrappers that gather context from the editor and call the binary with the appropriate arguments.
+
     *   **Playback Controls:**
         *   `<Leader>c`: **Play Chunk**. Plays the original, unmodified audio chunk.
         *   `<Leader>p`: **Play Clip**. Plays the audio segment for the current line to preview an edit.
@@ -188,6 +193,22 @@ mod transcription {
     *   **Timestamp Nudging:**
         *   `<Leader>[`, `<Leader>]`: Nudge the start time of the current clip.
         *   `<Leader>{`, `<Leader>}`: Nudge the end time of the current clip.
+
+**Vimscript and Rust Interaction:**
+
+The Vimscript functions are lightweight. Their job is to read the current line or identify the current chunk and then make a system call to the `shutri` binary.
+
+For example, `ShutriPlayClip()` would be implemented in Vimscript as follows:
+```vim
+" Get the current line, then call the shutri binary to play it.
+" The Rust code handles parsing the line and calling SoX.
+function! ShutriPlayClip()
+    let current_line = getline('.')
+    call system('shutri --play-clip "' . current_line . '"')
+endfunction
+```
+
+The corresponding logic in Rust would parse the `--play-clip` argument, extract the timestamps, and then use SoX to play that specific audio segment.
 
 **Vimscript (for the plugin):**
 
@@ -234,7 +255,7 @@ mod audio {
 
 ### 5.1. Invocation
 
-The primary invocation is `shutri <file.mp3>`. This will:
+Just like vim, the primary invocation is `shutri <file.mp3>`. This will:
 
 1.  Detect if a project for the file already exists.
 2.  If not, it will automatically import and transcribe the file.
@@ -253,6 +274,7 @@ For long-running operations like import and transcription, the CLI must provide 
 *   `shutri -t, --transcribe <project>`: Transcribe an imported project.
 *   `shutri -e, --export <project>`: Export a project to a final audio file.
 *   `shutri -v, --edit <project>`: Open a project in Vim for editing.
+*   `shutri auth login`: Initiates an interactive OAuth 2.0 flow to sign in with a Google account.
 *   `--no-cache`: Force re-transcription, ignoring any cached results.
 *   `--debug`: Enable verbose logging for debugging purposes.
 
@@ -268,7 +290,8 @@ The `shutri` crate will be organized into the following modules:
 *   `audio.rs`: Contains all logic related to audio processing using SoX.
 *   `transcription.rs`: Handles communication with the Gemini API and manages the transcription cache.
 *   `vim.rs`: Logic for interacting with the Vim editor and the associated plugin.
-*   `config.rs`: Manages application configuration (e.g., API keys, paths).
+*   `config.rs`: Manages application configuration.
+*   `auth.rs`: Handles the authentication logic for both API keys and the OAuth 2.0 flow.
 *   `error.rs`: Defines custom error types for the application.
 
 ---
@@ -280,19 +303,54 @@ Errors will be handled using the `anyhow` and `thiserror` crates. A custom `Erro
 *   File not found or invalid format (not MP3).
 *   SoX command failed.
 *   API request failed.
+*   Authentication failed.
 *   Invalid project file format.
 
 Errors will be logged to a debug file (if enabled) and presented to the user in a clear and informative way.
 
 ---
 
-## 8. Configuration
+## 8. Configuration and Authentication
 
-Application configuration will be stored in a file at `~/.config/shutri/config.toml`. This file will contain:
+To provide flexibility and ease of use, `shutri` supports two methods for authenticating with the Gemini API. Configuration is stored at `~/.config/shutri/config.toml`. The `install.sh` script will generate this file with commented-out templates to guide the user.
 
-*   **Gemini API Key:** The user's API key for the transcription service.
-*   **Paths:** The paths to the `shutri` library directories (e.g., `projects`, `imports`).
-*   **Editor:** The command to invoke the user's preferred editor (e.g., `vim`, `nvim`).
+### 8.1. Method 1: Developer API Key (Manual)
+
+For developers and users who prefer to manage keys manually, a static API key can be placed directly in the configuration file.
+
+### 8.2. Method 2: Sign in with Google (Interactive)
+
+For a more user-friendly experience, `shutri` provides a CLI-based OAuth 2.0 flow. The user can run `shutri auth login`, which will:
+1.  Open the default web browser to a Google authentication page.
+2.  Ask the user to grant `shutri` permission to access the Gemini API on their behalf.
+3.  Receive an authorization token and store it securely in the `config.toml` file for future API calls.
+
+This method avoids the need for users to generate and manage their own API keys.
+
+### 8.3. Sample `config.toml`
+
+The `install.sh` script will create the following file at `~/.config/shutri/config.toml`:
+
+```toml
+# This is the configuration file for shutri.
+# Please choose one of the authentication methods below.
+
+# --- Method 1: API Key ---
+# For developers. Paste your Gemini API key here.
+# api_key = "YOUR_API_KEY_HERE"
+
+# --- Method 2: Sign in with Google ---
+# For most users. Run 'shutri auth login' to populate this automatically.
+# [oauth_token]
+# access_token = "..."
+# refresh_token = "..."
+# expires_in = "..."
+
+# --- General Settings ---
+
+# The command to invoke your preferred editor (e.g., "vim", "nvim").
+editor = "vim"
+```
 
 ---
 
@@ -302,7 +360,7 @@ The testing strategy will include:
 
 *   **Unit Tests:** For individual functions in each module (e.g., parsing time-stamps, validating project files).
 *   **Integration Tests:** For workflows that involve multiple modules (e.g., the full import-transcribe-export process). These tests will use mock objects for the Gemini API to avoid making real network requests.
-*   **End-to-End Tests:** A suite of shell scripts that will test the `shutri` CLI from the user's perspective, using small, sample MP3 files.
+*   **End-to-End Tests:** A suite of shell scripts that will test the `shutri` CLI from the user's perspective, using small, sample MP3 files. All end-to-end tests will be conducted on a reference Debian-based Linux environment to ensure stability and correctness on the target platform.
 
 ---
 
@@ -317,7 +375,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Run `cargo init` to create the project structure.
     *   Add initial dependencies to `Cargo.toml`.
     *   Define the `Project` struct and other core data types.
-*   **Testable Outcome:** The project compiles successfully. Unit tests for the data structures pass.
+*   **Testable Outcome:** The project compiles successfully. Unit tests for the data structures pass. The milestone's code passes the documentation standard check.
 
 ### Milestone 2: Audio Import and Chunking
 
@@ -326,7 +384,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement the `import_audio` function in `audio.rs`.
     *   Use `std::process::Command` to call the `sox` command-line tool.
     *   Implement the `shutri -i, --import` CLI command.
-*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory.
+*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory. The milestone's code passes the documentation standard check.
 
 ### Milestone 3: Mocked Transcription File Generation
 
@@ -334,7 +392,7 @@ This project will be developed in a series of testable milestones. Each mileston
 *   **Tasks:**
     *   Implement a mock transcription function that generates dummy text but with **valid timestamps** that fall within the chunk boundaries of a real project from Milestone 2.
     *   Implement the boundary check logic to append informational comments.
-*   **Testable Outcome:** Running `shutri --transcribe --mock <project_name>` generates a correctly formatted `.shutri` file that is ready for interactive use.
+*   **Testable Outcome:** Running `shutri --transcribe --mock <project_name>` generates a correctly formatted `.shutri` file that is ready for interactive use. The milestone's code passes the documentation standard check.
 
 ### Milestone 4: Vim Integration & Playback
 
@@ -343,7 +401,7 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Create the basic Vim plugin (`shutri.vim`) with highlight and match rules.
     *   Implement the `ShutriPlayClip()` and `ShutriPlayChunk()` functions in Vimscript, which will call the main `shutri` binary.
     *   Implement the `shutri -v, --edit` command.
-*   **Testable Outcome:** Running `shutri --edit <project_name>` opens Vim. Boundary-crossing clips are highlighted. `<Leader>p` and `<Leader>c` play the correct audio from the real audio file.
+*   **Testable Outcome:** Running `shutri --edit <project_name>` opens Vim. Boundary-crossing clips are highlighted. `<Leader>p` and `<Leader>c` play the correct audio from the real audio file. The milestone's code passes the documentation standard check.
 
 ### Milestone 5: Audio Export
 
@@ -351,16 +409,18 @@ This project will be developed in a series of testable milestones. Each mileston
 *   **Tasks:**
     *   Implement the `export_project` function in `audio.rs`.
     *   Implement the `shutri -e, --export` CLI command.
-*   **Testable Outcome:** Running `shutri --export <project_name>` on a (mock or real) edited project generates a final MP3 file. The audio content matches the edits made.
+*   **Testable Outcome:** Running `shutri --export <project_name>` on a (mock or real) edited project generates a final MP3 file. The audio content matches the edits made. The milestone's code passes the documentation standard check.
 
-### Milestone 6: Real Transcription Service
+### Milestone 6: Real Transcription Service & Authentication
 
-*   **Goal:** Replace the mock transcription service with a real implementation using the Gemini API.
+*   **Goal:** Implement the real transcription service, including both manual and interactive authentication methods.
 *   **Tasks:**
-    *   Use the `reqwest` crate to make HTTP requests to the Gemini API.
-    *   Implement API key management and configuration.
+    *   Implement the `auth.rs` module.
+    *   Implement the `shutri auth login` command with a full OAuth 2.0 flow.
+    *   Update `transcription.rs` to use credentials from `config.rs`, supporting both API keys and OAuth tokens.
+    *   Use the `reqwest` crate to make authenticated HTTP requests to the Gemini API.
     *   Implement caching logic.
-*   **Testable Outcome:** Running `shutri --transcribe <project_name> --no-cache` populates the `.shutri` file with a real transcription.
+*   **Testable Outcome:** Running `shutri --transcribe <project_name> --no-cache` populates the `.shutri` file with a real transcription, using either authentication method. The milestone's code passes the documentation standard check.
 
 ### Milestone 7: Polish and Finalize
 
@@ -369,15 +429,89 @@ This project will be developed in a series of testable milestones. Each mileston
     *   Implement the main `shutri <file.mp3>` invocation.
     *   Implement the engaging command-line feedback as described in Section 5.1.1.
     *   Add comprehensive error handling and user-friendly error messages.
+    *   Create the `install.sh` script with dependency checks.
     *   Write end-to-end tests and create documentation.
-*   **Testable Outcome:** The application is fully functional, robust, and user-friendly. The end-to-end test suite passes.
+*   **Testable Outcome:** The application is fully functional, robust, and user-friendly. The end-to-end test suite passes. The milestone's code passes the documentation standard check.
+
 ---
 
-## 11. Future Directions
+## 11. Installation
+
+To ensure a smooth setup, `shutri` will be distributed with an installation script (`install.sh`). **This script is designed specifically for Debian-based Linux distributions (e.g., Debian, Ubuntu).**
+
+### 11.1. Installation Script (`install.sh`)
+
+The script will perform the following steps in order:
+
+1.  **Dependency Check:**
+    *   **Check for SoX:** It will run `command -v sox` to ensure SoX is installed and in the `PATH`. If not found, it will exit with a message like: `Error: SoX is not installed. Please install it via your package manager (e.g., 'sudo apt install sox' on Debian/Ubuntu) and try again.` It will also check `sox --version` to suggest an update if the version is too old.
+    *   **Check for Vim/Neovim:** It will check for `nvim` first, then `vim`. If neither is found, it will exit with an error. It will also check the version (e.g., `vim --version`) to ensure it meets the minimum requirements.
+
+2.  **Build the Binary:**
+    *   The script will run `cargo build --release` to compile the `shutri` binary. This ensures the user has the most performant version.
+
+3.  **Install Files:**
+    *   **Binary:** The compiled binary will be copied to a standard user binary location, such as `$HOME/.local/bin`. The script will check if this directory is in the user's `PATH` and provide instructions if it is not.
+    *   **Vim Plugin:** The `shutri.vim` file will be copied to the appropriate Vim/Neovim plugin directory (e.g., `~/.vim/plugin/` or `~/.config/nvim/plugin/`).
+
+4.  **Configuration:**
+    *   The script will create the necessary directories under `~/.shutri/` and `~/.config/shutri/`.
+    *   It will create a default `config.toml` file based on the template in Section 8.3, guiding the user on how to proceed with authentication.
+
+### 11.2. Uninstallation
+
+An `uninstall.sh` script will also be provided to remove the `shutri` binary, Vim plugin, and configuration files cleanly.
+
+---
+
+## 12. Documentation Plan
+
+Given that `shutri` integrates several external tools and APIs (SoX, Vim, Gemini), and is intended to serve as a learning resource, documentation is a first-class deliverable, not an afterthought. Our documentation strategy is designed to make the codebase exceptionally clear, particularly for novice Rust developers or those unfamiliar with the integrated components.
+
+### 12.1. Philosophy: Documentation as a Tutorial
+
+The entire codebase will be documented with the mindset of creating a tutorial. We will assume the reader is a motivated beginner. The documentation for any given module, struct, or function should not just explain *what* it does, but *why* it exists, how it fits into the larger picture, and what specific challenges it solves.
+
+### 12.2. Leveraging `rustdoc`
+
+We will use `rustdoc` as the primary tool for generating and enforcing our documentation standards. All public APIs (`struct`s, `enum`s, `fn`s, `trait`s, and `mod`s) will be thoroughly documented using Markdown within `///` comments.
+
+Key `rustdoc` features we will leverage:
+*   **Code Examples:** Every public function will include at least one runnable doctest example. This serves as both documentation and a mini-unit test, demonstrating practical usage.
+*   **Intra-doc Links:** We will use links to connect related parts of the API, making it easy for developers to navigate the codebase and understand relationships between components.
+*   **Module-Level Explanations:** Each module (`mod.rs` or the file itself) will begin with a detailed explanation of its purpose, its responsibilities, and how it interacts with other modules.
+
+### 12.3. The Documentation Standard
+
+Our standard for documentation is that **a novice programmer should be able to debug the code using only the documentation as a guide.**
+
+*   **For `struct`s and `enum`s:**
+    *   A summary of the data structure's purpose.
+    *   A detailed explanation of each field or variant, including its role, expected state, and any invariants.
+    *   Example instantiation where applicable.
+
+*   **For `fn`s:**
+    *   A concise summary of what the function does.
+    *   A `# Panics` section if the function can panic.
+    *   An `# Errors` section detailing the conditions under which it will return an `Err` variant, and what the error means.
+    *   A `# Safety` section for any `unsafe` code, explaining why it is safe.
+    *   A detailed `# Examples` section with one or more runnable doctests.
+
+### 12.4. Gating Factor for Milestones
+
+No milestone will be considered complete until its associated code meets our documentation standard. This will be enforced by a `cargo doc` check.
+
+**`cargo doc --no-deps --document-private-items --fail-on-warnings`**
+
+This command will be run as part of the test suite for each milestone. It ensures that all items (including private ones, to encourage good internal documentation) are documented and that there are no broken links or other `rustdoc` warnings.
+
+---
+
+## 13. Future Directions
 
 This section outlines potential features and enhancements that could be considered for future versions of `shutri`, beyond the core functionality described in this document.
 
-### 11.1. Programmable Editing & Effects
+### 13.1. Programmable Editing & Effects
 
 While the initial version focuses on manual, precise editing, the text-based nature of the `.shutri` file opens up powerful possibilities for automation. Future versions could introduce features for "programmable editing," where the user can apply changes to multiple clips at once using scripts or commands.
 
@@ -387,10 +521,17 @@ Examples include:
 *   **Silence Adjustment:** A function to automatically shorten or lengthen silences between clips to meet a specific duration.
 *   **Applying Audio Effects:** The `.shutri` format could be extended to support applying SoX effects to specific clips.
 
-### 11.2. Advanced Vim Integration
+### 13.2. Advanced Vim Integration
 
 The Vim plugin could be enhanced with more sophisticated features, such as:
 
 *   **Visual Highlighting:** Highlighting the currently playing clip or chunk in the Vim buffer.
 *   **Multi-Clip Operations:** Allowing users to visually select multiple lines (clips) and perform actions on them, such as playing them in sequence or deleting them all at once.
 *   **Speaker Identification:** If the transcription service provides speaker diarization, this information could be displayed in the `.shutri` file, allowing for speaker-specific edits.
+
+### 13.3. Cross-Platform Support
+
+While the initial version is focused on Debian-based Linux, future work could expand support to other operating systems. This would involve:
+*   **macOS:** Creating a dedicated installation script using Homebrew.
+*   **Windows:** Developing an installation method using a package manager like Chocolatey or Scoop.
+*   **Testing:** Establishing a testing pipeline for each supported platform.
