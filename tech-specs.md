@@ -271,11 +271,11 @@ For long-running operations like import and transcription, the CLI must provide 
 ### 5.2. Command-Line Options
 
 *   `shutri -i, --import <file.mp3>`: Import an audio file.
-*   `shutri -t, --transcribe <project>`: Transcribe an imported project.
+*   `shutri -t, --transcribe <project>`: Transcribe an imported project. This takes a project that has audio chunks and generates the `.shutri` file with transcribed text and timestamps.
 *   `shutri -e, --export <project>`: Export a project to a final audio file.
 *   `shutri -v, --edit <project>`: Open a project in Vim for editing.
 *   `shutri auth login`: Initiates an interactive OAuth 2.0 flow to sign in with a Google account.
-*   `--no-cache`: Force re-transcription, ignoring any cached results.
+*   `--no-cache`: Used with a transcription command. Forces re-transcription of all audio chunks, ignoring any cached results. This is useful if the initial transcription is unsatisfactory.
 *   `--debug`: Enable verbose logging for debugging purposes.
 
 ---
