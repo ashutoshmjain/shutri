@@ -364,7 +364,37 @@ The testing strategy will include:
 
 ---
 
-## 10. Development Plan
+## 10. Quality and Defect Management
+
+This project employs a "shift-left" quality strategy, focusing on defect prevention through rigorous, testable milestones rather than defect tracking after the fact. The development process itself is the primary tool for quality assurance.
+
+### 10.1. Defect Measurement Strategy
+
+*   **Primary Defect Definition:** A "primary defect" is defined as any issue that either:
+    1.  Prevents the "Testable Outcome" of the current milestone from being successfully achieved.
+    2.  Causes a regression by breaking the "Testable Outcome" of a previously completed and verified milestone.
+
+*   **Zero Carry-Over Goal:** The core quality objective is to have **zero primary defects** carried over from one milestone to the next. Each milestone's "Testable Outcome" serves as a strict quality gate. Development on a new milestone does not begin until the previous one is fully functional and verified.
+
+*   **Implicit Tracking:** Primary defects are tracked implicitly through the development and testing workflow for each milestone. The `git` commit history serves as the de facto ledger of defects identified and resolved. The number of commits required to achieve a milestone's "Testable Outcome" can be used as a rough metric for code complexity and risk.
+
+### 10.2. Automated Process and Reporting
+
+The project's quality process is designed for automation, providing clear, continuous feedback.
+
+*   **Automated Verification:** The "Testable Outcome" for each milestone is verified through an automated process. This includes the full suite of unit, integration, and end-to-end tests, as well as the documentation standard check (`cargo doc --fail-on-warnings`).
+
+*   **Continuous Integration (CI) Reporting:** In a CI/CD environment, the status of this verification process would serve as the primary quality report. A typical CI pipeline for this project would:
+    1.  Run `cargo test` to execute all unit and integration tests.
+    2.  Run the end-to-end test suite.
+    3.  Run `cargo doc --no-deps --document-private-items --fail-on-warnings` to enforce documentation standards.
+    4.  A failure in any of these steps automatically flags a primary defect and fails the build. The build remains "red" until all checks pass.
+
+*   **Defect Reintroduction Prevention:** The comprehensive test suite is the main defense against defect reintroduction. A change that causes a previously passing test to fail is a clear signal of a regression. This provides immediate feedback, allowing for rapid correction.
+
+---
+
+## 11. Development Plan
 
 This project will be developed in a series of testable milestones. Each milestone builds directly on the previous one, ensuring a logical and verifiable development process that delivers interactive value early.
 
@@ -435,11 +465,11 @@ This project will be developed in a series of testable milestones. Each mileston
 
 ---
 
-## 11. Installation
+## 12. Installation
 
 To ensure a smooth setup, `shutri` will be distributed with an installation script (`install.sh`). **This script is designed specifically for Debian-based Linux distributions (e.g., Debian, Ubuntu).**
 
-### 11.1. Installation Script (`install.sh`)
+### 12.1. Installation Script (`install.sh`)
 
 The script will perform the following steps in order:
 
@@ -456,23 +486,23 @@ The script will perform the following steps in order:
 
 4.  **Configuration:**
     *   The script will create the necessary directories under `~/.shutri/` and `~/.config/shutri/`.
-    *   It will create a default `config.toml` file based on the template in Section 8.3, guiding the user on how to proceed with authentication.
+    *   It will create a default `config.toml` file based on the template in Section 9.3, guiding the user on how to proceed with authentication.
 
-### 11.2. Uninstallation
+### 12.2. Uninstallation
 
 An `uninstall.sh` script will also be provided to remove the `shutri` binary, Vim plugin, and configuration files cleanly.
 
 ---
 
-## 12. Documentation Plan
+## 13. Documentation Plan
 
 Given that `shutri` integrates several external tools and APIs (SoX, Vim, Gemini), and is intended to serve as a learning resource, documentation is a first-class deliverable, not an afterthought. Our documentation strategy is designed to make the codebase exceptionally clear, particularly for novice Rust developers or those unfamiliar with the integrated components.
 
-### 12.1. Philosophy: Documentation as a Tutorial
+### 13.1. Philosophy: Documentation as a Tutorial
 
 The entire codebase will be documented with the mindset of creating a tutorial. We will assume the reader is a motivated beginner. The documentation for any given module, struct, or function should not just explain *what* it does, but *why* it exists, how it fits into the larger picture, and what specific challenges it solves.
 
-### 12.2. Leveraging `rustdoc`
+### 13.2. Leveraging `rustdoc`
 
 We will use `rustdoc` as the primary tool for generating and enforcing our documentation standards. All public APIs (`struct`s, `enum`s, `fn`s, `trait`s, and `mod`s) will be thoroughly documented using Markdown within `///` comments.
 
@@ -481,7 +511,7 @@ Key `rustdoc` features we will leverage:
 *   **Intra-doc Links:** We will use links to connect related parts of the API, making it easy for developers to navigate the codebase and understand relationships between components.
 *   **Module-Level Explanations:** Each module (`mod.rs` or the file itself) will begin with a detailed explanation of its purpose, its responsibilities, and how it interacts with other modules.
 
-### 12.3. The Documentation Standard
+### 13.3. The Documentation Standard
 
 Our standard for documentation is that **a novice programmer should be able to debug the code using only the documentation as a guide.**
 
@@ -497,7 +527,7 @@ Our standard for documentation is that **a novice programmer should be able to d
     *   A `# Safety` section for any `unsafe` code, explaining why it is safe.
     *   A detailed `# Examples` section with one or more runnable doctests.
 
-### 12.4. Gating Factor for Milestones
+### 13.4. Gating Factor for Milestones
 
 No milestone will be considered complete until its associated code meets our documentation standard. This will be enforced by a `cargo doc` check.
 
@@ -507,11 +537,11 @@ This command will be run as part of the test suite for each milestone. It ensure
 
 ---
 
-## 13. Future Directions
+## 14. Future Directions
 
 This section outlines potential features and enhancements that could be considered for future versions of `shutri`, beyond the core functionality described in this document.
 
-### 13.1. Programmable Editing & Effects
+### 14.1. Programmable Editing & Effects
 
 While the initial version focuses on manual, precise editing, the text-based nature of the `.shutri` file opens up powerful possibilities for automation. Future versions could introduce features for "programmable editing," where the user can apply changes to multiple clips at once using scripts or commands.
 
@@ -521,7 +551,7 @@ Examples include:
 *   **Silence Adjustment:** A function to automatically shorten or lengthen silences between clips to meet a specific duration.
 *   **Applying Audio Effects:** The `.shutri` format could be extended to support applying SoX effects to specific clips.
 
-### 13.2. Advanced Vim Integration
+### 14.2. Advanced Vim Integration
 
 The Vim plugin could be enhanced with more sophisticated features, such as:
 
@@ -529,7 +559,7 @@ The Vim plugin could be enhanced with more sophisticated features, such as:
 *   **Multi-Clip Operations:** Allowing users to visually select multiple lines (clips) and perform actions on them, such as playing them in sequence or deleting them all at once.
 *   **Speaker Identification:** If the transcription service provides speaker diarization, this information could be displayed in the `.shutri` file, allowing for speaker-specific edits.
 
-### 13.3. Cross-Platform Support
+### 14.3. Cross-Platform Support
 
 While the initial version is focused on Debian-based Linux, future work could expand support to other operating systems. This would involve:
 *   **macOS:** Creating a dedicated installation script using Homebrew.
