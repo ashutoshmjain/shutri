@@ -143,6 +143,7 @@ Each editable line corresponds to an audio clip and follows this format:
 1.  The user specifies an MP3 audio file to import.
 2.  `shutri` copies the file to `~/.shutri/imports/`.
 3.  The audio file is split into smaller chunks (e.g., 30 seconds each) using SoX.
+4.  A preliminary `.shutri` project file is created, containing only comment lines that define the chunk boundaries (e.g., `// --- CHUNK 1 (00:00.000 - 00:30.000) ---`). This file contains no editable clips yet.
 
 **Pseudocode (Rust):**
 
@@ -163,8 +164,8 @@ mod audio {
 
 1.  `shutri` sends each audio chunk to the Gemini API for transcription.
 2.  The transcription results are cached in `~/.shutri/cache/`.
-3.  Before writing the `.shutri` file, a boundary check is performed. If a clip's end time exceeds its chunk's end time, an informational comment (`// INFO: Review recommended.`) is appended to the line.
-4.  The final, structured `.shutri` project file is generated.
+3.  Before modifying the `.shutri` file, a boundary check is performed. If a clip's end time exceeds its chunk's end time, an informational comment (`// INFO: Review recommended.`) is appended to the line.
+4.  The existing `.shutri` project file is updated with the transcribed clips, inserted under their corresponding chunk markers.
 
 **Pseudocode (Rust):**
 
