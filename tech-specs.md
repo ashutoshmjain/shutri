@@ -142,17 +142,25 @@ Each editable line corresponds to an audio clip and follows this format:
 
 1.  The user specifies an MP3 audio file to import.
 2.  `shutri` copies the file to `~/.shutri/imports/`.
-3.  The audio file is split into variable-length chunks using SoX's `silence` detection feature. This intelligently creates splits at natural pauses in the audio, preventing sentences or words from being cut off.
+3.  The audio is processed using a detailed, three-phase strategy to create structured, editable data.
 
-  Chunking Strategy : Robust Silence-Based Chunking with Minimum Duration Enforcement
+  **Phase 1: Pre-processing (Creating Consolidated Splits)**
 
-  To ensure that edits align with natural pauses in speech and to enable parallel processing, the audio is split into variable-length "chunks". This process employs a robust two-phase approach:
+  1.  **Initial Split & Manifest Creation:** The source MP3 is split at every silence of **0.6 seconds** or more. A **Split Manifest** is immediately created to track the `filePath`, `duration`, and absolute `startTime` and `endTime` for each resulting `SPLIT`.
 
-  1.  **Aggressive Silence-Based Splitting with SoX:** The audio is initially split into numerous small segments at every significant pause using SoX's `silence` effect. This ensures that no words or sentences are cut off by the initial splitting. The command used is `sox <input.mp3> <output_chunk.mp3> silence 1 0.1 1% 1 <min_silence_duration_secs> 1% : newfile : restart`. This command detects a silence starting after 0.1 seconds at 1% volume and ending after `min_silence_duration_secs` (configurable, default 0.5 seconds) at 1% volume, creating a new file at each such detected silence.
+  2.  **Iterative Merging of Short Splits:** The manifest is repeatedly scanned to find any `SPLIT` shorter than **6 seconds**. These are merged based on defined rules (e.g., a short split in the middle of the list is merged with its shorter neighbor) until no splits under 6 seconds remain. The manifest is updated after each merge.
 
-  2.  **Intelligent Chunk Merging in Rust:** After the aggressive splitting, the `shutri` application inspects the generated segments. It then intelligently merges adjacent segments if their combined duration is less than a configurable minimum (e.g., `target_chunk_length_secs` configurable, default 30 seconds). This merging is performed by calling SoX again to concatenate the smaller segments. This step ensures that while splits occur at natural pauses, the resulting chunks are of a suitable length for efficient transcription and editing, preventing an excessive number of very short chunks.
+  **Phase 2: Transcription (Creating Clips)**
 
-  This approach guarantees that chunks are always aligned with silences, preventing words from being cut off, and provides configurable control over the minimum chunk size, making the process robust for any audio file.
+  3.  **Transcribe and Associate Timestamps:** Each `SPLIT` from the final manifest is sent to the Gemini API. The returned text becomes a `CLIP` and is paired with the accurate `startTime` and `endTime` from the manifest.
+
+  **Phase 3: Structuring for Presentation (Creating Chunks)**
+
+  4.  **Chunking Algorithm:** The `CLIPS` are grouped into logical `CHUNKS` for the user interface based on two primary rules:
+      *   **Large Split Override:** If a `CLIP`'s source `SPLIT` is **longer than 60 seconds**, it becomes its own `CHUNK`.
+      *   **Greedy Grouping:** Otherwise, `CLIPS` are added to the current `CHUNK` until its total duration approaches **60 seconds**. The next `CLIP` that would exceed the limit starts a new `CHUNK`.
+
+  This strategy ensures accurate timestamp management and provides clear rules for handling all audio structuring scenarios.
 
 
 4.  A preliminary `.shutri` project file is created, containing only comment lines that define the chunk boundaries (e.g., `// --- CHUNK 1 (00:00.000 - 00:28.530) ---`). This file contains no editable clips yet.
