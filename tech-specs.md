@@ -10,7 +10,7 @@ The initial version of `shutri` is specifically targeted for **Debian-based Linu
 
 The primary workflow consists of four main stages:
 
-1.  **Import:** A user-provided MP3 audio file is imported into the `shutri` library. To ensure timestamp accuracy and enable parallel processing, the audio is immediately split into fixed-duration (e.g., 30-second) "chunks."
+1.  **Import:** A user-provided MP3 audio file is imported into the `shutri` library. To ensure that edits align with natural pauses in speech and to enable parallel processing, the audio is immediately split into variable-length "chunks" based on detected silence. This approach avoids splitting words or sentences in half, which can happen with fixed-duration chunking.
 
 2.  **Transcribe:** Each audio chunk is sent to the Gemini API for transcription. This chunk-based approach mitigates the timestamp drift often found in long-form transcriptions and allows for faster, parallelized API requests. The result is a series of clips—text snippets with corresponding start and end times—grouped under their parent chunk.
 
@@ -142,8 +142,35 @@ Each editable line corresponds to an audio clip and follows this format:
 
 1.  The user specifies an MP3 audio file to import.
 2.  `shutri` copies the file to `~/.shutri/imports/`.
-3.  The audio file is split into smaller chunks (e.g., 30 seconds each) using SoX.
-4.  A preliminary `.shutri` project file is created, containing only comment lines that define the chunk boundaries (e.g., `// --- CHUNK 1 (00:00.000 - 00:30.000) ---`). This file contains no editable clips yet.
+3.  The audio file is split into variable-length chunks using SoX's `silence` detection feature. This intelligently creates splits at natural pauses in the audio, preventing sentences or words from being cut off.
+
+  Chunking Strategy : A Two-Step "Split and Merge" Strategy
+
+   1. Step 1: Aggressive Splitting with SoX. We use a simpler, more lenient sox command that splits the audio at every significant pause, regardless of the split length. This guarantees that the audio is always split into its smallest logical pieces.  The command would be :
+   
+   `sox input.mp3 output-chunk.mp3 silence 1 2.0 1% : newfile : restart`
+
+This might create some chunks that are very short (e.g., 5 or 10 seconds long), but it will never fail to split the file.
+
+   2. Step 2: Intelligent Merging in Rust. After SoX has finished, our shutri application will inspect the chunks that were created. It will then
+      intelligently merge them back together based on a configurable duration.
+
+      The logic in our Rust code would be:
+       * Get the list of generated chunks (chunk001.mp3, chunk002.mp3, ...).
+       * Iterate through the list and get the duration of each chunk.
+       * If a chunk's duration is less than a configurable minimum (e.g., MIN_CHUNK_SECONDS = 20), merge it with the next chunk until the combined duration
+         meets the minimum.
+       * This merging would be done by calling sox again (e.g., sox chunk001.mp3 chunk002.mp3 merged-chunk-A.mp3).
+
+  Why This Approach is Better:
+
+   * Robustness: It works for any audio file. It never fails to split the audio.
+   * Quality: The final chunks are still perfectly aligned with silences, ensuring no words are cut off.
+   * Configurability: The desired minimum chunk size is now a simple variable in our Rust code, making it much easier to manage and adjust than a complex sox
+     command.
+
+
+4.  A preliminary `.shutri` project file is created, containing only comment lines that define the chunk boundaries (e.g., `// --- CHUNK 1 (00:00.000 - 00:28.530) ---`). This file contains no editable clips yet.
 
 **Pseudocode (Rust):**
 
@@ -153,8 +180,11 @@ mod audio {
         // 1. Validate file is in MP3 format.
         // 2. Create a new project directory in `~/.shutri/projects/`
         // 3. Copy the original file to `~/.shutri/imports/`
-        // 4. Use SoX to split the audio into chunks
-        //    - `sox <input.mp3> <output_chunk.mp3> trim <start> <duration>`
+        // 4. Use SoX to split the audio into chunks based on "Silence".
+        //    - `sox <input.mp3> <output_chunk.mp3> silence 1 0.1 1% 1 2.0 1% : newfile : restart`
+        //    - This command tells SoX to create a new file every time it detects
+        //      at least 2 seconds of silence at 1% volume threshold.
+        // 5. Merge the splits into chunks of 20 to 30 seconds based on configurable "chunking strategy" above.
         // 5. Return a new `Project` struct
     }
 }
@@ -414,12 +444,12 @@ This phase focuses on building the core functionality of `shutri` and validating
 
 #### Milestone 2: Audio Import and Chunking
 
-*   **Goal:** Implement the ability to import an MP3 file and split it into manageable chunks.
+*   **Goal:** Implement the ability to import an MP3 file and split it into intelligent, variable-length chunks based on silence detection.
 *   **Tasks:**
     *   Implement the `import_audio` function in `audio.rs`.
-    *   Use `std::process::Command` to call the `sox` command-line tool.
+    *   Use `std::process::Command` to call the `sox` command-line tool with the `silence` effect.
     *   Implement the `shutri -i, --import` CLI command.
-*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory. The milestone's code passes the documentation standard check.
+*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio chunks in the `~/.shutri` directory, split according to natural silences in the source file. The milestone's code passes the documentation standard check.
 
 #### Milestone 3: Mocked Transcription File Generation
 
