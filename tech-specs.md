@@ -144,30 +144,15 @@ Each editable line corresponds to an audio clip and follows this format:
 2.  `shutri` copies the file to `~/.shutri/imports/`.
 3.  The audio file is split into variable-length chunks using SoX's `silence` detection feature. This intelligently creates splits at natural pauses in the audio, preventing sentences or words from being cut off.
 
-  Chunking Strategy : A Two-Step "Split and Merge" Strategy
+  Chunking Strategy : Robust Silence-Based Chunking with Minimum Duration Enforcement
 
-   1. Step 1: Aggressive Splitting with SoX. We use a simpler, more lenient sox command that splits the audio at every significant pause, regardless of the split length. This guarantees that the audio is always split into its smallest logical pieces.  The command would be :
-   
-   `sox input.mp3 output-chunk.mp3 silence 1 2.0 1% : newfile : restart`
+  To ensure that edits align with natural pauses in speech and to enable parallel processing, the audio is split into variable-length "chunks". This process employs a robust two-phase approach:
 
-This might create some chunks that are very short (e.g., 5 or 10 seconds long), but it will never fail to split the file.
+  1.  **Aggressive Silence-Based Splitting with SoX:** The audio is initially split into numerous small segments at every significant pause using SoX's `silence` effect. This ensures that no words or sentences are cut off by the initial splitting. The command used is `sox <input.mp3> <output_chunk.mp3> silence 1 0.1 1% 1 <min_silence_duration_secs> 1% : newfile : restart`. This command detects a silence starting after 0.1 seconds at 1% volume and ending after `min_silence_duration_secs` (configurable, default 0.5 seconds) at 1% volume, creating a new file at each such detected silence.
 
-   2. Step 2: Intelligent Merging in Rust. After SoX has finished, our shutri application will inspect the chunks that were created. It will then
-      intelligently merge them back together based on a configurable duration.
+  2.  **Intelligent Chunk Merging in Rust:** After the aggressive splitting, the `shutri` application inspects the generated segments. It then intelligently merges adjacent segments if their combined duration is less than a configurable minimum (e.g., `target_chunk_length_secs` configurable, default 30 seconds). This merging is performed by calling SoX again to concatenate the smaller segments. This step ensures that while splits occur at natural pauses, the resulting chunks are of a suitable length for efficient transcription and editing, preventing an excessive number of very short chunks.
 
-      The logic in our Rust code would be:
-       * Get the list of generated chunks (chunk001.mp3, chunk002.mp3, ...).
-       * Iterate through the list and get the duration of each chunk.
-       * If a chunk's duration is less than a configurable minimum (e.g., MIN_CHUNK_SECONDS = 20), merge it with the next chunk until the combined duration
-         meets the minimum.
-       * This merging would be done by calling sox again (e.g., sox chunk001.mp3 chunk002.mp3 merged-chunk-A.mp3).
-
-  Why This Approach is Better:
-
-   * Robustness: It works for any audio file. It never fails to split the audio.
-   * Quality: The final chunks are still perfectly aligned with silences, ensuring no words are cut off.
-   * Configurability: The desired minimum chunk size is now a simple variable in our Rust code, making it much easier to manage and adjust than a complex sox
-     command.
+  This approach guarantees that chunks are always aligned with silences, preventing words from being cut off, and provides configurable control over the minimum chunk size, making the process robust for any audio file.
 
 
 4.  A preliminary `.shutri` project file is created, containing only comment lines that define the chunk boundaries (e.g., `// --- CHUNK 1 (00:00.000 - 00:28.530) ---`). This file contains no editable clips yet.
@@ -381,6 +366,15 @@ The `install.sh` script will create the following file at `~/.config/shutri/conf
 
 # The command to invoke your preferred editor (e.g., "vim", "nvim").
 editor = "vim"
+
+# Audio processing settings
+[audio]
+# Minimum silence duration in seconds to consider for splitting audio into chunks.
+# Default: 0.5
+min_silence_duration_secs = 0.5
+# Target length of audio chunks in seconds after merging.
+# Default: 30
+target_chunk_length_secs = 30.0
 ```
 
 ---
