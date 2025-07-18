@@ -32,6 +32,7 @@ By converting audio to a time-stamped transcript, we transform the editing proce
 
 *   **Advanced Search and Navigation:** Instantly jump to any part of the audio by searching for specific words or phrases.
 *   **Keyboard-Centric Workflow:** A faster and more ergonomic workflow for users familiar with Vim's keybindings.
+* The crucial requirement for this approach however is accuracy of timestamps. And ability to easily adjust the timestamps of the clips.
 
 ---
 
@@ -42,6 +43,8 @@ The `shutri` system is composed of three main components:
 1.  **`shutri` Core Library:** A Rust library that contains the core logic for project management, audio processing, transcription, and file I/O.
 2.  **`shutri` CLI:** A command-line interface that exposes the core library's functionality to the user.
 3.  **Vim Plugin:** A Vim plugin that integrates `shutri` with the Vim editor, providing a seamless editing experience.
+
+In a way, the key deliverable of this project is the "core library". CLI is a means to test the application. And vim is the editor. The goal of the project is developers shall be able to use the library crate to integrate with any type of editor. The application needs to provide clear APIs for future GUIs or web clients ; and also for any modern editor to integrate. API documentation is crucial part of the project.
 
 ### 2.1. Component Interaction Diagram
 
@@ -174,9 +177,9 @@ mod audio {
         // 2. Create a new project directory in `~/.shutri/projects/`
         // 3. Copy the original file to `~/.shutri/imports/`
         // 4. Use SoX to split the audio into chunks based on "Silence".
-        //    - `sox <input.mp3> <output_chunk.mp3> silence 1 0.1 1% 1 2.0 1% : newfile : restart`
+        //    - `sox <input.mp3> <output_chunk.mp3> silence 1 0.1 1% 1 0.6 1% : newfile : restart`
         //    - This command tells SoX to create a new file every time it detects
-        //      at least 2 seconds of silence at 1% volume threshold.
+        //      at least 0.6 seconds of silence at 1% volume threshold.
         // 5. Merge the splits into chunks of 20 to 30 seconds based on configurable "chunking strategy" above.
         // 5. Return a new `Project` struct
     }
@@ -228,7 +231,17 @@ For example, `ShutriPlayClip()` would be implemented in Vimscript as follows:
 " The Rust code handles parsing the line and calling SoX.
 function! ShutriPlayClip()
     let current_line = getline('.')
-    call system('shutri --play-clip "' . current_line . '"')
+    call system('shutri --play-clip "' . current_line . '" &')
+endfunction
+
+" Gathers all clip lines in the current chunk and calls the binary to play them.
+function! ShutriPlayEditedChunk()
+    " This function would need logic to find the start and end of the current
+    " chunk and pass all clip lines to `shutri --play-edited-chunk`.
+endfunction
+
+function! ShutriStopPlayback()
+    call system('shutri --stop-playback')
 endfunction
 ```
 
@@ -242,10 +255,6 @@ nnoremap <Leader>p :call ShutriPlayClip()<CR>
 
 " Play the current chunk (provides context)
 nnoremap <Leader>c :call ShutriPlayChunk()<CR>
-
-" Highlight lines needing review
-highlight ShutriReview ctermbg=yellow guibg=yellow
-match ShutriReview /\/\/ INFO: Review recommended./
 ```
 
 #### 4.2.4. Export (`shutri -e <file>`)
