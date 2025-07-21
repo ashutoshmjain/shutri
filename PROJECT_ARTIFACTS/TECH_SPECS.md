@@ -299,26 +299,32 @@ nnoremap <Leader>s :call ShutriStopPlayback()<CR>
 #### 4.2.4. Export (`shutri -e <file>`)
 
 1.  `shutri` reads the edited `.shutri` project file, ignoring all comment lines.
-2.  It uses SoX to extract each audio `CLIP` from the original imported file based on the final time-stamps.
-3.  The extracted `CLIPS` are concatenated in order.
-4.  The final, combined audio is saved to the `~/.shutri/exports/` directory. To support multiple exports from the same project, the output file will be named using the convention: `<project_name>_export_YYYYMMDD-HHMMSS.mp3`. This ensures that each export is saved as a unique file and prevents accidental overwrites.
+2.  It uses SoX to extract each audio `CLIP` from the original imported file based on the final time-stamps. Each extracted clip is saved as a temporary file.
+3.  The extracted `CLIPS` are then intelligently joined together. To prevent audible clicks or pops at edit points, a **5-10 millisecond crossfade** is applied where each clip meets the next.
+4.  This is done iteratively: the first two clips are joined with a crossfade, then the result is joined with the third clip, and so on, until a single, seamless audio file is produced.
+5.  The final, combined audio is saved to the `~/.shutri/exports/` directory. To support multiple exports from the same project, the output file will be named using the convention: `<project_name>_export_YYYYMMDD-HHMMSS.mp3`. This ensures that each export is saved as a unique file and prevents accidental overwrites.
 
 **Pseudocode (Rust):**
 
 ```rust
 mod audio {
     fn export_project(project: &Project) -> Result<(), Error> {
-        // 1. Read the `.shutri` file.
-        // 2. For each line (CLIP) in the file:
-        // 3.   - Parse the start and end times.
-        // 4.   - Use SoX to extract the audio segment:
-        //        `sox <original.mp3> <clip.mp3> trim <start> =<end>`
-        // 5. Create a list of the extracted clip files.
-        // 6. Generate a timestamp string (e.g., "20250719-103000").
-        // 7. Construct the output path: `~/.shutri/exports/{project_name}_export_{timestamp}.mp3`.
-        // 8. Use SoX to concatenate the clips into the final output file:
-        //    `sox <clip1.mp3> <clip2.mp3> ... <output.mp3>`
-        // 9. Clean up the temporary clip files.
+        // 1. Read the `.shutri` file and create a list of all `CLIPS` to be exported.
+        // 2. For each `CLIP`, use SoX to extract the audio segment into a temporary file:
+        //    `sox <original.mp3> <temp_clip_N.mp3> trim <start> =<end>`
+        // 3. If there's only one clip, rename it and finish.
+        // 4. If there are multiple clips, begin the iterative crossfade process:
+        //    a. Take the first two temporary clips (`temp_clip_1.mp3`, `temp_clip_2.mp3`).
+        //    b. Get the duration of the first clip: `soxi -D temp_clip_1.mp3`.
+        //    c. Join them with a 10ms crossfade using the `splice` effect:
+        //       `sox temp_clip_1.mp3 temp_clip_2.mp3 temp_output_1.mp3 splice $(soxi -D temp_clip_1.mp3),0.01`
+        //    d. Take the result (`temp_output_1.mp3`) and the next clip (`temp_clip_3.mp3`).
+        //    e. Repeat the splice process, saving to a new output file (`temp_output_2.mp3`).
+        //    f. Continue until all clips are joined into one final file.
+        // 5. Generate a timestamp string (e.g., "20250719-103000").
+        // 6. Construct the final output path: `~/.shutri/exports/{project_name}_export_{timestamp}.mp3`.
+        // 7. Move the final combined audio to the output path.
+        // 8. Clean up all temporary clip and output files.
     }
 }
 ```
