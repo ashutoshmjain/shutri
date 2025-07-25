@@ -129,13 +129,20 @@ fn format_shutri_file(project_name: &str, chunks: &[Chunk]) -> String {
     output.push_str(&format!("\" Project: {}.mp3\n", project_name));
     output.push_str("\"\n");
     output.push_str("\" Keybindings:\n");
-    output.push_str("\"  <Leader>p : Play current clip\n");
-    output.push_str("\"  <Leader>c : Play original chunk\n");
+    output.push_str("\"   <Leader>p : Play current clip (preview your edit)\n");
+    output.push_str("\"   <Leader>c : Play original chunk (hear the 'before')\n");
+    output.push_str("\"   <Leader>C : Play edited chunk (hear the 'after')\n");
+    output.push_str("\"   <Leader>s : Stop all playback\n");
+    output.push_str("\"   <Leader>[ : Nudge start time of current clip earlier\n");
+    output.push_str("\"   <Leader>] : Nudge start time of current clip later\n");
+    output.push_str("\"   <Leader>{ : Nudge end time of current clip earlier\n");
+    output.push_str("\"   <Leader>} : Nudge end time of current clip later\n");
     output.push_str("\" =============================================================================\n\n");
 
     for (i, chunk) in chunks.iter().enumerate() {
         output.push_str(&format!(
             "// --- CHUNK {} ({} - {}) ---\n",
+
             i + 1,
             format_timestamp(chunk.start_time_ms),
             format_timestamp(chunk.end_time_ms)
