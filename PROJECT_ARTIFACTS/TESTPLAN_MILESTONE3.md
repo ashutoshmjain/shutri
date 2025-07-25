@@ -37,7 +37,36 @@ Generating mock transcription for project: short_clip
 Successfully generated mock transcription at "/home/amj/.shutri/projects/short_clip/short_clip.shutri"
 ```
 
-### Step 4: Verify the Project File Contents
+### Step 4: Verify Overwrite Safeguard
+
+This step ensures that the application does not accidentally overwrite user edits.
+
+1.  **Attempt to run the command again without the `--force` flag.**
+
+    ```bash
+    ./target/debug/shutri transcribe --mock short_clip
+    ```
+
+2.  **Observe the command-line output.** The command should fail with an error message indicating that the file already exists.
+
+    ```
+    Error: Project file already exists at "/home/amj/.shutri/projects/short_clip/short_clip.shutri". Use --force to overwrite.
+    ```
+
+3.  **Run the command again with the `--force` flag.**
+
+    ```bash
+    ./target/debug/shutri transcribe --mock short_clip --force
+    ```
+
+4.  **Observe the command-line output.** The command should now succeed and generate the file.
+
+    ```
+    Generating mock transcription for project: short_clip
+    Successfully generated mock transcription at "/home/amj/.shutri/projects/short_clip/short_clip.shutri"
+    ```
+
+### Step 5: Verify the Project File Contents
 
 After the command completes, inspect the contents of the newly created `.shutri` file.
 
@@ -48,7 +77,7 @@ cat ~/.shutri/projects/short_clip/short_clip.shutri
 The expected output should be a well-formatted text file containing the following elements:
 
 1.  A header comment with the project name.
-2.  Commented-out keybinding information.
+2.  A complete list of keybindings as specified in the technical documentation.
 3.  At least one `CHUNK` marker, formatted as `// --- CHUNK N (MM:SS.ms - MM:SS.ms) ---`.
 4.  Under each chunk, one or more `CLIP` lines.
 5.  Each `CLIP` line must follow the format `[MM:SS.ms] Mock text... [MM:SS.ms]`.
@@ -59,8 +88,14 @@ The expected output should be a well-formatted text file containing the followin
 " Project: short_clip.mp3
 "
 " Keybindings:
-"  <Leader>p : Play current clip
-"  <Leader>c : Play original chunk
+"   <Leader>p : Play current clip (preview your edit)
+"   <Leader>c : Play original chunk (hear the 'before')
+"   <Leader>C : Play edited chunk (hear the 'after')
+"   <Leader>s : Stop all playback
+"   <Leader>[ : Nudge start time of current clip earlier
+"   <Leader>] : Nudge start time of current clip later
+"   <Leader>{ : Nudge end time of current clip earlier
+"   <Leader>} : Nudge end time of current clip later
 " =============================================================================
 
 // --- CHUNK 1 (00:00.000 - 00:02.832) ---
@@ -71,4 +106,4 @@ The expected output should be a well-formatted text file containing the followin
 
 ### Conclusion
 
-If the command runs without errors, a success message is displayed, and the generated `.shutri` file is created with the correct format and plausible data, the test is successful. This confirms that the core functionality of Milestone 3 is working as specified.
+If all commands run as described, producing the correct output and error messages, the test is successful. This confirms that the core functionality of Milestone 3 and its overwrite safeguard are working as specified.
