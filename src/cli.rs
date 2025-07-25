@@ -28,5 +28,9 @@ pub enum Commands {
         /// Generate mock transcription data instead of calling an API.
         #[arg(long)]
         mock: bool,
+
+        /// Force overwrite of an existing project file.
+        #[arg(long)]
+        force: bool,
     },
 }

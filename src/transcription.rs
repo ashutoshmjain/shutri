@@ -1,7 +1,7 @@
 //! This module handles the transcription of audio projects.
 
 use crate::project::{Chunk, Clip};
-use anyhow::{Context, Result};
+use anyhow::{anyhow, Context, Result};
 use std::fs;
 use std::io::Write;
 use std::path::Path;
@@ -11,8 +11,20 @@ use std::process::Command;
 ///
 /// This function is used for testing the editing workflow without making actual
 /// API calls. It creates plausible timestamps and placeholder text.
-pub fn generate_mock(project_name: &str) -> Result<()> {
+pub fn generate_mock(project_name: &str, force: bool) -> Result<()> {
     let project_dir = get_project_dir(project_name)?;
+    let shutri_path = project_dir.join(format!("{}.shutri", project_name));
+
+    // Safeguard against accidental overwrites.
+    if shutri_path.exists() && !force {
+        return Err(anyhow!(
+            "Project file already exists at {:?}. Use --force to overwrite.",
+            shutri_path
+        ));
+    }
+
+    println!("Generating mock transcription for project: {}", project_name);
+
     let splits_dir = project_dir.join("splits");
 
     // 1. Read the splits directory and create clips
@@ -25,7 +37,6 @@ pub fn generate_mock(project_name: &str) -> Result<()> {
     let output = format_shutri_file(project_name, &chunks);
 
     // 4. Write the .shutri file
-    let shutri_path = project_dir.join(format!("{}.shutri", project_name));
     let mut file = fs::File::create(&shutri_path)
         .with_context(|| format!("Could not create shutri file at {:?}", shutri_path))?;
     file.write_all(output.as_bytes())?;
