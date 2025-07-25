@@ -476,6 +476,9 @@ This project employs a "shift-left" quality strategy, focusing on defect prevent
 
 *   **Implicit Tracking:** Primary defects are tracked implicitly through the development and testing workflow for each milestone. The `git` commit history serves as the de facto ledger of defects identified and resolved. The number of commits required to achieve a milestone's "Testable Outcome" can be used as a rough metric for code complexity and risk.
 
+#### 10.1.1. Primary Bug Tracking for Milestones
+During the testing phase for a given milestone, only bugs that impact a previously completed and validated milestone will be considered "primary bugs." These primary bugs must be tracked via dedicated commits. Bugs that are confined to the milestone currently under test do not require individual commit tracking until the milestone is considered complete.
+
 ### 10.2. Automated Process and Reporting
 
 The project's quality process is designed for automation, providing clear, continuous feedback.

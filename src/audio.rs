@@ -57,6 +57,11 @@ impl SplitManifest {
     /// Merges short splits together until all are above the minimum duration.
     fn merge_short_splits(&mut self) -> Result<()> {
         loop {
+            // If there's only one split (or none), we can't merge.
+            if self.splits.len() <= 1 {
+                break;
+            }
+
             let Some(index) = self
                 .splits
                 .iter()
@@ -160,10 +165,9 @@ pub fn import(file_path: &Path) -> Result<()> {
         .with_context(|| format!("Failed to copy file to {:?}", import_path))?;
     println!("Copied source file to {:?}", import_path);
 
-    let output_pattern = splits_dir.join("split-%03d.mp3");
     let sox_cmd = Command::new("sox")
         .arg(&import_path)
-        .arg(&output_pattern)
+        .arg(splits_dir.join("split.mp3")) // Base name for sox
         .arg("silence")
         .arg("1")
         .arg("0.1")
@@ -181,6 +185,22 @@ pub fn import(file_path: &Path) -> Result<()> {
     if !sox_cmd.status.success() {
         let stderr = String::from_utf8_lossy(&sox_cmd.stderr);
         return Err(anyhow!("SoX command failed:\n{}", stderr));
+    }
+
+    // Rename the files created by SoX to the correct format
+    let mut split_files: Vec<PathBuf> = fs::read_dir(&splits_dir)
+        .context("Could not read splits directory for renaming")?
+        .filter_map(|entry| entry.ok())
+        .map(|entry| entry.path())
+        .filter(|path| path.extension().map_or(false, |ext| ext == "mp3"))
+        .collect();
+    
+    split_files.sort();
+
+    for (i, old_path) in split_files.iter().enumerate() {
+        let new_name = format!("split-{:03}.mp3", i + 1);
+        let new_path = splits_dir.join(new_name);
+        fs::rename(old_path, new_path)?;
     }
 
     println!("Initial split successful. Now merging short splits...");

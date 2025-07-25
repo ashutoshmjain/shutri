@@ -65,6 +65,15 @@ split-003.mp3
 split-005.mp3
 ```
 
+### Step 4: Verify Edge Case Handling
+
+Two specific edge cases related to the merging logic have been identified and tested.
+
+1.  **Single Short Split:** Create or use an audio file that, after the initial split, results in only a single, short audio segment.
+    *   **Expected Behavior:** The import command should run to completion without panicking. It should print the "Initial split successful" message and then the final "Project created" message without any "Merged" lines. The `splits` directory should contain the single `split-001.mp3` file.
+2.  **No Short Splits:** Use an audio file where all initial splits are already longer than the minimum duration (`6.0` seconds).
+    *   **Expected Behavior:** The import command should run to completion. It should print the "Initial split successful" message and then the final "Project created" message without any "Merged" lines. The `splits` directory should contain all of the original, un-merged splits.
+
 ### Conclusion
 
 If the command runs without errors and the directory structure and files are created as described above, the test is successful. This confirms that the core functionality of Milestone 2 is working as specified in the technical documentation.
