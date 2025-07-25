@@ -19,4 +19,14 @@ pub enum Commands {
         #[arg(required = true)]
         file_path: PathBuf,
     },
+    /// Transcribe an audio project.
+    Transcribe {
+        /// The name of the project to transcribe.
+        #[arg(required = true)]
+        project_name: String,
+
+        /// Generate mock transcription data instead of calling an API.
+        #[arg(long)]
+        mock: bool,
+    },
 }
