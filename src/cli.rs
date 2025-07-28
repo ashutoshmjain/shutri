@@ -25,12 +25,9 @@ pub enum Commands {
         #[arg(required = true)]
         project_name: String,
 
-        /// Generate mock transcription data instead of calling an API.
+        /// Generate a mock transcription for debugging.
         #[arg(long)]
+        #[cfg(debug_assertions)]
         mock: bool,
-
-        /// Force overwrite of an existing project file.
-        #[arg(long)]
-        force: bool,
     },
 }

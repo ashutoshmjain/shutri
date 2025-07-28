@@ -1,9 +1,7 @@
-//! This module handles the transcription of audio projects.
-
 use crate::project::{Chunk, Clip};
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result};
 use std::fs;
-use std::io::Write;
+use std::io::{self, Write};
 use std::path::Path;
 use std::process::Command;
 
@@ -11,16 +9,25 @@ use std::process::Command;
 ///
 /// This function is used for testing the editing workflow without making actual
 /// API calls. It creates plausible timestamps and placeholder text.
-pub fn generate_mock(project_name: &str, force: bool) -> Result<()> {
+pub fn generate_mock(project_name: &str) -> Result<()> {
     let project_dir = get_project_dir(project_name)?;
     let shutri_path = project_dir.join(format!("{}.shutri", project_name));
 
     // Safeguard against accidental overwrites.
-    if shutri_path.exists() && !force {
-        return Err(anyhow!(
-            "Project file already exists at {:?}. Use --force to overwrite.",
-            shutri_path
-        ));
+    if shutri_path.exists() {
+        print!(
+            "A transcribed file for '{}' already exists. Do you want to overwrite it? [y/N] ",
+            project_name
+        );
+        io::stdout().flush()?; // Make sure the prompt is displayed before reading input.
+
+        let mut response = String::new();
+        io::stdin().read_line(&mut response)?;
+
+        if response.trim().to_lowercase() != "y" {
+            println!("Operation aborted.");
+            return Ok(());
+        }
     }
 
     println!("Generating mock transcription for project: {}", project_name);

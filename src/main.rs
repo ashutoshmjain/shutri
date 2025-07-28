@@ -15,14 +15,16 @@ fn main() -> Result<()> {
             println!("Importing file: {:?}", file_path);
             audio::import(file_path)?;
         }
-        Commands::Transcribe {
-            project_name,
-            mock,
-            force,
-        } => {
+        Commands::Transcribe { project_name, mock } => {
+            #[cfg(debug_assertions)]
             if *mock {
-                transcription::generate_mock(project_name, *force)?;
+                transcription::generate_mock(project_name)?;
             } else {
+                println!("Transcribing project: {}", project_name);
+                // To be implemented in a future milestone
+            }
+            #[cfg(not(debug_assertions))]
+            {
                 println!("Transcribing project: {}", project_name);
                 // To be implemented in a future milestone
             }

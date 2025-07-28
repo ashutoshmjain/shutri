@@ -150,6 +150,10 @@ Each editable line corresponds to an audio `CLIP` and follows this format:
 "  <Leader>c : Play original chunk (hear the 'before')
 "  <Leader>C : Play edited chunk (hear the 'after')
 "  <Leader>s : Stop all playback
+"  <Leader>[ : Nudge start time of current clip earlier
+"  <Leader>] : Nudge start time of current clip later
+"  <Leader>{ : Nudge end time of current clip earlier
+"  <Leader>} : Nudge end time of current clip later
 " =============================================================================
 
 // --- CHUNK 1 (00:00.000 - 00:30.000) ---
@@ -211,22 +215,30 @@ mod audio {
 }
 ```
 
-#### 4.2.2. Transcribe (`shutri -t <file>`)
+#### 4.2.2. Transcribe (`shutri transcribe <project_name>`)
 
-1.  `shutri` sends each audio `SPLIT` to the Gemini API for transcription.
-2.  The transcription results are cached in `~/.shutri/cache/`.
-3.  The existing `.shutri` project file is updated with the transcribed `CLIPS`, inserted under their corresponding `CHUNK` markers.
+As of Milestone 3, this command generates a **mock** transcription file. This is a placeholder to allow for the development and testing of the editing workflow (`shutri -v`) before the real transcription service is implemented in Milestone 6.
 
-**Pseudocode (Rust):**
+1.  `shutri` generates mock text for each audio `SPLIT`.
+2.  The existing `.shutri` project file is updated with the mock `CLIPS`, inserted under their corresponding `CHUNK` markers.
+3.  If a `.shutri` file already exists, the command will prompt the user for confirmation before overwriting it. This interactive safeguard prevents accidental data loss.
+4.  The `--mock` flag, which enables this functionality, is only available in debug builds of the application.
+
+**Note:** The final version of this command (Milestone 6) will send each audio `SPLIT` to the Gemini API for real transcription and cache the results.
+
+**Pseudocode (Rust - for Milestone 3):**
 
 ```rust
 mod transcription {
-    async fn transcribe_project(project: &mut Project) -> Result<(), Error> {
-        // 1. For each audio SPLIT in the project:
-        // 2.   - Get transcription from cache or Gemini API.
-        // 3.   - Create a CLIP by pairing the transcription with the SPLIT's timestamp.
-        // 4. Update the project's data structure with the list of CLIPS.
-        // 5. Write the `Project` data (now including CLIPS) to the `.shutri` file,
+    fn transcribe_project_mock(project: &mut Project) -> Result<(), Error> {
+        // 1. Check if .shutri file exists.
+        // 2. If it exists, prompt the user for overwrite confirmation.
+        // 3. If the user does not confirm, abort the operation.
+        // 4. For each audio SPLIT in the project:
+        // 5.   - Generate a mock transcription string (e.g., "This is a mock transcription...").
+        // 6.   - Create a CLIP by pairing the mock text with the SPLIT's timestamp.
+        // 7. Update the project's data structure with the list of CLIPS.
+        // 8. Write the `Project` data (now including CLIPS) to the `.shutri` file,
         //    placing the CLIPS under their appropriate CHUNK markers.
     }
 }
@@ -244,8 +256,8 @@ mod transcription {
         *   `<Leader>p`: **Play Clip**. Plays the audio segment for the current line to preview a single edit.
         *   `<Leader>s`: Stop all playback.
     *   **Timestamp Nudging:**
-        *   `<Leader>[`, `<Leader>]`: Nudge the start time of the current `CLIP`.
-        *   `<Leader>{`, `<Leader>}`: Nudge the end time of the current `CLIP`.
+        *   `<Leader>[`, `<Leader>]`: Nudge the start time of the current `CLIP` earlier or later.
+        *   `<Leader>{`, `<Leader>}`: Nudge the end time of the current `CLIP` earlier or later.
 
 **Vimscript and Rust Interaction:**
 
@@ -298,33 +310,44 @@ nnoremap <Leader>s :call ShutriStopPlayback()<CR>
 
 #### 4.2.4. Export (`shutri -e <file>`)
 
-1.  `shutri` reads the edited `.shutri` project file, ignoring all comment lines.
-2.  It uses SoX to extract each audio `CLIP` from the original imported file based on the final time-stamps. Each extracted clip is saved as a temporary file.
-3.  The extracted `CLIPS` are then intelligently joined together. To prevent audible clicks or pops at edit points, a **5-10 millisecond crossfade** is applied where each clip meets the next.
-4.  This is done iteratively: the first two clips are joined with a crossfade, then the result is joined with the third clip, and so on, until a single, seamless audio file is produced.
-5.  The final, combined audio is saved to the `~/.shutri/exports/` directory. To support multiple exports from the same project, the output file will be named using the convention: `<project_name>_export_YYYYMMDD-HHMMSS.mp3`. This ensures that each export is saved as a unique file and prevents accidental overwrites.
+The export process is designed to be as efficient and non-destructive as possible, minimizing audio re-encoding to preserve quality. It achieves this by intelligently identifying which parts of the audio have actually been changed.
+
+1.  **State Comparison:** `shutri` first compares the current state of the `.shutri` project file against an original, unmodified manifest of clips that was created during the initial import.
+
+2.  **Conditional Logic:**
+    *   **If No Changes Are Detected:** If the user has not altered any clip's timestamps or deleted any clips, the process is simple and fast. The original imported MP3 file is copied directly to the `~/.shutri/exports/` directory. This is the ideal "least destructive" path, as it involves no re-encoding and preserves the original audio quality perfectly.
+    *   **If Changes Are Detected:** If any part of the project has been edited, the "Optimized Export" process begins.
+
+3.  **Optimized Export Process:**
+    *   **A. Identify Changed Regions:** The application identifies all contiguous blocks of edited, deleted, or reordered clips.
+    *   **B. Extract in Large Chunks:** Instead of processing every clip individually, `shutri` extracts the audio in large, logical chunks:
+        *   **Unchanged Blocks:** Any long, continuous sequence of *unmodified* clips is extracted from the original file as a single, large segment. These segments are not re-encoded.
+        *   **Changed Blocks:** The edited clips are extracted and processed.
+    *   **C. Join and Crossfade:** The final audio file is constructed by joining these large chunks together. A **5-10 millisecond crossfade** is applied *only at the seams* between the chunks to ensure a smooth, professional transition without clicks or pops. This dramatically reduces the number of re-encoding operations compared to processing every single clip.
+
+4.  **Final Output:** The final, combined audio is saved to the `~/.shutri/exports/` directory. To support multiple exports from the same project, the output file will be named using the convention: `<project_name>_export_YYYYMMDD-HHMMSS.mp3`.
 
 **Pseudocode (Rust):**
 
 ```rust
 mod audio {
     fn export_project(project: &Project) -> Result<(), Error> {
-        // 1. Read the `.shutri` file and create a list of all `CLIPS` to be exported.
-        // 2. For each `CLIP`, use SoX to extract the audio segment into a temporary file:
-        //    `sox <original.mp3> <temp_clip_N.mp3> trim <start> =<end>`
-        // 3. If there's only one clip, rename it and finish.
-        // 4. If there are multiple clips, begin the iterative crossfade process:
-        //    a. Take the first two temporary clips (`temp_clip_1.mp3`, `temp_clip_2.mp3`).
-        //    b. Get the duration of the first clip: `soxi -D temp_clip_1.mp3`.
-        //    c. Join them with a 10ms crossfade using the `splice` effect:
-        //       `sox temp_clip_1.mp3 temp_clip_2.mp3 temp_output_1.mp3 splice $(soxi -D temp_clip_1.mp3),0.01`
-        //    d. Take the result (`temp_output_1.mp3`) and the next clip (`temp_clip_3.mp3`).
-        //    e. Repeat the splice process, saving to a new output file (`temp_output_2.mp3`).
-        //    f. Continue until all clips are joined into one final file.
-        // 5. Generate a timestamp string (e.g., "20250719-103000").
-        // 6. Construct the final output path: `~/.shutri/exports/{project_name}_export_{timestamp}.mp3`.
-        // 7. Move the final combined audio to the output path.
-        // 8. Clean up all temporary clip and output files.
+        // 1. Load the original clip manifest.
+        // 2. Load the current clip state from the .shutri file.
+        // 3. Compare the two. If they are identical, copy the original import
+        //    file to the exports directory and return.
+        // 4. If different, identify all contiguous blocks of changed and
+        //    unchanged clips.
+        // 5. For each block, extract it from the original audio into a temporary file.
+        //    - For unchanged blocks, this is a simple, fast `sox trim` command.
+        //    - For changed blocks, this may involve multiple trims and joins.
+        // 6. Create a final list of temporary audio chunks to be joined.
+        // 7. Iteratively join the chunks using `sox splice` with a small crossfade
+        //    at each seam.
+        // 8. Generate a timestamp string (e.g., "20250719-103000").
+        // 9. Construct the final output path: `~/.shutri/exports/{project_name}_export_{timestamp}.mp3`.
+        // 10. Move the final combined audio to the output path.
+        // 11. Clean up all temporary chunk files.
     }
 }
 ```
@@ -351,10 +374,11 @@ For long-running operations like import and transcription, the CLI must provide 
 ### 5.2. Command-Line Options
 
 *   `shutri -i, --import <file.mp3>`: Import an audio file.
-*   `shutri -t, --transcribe <project>`: Transcribe an imported project. This takes a project that has audio `SPLITS` and generates the `.shutri` file with transcribed `CLIPS`.
+*   `shutri -t, --transcribe <project>`: Transcribe an imported project. As of Milestone 3, this generates a **mock** transcription. In later milestones, it will generate a real transcription using the Gemini API. If a transcription file already exists, it will prompt for confirmation before overwriting.
 *   `shutri -e, --export <project>`: Export a project to a final audio file.
 *   `shutri -v, --edit <project>`: Open a project in Vim for editing.
 *   `shutri auth login`: Initiates an interactive OAuth 2.0 flow to sign in with a Google account.
+*   `--mock`: Used with the `transcribe` command to generate mock data. This flag is only available in debug builds.
 *   `--no-cache`: Used with a transcription command. Forces re-transcription of all audio `SPLITS`, ignoring any cached results. This is useful if the initial transcription is unsatisfactory.
 *   `--debug`: Enable verbose logging for debugging purposes.
 
@@ -462,173 +486,17 @@ The testing strategy will include:
 
 ---
 
-## 10. Quality and Defect Management
+## 10. Development Methodology
 
-This project employs a "shift-left" quality strategy, focusing on defect prevention through rigorous, testable milestones rather than defect tracking after the fact. The development process itself is the primary tool for quality assurance.
-
-### 10.1. Defect Measurement Strategy
-
-*   **Primary Defect Definition:** A "primary defect" is defined as any issue that either:
-    1.  Prevents the "Testable Outcome" of the current milestone from being successfully achieved.
-    2.  Causes a regression by breaking the "Testable Outcome" of a previously completed and verified milestone.
-
-*   **Zero Carry-Over Goal:** The core quality objective is to have **zero primary defects** carried over from one milestone to the next. Each milestone's "Testable Outcome" serves as a strict quality gate. Development on a new milestone does not begin until the previous one is fully functional and verified.
-
-*   **Implicit Tracking:** Primary defects are tracked implicitly through the development and testing workflow for each milestone. The `git` commit history serves as the de facto ledger of defects identified and resolved. The number of commits required to achieve a milestone's "Testable Outcome" can be used as a rough metric for code complexity and risk.
-
-#### 10.1.1. Primary Bug Tracking for Milestones
-During the testing phase for a given milestone, only bugs that impact a previously completed and validated milestone will be considered "primary bugs." These primary bugs must be tracked via dedicated commits. Bugs that are confined to the milestone currently under test do not require individual commit tracking until the milestone is considered complete.
-
-### 10.2. Automated Process and Reporting
-
-The project's quality process is designed for automation, providing clear, continuous feedback.
-
-*   **Automated Verification:** The "Testable Outcome" for each milestone is verified through an automated process. This includes the full suite of unit, integration, and end-to-end tests, as well as the documentation standard check (`cargo doc --fail-on-warnings`).
-
-*   **Continuous Integration (CI) Reporting:** In a CI/CD environment, the status of this verification process would serve as the primary quality report. A typical CI pipeline for this project would:
-    1.  Run `cargo test` to execute all unit and integration tests.
-    2.  Run the end-to-end test suite.
-    3.  Run `cargo doc --no-deps --document-private-items --fail-on-warnings` to enforce documentation standards.
-    4.  A failure in any of these steps automatically flags a primary defect and fails the build. The build remains "red" until all checks pass.
-
-*   **Defect Reintroduction Prevention:** The comprehensive test suite is the main defense against defect reintroduction. A change that causes a previously passing test to fail is a clear signal of a regression. This provides immediate feedback, allowing for rapid correction.
+For details on the project's development methodology, quality assurance, and documentation standards, please see [VIBE_METHODOLOGY.md](./VIBE_METHODOLOGY.md).
 
 ---
 
-## 11. Development Plan
-
-This project will be developed in three distinct phases: **Prototype**, **Dev**, and **User**. Each phase consists of a series of testable milestones. This phased approach allows us to manage quality, gather feedback, and track our primary metric: **Defect Density**. Our goal is to reduce defect density by 75% in each successive phase.
-
-### Phase 1: Prototype
-
-This phase focuses on building the core functionality of `shutri` and validating the text-based audio editing concept. The milestones are designed to create a functional, end-to-end proof of concept.
-
-#### Milestone 1: Project Setup and Core Data Structures
-
-*   **Goal:** Initialize the Rust project and define the core data structures.
-*   **Tasks:**
-    *   Run `cargo init` to create the project structure.
-    *   Add initial dependencies to `Cargo.toml`.
-    *   Define the `Project` struct and other core data types.
-*   **Testable Outcome:** The project compiles successfully. Unit tests for the data structures pass. The milestone's code passes the documentation standard check.
-
-#### Milestone 2: Audio Import and Splitting
-
-*   **Goal:** Implement the ability to import an MP3 file and split it into intelligent, variable-length `SPLITS` based on silence detection.
-*   **Tasks:**
-    *   Implement the `import_audio` function in `audio.rs`.
-    *   Use `std::process::Command` to call the `sox` command-line tool with the `silence` effect.
-    *   Implement the `shutri -i, --import` CLI command.
-*   **Testable Outcome:** Running `shutri --import <path/to/audio.mp3>` correctly creates a project with audio `SPLITS` in the `~/.shutri` directory, split according to natural silences in the source file. The milestone's code passes the documentation standard check.
-
-#### Milestone 3: Mocked Transcription File Generation
-
-*   **Goal:** Generate a `.shutri` project file with valid, mock data corresponding to a real audio project.
-*   **Tasks:**
-    *   Implement a mock transcription function that generates dummy text but with **valid timestamps** that fall within the `CHUNK` boundaries of a real project from Milestone 2.
-    *   Implement the boundary check logic to append informational comments.
-*   **Testable Outcome:** Running `shutri --transcribe --mock <project_name>` generates a correctly formatted `.shutri` file that is ready for interactive use. The milestone's code passes the documentation standard check.
-
-#### Milestone 4: Vim Integration & Playback
-
-*   **Goal:** Create the core interactive editing loop within Vim.
-*   **Tasks:**
-    *   Create the basic Vim plugin (`shutri.vim`) with highlight and match rules.
-    *   Implement the `ShutriPlayClip()` and `ShutriPlayChunk()` functions in Vimscript, which will call the main `shutri` binary.
-    *   Implement the `shutri -v, --edit` command.
-*   **Testable Outcome:** Running `shutri --edit <project_name>` opens Vim. Boundary-crossing `CLIPS` are highlighted. `<Leader>p` and `<Leader>c` play the correct audio from the real audio file. The milestone's code passes the documentation standard check.
-
-#### Milestone 5: Audio Export
-
-*   **Goal:** Combine the edited audio `CLIPS` into a final MP3 file.
-*   **Tasks:**
-    *   Implement the `export_project` function in `audio.rs`.
-    *   Implement the `shutri -e, --export` CLI command.
-*   **Testable Outcome:** Running `shutri --export <project_name>` on a (mock or real) edited project generates a final MP3 file. The audio content matches the edits made. The milestone's code passes the documentation standard check.
-
-#### Milestone 6: Real Transcription Service & Authentication
-
-*   **Goal:** Implement the real transcription service, including both manual and interactive authentication methods.
-*   **Tasks:**
-    *   Implement the `auth.rs` module.
-    *   Implement the `shutri auth login` command with a full OAuth 2.0 flow.
-    *   Update `transcription.rs` to use credentials from `config.rs`, supporting both API keys and OAuth tokens.
-    *   Use the `reqwest` crate to make authenticated HTTP requests to the Gemini API.
-    *   Implement caching logic.
-*   **Testable Outcome:** Running `shutri --transcribe <project_name> --no-cache` populates the `.shutri` file with a real transcription, using either authentication method. The milestone's code passes the documentation standard check.
-
-#### Milestone 7: Polish and Finalize
-
-*   **Goal:** Finalize the CLI, implement robust error handling, and improve the user experience.
-*   **Tasks:**
-    *   Implement the main `shutri <file.mp3>` invocation.
-    *   Implement the engaging command-line feedback as described in Section 5.1.1.
-    *   Add comprehensive error handling and user-friendly error messages.
-    *   Create the `install.sh` script with dependency checks.
-    *   Write end-to-end tests and create documentation.
-*   **Testable Outcome:** The application is fully functional, robust, and user-friendly. The end-to-end test suite passes. The milestone's code passes the documentation standard check.
-
-### Phase 2: Dev
-
-This phase focuses on expanding the features, stability, and reach of the application. We will build upon the validated prototype to create a more robust and feature-rich tool.
-
-#### Milestone 8: Alpha Release & Community Feedback
-
-*   **Goal:** Package the application for an alpha release and gather initial feedback from a small group of technical users.
-*   **Tasks:**
-    *   Create a stable `v0.1.0-alpha` release.
-    *   Write comprehensive documentation for installation and usage.
-    *   Recruit alpha testers from relevant online communities (e.g., Rust forums, podcasting groups).
-*   **Testable Outcome:** At least 10 users have successfully installed and used `shutri` to edit a real audio file. A feedback survey is completed by at least 5 users.
-
-#### Milestone 9: Feature Complete & API Stability
-
-*   **Goal:** Implement the "Future Directions" features and stabilize the internal API.
-*   **Tasks:**
-    *   Implement programmable editing features (e.g., filler word removal).
-    *   Enhance the Vim plugin with advanced features (e.g., visual highlighting).
-    *   Refactor the codebase to establish a stable internal API for future development.
-*   **Testable Outcome:** The new features are covered by integration tests. The API is documented and versioned.
-
-#### Milestone 10: Cross-Platform Support
-
-*   **Goal:** Add support for macOS and Windows.
-*   **Tasks:**
-    *   Create dedicated installation scripts (e.g., Homebrew for macOS, Chocolatey/Scoop for Windows).
-    *   Set up CI/CD pipelines to test the application on all three platforms (Linux, macOS, Windows).
-    *   Resolve any platform-specific issues.
-*   **Testable Outcome:** The application can be successfully installed and run on all three target platforms. The end-to-end test suite passes on each platform.
-
-### Phase 3: User
-
-This phase focuses on preparing the application for a wider audience, including non-technical users. The emphasis is on user experience, stability, and long-term support.
-
-#### Milestone 11: Beta Release & User Acceptance Testing (UAT)
-
-*   **Goal:** A wider public beta to gather feedback from non-technical users.
-*   **Tasks:**
-    *   Create a `v0.9.0-beta` release.
-    *   Simplify the installation and setup process.
-    *   Create user-friendly documentation and tutorials.
-    *   Actively solicit feedback through a public beta program.
-*   **Testable Outcome:** The application is successfully used by at least 50 beta testers. The defect density is at least 75% lower than in the Dev phase.
-
-#### Milestone 12: General Availability (GA) & Long-Term Support (LTS)
-
-*   **Goal:** The official 1.0 release, with a commitment to long-term support.
-*   **Tasks:**
-    *   Create the `v1.0.0` release.
-    *   Establish a clear process for bug reporting and feature requests.
-    *   Define a long-term support (LTS) policy.
-*   **Testable Outcome:** The `v1.0.0` release is published. The project has a public issue tracker and a defined support plan. The defect density is at least 75% lower than in the Beta phase.
-
----
-
-## 12. Installation
+## 11. Installation
 
 To ensure a smooth setup, `shutri` will be distributed with an installation script (`install.sh`). **This script is designed specifically for Debian-based Linux distributions (e.g., Debian, Ubuntu).**
 
-### 12.1. Installation Script (`install.sh`)
+### 11.1. Installation Script (`install.sh`)
 
 The script will perform the following steps in order:
 
@@ -647,60 +515,17 @@ The script will perform the following steps in order:
     *   The script will create the necessary directories under `~/.shutri/` and `~/.config/shutri/`.
     *   It will create a default `config.toml` file based on the template in Section 9.3, guiding the user on how to proceed with authentication.
 
-### 12.2. Uninstallation
+### 11.2. Uninstallation
 
 An `uninstall.sh` script will also be provided to remove the `shutri` binary, Vim plugin, and configuration files cleanly.
 
 ---
 
-## 13. Documentation Plan
-
-Given that `shutri` integrates several external tools and APIs (SoX, Vim, Gemini), and is intended to serve as a learning resource, documentation is a first-class deliverable, not an afterthought. Our documentation strategy is designed to make the codebase exceptionally clear, particularly for novice Rust developers or those unfamiliar with the integrated components.
-
-### 13.1. Philosophy: Documentation as a Tutorial
-
-The entire codebase will be documented with the mindset of creating a tutorial. We will assume the reader is a motivated beginner. The documentation for any given module, struct, or function should not just explain *what* it does, but *why* it exists, how it fits into the larger picture, and what specific challenges it solves.
-
-### 13.2. Leveraging `rustdoc`
-
-We will use `rustdoc` as the primary tool for generating and enforcing our documentation standards. All public APIs (`struct`s, `enum`s, `fn`s, `trait`s, and `mod`s) will be thoroughly documented using Markdown within `///` comments.
-
-Key `rustdoc` features we will leverage:
-*   **Code Examples:** Every public function will include at least one runnable doctest example. This serves as both documentation and a mini-unit test, demonstrating practical usage.
-*   **Intra-doc Links:** We will use links to connect related parts of the API, making it easy for developers to navigate the codebase and understand relationships between components.
-*   **Module-Level Explanations:** Each module (`mod.rs` or the file itself) will begin with a detailed explanation of its purpose, its responsibilities, and how it interacts with other modules.
-
-### 13.3. The Documentation Standard
-
-Our standard for documentation is that **a novice programmer should be able to debug the code using only the documentation as a guide.**
-
-*   **For `struct`s and `enum`s:**
-    *   A summary of the data structure's purpose.
-    *   A detailed explanation of each field or variant, including its role, expected state, and any invariants.
-    *   Example instantiation where applicable.
-
-*   **For `fn`s:**
-    *   A concise summary of what the function does.
-    *   A `# Panics` section if the function can panic.
-    *   An `# Errors` section detailing the conditions under which it will return an `Err` variant, and what the error means.
-    *   A `# Safety` section for any `unsafe` code, explaining why it is safe.
-    *   A detailed `# Examples` section with one or more runnable doctests.
-
-### 13.4. Gating Factor for Milestones
-
-No milestone will be considered complete until its associated code meets our documentation standard. This will be enforced by a `cargo doc` check.
-
-**`cargo doc --no-deps --document-private-items --fail-on-warnings`**
-
-This command will be run as part of the test suite for each milestone. It ensures that all items (including private ones, to encourage good internal documentation) are documented and that there are no broken links or other `rustdoc` warnings.
-
----
-
-## 14. Future Directions
+## 12. Future Directions
 
 This section outlines potential features and enhancements that could be considered for future versions of `shutri`, beyond the core functionality described in this document.
 
-### 14.1. Programmable Editing & Effects
+### 12.1. Programmable Editing & Effects
 
 While the initial version focuses on manual, precise editing, the text-based nature of the `.shutri` file opens up powerful possibilities for automation. Future versions could introduce features for "programmable editing," where the user can apply changes to multiple clips at once using scripts or commands.
 
@@ -710,7 +535,7 @@ Examples include:
 *   **Silence Adjustment:** A function to automatically shorten or lengthen silences between clips to meet a specific duration.
 *   **Applying Audio Effects:** The `.shutri` format could be extended to support applying SoX effects to specific clips.
 
-### 14.2. Advanced Vim Integration
+### 12.2. Advanced Vim Integration
 
 The Vim plugin could be enhanced with more sophisticated features, such as:
 
@@ -718,7 +543,7 @@ The Vim plugin could be enhanced with more sophisticated features, such as:
 *   **Multi-Clip Operations:** Allowing users to visually select multiple lines (clips) and perform actions on them, such as playing them in sequence or deleting them all at once.
 *   **Speaker Identification:** If the transcription service provides speaker diarization, this information could be displayed in the `.shutri` file, allowing for speaker-specific edits.
 
-### 14.3. Cross-Platform Support
+### 12.3. Cross-Platform Support
 
 While the initial version is focused on Debian-based Linux, future work could expand support to other operating systems. This would involve:
 *   **macOS:** Creating a dedicated installation script using Homebrew.
