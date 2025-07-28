@@ -85,44 +85,43 @@
 <h1>A Guide to the VIBE Development Methodology</h1>
 
 <h2>1. Introduction: What is VIBE?</h2>
-
 <p>Welcome to the VIBE (Value-Integrated, Iterative, Backlog-Enabled) Development Methodology. This document is a guide for project managers and developers who want to build software in close collaboration with a Large Language Model (LLM) assistant, such as the <strong>Gemini CLI</strong>.</p>
-
 <p>VIBE is a hybrid approach that combines the rigor of milestone-driven development with the flexibility of Agile and Scrum. It's designed to maximize the unique capabilities of an LLM, turning it from a simple coding assistant into the primary driver of the development process.</p>
-
 <p>Throughout this guide, we will use the <a href="https://github.com/ashutoshmjain/shutri"><code>shutri</code></a> project as a real-world case study. You can explore its artifacts to see VIBE in action.</p>
 
 <hr>
 
-<h2>2. The Core Philosophy: Your LLM as the Developer</h2>
+<h2>2. What's in a Name?</h2>
+<p>The name "VIBE" was chosen for two reasons:</p>
+<ol>
+    <li><strong>It's an acronym:</strong> It stands for <strong>V</strong>alue-Integrated, <strong>I</strong>terative, <strong>B</strong>acklog-<strong>E</strong>nabled, which are the core pillars of the methodology.</li>
+    <li><strong>It's a nod to its origins:</strong> This methodology was developed and refined during the creation of the <code>shutri</code> project. In Hindi, the word <strong>"shutri" (श्रुति)</strong> is a phonetic match for a word that means <strong>"vibe"</strong> or "vibration," and also refers to the concept of "that which is heard" in ancient texts. This connection felt appropriate for a project focused on audio and a methodology focused on a new way of "hearing" the development process.</li>
+</ol>
 
+<hr>
+
+<h2>3. The Core Philosophy: Your LLM as the Developer</h2>
 <p>The VIBE methodology is built on a fundamental shift in perspective: <strong>the LLM is the developer</strong>. The human's role is to act as the <strong>Project Manager</strong> or <strong>Product Owner</strong>—setting the vision, defining the goals, and verifying the results.</p>
-
 <ul>
     <li><strong>Agent-Driven Development:</strong> The LLM writes the code, runs the tests, and manages the project artifacts.</li>
     <li><strong>Self-Documentation:</strong> The LLM is responsible for creating and maintaining all project documentation, ensuring it is always synchronized with the code.</li>
     <li><strong>Integrated Version Control:</strong> All <code>git</code> activities—from writing detailed commit messages to staging and committing files—are performed by the LLM.</li>
 </ul>
-
 <p>This approach creates a powerful, self-documenting, and highly-auditable development process.</p>
 
 <hr>
 
-<h2>3. How to Implement VIBE: A Step-by-Step Guide</h2>
+<h2>4. How to Implement VIBE: A Step-by-Step Guide</h2>
 
 <h3>Step 1: Lay the Foundation with a Technical Specification</h3>
-
 <p>Before writing a single line of code, your first task is to collaborate with your LLM assistant to create a detailed <strong>Technical Specification</strong>. This document is the blueprint for your project.</p>
-
 <p><strong>Your Goal:</strong> To produce a comprehensive <code>TECH_SPECS.md</code> file.</p>
-
 <p><strong>How to do it:</strong></p>
 <ol>
     <li><strong>Start a conversation</strong> with your LLM. Describe your project's vision, its core features, the target audience, and any known constraints.</li>
     <li><strong>Ask the LLM to propose a technical solution.</strong> This should include system architecture, key dependencies, data structures, and the core user workflow.</li>
     <li><strong>Iterate and refine.</strong> Work with the LLM to flesh out the details. Challenge its assumptions. Ask for alternative approaches. The goal is to explore the problem space thoroughly <em>before</em> committing to a specific implementation.</li>
 </ol>
-
 <blockquote>
     <p><strong>Case Study: <code>shutri</code></strong><br>
     The technical specification for the <code>shutri</code> project was built through this exact iterative process. The result is a detailed document that covers everything from the system architecture to the command-line options.</p>
@@ -130,150 +129,81 @@
 </blockquote>
 
 <h3>Step 2: Define the "Ways of Working"</h3>
-
 <p>Once the technical vision is clear, the next step is to define the development process itself. This is where you create the <code>VIBE_METHODOLOGY.md</code> document (the very guide you are reading now).</p>
-
 <p><strong>Your Goal:</strong> To establish a clear, documented process for the project.</p>
-
 <p><strong>How to do it:</strong></p>
 <ol>
     <li><strong>Ask the LLM</strong> to create a project plan based on the <code>TECH_SPECS.md</code>.</li>
     <li><strong>Instruct it to break the plan into phases and milestones.</strong> Each milestone should have a clear, testable goal. This forms the "Development Plan" section.</li>
     <li><strong>Define the quality and documentation standards.</strong> Ask the LLM to establish rules for defect tracking, change management, and code documentation. This ensures consistency and quality from the start.</li>
 </ol>
-
 <blockquote>
     <h4><strong>Case Study: The <code>shutri</code> Development Plan</strong></h4>
     <p>The following is the complete, multi-phase development plan created for the <code>shutri</code> project. It serves as a concrete example of the output of this step.</p>
-    
     <h5><strong>Phase 1: Prototype</strong></h5>
     <p>This phase focuses on building the core functionality of <code>shutri</code> and validating the text-based audio editing concept.</p>
     <ul>
-        <li><strong>Milestone 1: Project Setup and Core Data Structures</strong>
-            <ul>
-                <li><strong>Goal:</strong> Initialize the Rust project and define the core data structures.</li>
-                <li><strong>Testable Outcome:</strong> The project compiles successfully. Unit tests for the data structures pass.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 2: Audio Import and Splitting</strong>
-            <ul>
-                <li><strong>Goal:</strong> Import an MP3 file and split it into <code>SPLITS</code> based on silence.</li>
-                <li><strong>Testable Outcome:</strong> Running <code>shutri --import &lt;file&gt;</code> creates a project with audio <code>SPLITS</code> in the <code>~/.shutri</code> directory.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 3: Transcription File Generation</strong>
-            <ul>
-                <li><strong>Goal:</strong> Generate a <code>.shutri</code> project file with mock data.</li>
-                <li><strong>Testable Outcome:</strong> Running <code>shutri --transcribe &lt;project&gt; --mock</code> generates a correctly formatted <code>.shutri</code> file.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 4: Vim Integration & Playback</strong>
-            <ul>
-                <li><strong>Goal:</strong> Create the core interactive editing loop within Vim.</li>
-                <li><strong>Testable Outcome:</strong> Running <code>shutri --edit &lt;project&gt;</code> opens Vim; <code>&lt;Leader&gt;p</code> and <code>&lt;Leader&gt;c</code> play the correct audio.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 5: Audio Export</strong>
-            <ul>
-                <li><strong>Goal:</strong> Combine edited <code>CLIPS</code> into a final MP3 file.</li>
-                <li><strong>Testable Outcome:</strong> Running <code>shutri --export &lt;project&gt;</code> generates a final MP3 file matching the edits.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 6: Real Transcription Service & Authentication</strong>
-            <ul>
-                <li><strong>Goal:</strong> Implement the real transcription service and authentication.</li>
-                <li><strong>Testable Outcome:</strong> Running <code>shutri --transcribe &lt;project&gt;</code> populates the <code>.shutri</code> file with a real transcription.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 7: Polish and Finalize</strong>
-            <ul>
-                <li><strong>Goal:</strong> Finalize the CLI, implement robust error handling, and improve the user experience.</li>
-                <li><strong>Testable Outcome:</strong> The application is fully functional, robust, and user-friendly.</li>
-            </ul>
-        </li>
+        <li><strong>Milestone 1: Project Setup and Core Data Structures</strong></li>
+        <li><strong>Milestone 2: Audio Import and Splitting</strong></li>
+        <li><strong>Milestone 3: Transcription File Generation</strong></li>
+        <li><strong>Milestone 4: Vim Integration & Playback</strong></li>
+        <li><strong>Milestone 5: Audio Export</strong></li>
+        <li><strong>Milestone 6: Real Transcription Service & Authentication</strong></li>
+        <li><strong>Milestone 7: Polish and Finalize</strong></li>
     </ul>
-
     <h5><strong>Phase 2: Dev</strong></h5>
     <p>This phase focuses on expanding features, stability, and reach.</p>
     <ul>
-        <li><strong>Milestone 8: Alpha Release & Community Feedback</strong>
-            <ul>
-                <li><strong>Goal:</strong> Package the application for an alpha release and gather initial feedback.</li>
-                <li><strong>Testable Outcome:</strong> At least 10 users have successfully installed and used <code>shutri</code>.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 9: Feature Complete & API Stability</strong>
-            <ul>
-                <li><strong>Goal:</strong> Implement "Future Directions" features and stabilize the internal API.</li>
-                <li><strong>Testable Outcome:</strong> New features are covered by integration tests.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 10: Cross-Platform Support</strong>
-            <ul>
-                <li><strong>Goal:</strong> Add support for macOS and Windows.</li>
-                <li><strong>Testable Outcome:</strong> The application can be successfully installed and run on all three target platforms.</li>
-            </ul>
-        </li>
+        <li><strong>Milestone 8: Alpha Release & Community Feedback</strong></li>
+        <li><strong>Milestone 9: Feature Complete & API Stability</strong></li>
+        <li><strong>Milestone 10: Cross-Platform Support</strong></li>
     </ul>
-
     <h5><strong>Phase 3: User</strong></h5>
     <p>This phase focuses on preparing the application for a wider, non-technical audience.</p>
     <ul>
-        <li><strong>Milestone 11: Beta Release & User Acceptance Testing (UAT)</strong>
-            <ul>
-                <li><strong>Goal:</strong> A wider public beta to gather feedback from non-technical users.</li>
-                <li><strong>Testable Outcome:</strong> The application is successfully used by at least 50 beta testers.</li>
-            </ul>
-        </li>
-        <li><strong>Milestone 12: General Availability (GA) & Long-Term Support (LTS)</strong>
-            <ul>
-                <li><strong>Goal:</strong> The official 1.0 release with a commitment to long-term support.</li>
-                <li><strong>Testable Outcome:</strong> The <code>v1.0.0</code> release is published with a public issue tracker.</li>
-            </ul>
-        </li>
+        <li><strong>Milestone 11: Beta Release & User Acceptance Testing (UAT)</strong></li>
+        <li><strong>Milestone 12: General Availability (GA) & Long-Term Support (LTS)</strong></li>
     </ul>
 </blockquote>
 
-<h3>Step 3: Execute the Plan, Milestone by Milestone</h3>
-
+<h3>Step 3: Plan and Execute Sprints (Milestones)</h3>
 <p>This is the core loop of the VIBE methodology. You will treat each milestone as a self-contained "sprint."</p>
-
-<p><strong>Your Goal:</strong> To complete the "Testable Outcome" for the current milestone.</p>
-
-<p><strong>How to do it:</strong></p>
-<ol>
-    <li><strong>Create the Test Plan:</strong> For each new milestone, your first action is to ask the LLM to create a dedicated test plan. This document translates the milestone's goal into a concrete, verifiable checklist.</li>
-    <li><strong>Instruct the LLM to Begin Development:</strong> With the test plan as its guide, instruct the LLM to start working on the milestone's tasks.</li>
-    <li><strong>Verify the Outcome:</strong> Once the LLM reports that the work is complete, your job is to verify it against the test plan. Run the commands, check the outputs, and ensure the goal has been met.</li>
-    <li><strong>Commit the Work:</strong> If the outcome is successful, instruct the LLM to commit the changes with a descriptive message. The milestone is now complete.</li>
-</ol>
-
+<h4>Part A: Create the Test Plan</h4>
+<p>For each new milestone, your first action is to ask the LLM to create a dedicated test plan. This document translates the milestone's goal into a concrete, verifiable checklist. While the LLM can and should write automated unit and integration tests, the milestone test plan is different—it's a list of actions for a human to perform to validate the outcome.</p>
+<p><strong>Human-in-the-Loop Testing is Mandatory:</strong> The VIBE methodology requires that a human verifies the outcome of every milestone. The LLM's role is to make this process as easy as possible by generating a clear and comprehensive test plan.</p>
 <blockquote>
     <p><strong>Case Study: <code>shutri</code></strong><br>
-    For Milestone 2, the goal was to import and split an audio file. The Gemini CLI first created a detailed test plan. It then implemented the feature and, once verified, the changes were committed.</p>
+    For each milestone, the Gemini CLI created a detailed test plan outlining the steps for manual verification.</p>
     <p><strong>See the artifacts:</strong></p>
     <ul>
         <li><a href="https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TESTPLAN_MILESTONE2.md"><code>TESTPLAN_MILESTONE2.md</code></a></li>
         <li><a href="https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TESTPLAN_MILESTONE3.md"><code>TESTPLAN_MILESTONE3.md</code></a></li>
+        <li><a href="https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TESTPLAN_MILESTONE4.md"><code>TESTPLAN_MILESTONE4.md</code></a></li>
     </ul>
 </blockquote>
+<h4>Part B: Execute and Verify</h4>
+<ol>
+    <li><strong>Instruct the LLM to Begin Development:</strong> With the test plan as its guide, instruct the LLM to start working on the milestone's tasks.</li>
+    <li><strong>Verify the Outcome:</strong> Once the LLM reports that the work is complete, your job is to follow the test plan and verify the outcome.</li>
+    <li><strong>Commit the Work:</strong> If the outcome is successful, instruct the LLM to commit the changes with a descriptive message. The milestone is now complete.</li>
+</ol>
 
-<h3>Step 4: Manage Change and Quality with Trackers</h3>
-
-<p>No plan is perfect. As the project evolves, you will encounter bugs or realize that an enhancement is needed. VIBE manages this through two key documents.</p>
-
+<h3>Step 4: Maintain Project Artifacts</h3>
+<p>A successful project relies on well-maintained documentation. In VIBE, this is an active, ongoing process driven by the LLM.</p>
+<h4>Knowledge Management</h4>
+<p>The <strong><code>KNOWLEDGE_BASE.md</code></strong> is the project's central, living repository of information. It's used to store important context, design decisions, and learnings that don't fit neatly into the technical specs or methodology.</p>
+<p><strong>How to do it:</strong> As you work with the LLM and make decisions, periodically instruct it to summarize the key takeaways and add them to the knowledge base. This prevents valuable context from being lost in the conversation history.</p>
+<blockquote>
+    <p><strong>Case Study: <code>shutri</code></strong><br>
+    The project's knowledge base is used to track architectural decisions and other key project information.</p>
+    <p><strong>See the artifact:</strong> <a href="https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/KNOWLEDGE_BASE.md"><code>KNOWLEDGE_BASE.md</code></a></p>
+</blockquote>
+<h4>Change and Defect Tracking</h4>
+<p>No plan is perfect. VIBE manages change through two key documents:</p>
 <ul>
     <li><strong><code>DEFECT_TRACKER.md</code></strong>: Used to log any bug that breaks the functionality of a <em>previously completed</em> milestone.</li>
     <li><strong><code>CHANGE_TRACKER.md</code></strong>: Used to log any proposed enhancement or change that would alter the scope of a <em>previously completed</em> milestone.</li>
 </ul>
-
-<p><strong>How to do it:</strong></p>
-<ol>
-    <li><strong>Identify a Defect or Change:</strong> When you notice an issue, describe it to the LLM.</li>
-    <li><strong>Ask the LLM to Log It:</strong> Instruct the LLM to add an entry to the appropriate tracker. This creates a formal record.</li>
-    <li><strong>Prioritize and Address:</strong> You can then instruct the LLM to address the item immediately or leave it in the tracker to be prioritized later.</li>
-</ol>
-
 <blockquote>
     <p><strong>Case Study: <code>shutri</code></strong><br>
     These trackers are used to maintain the quality and integrity of the project's approved milestones.</p>
@@ -286,34 +216,24 @@
 
 <hr>
 
-<h2>4. Measuring Success: Defect Density</h2>
-
+<h2>5. Measuring Success: Defect Density</h2>
 <p>A core principle of VIBE is that quality should improve over time. The primary metric for measuring this is <strong>Defect Density</strong>.</p>
-
 <h3>What is Defect Density?</h3>
-
 <p>In the context of VIBE, Defect Density is not measured against lines of code. It is a measure of process stability, calculated as:</p>
-
 <p><strong>Defect Density = (Number of Primary Defects) / (Number of Completed Milestones)</strong></p>
-
 <p>A "Primary Defect" is any bug logged in the <code>DEFECT_TRACKER.md</code> that represents a regression in a previously completed and verified milestone.</p>
-
 <h3>The Goal: A 75% Reduction Per Phase</h3>
-
 <p>The goal of the VIBE methodology is to <strong>reduce Defect Density by 75% in each successive development phase.</strong></p>
-
 <ul>
     <li><strong>Phase 1 (Prototype):</strong> This phase establishes the baseline Defect Density. The focus is on speed and validating the core concept, so a higher number of defects is expected.</li>
     <li><strong>Phase 2 (Dev):</strong> The goal is to achieve a Defect Density that is 75% lower than the baseline. This demonstrates that the core architecture is stabilizing and the development process is maturing.</li>
     <li><strong>Phase 3 (User):</strong> The goal is another 75% reduction from the Dev phase's density. This proves that the application is hardening and becoming robust enough for a general release.</li>
 </ul>
-
 <p>Because the LLM assistant maintains the <code>DEFECT_TRACKER.md</code>, calculating this metric is a straightforward, data-driven process. It is the Project Manager's responsibility to periodically review this metric to ensure the project's quality is improving as expected.</p>
 
 <hr>
 
-<h2>5. Conclusion</h2>
-
+<h2>6. Conclusion</h2>
 <p>The VIBE methodology provides a structured, transparent, and highly efficient framework for building software with an LLM assistant. By casting the human as the project manager and the LLM as the developer, it leverages the strengths of both to create high-quality, well-documented, and rapidly-developed projects.</p>
 
 </body>
