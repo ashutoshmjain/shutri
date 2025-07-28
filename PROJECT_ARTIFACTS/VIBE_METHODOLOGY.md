@@ -1,8 +1,8 @@
-# A Guide to the VIBE Development Methodology
+# VIBE Development Methodology
 
 ## 1. Introduction: What is VIBE?
 
-Welcome to the VIBE (Value-Integrated, Iterative, Backlog-Enabled) Development Methodology. This document is a guide for project managers and developers who want to build software in close collaboration with a Large Language Model (LLM) assistant, such as the **Gemini CLI**.
+Welcome to the VIBE Development Methodology. This document is a guide for project managers and developers who want to build software in close collaboration with a Large Language Model (LLM) assistant, such as the **Gemini CLI**.
 
 VIBE is a hybrid approach that combines the rigor of milestone-driven development with the flexibility of Agile and Scrum. It's designed to maximize the unique capabilities of an LLM, turning it from a simple coding assistant into the primary driver of the development process.
 
@@ -10,12 +10,10 @@ Throughout this guide, we will use the [`shutri`](../) project as a real-world c
 
 ---
 
-## 2. What's in a Name?
+## 2. What's in a Name? 
 
-The name "VIBE" was chosen for two reasons:
+In Hindi, the word **"shutri" literally means **"vibes"** :-) 
 
-1.  **It's an acronym:** It stands for **V**alue-Integrated, **I**terative, **B**acklog-**E**nabled, which are the core pillars of the methodology.
-2.  **It's a nod to its origins:** This methodology was developed and refined during the creation of the `shutri` project. In Hindi, the word **"shutri" (श्रुति)** is a phonetic match for a word that means **"vibe"** or "vibration," and also refers to the concept of "that which is heard" in ancient texts. This connection felt appropriate for a project focused on audio and a methodology focused on a new way of "hearing" the development process.
 
 ---
 
