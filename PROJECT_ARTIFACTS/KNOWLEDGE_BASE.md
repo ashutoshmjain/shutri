@@ -126,3 +126,61 @@ The `shutri` command-line interface (`shutri --play-clip "..."`, `shutri --play-
 If we decide to create a plugin for a different editor (e.g., VS Code, Neovim with Lua), we would only need to write a small extension that calls this same, simple command-line API. If the core logic were embedded in Vimscript, it would need to be completely rewritten and maintained for each new editor, which is not a scalable approach.
 
 In summary, the Rust intermediary is a strategic choice that prioritizes maintainability, performance on complex tasks, and future portability, at the negligible cost of a few milliseconds of startup time for simple commands.
+---
+## Using SoX to Play Dynamic Playlists for Edited Chunks
+
+A core feature of `shutri` is the ability to preview edits in near real-time. When a user plays an "edited chunk," the system must fetch multiple, potentially non-contiguous audio clips from the original source file and play them in sequence.
+
+A simple concatenation of these clips would result in audible "clicks" or "pops" at the seams, which would be distracting and would not accurately represent the final, smooth output from the export process. To ensure the preview is a high-fidelity representation of the final product, the playback mechanism **must use crossfading**.
+
+### The High-Fidelity Playback Method
+
+The correct method involves using temporary files and the `sox splice` command, which mirrors the logic of the final export process.
+
+1.  **Extract to Temp Files:** For each clip in the edited chunk, `shutri` extracts the audio into a temporary, lossless `.wav` file. This is done for each clip that needs to be played.
+    ```sh
+    sox source.mp3 /tmp/clip1.wav trim [start1] [duration1]
+    sox source.mp3 /tmp/clip2.wav trim [start2] [duration2]
+    sox source.mp3 /tmp/clip3.wav trim [start3] [duration3]
+    ```
+
+2.  **Combine with `splice`:** `shutri` then uses a single `sox` command to combine these temporary files. The `--combine splice` method is used to apply a small, triangular crossfade at the junction between each clip, ensuring a smooth, professional transition. The final, combined audio is piped directly to the `play` command without being saved to a final file.
+    ```sh
+    sox --combine splice /tmp/clip1.wav /tmp/clip2.wav /tmp/clip3.wav -p | play -q -
+    ```
+
+3.  **Cleanup:** After playback is complete, the temporary `.wav` files are deleted.
+
+### Why This Method is Crucial
+
+*   **Accuracy:** It ensures that what the user hears during editing is a precise representation of what they will get in the final export. This prevents any surprises in the final render.
+*   **Editing Decisions:** By eliminating clicks and other audio artifacts, it allows the user to make more accurate editing decisions based on the actual flow and cadence of the edited audio.
+
+While this method is slightly more complex and involves disk I/O for temporary files, the cost is negligible compared to the benefit of providing a truly accurate and professional preview experience.
+
+---
+## Iterative Editing: Project Files vs. Exported Files
+
+A common question is: "How do I make changes to an audio file I already exported?" The answer lies in understanding the distinction between a `shutri` project and an exported MP3, a workflow that follows standard industry practice for creative software.
+
+### The Project File is the Source of Truth
+
+The **`.shutri` file** is your editable **project file**. It is the source of truth for all your editing decisions, containing the full transcript, every original timestamp, and all your modifications. This is analogous to a `.psd` file in Adobe Photoshop or a `.prproj` file in Adobe Premiere Pro. It is a non-destructive container for your work.
+
+The **exported MP3 file** is the final **output** or "render." It is a "flattened" version of your project where all the edits have been permanently applied. The original clip boundaries, deleted sections, and non-destructive timestamps are gone, baked into the final audio.
+
+### The Correct Workflow
+
+If you want to make further edits, you should **always return to the original `.shutri` project file.**
+
+1.  Open the project using `shutri <original_audio_file.mp3>`.
+2.  Make your changes in the `.shutri` file that appears in Vim.
+3.  Export a new version using `shutri -e <project_name>`. This will create a new, timestamped export file (e.g., `<project_name>_export_YYYYMMDD-HHMMSS.mp3`).
+
+### Why You Shouldn't Re-Import an Exported File
+
+If you attempt to import an exported MP3 file (`shutri <exported_file.mp3>`), `shutri` will treat it as a **brand new audio source** and create a completely separate project for it. This is because:
+*   **The Content is Different:** The exported audio has been re-encoded. Sections have been removed and crossfades have been added. Its content—and therefore its unique SHA-256 hash—is different from the original source file.
+*   **You Lose Editing Flexibility:** A new project created from an exported file will have a new transcript and new timestamps. You will have lost all the granular, non-destructive editing history contained in your original `.shutri` project file.
+
+By adhering to this standard workflow, you ensure that your editing process remains flexible, non-destructive, and fully reversible.

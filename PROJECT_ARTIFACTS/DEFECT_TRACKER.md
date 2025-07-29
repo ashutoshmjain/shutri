@@ -36,7 +36,7 @@ The key metric we will track to measure quality across the project lifecycle is 
 
 | Defect ID | Date Found   | Description                               | Status (Open/Closed) | Resolution / Commit Hash                               |
 | :-------- | :----------- | :---------------------------------------- | :------------------- | :----------------------------------------------------- |
-| M2-001    | `(YYYY-MM-DD)` | `(Detailed description of the defect)`      | Open                 | `(Link to the fixing commit or brief explanation)`       |
+| M2-001    | 2025-07-29   | **Project Collision on Filename Without Integrity Check.** The application incorrectly assumes that a project name (derived from the audio filename) is a unique identifier. This can lead to data corruption if a user tries to create a project from a new audio file that has the same name as an existing project (e.g., `podcast.mp3`). The app would open the old project with the new audio, causing a mismatch. | Open                 | **Resolution:** Implement a file content hash (e.g., SHA-256) check. The hash of the original audio file will be stored in the project file upon import. During invocation, the app will compare the hash of the input file with the stored hash to ensure they are the same file. If the hashes mismatch, the user will be warned and prompted to provide a unique project name via a new `--project-name` flag. |
 
 ### Milestone 3: Mocked Transcription File Generation
 

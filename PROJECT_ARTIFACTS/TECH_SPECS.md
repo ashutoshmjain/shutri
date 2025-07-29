@@ -40,7 +40,7 @@ To understand the `shutri` workflow, it's essential to be clear on the following
 
 ### 1.3. The Problem with Waveform-Based Editing
 
-Traditional Digital Audio Workstations (DAWs) and audio editors rely on a visual representation of the audio waveform. This approach is great for small three to five minutes multi-track music files, but for long-form content like podcasts, interviews, or lectures the waveform approach is a nightmare. To find a sentence (or word) you end up listening hour long conversaton many times over. 
+Traditional Digital Audio Workstations (DAWs) and audio editors rely on a visual representation of the audio waveform. This approach is great for small three to five-minute multi-track music files, but for long-form content like podcasts, interviews, or lectures, the waveform approach is a nightmare. To find a sentence (or word), you can end up listening to an hour-long conversation many times over. 
 
 *   **Difficult Navigation:** Navigating long recordings using a waveform is often imprecise and slow.
 *   **Inflexible Markers:** Markers or regions are often cumbersome to manage and lack the flexibility of text-based search and manipulation.
@@ -54,8 +54,9 @@ By converting audio to a time-stamped transcript, we transform the editing proce
 *   **Keyboard-Centric Workflow:** A faster and more ergonomic workflow for users familiar with Vim's keybindings.
 * The crucial requirement for this approach however is accuracy of timestamps. And ability to easily adjust the timestamps of the clips.
 
+A typical audio file sent for transcription to any LLM does come back with the transcription broken into clips by speakers. However, these clip timestamps are not exact. Transcription is primarily optimized for text, not for timestamps. As such, the timestamps returned by the LLM, on account of drift, are not reliable for editing. To circumvent this problem, the `shutri` application splits the original files into smaller splits. After transcription, the LLM timestamps are ignored, and the real timestamps from the splits are used for the purpose of editing. The added advantage of splitting the audio file upfront is that these smaller splits can be fed in parallel to the LLM, thereby greatly reducing the transcription turnaround time.
 
-> vim is my preferred editor though the application is built with a mindset that it may be integrated to any other text editor of users choice, albeit some development work! This is why the open source approach works great.
+> Vim is my preferred editor, though the application is built with a mindset that it may be integrated into any other text editor of the user's choice, albeit with some development work! This is why the open-source approach works great.
 
 ---
 
@@ -67,7 +68,9 @@ The `shutri` system is composed of three main components:
 2.  **`shutri` CLI:** A command-line interface that exposes the core library's functionality to the user.
 3.  **Vim Plugin:** A Vim plugin that integrates `shutri` with the Vim editor, providing a seamless editing experience.
 
-In a way, the key deliverable of this project is the "core library". CLI is a means to test the application. And vim is the editor. The goal of the project is developers shall be able to use the library crate to integrate with any type of editor. The application needs to provide clear APIs for future GUIs or web clients ; and also for any modern editor to integrate. API documentation is crucial part of the project.
+In a way, the key deliverable of this project is the "core library." The CLI is a means to test the application, and Vim is the editor. The goal of the project is for developers to be able to use the library crate to integrate with any type of editor. The application needs to provide clear APIs for future GUIs or web clients and also for any modern editor to integrate. API documentation is a crucial part of the project.
+
+A secondary objective of the project is to articulate a new way of working with AI—a methodology to bring some sanity to the idea of "vibe coding." The methodology thus developed is aptly called "vibeD"—vibe development methodology. While the `shutri` project is a means to develop the method, it also acts as a concrete example for the methodology. The idea is that the method is grounded in a real project, not a mere flight of fancy. The key deliverables of the method are this document (technical specs), alongside the methodology articulation, test cases, knowledge base, bug tracker, and change tracker. A key idea is that all these documentation deliverables are maintained by an LLM with little human editing except for granular oversight. The methodology is published at https://shutri.com. 
 
 ### 2.1. Component Interaction Diagram
 
@@ -172,8 +175,9 @@ Each editable line corresponds to an audio `CLIP` and follows this format:
 #### 4.2.1. Import (`shutri -i <file.mp3>`)
 
 1.  The user specifies an MP3 audio file to import.
-2.  `shutri` copies the file to `~/.shutri/imports/`.
-3.  The audio is processed using a detailed, three-phase strategy to create structured, editable data.
+2.  `shutri` calculates a SHA-256 hash of the audio file's content to serve as a unique identifier.
+3.  `shutri` copies the file to `~/.shutri/imports/`.
+4.  The audio is processed using a detailed, three-phase strategy to create structured, editable data.
 
   **Phase 1: Pre-processing (Creating Consolidated Splits)**
 
@@ -313,6 +317,8 @@ nnoremap <Leader>s :call ShutriStopPlayback()<CR>
 
 #### 4.2.4. Export (`shutri -e <file>`)
 
+It is critical to understand that the export process is fundamentally non-destructive. The audio `SPLITS` created during the import phase are used *only* for transcription and do not alter the original audio file in any way. The export process always begins with the pristine, original audio file as its source. Extreme care is taken to ensure that cuts and splices are only performed on the specific clips that the user has actually edited. The goal is to minimize audio processing and avoid any unnecessary re-encoding, preserving the highest possible audio quality.
+
 The export process is designed to be as efficient and non-destructive as possible, minimizing audio re-encoding to preserve quality. It achieves this by intelligently identifying which parts of the audio have actually been changed.
 
 1.  **State Comparison:** `shutri` first compares the current state of the `.shutri` project file against an original, unmodified manifest of clips that was created during the initial import.
@@ -361,11 +367,18 @@ mod audio {
 
 ### 5.1. Invocation
 
-Just like vim, the primary invocation is `shutri <file.mp3>`. This will:
+The primary way to interact with `shutri` is by pointing it to an audio file. The command `shutri <file.mp3>` acts as a smart entry point that manages the entire project lifecycle safely:
 
-1.  Detect if a project for the file already exists.
-2.  If not, it will automatically import and transcribe the file.
-3.  Once transcription is complete, it will open the project in Vim.
+1.  It first checks if a `.shutri` project already exists for the given `<file.mp3>`.
+2.  **If a project exists,** it verifies the integrity of the project by:
+    a.  Calculating the SHA-256 hash of the user-provided `<file.mp3>`.
+    b.  Comparing this hash against the `source_audio_hash` stored within the project file.
+    c.  If the hashes match, it opens the project in Vim.
+    d.  If the hashes do not match, it aborts with a warning about the file content mismatch and instructs the user to provide a unique project name using the `--project-name` flag.
+3.  **If a project does not exist,** it will automatically run the `import` (which includes hash generation) and `transcribe` processes to generate one.
+4.  Once the project is ready, `shutri` will launch Vim and open the corresponding `.shutri` project file for editing.
+
+This approach provides a seamless workflow, handling project creation and editing with a single command. It is important to note that Vim is opened for the generated text-based `.shutri` file, not the binary `.mp3` file.
 
 #### 5.1.1. User Experience
 
@@ -380,6 +393,7 @@ For long-running operations like import and transcription, the CLI must provide 
 *   `shutri -t, --transcribe <project>`: Transcribe an imported project. As of Milestone 3, this generates a **mock** transcription. In later milestones, it will generate a real transcription using the Gemini API. If a transcription file already exists, it will prompt for confirmation before overwriting.
 *   `shutri -e, --export <project>`: Export a project to a final audio file.
 *   `shutri -v, --edit <project>`: Open a project in Vim for editing.
+*   `shutri --project-name <name>`: Used with `--import`. Assigns a custom name to a project, overriding the default name derived from the audio file. This is required to resolve naming collisions when importing a new audio file that has the same name as an existing project.
 *   `shutri auth login`: Initiates an interactive OAuth 2.0 flow to sign in with a Google account.
 *   `--mock`: Used with the `transcribe` command to generate mock data. This flag is only available in debug builds.
 *   `--no-cache`: Used with a transcription command. Forces re-transcription of all audio `SPLITS`, ignoring any cached results. This is useful if the initial transcription is unsatisfactory.
@@ -552,3 +566,12 @@ While the initial version is focused on Debian-based Linux, future work could ex
 *   **macOS:** Creating a dedicated installation script using Homebrew.
 *   **Windows:** Developing an installation method using a package manager like Chocolatey or Scoop.
 *   **Testing:** Establishing a testing pipeline for each supported platform.
+
+### 12.4. Content-Addressable Project Management
+
+The current project integrity check (comparing a file's hash upon a name collision) is a crucial safeguard against data corruption. However, it does not prevent a user from importing the exact same audio content under different filenames, leading to redundant projects, wasted disk space, and unnecessary transcription costs.
+
+A more advanced future implementation would make the system **content-addressable**.
+
+*   **Future Design:** This would involve creating a central index file (e.g., `~/.shutri/hash_index.toml`) that maps the unique SHA-256 hash of every imported audio file to its corresponding project name.
+*   **Enhanced Workflow:** Before importing any new file, `shutri` would first calculate its hash and check this central index. If the hash already exists, the application would notify the user that the audio has already been imported (e.g., "This audio content already exists as project 'podcast_v1'.") and prevent the creation of a duplicate project. This would make the entire system more robust, efficient, and user-friendly.
