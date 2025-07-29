@@ -40,7 +40,7 @@ To understand the `shutri` workflow, it's essential to be clear on the following
 
 ### 1.3. The Problem with Waveform-Based Editing
 
-Traditional Digital Audio Workstations (DAWs) and audio editors rely on a visual representation of the audio waveform. This approach has several drawbacks, especially for long-form content like podcasts, interviews, or lectures:
+Traditional Digital Audio Workstations (DAWs) and audio editors rely on a visual representation of the audio waveform. This approach is great for small three to five minutes multi-track music files, but for long-form content like podcasts, interviews, or lectures the waveform approach is a nightmare. To find a sentence (or word) you end up listening hour long conversaton many times over. 
 
 *   **Difficult Navigation:** Navigating long recordings using a waveform is often imprecise and slow.
 *   **Inflexible Markers:** Markers or regions are often cumbersome to manage and lack the flexibility of text-based search and manipulation.
@@ -53,6 +53,9 @@ By converting audio to a time-stamped transcript, we transform the editing proce
 *   **Advanced Search and Navigation:** Instantly jump to any part of the audio by searching for specific words or phrases.
 *   **Keyboard-Centric Workflow:** A faster and more ergonomic workflow for users familiar with Vim's keybindings.
 * The crucial requirement for this approach however is accuracy of timestamps. And ability to easily adjust the timestamps of the clips.
+
+
+> vim is my preferred editor though the application is built with a mindset that it may be integrated to any other text editor of users choice, albeit some development work! This is why the open source approach works great.
 
 ---
 
