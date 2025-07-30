@@ -6,7 +6,7 @@ Welcome to the vibeD Development Methodology. This document is a guide for proje
 
 vibeD is a hybrid approach that combines the rigor of milestone-driven development with the flexibility of Agile and Scrum. It's designed to maximize the unique capabilities of an LLM, turning it from a simple coding assistant into the primary driver of the development process.
 
-Throughout this guide, we will use the [`shutri`](../) project as a real-world case study. You can explore its artifacts to see vibeD in action.
+Throughout this guide, we will use the [`shutri`](https://github.com/ashutoshmjain/shutri) project as a real-world case study. You can explore its artifacts to see vibeD in action.
 
 ### A Grounded Methodology, Not a Flight of Fancy
 
@@ -51,7 +51,7 @@ Before writing a single line of code, your first task is to collaborate with you
 > **Case Study: `shutri`**
 > The technical specification for the `shutri` project was built through this exact iterative process. The result is a detailed document that covers everything from the system architecture to the command-line options.
 >
-> **See the artifact:** [`TECH_SPECS.md`](./TECH_SPECS.md)
+> **See the artifact:** [`TECH_SPECS.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TECH_SPECS.md)
 
 ### Step 2: Define the "Ways of Working"
 
@@ -108,9 +108,9 @@ For each new milestone, your first action is to ask the LLM to create a dedicate
 > For each milestone, the Gemini CLI created a detailed test plan outlining the steps for manual verification.
 >
 > **See the artifacts:**
-> *   [`TESTPLAN_MILESTONE2.md`](./TESTPLAN_MILESTONE2.md)
-> *   [`TESTPLAN_MILESTONE3.md`](./TESTPLAN_MILESTONE3.md)
-> *   [`TESTPLAN_MILESTONE4.md`](./TESTPLAN_MILESTONE4.md)
+> *   [`TESTPLAN_MILESTONE2.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TESTPLAN_MILESTONE2.md)
+> *   [`TESTPLAN_MILESTONE3.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TESTPLAN_MILESTONE3.md)
+> *   [`TESTPLAN_MILESTONE4.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/TESTPLAN_MILESTONE4.md)
 
 #### Part B: Execute and Verify
 
@@ -131,7 +131,7 @@ The **`KNOWLEDGE_BASE.md`** is the project's central, living repository of infor
 > **Case Study: `shutri`**
 > The project's knowledge base is used to track architectural decisions and other key project information.
 >
-> **See the artifact:** [`KNOWLEDGE_BASE.md`](./KNOWLEDGE_BASE.md)
+> **See the artifact:** [`KNOWLEDGE_BASE.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/KNOWLEDGE_BASE.md)
 
 #### Change and Defect Tracking
 
@@ -144,8 +144,8 @@ No plan is perfect. vibeD manages change through two key documents:
 > These trackers are used to maintain the quality and integrity of the project's approved milestones.
 >
 > **See the artifacts:**
-> *   [`DEFECT_TRACKER.md`](./DEFECT_TRACKER.md)
-> *   [`CHANGE_TRACKER.md`](./CHANGE_TRACKER.md)
+> *   [`DEFECT_TRACKER.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/DEFECT_TRACKER.md)
+> *   [`CHANGE_TRACKER.md`](https://github.com/ashutoshmjain/shutri/blob/main/PROJECT_ARTIFACTS/CHANGE_TRACKER.md)
 
 #### Guiding Your AI Assistant with `GEMINI.md`
 
