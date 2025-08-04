@@ -13,7 +13,7 @@ The primary workflow consists of four main stages:
 1.  **Import:** A user-provided MP3 audio file is imported. The audio is first broken down into machine-generated `SPLITS` based on silence detection.
 2.  **Transcribe:** Each `SPLIT` is transcribed into a `CLIP` (a text snippet with a precise timestamp).
 3.  **Edit:** The `CLIPS` are presented to the user in a structured text file inside Vim, where they are visually grouped into `CHUNKS` for easy navigation. The user edits the text and timestamps.
-4.  **Export:** The edited `CLIPS` are used to extract the corresponding audio segments from the original file, which are then concatenated into a new, final MP3 file.
+4.  **Export:** The time stamps on edited `CLIPS` are used to extract the corresponding audio segments from the original file, which are then concatenated into a new, final MP3 file.
 
 ### 1.2. Key Terminology
 
