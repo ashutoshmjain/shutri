@@ -1,11 +1,11 @@
-//! This module defines the command-line interface for the application.
+//! CLI definition for #SMS (Shutri Media Solution)
 
-use clap::{Parser, Subcommand};
+use clap::{Parser, Subcommand, ValueEnum};
 use std::path::PathBuf;
 
-/// A text-based audio editor for precise, keyboard-driven workflows.
+/// #SMS: A professional media workflow engine for high-fidelity research publishing.
 #[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
+#[command(name = "sms", version, about, long_about = None)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
@@ -13,21 +13,46 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// Import an audio file and prepare it for editing.
-    Import {
-        /// The path to the MP3 audio file to import.
-        #[arg(required = true)]
-        file_path: PathBuf,
-    },
-    /// Transcribe an audio project.
-    Transcribe {
-        /// The name of the project to transcribe.
-        #[arg(required = true)]
-        project_name: String,
-
-        /// Generate a mock transcription for debugging.
+    /// Ingest raw assets (Text, Images, Video) into the MK-indexed directory.
+    Ingest {
+        /// The Master Key (Episode/Chapter number)
         #[arg(long)]
-        #[cfg(debug_assertions)]
-        mock: bool,
+        mk: u32,
+
+        /// The path to the source file
+        #[arg(short, long)]
+        source: PathBuf,
     },
+
+    /// Transform raw assets into platform-specific formats.
+    Massage {
+        /// The Master Key (Episode/Chapter number)
+        #[arg(long)]
+        mk: u32,
+
+        /// The target platform format
+        #[arg(short, long)]
+        target: TargetPlatform,
+    },
+
+    /// Publish the formatted content to the destination repository.
+    Publish {
+        /// The Master Key (Episode/Chapter number)
+        #[arg(long)]
+        mk: u32,
+
+        /// The target platform format to publish
+        #[arg(short, long)]
+        target: TargetPlatform,
+    },
+}
+
+#[derive(ValueEnum, Clone, Debug)]
+pub enum TargetPlatform {
+    /// mdBook format for research publishing
+    Mdbook,
+    /// LinkedIn post format (summarized/pruned)
+    Linkedin,
+    /// Nostr long-form content (NIP-23)
+    Nostr,
 }
