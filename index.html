@@ -3,55 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#SMS - Shutri Media Solution</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            color: #58a6ff;
-            margin-bottom: 0.5rem;
-        }
-        p {
-            font-size: 1.25rem;
-            color: #8b949e;
-            margin-bottom: 2rem;
-        }
-        .tagline {
-            font-weight: bold;
-            color: #f0f6fc;
-        }
-        .badge {
-            display: inline-block;
-            background-color: #238636;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05rem;
-        }
-    </style>
+    <title>Shutri — Collaborative Intelligence Engine</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>#SMS</h1>
-        <p class="tagline">Shutri Media Solution</p>
-        <p>A professional media workflow engine, built with the <strong>vibeD</strong> methodology.</p>
-        <div class="badge">Under Construction</div>
-    </div>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <header>
+        <div class="logo-container">
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="#6366f1" stroke-width="4" stroke-dasharray="8 4"/>
+                <path d="M50 20 L80 70 L20 70 Z" stroke="#f59e0b" stroke-width="4" stroke-linejoin="round"/>
+                <circle cx="50" cy="48" r="8" fill="#10b981"/>
+            </svg>
+            <span class="logo-text">#SMS : Shutri</span>
+        </div>
+        <p class="tagline">The decentralized pipeline bridging independent research with machine-led synthesis and multi-platform broadcasting.</p>
+    </header>
+
+    <main>
+        <!-- Section: Interactive Process Flow -->
+        <section class="glass-card">
+            <h2 class="stepper-title">How It Works</h2>
+            <div class="stepper">
+                
+                <!-- Step 1 -->
+                <div class="step-node active" onclick="activateStep(this)">
+                    <div class="step-badge">1</div>
+                    <div class="step-content">
+                        <h3>Submit Your Rabbit Hole <span class="step-tag">Phase 01</span></h3>
+                        <p>Submit your article, blog post, thread, or research paper for free. We are actively looking for collaborative intelligence.</p>
+                        <div class="step-details">
+                            <div class="step-details-inner">
+                                <p>Provide your publication link, name, and email in the portal. It costs nothing. We review submissions that showcase deep logical rigor, mathematical analysis, or unique perspective shifts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-node" onclick="activateStep(this)">
+                    <div class="step-badge">2</div>
+                    <div class="step-content">
+                        <h3>deepMind Ingestion & review <span class="step-tag">mempool</span></h3>
+                        <p>If accepted, the research is ingested into the deepDive deepMind database and published under the Mempool queue.</p>
+                        <div class="step-details">
+                            <div class="step-details-inner">
+                                <p>We process your content using our <a href="https://notebooklm.google.com/notebook/134adc6f-b24f-40d8-86c9-c7c93072f042" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique, not a verbatim copy—and host it in the Mempool. You will receive an immediate email notification with your draft's status.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-node" onclick="activateStep(this)">
+                    <div class="step-badge">3</div>
+                    <div class="step-content">
+                        <h3>Media Synthesis & Feedback <span class="step-tag">template</span></h3>
+                        <p>Reviewers produce custom podcasts and animations, moving the note to the Template queue for a 3-day review window.</p>
+                        <div class="step-details">
+                            <div class="step-details-inner">
+                                <p>An internal reviewer evaluates the note. If aligned, they generate:</p>
+                                <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                                    <li>An **audio podcast** using custom NotebookLM voices.</li>
+                                    <li>Visual **infographics and animations** using Mosaic.</li>
+                                </ul>
+                                <p>We notify you via email and provide 3 days to evaluate the synthesis. If you do not approve, we take it down immediately. Podcast audio is shared on Spotify, Apple, and Fountain.fm. Visuals are broadcast on TikTok, Instagram, and YouTube to collect public commentary.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-node" onclick="activateStep(this)">
+                    <div class="step-badge">4</div>
+                    <div class="step-content">
+                        <h3>Consensus & Blockchain Minting <span class="step-tag">chain</span></h3>
+                        <p>Public interaction is moderated. After 3 days, finalized research is minted into the deepDive blockchain ledger.</p>
+                        <div class="step-details">
+                            <div class="step-details-inner">
+                                <p>The assigned reviewer engages with, clarifies, and answers public comments. After the 3-day review period, once 21 successfully reviewed articles are aggregated, they are minted into the permanent **deepDive block** and published on our core platform under Creative Commons.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: Submission Portal -->
+        <section class="glass-card" id="submission-card">
+            <h2 class="form-title">Submission Portal</h2>
+            
+            <form id="submission-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="submitter-name" class="form-label">Full Name</label>
+                    <input type="text" id="submitter-name" class="form-input" placeholder="e.g., Ada Lovelace" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="submitter-email" class="form-label">Email Address</label>
+                    <input type="email" id="submitter-email" class="form-input" placeholder="e.g., ada@computing.org" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="research-url" class="form-label">Research Link / Article URL</label>
+                    <input type="url" id="research-url" class="form-input" placeholder="e.g., https://yourblog.com/quaternion-attention" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="research-desc" class="form-label">Abstract / TL;DR</label>
+                    <textarea id="research-desc" class="form-input form-textarea" placeholder="Briefly describe your thesis, math elements, or new insights..." required></textarea>
+                </div>
+
+                <div class="form-group" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 1.5rem;">
+                    <input type="checkbox" id="cc-agree" required style="margin-top: 0.3rem; cursor: pointer;">
+                    <label for="cc-agree" style="font-size: 0.825rem; color: var(--text-muted); cursor: pointer; user-select: none;">
+                        I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submit-button">Submit Ingestion Request</button>
+            </form>
+
+            <div class="success-card" id="success-state">
+                <div class="success-icon">✓</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Submission Staged</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;" id="success-status-text">Your research link has been successfully logged into the Mempool queue.</p>
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; font-size: 0.8rem; text-align: left;" id="success-log">
+                    [1/4] Validating URL structure... Done.<br>
+                    [2/4] Verifying Creative Commons agreement... Verified.<br>
+                    [3/4] Registering submitter metadata... Staged.<br>
+                    [4/4] Queueing deepMind ingestion pipeline... Done.
+                </div>
+                <button onclick="resetForm()" class="submit-btn" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border-color); box-shadow: none;">Submit Another Link</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="disclaimer-card">
+            <span class="cc-badge">CC BY-SA 4.0</span>
+            <p style="margin-bottom: 0.5rem; font-weight: 500;">No Guarantees & Creative Commons Terms</p>
+            <p style="font-size: 0.775rem; color: var(--text-muted);">This is a free community service powered by independent reviewers. We do not guarantee review timelines, selection, or subsequent podcast publication. All notes, critiques, and derived audio/video assets are published under a Creative Commons Attribution-ShareAlike 4.0 International license.</p>
+        </div>
+        
+        <p style="margin-bottom: 1rem; font-size: 0.85rem;">Tune into deepDive podcast broadcasts:</p>
+        <div class="platform-links">
+            <a href="https://open.spotify.com/show/7doWf0GON9JsG6r8igc7RE" target="_blank" class="platform-badge">Spotify</a>
+            <a href="https://podcasts.apple.com/us/podcast/deep-dive-with-gemini/id1844532251" target="_blank" class="platform-badge">Apple Podcasts</a>
+            <a href="https://fountain.fm/show/7LBvZT6ffpGyubvk8aSF" target="_blank" class="platform-badge">Fountain.fm</a>
+            <a href="https://www.youtube.com/@shutriMedia" target="_blank" class="platform-badge">YouTube</a>
+            <a href="https://www.tiktok.com/@shutoshabot" target="_blank" class="platform-badge">TikTok</a>
+            <a href="https://www.instagram.com/shutoshabot/" target="_blank" class="platform-badge">Instagram</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.4; font-size: 0.75rem;">&copy; 2026 Shutri Media Solution. Powered by Collaborative & Artificial Intelligence.</p>
+    </footer>
+
+    <script>
+        function activateStep(stepElement) {
+            const steps = document.querySelectorAll('.step-node');
+            steps.forEach(step => {
+                step.classList.remove('active');
+            });
+            stepElement.classList.add('active');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submit-button');
+            const form = document.getElementById('submission-form');
+            const successState = document.getElementById('success-state');
+            const logElement = document.getElementById('success-log');
+            const statusText = document.getElementById('success-status-text');
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Processing Ingestion...";
+
+            // Simple micro-animation logging progress
+            let step = 0;
+            const logMessages = [
+                "[1/4] Validating URL structure...",
+                "[2/4] Verifying Creative Commons agreement...",
+                "[3/4] Registering submitter metadata...",
+                "[4/4] Queueing deepMind ingestion pipeline..."
+            ];
+            
+            logElement.innerHTML = "";
+            form.style.display = "none";
+            successState.style.display = "block";
+            statusText.innerText = "Connecting to Shutri ingestion pipeline...";
+
+            const interval = setInterval(() => {
+                if (step < logMessages.length) {
+                    logElement.innerHTML += logMessages[step] + " <span style='color: var(--success-accent); font-weight:bold;'>Done.</span><br>";
+                    step++;
+                } else {
+                    clearInterval(interval);
+                    statusText.innerHTML = `Your link has been staged in the <strong>Mempool</strong>. An ingestion review note will be drafted using NotebookLM and you will be notified at <strong>${document.getElementById('submitter-email').value}</strong>.`;
+                    
+                    // Mark stepper steps completed to reflect success visual flow
+                    const stepNodes = document.querySelectorAll('.step-node');
+                    stepNodes[0].classList.add('completed');
+                    stepNodes[1].classList.add('active');
+                }
+            }, 600);
+        }
+
+        function resetForm() {
+            const form = document.getElementById('submission-form');
+            const successState = document.getElementById('success-state');
+            const submitBtn = document.getElementById('submit-button');
+
+            form.reset();
+            form.style.display = "block";
+            successState.style.display = "none";
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Submit Ingestion Request";
+
+            const stepNodes = document.querySelectorAll('.step-node');
+            stepNodes.forEach((node, idx) => {
+                node.classList.remove('completed');
+                node.classList.remove('active');
+                if (idx === 0) node.classList.add('active');
+            });
+        }
+    </script>
 </body>
 </html>
