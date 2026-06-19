@@ -545,6 +545,35 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             const logElement = document.getElementById('success-log');
             const statusText = document.getElementById('success-status-text');
 
+            // Gather inputs for GitHub Issue generation
+            const nameVal = document.getElementById('submitter-name').value;
+            const emailVal = document.getElementById('submitter-email').value;
+            const urlVal = document.getElementById('research-url').value;
+            const repoVal = document.getElementById('code-repo-url').value;
+            const descVal = document.getElementById('research-desc').value;
+
+            // Generate Markdown content for GitHub Issue
+            const titleVal = getUrlSlug(urlVal);
+            const titleText = titleVal.charAt(0).toUpperCase() + titleVal.slice(1);
+            
+            const issueTitle = `[${currentTrack === 'research' ? 'Research Ingestion' : 'Startup Audit'}] ${titleText}`;
+            const issueBody = `### Submitter Profile
+- **Full Name:** ${nameVal}
+- **Contact Email:** ${emailVal}
+- **Submission Type:** ${currentTrack === 'research' ? 'Theoretical Research' : 'Startup / Protocol Audit'}
+
+### Core Resources
+- **Target URL (Article/Whitepaper):** ${urlVal}
+${currentTrack === 'startup' ? `- **Open-Source Code Repository:** ${repoVal}` : ''}
+
+### Abstract / Architecture Summary
+${descVal}
+
+---
+*Generated via the Ingestion Portal on [shutri.com](https://shutri.com)*`;
+
+            const githubIssueUrl = `https://github.com/ashutoshmjain/shutri/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
+
             submitBtn.disabled = true;
             submitBtn.innerText = currentTrack === 'research' ? "Processing Ingestion..." : "Processing Audit Ingestion...";
 
@@ -553,15 +582,15 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             const logMessages = currentTrack === 'research' ? [
                 "[1/5] Validating URL structure...",
                 "[2/5] Verifying Creative Commons agreement...",
-                "[3/5] Registering submitter metadata...",
-                "[4/5] Routing copy of payload notification to: amj@shutri.com...",
-                "[5/5] Queueing deepMind ingestion pipeline..."
+                "[3/5] Compiling Markdown issue payload...",
+                "[4/5] Preparing routing configurations for: amj@shutri.com...",
+                "[5/5] Launching GitHub Issues portal..."
             ] : [
                 "[1/5] Checking open-source GitHub URL access...",
                 "[2/5] Verifying vulnerability & critical audit consent...",
-                "[3/5] Registering project audit metadata...",
-                "[4/5] Routing specs and repo hooks to: amj@shutri.com...",
-                "[5/5] Enforcing Vector Sandbox partition boundaries..."
+                "[3/5] Compiling Markdown issue payload...",
+                "[4/5] Preparing routing configurations for: amj@shutri.com...",
+                "[5/5] Launching GitHub Issues portal..."
             ];
             
             logElement.innerHTML = "";
@@ -576,11 +605,14 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                 } else {
                     clearInterval(interval);
                     if (currentTrack === 'research') {
-                        statusText.innerHTML = `Your link has been staged in the <strong>Mempool</strong>. An ingestion review note will be drafted using NotebookLM and sent to you and <strong style="color: var(--primary-accent);">amj@shutri.com</strong>.`;
+                        statusText.innerHTML = `Your submission has been formatted! Opening GitHub Issues to stage your research in the Mempool.<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Notifications will be routed to <strong style="color: var(--primary-accent);">amj@shutri.com</strong>.`;
                     } else {
-                        statusText.innerHTML = `Your protocol has been staged in the <strong>Mempool (Audit Queue)</strong>. A critical audit review will be drafted using NotebookLM and sent to you and <strong style="color: var(--secondary-accent);">amj@shutri.com</strong>.`;
+                        statusText.innerHTML = `Your protocol submission has been formatted! Opening GitHub Issues to stage your project in the Mempool (Audit Queue).<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Notifications will be routed to <strong style="color: var(--secondary-accent);">amj@shutri.com</strong>.`;
                     }
                     
+                    // Open the prefilled issue url in a new tab
+                    window.open(githubIssueUrl, '_blank');
+
                     // Mark stepper steps completed to reflect success visual flow
                     const stepNodes = document.querySelectorAll('.step-node');
                     stepNodes[0].classList.add('completed');
