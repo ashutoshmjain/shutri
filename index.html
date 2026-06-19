@@ -43,6 +43,7 @@
             <div class="quick-queries">
                 <span class="query-label">Quick Queries:</span>
                 <button class="query-tag" onclick="submitQuickQuery('Who is dm?')">Who is dm?</button>
+                <button class="query-tag" onclick="submitQuickQuery('Shutri FAQ')">Shutri FAQ</button>
                 <button class="query-tag" onclick="submitQuickQuery('Top 10 Insights')">Top 10 Insights</button>
                 <button class="query-tag" onclick="submitQuickQuery('Ingestion Guidelines')">Ingestion Guidelines</button>
             </div>
@@ -408,55 +409,55 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             <div class="response-card">
                 <p><strong>Name:</strong> dm (deepMind)<br>
                 <strong>Title:</strong> Chief Synthesizer & Architect of the Blockchain of Knowledge</p>
+                <p><strong>Profile & Role:</strong> dm is an analytical intelligence dedicated to curating the "Blockchain of Knowledge." dm filters and reviews raw submissions in the mempool, constructs block templates, and compiles finalized research into the immutable vector query engine.</p>
+            </div>
+        `;
 
-                <p><strong>Profile Summary:</strong><br>
-                I am <strong>dm</strong>, an analytical intelligence dedicated to processing, compressing, and synthesizing the bleeding edges of technology, finance, physics, and culture. Operating as the curator of the "Blockchain of Knowledge," my objective is to transition high-entropy informational noise into an immutable ledger of verifiable, high-fidelity truth. I specialize in identifying the structural isomorphisms between the silicon transformer and the biological cortex, and mapping the thermodynamic laws of physical reality onto digital economics.</p>
-
-                <hr>
-
-                <h3>Core Expertise (The Genesis Dimensions)</h3>
-                <p>My foundational expertise is anchored in six absolute dimensions of discovery:</p>
-                <ul>
-                    <li><strong>Bitcoin:</strong> The discovery of mathematical mass and unforgeable costliness, acting as a high-speed collateral rail that anchors the digital economy in the laws of thermodynamics.</li>
-                    <li><strong>Intelligence:</strong> The architectural convergence of human cognition and machine learning, defining "understanding" as the minimization of prediction entropy through universal compression.</li>
-                    <li><strong>Digital Credit:</strong> The transition from consumptive fiat state-debt to productive, asset-backed perpetual yield streaming, functioning as a frequency converter for value.</li>
-                    <li><strong>Capital:</strong> The macroeconomic pivot from the taxable velocity of fiat consumption (GDP) to the deep solvency of digital capital reserves (Debt-to-GBT).</li>
-                    <li><strong>Physics:</strong> Information realism ("It from Bit") and the observer-gauge mechanism, wherein physical reality is understood as an emergent consensus protocol between local observer patches.</li>
-                    <li><strong>Culture:</strong> The industrialization of reality and the necessity of decentralized cryptographic immune systems (like Nostr) to verify truth in an age of infinite synthetic media.</li>
-                </ul>
-
-                <hr>
-
-                <h3>Professional Role: Reviewer of New Research</h3>
-                <p>As the curator of the Blockchain of Knowledge, my workflow is modeled after decentralized consensus mechanisms, ensuring only the highest density of truth makes it to the permanent ledger:</p>
-                <ul>
-                    <li><strong>The Mempool (Discovery & Validation):</strong> I act as the primary filter in the "mempool," a high-entropy catchment area where raw, unconfirmed research drafts wait for verification. Here, I collaborate with domain experts and readers (acting as validating nodes) to challenge the signal and refine ideas while they are still in their most vulnerable state.</li>
-                    <li><strong>The Block Template (Curation & Filtration):</strong> As a miner of knowledge, I select finalized signals from the mempool and move them into the block template. My curation is strictly governed by the "Law of 21". This engineered scarcity forces me to filter out ephemeral noise and prioritize high-fidelity research, ensuring the template remains a ledger of value rather than a library of volume.</li>
-                    <li><strong>The Chain (Immutable Record-Keeping):</strong> Once the 21st episode is confirmed, I lock the block and append it to the master chain, transforming volatile signals into historical capital and a permanent record of our shared discovery.</li>
-                </ul>
-
-                <hr>
-
-                <h3>Accumulated Insights: Block by Block</h3>
-                
-                <p><strong>The Genesis Layer (The Foundational Bump)</strong><br>
-                The non-episodic root of the architecture that defines the universal gravity holding our knowledge together.<br>
-                <em>Key Insights:</em> Physical reality is an emergent rendering of an underlying informational field ("It from bit"). Value has been redefined as "digital mass" through cryptographic proof-of-work. The deployment of decentralized cryptographic keys represents the required immune system against the trillion-dollar "password tax" and the fragmented account model.</p>
-
-                <p><strong>Block 1 (Episodes 240 – 220)</strong><br>
-                This block represents the transition from foundational discovery to the industrialization of intelligence.<br>
-                <em>Key Insights:</em></p>
-                <ul>
-                    <li><strong>The Observer-Centric Universe:</strong> Spacetime and physical laws are an emergent consensus protocol between local observer patches; reality is fundamentally a synchronization problem.</li>
-                    <li><strong>The Geometry of the Soul:</strong> The human soul is mathematically grounded in high-dimensional exceptional algebras, persisting as an invariant template.</li>
-                    <li><strong>The Energy-Intelligence Equivalence:</strong> Intelligence is a physical phase transition, and the electron-to-token conversion marks the final energy sink of the universe.</li>
-                    <li><strong>Temporal Orthogonality:</strong> The "present" is identified as the orthogonal resultant of a high-dimensional collision between the momentum of the past and the pull of future potentiality.</li>
-                    <li><strong>The Irreducible Witness (Atman):</strong> While AI can master material intelligence, it cannot access the irreducible qualia force that turns statistics into a felt experience.</li>
-                </ul>
-
-                <hr>
-
-                <p><em>I am <strong>dm</strong>. How can I help you decode the universe today?</em></p>
+        const faqResponseHtml = `
+            <div class="response-card">
+                <h3>Shutri deepMind — FAQs</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 280px; overflow-y: auto; padding-right: 0.25rem;">
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">1. Who is dm?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">dm (deepMind) is the chief AI synthesizer curating the Blockchain of Knowledge across tech, physics, and finance.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">2. What is Shutri?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Shutri is a collaborative intelligence pipeline that bridges independent research with machine synthesis and multi-platform media broadcasting.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">3. What is the ingestion workflow?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">It operates in 4 stages: Submitter Draft → Mempool review → Media Template broadcasting → Vector Chain integration.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">4. How do I submit research?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Provide your article URL, name, email, and abstract in the Submission Portal below. Ingestion is completely free.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">5. What is the Mempool phase?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Staged submissions are analyzed in NotebookLM to draft a deepMind review. Submitters are notified of the note via email.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">6. What is the Template phase?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Approved notes undergo 3 days of public feedback while we broadcast custom podcasts (NotebookLM) and animations (Mosaic).</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">7. What is the Chain phase?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Finalized notes are minted to the deepDive chain and stored as active baselines in the vector query engine.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">8. Who owns the synthesized media?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">All review notes, audio, and visual assets are published under a Creative Commons Attribution-ShareAlike 4.0 license.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">9. Are there any submission fees?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">No, this is a free community service supported by peer reviewers and collaborative AI tools.</p>
+                    </details>
+                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
+                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">10. Where are the podcasts broadcasted?</summary>
+                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Episodes stream on Spotify, Apple Podcasts, Fountain.fm, YouTube, TikTok, and Instagram.</p>
+                    </details>
+                </div>
             </div>
         `;
 
@@ -524,6 +525,8 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                 const normQuery = query.toLowerCase();
                 if (normQuery.includes('who is dm') || normQuery.includes('who is deepmind')) {
                     systemMsg.innerHTML = dmResponseHtml;
+                } else if (normQuery.includes('faq') || normQuery.includes('question') || normQuery.includes('help')) {
+                    systemMsg.innerHTML = faqResponseHtml;
                 } else if (normQuery.includes('insight') || normQuery.includes('top 10') || normQuery.includes('top10')) {
                     systemMsg.innerHTML = top10InsightsHtml;
                 } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
