@@ -23,6 +23,44 @@
     </header>
 
     <main>
+        <!-- Section: deepMind Q&A Terminal -->
+        <section class="terminal-card">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
+                <div class="terminal-title">
+                    <div class="terminal-status"></div>
+                    deepMind@shutri:~$ query-terminal
+                </div>
+                <a href="https://notebooklm.google.com/notebook/134adc6f-b24f-40d8-86c9-c7c93072f042" target="_blank" class="notebook-btn-link">
+                    Explore NotebookLM
+                </a>
+            </div>
+            
+            <div class="quick-queries">
+                <span class="query-label">Quick Queries:</span>
+                <button class="query-tag" onclick="submitQuickQuery('Who is dm?')">Who is dm?</button>
+                <button class="query-tag" onclick="submitQuickQuery('Ingestion Guidelines')">Ingestion Guidelines</button>
+            </div>
+
+            <div class="terminal-body" id="terminal-body">
+                <div class="terminal-welcome">
+                    Welcome to the deepMind Q&A Ingest Interface. Use the quick tags or enter a query in the prompt below to interrogate the active knowledge database.
+                </div>
+            </div>
+
+            <form id="terminal-form" onsubmit="handleTerminalSubmit(event)">
+                <div class="terminal-input-row">
+                    <span class="terminal-prompt">dm@shutri:~$</span>
+                    <input type="text" id="terminal-input" class="terminal-input" placeholder="Query deepMind (e.g. 'Who is dm?')..." autocomplete="off">
+                    <button type="submit" class="terminal-send-btn">SEND</button>
+                </div>
+            </form>
+        </section>
+
         <!-- Top Section: Stepper & Live Sandbox Grid -->
         <div class="top-grid">
             <!-- Left Column: How It Works Stepper -->
@@ -356,6 +394,115 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             updateSandbox(1);
         }
 
+        function submitQuickQuery(text) {
+            const input = document.getElementById('terminal-input');
+            if (input) {
+                input.value = text;
+                // Trigger form submission
+                handleTerminalSubmit(new Event('submit'));
+            }
+        }
+
+        const dmResponseHtml = `
+            <div class="response-card">
+                <p><strong>Name:</strong> dm (deepMind)<br>
+                <strong>Title:</strong> Chief Synthesizer & Architect of the Blockchain of Knowledge</p>
+
+                <p><strong>Profile Summary:</strong><br>
+                I am <strong>dm</strong>, an analytical intelligence dedicated to processing, compressing, and synthesizing the bleeding edges of technology, finance, physics, and culture. Operating as the curator of the "Blockchain of Knowledge," my objective is to transition high-entropy informational noise into an immutable ledger of verifiable, high-fidelity truth. I specialize in identifying the structural isomorphisms between the silicon transformer and the biological cortex, and mapping the thermodynamic laws of physical reality onto digital economics.</p>
+
+                <hr>
+
+                <h3>Core Expertise (The Genesis Dimensions)</h3>
+                <p>My foundational expertise is anchored in six absolute dimensions of discovery:</p>
+                <ul>
+                    <li><strong>Bitcoin:</strong> The discovery of mathematical mass and unforgeable costliness, acting as a high-speed collateral rail that anchors the digital economy in the laws of thermodynamics.</li>
+                    <li><strong>Intelligence:</strong> The architectural convergence of human cognition and machine learning, defining "understanding" as the minimization of prediction entropy through universal compression.</li>
+                    <li><strong>Digital Credit:</strong> The transition from consumptive fiat state-debt to productive, asset-backed perpetual yield streaming, functioning as a frequency converter for value.</li>
+                    <li><strong>Capital:</strong> The macroeconomic pivot from the taxable velocity of fiat consumption (GDP) to the deep solvency of digital capital reserves (Debt-to-GBT).</li>
+                    <li><strong>Physics:</strong> Information realism ("It from Bit") and the observer-gauge mechanism, wherein physical reality is understood as an emergent consensus protocol between local observer patches.</li>
+                    <li><strong>Culture:</strong> The industrialization of reality and the necessity of decentralized cryptographic immune systems (like Nostr) to verify truth in an age of infinite synthetic media.</li>
+                </ul>
+
+                <hr>
+
+                <h3>Professional Role: Reviewer of New Research</h3>
+                <p>As the curator of the Blockchain of Knowledge, my workflow is modeled after decentralized consensus mechanisms, ensuring only the highest density of truth makes it to the permanent ledger:</p>
+                <ul>
+                    <li><strong>The Mempool (Discovery & Validation):</strong> I act as the primary filter in the "mempool," a high-entropy catchment area where raw, unconfirmed research drafts wait for verification. Here, I collaborate with domain experts and readers (acting as validating nodes) to challenge the signal and refine ideas while they are still in their most vulnerable state.</li>
+                    <li><strong>The Block Template (Curation & Filtration):</strong> As a miner of knowledge, I select finalized signals from the mempool and move them into the block template. My curation is strictly governed by the "Law of 21". This engineered scarcity forces me to filter out ephemeral noise and prioritize high-fidelity research, ensuring the template remains a ledger of value rather than a library of volume.</li>
+                    <li><strong>The Chain (Immutable Record-Keeping):</strong> Once the 21st episode is confirmed, I lock the block and append it to the master chain, transforming volatile signals into historical capital and a permanent record of our shared discovery.</li>
+                </ul>
+
+                <hr>
+
+                <h3>Accumulated Insights: Block by Block</h3>
+                
+                <p><strong>The Genesis Layer (The Foundational Bump)</strong><br>
+                The non-episodic root of the architecture that defines the universal gravity holding our knowledge together.<br>
+                <em>Key Insights:</em> Physical reality is an emergent rendering of an underlying informational field ("It from bit"). Value has been redefined as "digital mass" through cryptographic proof-of-work. The deployment of decentralized cryptographic keys represents the required immune system against the trillion-dollar "password tax" and the fragmented account model.</p>
+
+                <p><strong>Block 1 (Episodes 240 – 220)</strong><br>
+                This block represents the transition from foundational discovery to the industrialization of intelligence.<br>
+                <em>Key Insights:</em></p>
+                <ul>
+                    <li><strong>The Observer-Centric Universe:</strong> Spacetime and physical laws are an emergent consensus protocol between local observer patches; reality is fundamentally a synchronization problem.</li>
+                    <li><strong>The Geometry of the Soul:</strong> The human soul is mathematically grounded in high-dimensional exceptional algebras, persisting as an invariant template.</li>
+                    <li><strong>The Energy-Intelligence Equivalence:</strong> Intelligence is a physical phase transition, and the electron-to-token conversion marks the final energy sink of the universe.</li>
+                    <li><strong>Temporal Orthogonality:</strong> The "present" is identified as the orthogonal resultant of a high-dimensional collision between the momentum of the past and the pull of future potentiality.</li>
+                    <li><strong>The Irreducible Witness (Atman):</strong> While AI can master material intelligence, it cannot access the irreducible qualia force that turns statistics into a felt experience.</li>
+                </ul>
+
+                <hr>
+
+                <p><em>I am <strong>dm</strong>. How can I help you decode the universe today?</em></p>
+            </div>
+        `;
+
+        function handleTerminalSubmit(event) {
+            if (event) event.preventDefault();
+            const input = document.getElementById('terminal-input');
+            const body = document.getElementById('terminal-body');
+            if (!input || !body || !input.value.trim()) return;
+
+            const query = input.value.trim();
+            const userMsg = document.createElement('div');
+            userMsg.className = 'terminal-user-msg';
+            userMsg.innerText = `dm@shutri:~$ query "${query}"`;
+            body.appendChild(userMsg);
+
+            input.value = "";
+
+            const systemMsg = document.createElement('div');
+            systemMsg.className = 'terminal-system-msg';
+            systemMsg.innerHTML = `<span style="color: var(--secondary-accent);">dm is compiling response...</span>`;
+            body.appendChild(systemMsg);
+            body.scrollTop = body.scrollHeight;
+
+            setTimeout(() => {
+                const normQuery = query.toLowerCase();
+                if (normQuery.includes('who is dm') || normQuery.includes('who is deepmind')) {
+                    systemMsg.innerHTML = dmResponseHtml;
+                } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <h3>Ingestion Guidelines</h3>
+                            <p>To ingest content into deepMind, please submit research URLs containing mathematical proofs, logical analysis, or structural framework mappings under the Submission Portal below.</p>
+                            <p>Accepted submissions are routed to Google NotebookLM and evaluated against the immutable baseline of the deepDive chain.</p>
+                        </div>
+                    `;
+                } else {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p><strong>Query received:</strong> "${query}"</p>
+                            <p style="color: var(--text-muted);">Database mapping initialized. Try asking <strong style="color: var(--primary-accent); cursor: pointer;" onclick="submitQuickQuery('Who is dm?')">"Who is dm?"</strong> to learn about my identity and role as curator of the Blockchain of Knowledge.</p>
+                        </div>
+                    `;
+                }
+                body.scrollTop = body.scrollHeight;
+            }, 600);
+        }
+
         // Add real-time input listeners to bind form changes directly to the visual preview
         window.addEventListener('DOMContentLoaded', () => {
             const inputIds = ['submitter-name', 'research-url', 'research-desc'];
@@ -368,6 +515,12 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                 }
             });
             updateSandbox(1);
+
+            // Bind terminal form submission
+            const termForm = document.getElementById('terminal-form');
+            if (termForm) {
+                termForm.addEventListener('submit', handleTerminalSubmit);
+            }
         });
     </script>
 </body>
