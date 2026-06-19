@@ -29,7 +29,7 @@
             <div class="stepper">
                 
                 <!-- Step 1 -->
-                <div class="step-node active" onclick="activateStep(this)">
+                <div class="step-node active" onclick="activateStep(this, 1)">
                     <div class="step-badge">1</div>
                     <div class="step-content">
                         <h3>Submit Your Rabbit Hole <span class="step-tag">Phase 01</span></h3>
@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="step-node" onclick="activateStep(this)">
+                <div class="step-node" onclick="activateStep(this, 2)">
                     <div class="step-badge">2</div>
                     <div class="step-content">
                         <h3>deepMind Ingestion & review <span class="step-tag">mempool</span></h3>
@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="step-node" onclick="activateStep(this)">
+                <div class="step-node" onclick="activateStep(this, 3)">
                     <div class="step-badge">3</div>
                     <div class="step-content">
                         <h3>Media Synthesis & Feedback <span class="step-tag">template</span></h3>
@@ -76,19 +76,34 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="step-node" onclick="activateStep(this)">
+                <div class="step-node" onclick="activateStep(this, 4)">
                     <div class="step-badge">4</div>
                     <div class="step-content">
-                        <h3>Consensus & Blockchain Minting <span class="step-tag">chain</span></h3>
-                        <p>Public interaction is moderated. After 3 days, finalized research is minted into the deepDive blockchain ledger.</p>
+                        <h3>Consensus & Vector Engine Integration <span class="step-tag">chain</span></h3>
+                        <p>After 3 days of public comments, the finalized note is minted into the deepDive blockchain and synced with the AI query engine.</p>
                         <div class="step-details">
                             <div class="step-details-inner">
-                                <p>The assigned reviewer engages with, clarifies, and answers public comments. After the 3-day review period, once 21 successfully reviewed articles are aggregated, they are minted into the permanent **deepDive block** and published on our core platform under Creative Commons.</p>
+                                <p>The reviewer moderates comments and answers public queries. Once 21 reviewed articles are compiled, they are committed to the blockchain. **Importantly, once committed, the research becomes an active reference baseline in the deepMind vector query database.** All subsequent submissions are automatically evaluated against this body of accepted research for consistency, contradictions, and duplication.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Interactive Stage Visual Sandbox -->
+            <div class="sandbox-card">
+                <h3 class="sandbox-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                    Live Stage Sandbox: Episode 242
+                </h3>
+                <div class="preview-container" id="sandbox-preview">
+                    <!-- Default state loaded by JS (Submission) -->
+                </div>
             </div>
         </section>
 
@@ -162,12 +177,78 @@
     </footer>
 
     <script>
-        function activateStep(stepElement) {
+        // Templates for Sandbox Stage Previews
+        const sandboxTemplates = {
+            1: `
+                <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 1: Ingestion Draft</div>
+                <div class="state-mempool">
+<strong>Target Submission Payload:</strong>
+url: <span style="color: var(--primary-accent)">https://github.com/quaternion-attention</span>
+status: STAGED_FOR_INGESTION
+submitter: "Ada Lovelace"
+cc_consent: TRUE
+destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
+                </div>
+            `,
+            2: `
+                <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 2: Mempool</div>
+                <div class="state-mempool">
+<strong>NotebookLM deepMind Ingestion Review (Draft):</strong>
+# Critique of Quaternion Attention Mechanics
+- Target thesis validated. The non-commutative Hamilton product solves commutativity symmetry ($ij = -ji$).
+- KaTeX formulation verified: $A_{\\text{ours}} = \\text{Re}(Q \\otimes K^*)$.
+<span class="commentary">// Note: Ingested into Google NotebookLM. Copy sent to amj@shutri.com. Status: MEMPOOL (Review Pending).</span>
+                </div>
+            `,
+            3: `
+                <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 3: Template (Media)</div>
+                <div class="state-template">
+                    <div class="mock-player">
+                        <button class="mock-play-btn">▶</button>
+                        <div style="font-size:0.8rem; font-family: monospace; color: #fff;">Episode 242 (Audio Podcast Mock)</div>
+                        <div class="mock-waveform"></div>
+                    </div>
+                    <div class="mock-video-thumb"></div>
+                    <p style="font-size: 0.775rem; color: var(--text-muted); font-style: italic; margin-top: -0.25rem;">
+                        3-day review countdown active. Reviewer response queue: open.
+                    </p>
+                </div>
+            `,
+            4: `
+                <div class="preview-label" style="background: rgba(16, 185, 129, 0.15); color: var(--success-accent); border-color: rgba(16, 185, 129, 0.3);">Phase 4: Chain (Active)</div>
+                <div class="state-chain">
+                    <div class="mock-sidebar">
+                        <div class="mock-sidebar-node">📖 deepDive</div>
+                        <div class="mock-sidebar-node indent-1">↳ chain</div>
+                        <div class="mock-sidebar-node indent-2">↳ block 1</div>
+                        <div class="mock-sidebar-node indent-2 active">↳ 242 : Time</div>
+                    </div>
+                    <div class="mock-article">
+                        <span class="mock-badge">Minted: Block 1</span>
+                        <h4>242 : Intelligent Time</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem;">The reliance on the standard real-valued dot product within Transformers creates a commutative bottleneck. Upgrading attention to Quaternion space embeds the arrow of time...</p>
+                        <div class="vector-engine-tag">
+                            ⚡ INTEGRATED AS ACTIVE BASELINE IN DEEPMIND QUERY VECTOR ENGINE
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        function updateSandbox(stepNum) {
+            const sandbox = document.getElementById('sandbox-preview');
+            if (sandbox && sandboxTemplates[stepNum]) {
+                sandbox.innerHTML = sandboxTemplates[stepNum];
+            }
+        }
+
+        function activateStep(stepElement, stepNum) {
             const steps = document.querySelectorAll('.step-node');
             steps.forEach(step => {
                 step.classList.remove('active');
             });
             stepElement.classList.add('active');
+            updateSandbox(stepNum);
         }
 
         function handleFormSubmit(event) {
@@ -181,13 +262,14 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "Processing Ingestion...";
 
-            // Simple micro-animation logging progress
+            // Animated step-by-step progress
             let step = 0;
             const logMessages = [
-                "[1/4] Validating URL structure...",
-                "[2/4] Verifying Creative Commons agreement...",
-                "[3/4] Registering submitter metadata...",
-                "[4/4] Queueing deepMind ingestion pipeline..."
+                "[1/5] Validating URL structure...",
+                "[2/5] Verifying Creative Commons agreement...",
+                "[3/5] Registering submitter metadata...",
+                "[4/5] Routing copy of payload notification to: amj@shutri.com...",
+                "[5/5] Queueing deepMind ingestion pipeline..."
             ];
             
             logElement.innerHTML = "";
@@ -201,12 +283,13 @@
                     step++;
                 } else {
                     clearInterval(interval);
-                    statusText.innerHTML = `Your link has been staged in the <strong>Mempool</strong>. An ingestion review note will be drafted using NotebookLM and you will be notified at <strong>${document.getElementById('submitter-email').value}</strong>.`;
+                    statusText.innerHTML = `Your link has been staged in the <strong>Mempool</strong>. An ingestion review note will be drafted using NotebookLM and sent to you and <strong style="color: var(--primary-accent);">amj@shutri.com</strong>.`;
                     
                     // Mark stepper steps completed to reflect success visual flow
                     const stepNodes = document.querySelectorAll('.step-node');
                     stepNodes[0].classList.add('completed');
                     stepNodes[1].classList.add('active');
+                    updateSandbox(2); // Jump preview to Mempool review state
                 }
             }, 600);
         }
@@ -228,7 +311,13 @@
                 node.classList.remove('active');
                 if (idx === 0) node.classList.add('active');
             });
+            updateSandbox(1);
         }
+
+        // Initialize sandbox with Step 1 preview on load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSandbox(1);
+        });
     </script>
 </body>
 </html>

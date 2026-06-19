@@ -431,3 +431,213 @@ footer {
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
+
+/* Visual Stage Sandbox / Preview styles */
+.sandbox-card {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2.25rem;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.sandbox-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.sandbox-title svg {
+    color: var(--primary-accent);
+}
+
+.preview-container {
+    background: rgba(5, 7, 12, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 1.5rem;
+    min-height: 250px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.preview-label {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border: 1px solid transparent;
+}
+
+/* Mempool State Preview */
+.state-mempool {
+    color: var(--text-muted);
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    line-height: 1.45;
+}
+
+.state-mempool .commentary {
+    color: #a5b4fc;
+    font-style: italic;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Template State Preview */
+.state-template {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.mock-player {
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.mock-play-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--primary-accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+.mock-waveform {
+    flex: 1;
+    height: 24px;
+    background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12) 3px, transparent 3px, transparent 7px);
+    border-radius: 3px;
+}
+
+.mock-video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.mock-video-thumb::after {
+    content: '▶ Cinematic Infographic (Mosaic)';
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 500;
+}
+
+/* Chain State Preview (mdBook mockup) */
+.state-chain {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.01);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: left;
+    height: 100%;
+}
+
+.mock-sidebar {
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    padding-right: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.mock-sidebar-node {
+    padding: 0.1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.mock-sidebar-node.indent-1 {
+    padding-left: 0.75rem;
+}
+
+.mock-sidebar-node.indent-2 {
+    padding-left: 1.5rem;
+    font-weight: 500;
+}
+
+.mock-sidebar-node.active {
+    color: var(--secondary-accent);
+}
+
+.mock-article {
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.mock-article h4 {
+    color: #fff;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.mock-badge {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success-accent);
+    color: var(--success-accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.vector-engine-tag {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(16, 185, 129, 0.04);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--success-accent);
+}
+
