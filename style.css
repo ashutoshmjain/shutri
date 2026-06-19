@@ -899,6 +899,113 @@ footer {
     color: #fff;
 }
 
+/* Hook Banner Showcase styles */
+.hook-banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    border-color: rgba(245, 158, 11, 0.2);
+    background: linear-gradient(135deg, rgba(15, 22, 36, 0.8) 0%, rgba(99, 102, 241, 0.04) 100%);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.hook-banner:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(245, 158, 11, 0.05);
+}
+
+.hook-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.hook-icon-wrap {
+    padding: 0.75rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.hook-text h2 {
+    font-size: 1.35rem;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.hook-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.hook-link {
+    color: var(--secondary-accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--secondary-accent);
+    transition: all 0.2s ease;
+}
+
+.hook-link:hover {
+    color: #fff;
+    border-bottom-style: solid;
+}
+
+.hook-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.benefit-check {
+    color: var(--success-accent);
+    font-weight: bold;
+}
+
+.hook-action {
+    flex-shrink: 0;
+}
+
+.hook-cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--secondary-accent) 0%, #d97706 100%);
+    color: #0b0f17;
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+}
+
+.hook-cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
+    color: #000;
+}
+
 /* Mobile Optimization adjustments */
 @media (max-width: 600px) {
     header {
@@ -921,6 +1028,30 @@ footer {
     .glass-card {
         padding: 1.25rem;
         border-radius: 12px;
+    }
+
+    .hook-banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.25rem;
+    }
+
+    .hook-content {
+        gap: 1rem;
+    }
+
+    .hook-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .hook-action {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hook-cta-btn {
+        width: 100%;
+        text-align: center;
     }
     
     .terminal-card {
