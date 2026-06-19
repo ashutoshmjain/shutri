@@ -42,10 +42,16 @@
             
             <div class="quick-queries">
                 <span class="query-label">Quick Queries:</span>
-                <button class="query-tag" onclick="submitQuickQuery('Who is dm?')">Who is dm?</button>
-                <button class="query-tag" onclick="submitQuickQuery('Shutri FAQ')">Shutri FAQ</button>
-                <button class="query-tag" onclick="submitQuickQuery('Top 10 Insights')">Top 10 Insights</button>
-                <button class="query-tag" onclick="submitQuickQuery('Ingestion Guidelines')">Ingestion Guidelines</button>
+                <button class="query-tag" onclick="submitQuickQuery('Who is dm?')">1. Who is dm?</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is Shutri?')">2. What is Shutri?</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the ingestion workflow?')">3. Workflow</button>
+                <button class="query-tag" onclick="submitQuickQuery('How do I submit research?')">4. How to Submit</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the Mempool phase?')">5. Mempool Phase</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the Template phase?')">6. Template Phase</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the Chain phase?')">7. Chain Phase</button>
+                <button class="query-tag" onclick="submitQuickQuery('Who owns the synthesized media?')">8. Media Ownership</button>
+                <button class="query-tag" onclick="submitQuickQuery('Are there any submission fees?')">9. Fees</button>
+                <button class="query-tag" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">10. Broadcasts</button>
             </div>
 
             <div class="terminal-body" id="terminal-body">
@@ -413,54 +419,6 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             </div>
         `;
 
-        const faqResponseHtml = `
-            <div class="response-card">
-                <h3>Shutri deepMind — FAQs</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 280px; overflow-y: auto; padding-right: 0.25rem;">
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">1. Who is dm?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">dm (deepMind) is the chief AI synthesizer curating the Blockchain of Knowledge across tech, physics, and finance.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">2. What is Shutri?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Shutri is a collaborative intelligence pipeline that bridges independent research with machine synthesis and multi-platform media broadcasting.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">3. What is the ingestion workflow?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">It operates in 4 stages: Submitter Draft → Mempool review → Media Template broadcasting → Vector Chain integration.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">4. How do I submit research?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Provide your article URL, name, email, and abstract in the Submission Portal below. Ingestion is completely free.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">5. What is the Mempool phase?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Staged submissions are analyzed in NotebookLM to draft a deepMind review. Submitters are notified of the note via email.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">6. What is the Template phase?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Approved notes undergo 3 days of public feedback while we broadcast custom podcasts (NotebookLM) and animations (Mosaic).</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">7. What is the Chain phase?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Finalized notes are minted to the deepDive chain and stored as active baselines in the vector query engine.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">8. Who owns the synthesized media?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">All review notes, audio, and visual assets are published under a Creative Commons Attribution-ShareAlike 4.0 license.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">9. Are there any submission fees?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">No, this is a free community service supported by peer reviewers and collaborative AI tools.</p>
-                    </details>
-                    <details style="border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 0.4rem 0.6rem; background: rgba(255,255,255,0.01); cursor: pointer;">
-                        <summary style="font-weight: 600; color: #fff; font-size: 0.85rem; outline: none;">10. Where are the podcasts broadcasted?</summary>
-                        <p style="margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Episodes stream on Spotify, Apple Podcasts, Fountain.fm, YouTube, TikTok, and Instagram.</p>
-                    </details>
-                </div>
-            </div>
-        `;
-
         const top10InsightsHtml = `
             <div class="response-card">
                 <h3>Top 10 Insights from the Blockchain of Knowledge</h3>
@@ -523,10 +481,62 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
 
             setTimeout(() => {
                 const normQuery = query.toLowerCase();
-                if (normQuery.includes('who is dm') || normQuery.includes('who is deepmind')) {
+                if (normQuery.includes('who is dm') || normQuery.includes('who is deepmind') || normQuery.includes('1. who is dm')) {
                     systemMsg.innerHTML = dmResponseHtml;
-                } else if (normQuery.includes('faq') || normQuery.includes('question') || normQuery.includes('help')) {
-                    systemMsg.innerHTML = faqResponseHtml;
+                } else if (normQuery.includes('what is shutri') || normQuery.includes('2. what is shutri')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p><strong>Shutri</strong> is a collaborative intelligence pipeline bridging independent research with machine-led synthesis and multi-platform media broadcasting.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('workflow') || normQuery.includes('ingestion workflow') || normQuery.includes('3. workflow')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>The workflow operates in 4 stages: <strong>Submitter Draft</strong> &rarr; <strong>Mempool review</strong> &rarr; <strong>Media Template broadcasting</strong> &rarr; <strong>Vector Chain integration</strong>.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('submit') || normQuery.includes('how to submit') || normQuery.includes('4. how to submit')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>Provide your article URL, name, email, and abstract in the <strong>Submission Portal</strong> at the bottom of the page. Ingestion is completely free.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('mempool') || normQuery.includes('5. mempool')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>Staged submissions are analyzed in Google NotebookLM to draft a <strong>deepMind review note</strong>. Submitters are immediately notified via email.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('template') || normQuery.includes('6. template')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>Approved notes undergo a <strong>3-day public feedback window</strong> while we broadcast custom podcasts (NotebookLM) and animations (Mosaic) to community channels.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('chain') || normQuery.includes('7. chain')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>Finalized notes are permanently minted to the <strong>deepDive blockchain</strong> and integrated as active reference baselines in the vector query engine.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('owner') || normQuery.includes('owns') || normQuery.includes('8. media ownership')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>All review notes, audio, and visual assets are published under a <strong>Creative Commons Attribution-ShareAlike 4.0 International license</strong> to keep knowledge open.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('fee') || normQuery.includes('cost') || normQuery.includes('9. fees')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>No, ingestion and review are <strong>100% free</strong>. We aim to cultivate high-density, peer-reviewed collaborative intelligence.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('podcast') || normQuery.includes('broadcast') || normQuery.includes('10. broadcasts')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p>Episodes stream across <strong>Spotify, Apple Podcasts, Fountain.fm, YouTube, TikTok, and Instagram</strong>. See the footer links below to subscribe.</p>
+                        </div>
+                    `;
                 } else if (normQuery.includes('insight') || normQuery.includes('top 10') || normQuery.includes('top10')) {
                     systemMsg.innerHTML = top10InsightsHtml;
                 } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
@@ -541,7 +551,7 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p><strong>Query received:</strong> "${query}"</p>
-                            <p style="color: var(--text-muted);">Database mapping initialized. Try asking <strong style="color: var(--primary-accent); cursor: pointer;" onclick="submitQuickQuery('Who is dm?')">"Who is dm?"</strong> to learn about my identity and role as curator of the Blockchain of Knowledge.</p>
+                            <p style="color: var(--text-muted);">Database mapping initialized. Select one of the 10 FAQ Quick Queries above to learn about Shutri and the ingestion process.</p>
                         </div>
                     `;
                 }
