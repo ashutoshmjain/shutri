@@ -87,19 +87,47 @@ header {
 
 main {
     flex: 1;
-    max-width: 1100px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2.5rem;
 }
 
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 100%;
+}
+
 @media (min-width: 900px) {
-    main {
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: start;
+    .top-grid {
+        grid-template-columns: 1.15fr 0.85fr; /* 1.15 to 0.85 split for stepper vs preview */
+        align-items: stretch;
+    }
+}
+
+.bottom-portal-card {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .form-group-full {
+        grid-column: span 2;
     }
 }
 
@@ -433,11 +461,10 @@ footer {
 }
 
 /* Visual Stage Sandbox / Preview styles */
-.sandbox-card {
-    margin-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 2.25rem;
-    animation: fadeIn 0.8s ease forwards;
+#sandbox-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .sandbox-title {
@@ -459,7 +486,8 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 12px;
     padding: 1.5rem;
-    min-height: 250px;
+    flex: 1;
+    min-height: 280px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;

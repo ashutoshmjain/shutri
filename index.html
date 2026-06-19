@@ -23,76 +23,79 @@
     </header>
 
     <main>
-        <!-- Section: Interactive Process Flow -->
-        <section class="glass-card">
-            <h2 class="stepper-title">How It Works</h2>
-            <div class="stepper">
-                
-                <!-- Step 1 -->
-                <div class="step-node active" onclick="activateStep(this, 1)">
-                    <div class="step-badge">1</div>
-                    <div class="step-content">
-                        <h3>Submit Your Rabbit Hole <span class="step-tag">Phase 01</span></h3>
-                        <p>Submit your article, blog post, thread, or research paper for free. We are actively looking for collaborative intelligence.</p>
-                        <div class="step-details">
-                            <div class="step-details-inner">
-                                <p>Provide your publication link, name, and email in the portal. It costs nothing. We review submissions that showcase deep logical rigor, mathematical analysis, or unique perspective shifts.</p>
+        <!-- Top Section: Stepper & Live Sandbox Grid -->
+        <div class="top-grid">
+            <!-- Left Column: How It Works Stepper -->
+            <section class="glass-card">
+                <h2 class="stepper-title">How It Works</h2>
+                <div class="stepper">
+                    
+                    <!-- Step 1 -->
+                    <div class="step-node active" onclick="activateStep(this, 1)">
+                        <div class="step-badge">1</div>
+                        <div class="step-content">
+                            <h3>Submit Your Rabbit Hole <span class="step-tag">Phase 01</span></h3>
+                            <p>Submit your article, blog post, thread, or research paper for free. We are actively looking for collaborative intelligence.</p>
+                            <div class="step-details">
+                                <div class="step-details-inner">
+                                    <p>Provide your publication link, name, and email in the portal. It costs nothing. We review submissions that showcase deep logical rigor, mathematical analysis, or unique perspective shifts.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Step 2 -->
-                <div class="step-node" onclick="activateStep(this, 2)">
-                    <div class="step-badge">2</div>
-                    <div class="step-content">
-                        <h3>deepMind Ingestion & review <span class="step-tag">mempool</span></h3>
-                        <p>If accepted, the research is ingested into the deepDive deepMind database and published under the Mempool queue.</p>
-                        <div class="step-details">
-                            <div class="step-details-inner">
-                                <p>We process your content using our <a href="https://notebooklm.google.com/notebook/134adc6f-b24f-40d8-86c9-c7c93072f042" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique, not a verbatim copy—and host it in the Mempool. You will receive an immediate email notification with your draft's status.</p>
+                    <!-- Step 2 -->
+                    <div class="step-node" onclick="activateStep(this, 2)">
+                        <div class="step-badge">2</div>
+                        <div class="step-content">
+                            <h3>deepMind Ingestion & review <span class="step-tag">mempool</span></h3>
+                            <p>If accepted, the research is ingested into the deepDive deepMind database and published under the Mempool queue.</p>
+                            <div class="step-details">
+                                <div class="step-details-inner">
+                                    <p>We process your content using our <a href="https://notebooklm.google.com/notebook/134adc6f-b24f-40d8-86c9-c7c93072f042" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique, not a verbatim copy—and host it in the Mempool. You will receive an immediate email notification with your draft's status.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Step 3 -->
-                <div class="step-node" onclick="activateStep(this, 3)">
-                    <div class="step-badge">3</div>
-                    <div class="step-content">
-                        <h3>Media Synthesis & Feedback <span class="step-tag">template</span></h3>
-                        <p>Reviewers produce custom podcasts and animations, moving the note to the Template queue for a 3-day review window.</p>
-                        <div class="step-details">
-                            <div class="step-details-inner">
-                                <p>An internal reviewer evaluates the note. If aligned, they generate:</p>
-                                <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                                    <li>An **audio podcast** using custom NotebookLM voices.</li>
-                                    <li>Visual **infographics and animations** using Mosaic.</li>
-                                </ul>
-                                <p>We notify you via email and provide 3 days to evaluate the synthesis. If you do not approve, we take it down immediately. Podcast audio is shared on Spotify, Apple, and Fountain.fm. Visuals are broadcast on TikTok, Instagram, and YouTube to collect public commentary.</p>
+                    <!-- Step 3 -->
+                    <div class="step-node" onclick="activateStep(this, 3)">
+                        <div class="step-badge">3</div>
+                        <div class="step-content">
+                            <h3>Media Synthesis & Feedback <span class="step-tag">template</span></h3>
+                            <p>Reviewers produce custom podcasts and animations, moving the note to the Template queue for a 3-day review window.</p>
+                            <div class="step-details">
+                                <div class="step-details-inner">
+                                    <p>An internal reviewer evaluates the note. If aligned, they generate:</p>
+                                    <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                                        <li>An **audio podcast** using custom NotebookLM voices.</li>
+                                        <li>Visual **infographics and animations** using Mosaic.</li>
+                                    </ul>
+                                    <p>We notify you via email and provide 3 days to evaluate the synthesis. If you do not approve, we take it down immediately. Podcast audio is shared on Spotify, Apple, and Fountain.fm. Visuals are broadcast on TikTok, Instagram, and YouTube to collect public commentary.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Step 4 -->
-                <div class="step-node" onclick="activateStep(this, 4)">
-                    <div class="step-badge">4</div>
-                    <div class="step-content">
-                        <h3>Consensus & Vector Engine Integration <span class="step-tag">chain</span></h3>
-                        <p>After 3 days of public comments, the finalized note is minted into the deepDive blockchain and synced with the AI query engine.</p>
-                        <div class="step-details">
-                            <div class="step-details-inner">
-                                <p>The reviewer moderates comments and answers public queries. Once 21 reviewed articles are compiled, they are committed to the blockchain. **Importantly, once committed, the research becomes an active reference baseline in the deepMind vector query database.** All subsequent submissions are automatically evaluated against this body of accepted research for consistency, contradictions, and duplication.</p>
+                    <!-- Step 4 -->
+                    <div class="step-node" onclick="activateStep(this, 4)">
+                        <div class="step-badge">4</div>
+                        <div class="step-content">
+                            <h3>Consensus & Vector Engine Integration <span class="step-tag">chain</span></h3>
+                            <p>After 3 days of public comments, the finalized note is minted into the deepDive blockchain and synced with the AI query engine.</p>
+                            <div class="step-details">
+                                <div class="step-details-inner">
+                                    <p>The reviewer moderates comments and answers public queries. Once 21 reviewed articles are compiled, they are committed to the blockchain. **Importantly, once committed, the research becomes an active reference baseline in the deepMind vector query database.** All subsequent submissions are automatically evaluated against this body of accepted research for consistency, contradictions, and duplication.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
+            </section>
 
-            </div>
-
-            <!-- Interactive Stage Visual Sandbox -->
-            <div class="sandbox-card">
+            <!-- Right Column: Interactive Phase Transition Preview -->
+            <section class="glass-card" id="sandbox-card">
                 <h3 class="sandbox-title">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"/>
@@ -104,42 +107,44 @@
                 <div class="preview-container" id="sandbox-preview">
                     <!-- Default state loaded by JS (Submission) -->
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Section: Submission Portal -->
-        <section class="glass-card" id="submission-card">
+        <!-- Bottom Center Column: Submission Portal -->
+        <section class="glass-card bottom-portal-card" id="submission-card">
             <h2 class="form-title">Submission Portal</h2>
             
             <form id="submission-form" onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label for="submitter-name" class="form-label">Full Name</label>
-                    <input type="text" id="submitter-name" class="form-input" placeholder="e.g., Ada Lovelace" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="submitter-email" class="form-label">Email Address</label>
-                    <input type="email" id="submitter-email" class="form-input" placeholder="e.g., ada@computing.org" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="research-url" class="form-label">Research Link / Article URL</label>
-                    <input type="url" id="research-url" class="form-input" placeholder="e.g., https://yourblog.com/quaternion-attention" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="research-desc" class="form-label">Abstract / TL;DR</label>
-                    <textarea id="research-desc" class="form-input form-textarea" placeholder="Briefly describe your thesis, math elements, or new insights..." required></textarea>
-                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="submitter-name" class="form-label">Full Name</label>
+                        <input type="text" id="submitter-name" class="form-input" placeholder="e.g., Ada Lovelace" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="submitter-email" class="form-label">Email Address</label>
+                        <input type="email" id="submitter-email" class="form-input" placeholder="e.g., ada@computing.org" required>
+                    </div>
+                    
+                    <div class="form-group form-group-full">
+                        <label for="research-url" class="form-label">Research Link / Article URL</label>
+                        <input type="url" id="research-url" class="form-input" placeholder="e.g., https://yourblog.com/quaternion-attention" required>
+                    </div>
+                    
+                    <div class="form-group form-group-full">
+                        <label for="research-desc" class="form-label">Abstract / TL;DR</label>
+                        <textarea id="research-desc" class="form-input form-textarea" placeholder="Briefly describe your thesis, math elements, or new insights..." required></textarea>
+                    </div>
 
-                <div class="form-group" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 1.5rem;">
-                    <input type="checkbox" id="cc-agree" required style="margin-top: 0.3rem; cursor: pointer;">
-                    <label for="cc-agree" style="font-size: 0.825rem; color: var(--text-muted); cursor: pointer; user-select: none;">
-                        I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
-                    </label>
+                    <div class="form-group form-group-full" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.5rem;">
+                        <input type="checkbox" id="cc-agree" required style="margin-top: 0.3rem; cursor: pointer;">
+                        <label for="cc-agree" style="font-size: 0.825rem; color: var(--text-muted); cursor: pointer; user-select: none;">
+                            I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
+                        </label>
+                    </div>
                 </div>
                 
-                <button type="submit" class="submit-btn" id="submit-button">Submit Ingestion Request</button>
+                <button type="submit" class="submit-btn" id="submit-button" style="margin-top: 1.5rem;">Submit Ingestion Request</button>
             </form>
 
             <div class="success-card" id="success-state">
@@ -147,10 +152,11 @@
                 <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Submission Staged</h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;" id="success-status-text">Your research link has been successfully logged into the Mempool queue.</p>
                 <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; font-size: 0.8rem; text-align: left;" id="success-log">
-                    [1/4] Validating URL structure... Done.<br>
-                    [2/4] Verifying Creative Commons agreement... Verified.<br>
-                    [3/4] Registering submitter metadata... Staged.<br>
-                    [4/4] Queueing deepMind ingestion pipeline... Done.
+                    [1/5] Validating URL structure... Done.<br>
+                    [2/5] Verifying Creative Commons agreement... Verified.<br>
+                    [3/5] Registering submitter metadata... Staged.<br>
+                    [4/5] Routing copy of payload notification to: amj@shutri.com... Done.<br>
+                    [5/5] Queueing deepMind ingestion pipeline... Done.
                 </div>
                 <button onclick="resetForm()" class="submit-btn" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border-color); box-shadow: none;">Submit Another Link</button>
             </div>
