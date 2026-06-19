@@ -111,7 +111,7 @@
                     <div class="step-node active" onclick="activateStep(this, 1)">
                         <div class="step-badge">1</div>
                         <div class="step-content">
-                            <h3>Submit Your Rabbit Hole <span class="step-tag">Phase 01</span></h3>
+                            <h3>Submit Your Research or Startup for Review <span class="step-tag">Phase 01</span></h3>
                             <p>Submit your article, blog post, thread, or research paper for free. We are actively looking for collaborative intelligence.</p>
                             <div class="step-details">
                                 <div class="step-details-inner">
@@ -399,6 +399,7 @@
 type: "RESEARCH_INGESTION"
 url: <span style="color: var(--primary-accent)">${urlVal}</span>
 submitter: "${nameVal}"
+github_auth: REQUIRED (Staged via Issue)
 status: STAGED_FOR_INGESTION
 cc_consent: TRUE
 destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
@@ -413,6 +414,7 @@ type: "STARTUP_PROTOCOL_AUDIT"
 spec_url: <span style="color: var(--secondary-accent)">${urlVal}</span>
 codebase: <span style="color: var(--primary-accent)">${repoVal}</span>
 submitter: "${nameVal}"
+github_auth: REQUIRED (Staged via Issue)
 status: STAGED_FOR_AUDIT
 audit_consent: TRUE
 destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
