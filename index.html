@@ -129,7 +129,7 @@
                             <p>If accepted, the research is ingested into the deepDive deepMind database and published under the Mempool queue.</p>
                             <div class="step-details">
                                 <div class="step-details-inner">
-                                    <p>We process your content using our <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique, not a verbatim copy—and host it in the Mempool. You will receive an immediate email notification with your draft's status.</p>
+                                    <p>We process your content using our <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique—and post it directly as a comment on your GitHub Issue. You can track all progress transparently on the issue.</p>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                                         <li>An **audio podcast** using custom NotebookLM voices.</li>
                                         <li>Visual **infographics and animations** using Mosaic.</li>
                                     </ul>
-                                    <p>We notify you via email and provide 3 days to evaluate the synthesis. If you do not approve, we take it down immediately. Podcast audio is shared on Spotify, Apple, and Fountain.fm. Visuals are broadcast on TikTok, Instagram, and YouTube to collect public commentary.</p>
+                                    <p>We post updates directly on the GitHub Issue and provide a 3-day review window to evaluate the synthesis. If you do not approve, comment on the issue and we will remove it immediately. Podcast audio is shared on Spotify, Apple, and Fountain.fm. Visuals are broadcast on TikTok, Instagram, and YouTube to collect public commentary.</p>
                                 </div>
                             </div>
                         </div>
@@ -260,9 +260,9 @@
                 <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; font-size: 0.8rem; text-align: left;" id="success-log">
                     [1/5] Validating URL structure... Done.<br>
                     [2/5] Verifying Creative Commons agreement... Verified.<br>
-                    [3/5] Registering submitter metadata... Staged.<br>
-                    [4/5] Routing copy of payload notification to: amj@shutri.com... Done.<br>
-                    [5/5] Queueing deepMind ingestion pipeline... Done.
+                    [3/5] Compiling Markdown issue payload... Done.<br>
+                    [4/5] Preparing routing configurations for GitHub... Done.<br>
+                    [5/5] Launching GitHub Issues portal... Done.
                 </div>
                 <button onclick="resetForm()" class="submit-btn" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border-color); box-shadow: none;">Submit Another Link</button>
             </div>
@@ -430,7 +430,7 @@ destination: <span style="color: var(--secondary-accent)">github.com/ashutoshmja
 # deepMind Review of "${title}"
 - Input thesis evaluated: "${descVal.substring(0, 120)}${descVal.length > 120 ? '...' : ''}"
 - Synthesis: A customized review note exploring the mathematical accuracy and logical flow of ${nameVal}'s publication.
-<span class="commentary">// Note: Staged in NotebookLM. Copy archived to amj@shutri.com. Status: MEMPOOL_RESEARCH.</span>
+<span class="commentary">// Note: Staged in NotebookLM. Review note posted directly as comment on GitHub Issue. Status: MEMPOOL_RESEARCH.</span>
                             </div>
                         `;
                     } else {
@@ -442,7 +442,7 @@ destination: <span style="color: var(--secondary-accent)">github.com/ashutoshmja
 - Scope: Analyzing spec at ${urlVal} & codebase at ${repoVal}.
 - Target analysis: Verifying consensus limits, token incentives, and centralized dependencies.
 - Synthesis: Critical analysis detailing trust assumptions and potential vulnerability vectors.
-<span class="commentary">// Note: Staged in NotebookLM. Copy archived to amj@shutri.com. Status: MEMPOOL_AUDIT.</span>
+<span class="commentary">// Note: Staged in NotebookLM. Critical audit posted directly as comment on GitHub Issue. Status: MEMPOOL_AUDIT.</span>
                             </div>
                         `;
                     }
@@ -588,13 +588,13 @@ ${descVal}
                 "[1/5] Validating URL structure...",
                 "[2/5] Verifying Creative Commons agreement...",
                 "[3/5] Compiling Markdown issue payload...",
-                "[4/5] Preparing routing configurations for: amj@shutri.com...",
+                "[4/5] Preparing routing configurations for GitHub...",
                 "[5/5] Launching GitHub Issues portal..."
             ] : [
                 "[1/5] Checking open-source GitHub URL access...",
                 "[2/5] Verifying vulnerability & critical audit consent...",
                 "[3/5] Compiling Markdown issue payload...",
-                "[4/5] Preparing routing configurations for: amj@shutri.com...",
+                "[4/5] Preparing routing configurations for GitHub...",
                 "[5/5] Launching GitHub Issues portal..."
             ];
             
@@ -610,9 +610,9 @@ ${descVal}
                 } else {
                     clearInterval(interval);
                     if (currentTrack === 'research') {
-                        statusText.innerHTML = `Your submission has been formatted! Opening GitHub Issues to stage your research in the Mempool.<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Notifications will be routed to <strong style="color: var(--primary-accent);">amj@shutri.com</strong>.`;
+                        statusText.innerHTML = `Your submission has been formatted! Opening GitHub Issues to stage your research in the Mempool.<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Updates will be posted directly to your GitHub Issue.`;
                     } else {
-                        statusText.innerHTML = `Your protocol submission has been formatted! Opening GitHub Issues to stage your project in the Mempool (Audit Queue).<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Notifications will be routed to <strong style="color: var(--secondary-accent);">amj@shutri.com</strong>.`;
+                        statusText.innerHTML = `Your protocol submission has been formatted! Opening GitHub Issues to stage your project in the Mempool (Audit Queue).<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Updates will be posted directly to your GitHub Issue.`;
                     }
                     
                     // Open the prefilled issue url in a new tab
@@ -754,7 +754,7 @@ ${descVal}
                 } else if (normQuery.includes('mempool') || normQuery.includes('5. mempool')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Staged submissions are analyzed in Google NotebookLM to draft a <strong>deepMind review note</strong>. Submitters are immediately notified via email.</p>
+                            <p>Staged submissions are analyzed in Google NotebookLM to draft a <strong>deepMind review note</strong>. Reviews are posted directly as comments on the staging GitHub Issue.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('template') || normQuery.includes('6. template')) {
