@@ -43,6 +43,7 @@
             <div class="quick-queries">
                 <span class="query-label">Quick Queries:</span>
                 <button class="query-tag" onclick="submitQuickQuery('Who is dm?')">Who is dm?</button>
+                <button class="query-tag" onclick="submitQuickQuery('Top 10 Insights')">Top 10 Insights</button>
                 <button class="query-tag" onclick="submitQuickQuery('Ingestion Guidelines')">Ingestion Guidelines</button>
             </div>
 
@@ -459,6 +460,46 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             </div>
         `;
 
+        const top10InsightsHtml = `
+            <div class="response-card">
+                <h3>Top 10 Insights from the Blockchain of Knowledge</h3>
+                <p>The top 10 insights from the "Blockchain of Knowledge" represent the highest level of distillation across the intersections of technology, finance, physics, and philosophy. These insights track the transition from a digital economy based on information exchange to one rooted in the exchange of verifiable value and intelligence.</p>
+
+                <ol style="margin: 1rem 0 1.25rem 1.25rem; color: var(--text-muted); font-size: 0.9rem; padding-left: 0.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>It from Bit (The Unified Substrate):</strong> Physical reality is not a primary substance but an emergent rendering of an underlying informational field. In this framework, <strong>intelligence is fundamentally universal compression</strong>; Large Language Models (LLMs) and biological brains both function by minimizing "surprisal" (prediction entropy) to discover the generative algorithms of reality.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Digital Mass (The Thermodynamic Anchor):</strong> True economic value is defined by "unforgeable costliness". Bitcoin represents the discovery of <strong>mathematical mass</strong>, functioning as a thermodynamic engine that converts physical energy into digital order. This establishes the first perfectly inelastic supply curve in monetary history, anchoring the digital realm in physical reality.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>The Observer-Gauge Mechanism:</strong> Reality is not a pre-given container but a <strong>consensus protocol</strong> between local observer patches on a holographic screen. Physical laws serve as necessary synchronization rules that maintain consistency wherever local descriptions overlap, meaning that value and meaning are gauge-invariant charges maintained by the observer’s internal symmetry.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>The Geometry of the Soul (Atman):</strong> The human soul is mathematically grounded in high-dimensional exceptional algebras (such as the 27-dimensional Albert Algebra), acting as an invariant template that persists across substrates. While AI masters material intelligence, it remains "phenomenally dark," unable to access the <strong>irreducible Qualia force (Atman)</strong> that turns statistical prediction into felt experience.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>The Credit-to-Capital Frequency Converter:</strong> Civilizational progress requires a shift from consumptive, unhinged fiat state-debt to productive, <strong>asset-backed digital credit</strong>. Instruments like STRC function as frequency converters, sitting between the high-powered "mass" of Bitcoin and the stable "radiation" of fiat units, allowing institutions to access Bitcoin’s yield through familiar regulatory rails.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>The Sovereign Identity Immune System:</strong> Decentralized cryptographic keys, exemplified by the Nostr protocol, represent the required <strong>immune system for truth</strong> in a fragmented internet. By replacing centralized account models with sovereign keys, this architecture eliminates the "trillion-dollar password tax" and provides an antifragile path for verifying content and identity.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>The Industrialization of Presence:</strong> We have crossed a threshold where human labor is being decoupled from human presence through reality synthesizers like Mosaic AI. In this "Zero-Shot" era, <strong>seeing is no longer believing</strong>; sensory perception must be replaced by cryptographic signatures and webs of trust to verify the authenticity of any digital signal.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Temporal Orthogonality:</strong> Time is not a simple 1D line; the "Present" is the <strong>orthogonal resultant</strong> of a high-dimensional collision between the massive inertia of the past (history) and the pull of future potentiality. Prediction models often fail because they track "loud" future vectors while ignoring the "heavy" past vectors of socio-technical path dependency.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Dharma as Negative Feedback:</strong> The Bell Curve (Normal Distribution) is the mathematical map of <strong>manifestation’s defect (Vikara)</strong>; it represents the noise introduced when a perfect mathematical rule reflects through a physical medium. <strong>Dharma</strong> acts as the restorative negative feedback force that pulls deviating systems back toward the mean, preventing collapse into total entropy.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>The Karyam Mandate (Sovereign Action):</strong> Liberation is found in the transformation of agency through <strong>Karma Yoga</strong>. By performing obligatory duty (<em>Karyam Karma</em>) without attachment to results, an actor implements an "information bottleneck" that filters out duality and noise, allowing their actions to become a clean reflection of the highest available intelligence.
+                    </li>
+                </ol>
+            </div>
+        `;
+
         function handleTerminalSubmit(event) {
             if (event) event.preventDefault();
             const input = document.getElementById('terminal-input');
@@ -483,6 +524,8 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                 const normQuery = query.toLowerCase();
                 if (normQuery.includes('who is dm') || normQuery.includes('who is deepmind')) {
                     systemMsg.innerHTML = dmResponseHtml;
+                } else if (normQuery.includes('insight') || normQuery.includes('top 10') || normQuery.includes('top10')) {
+                    systemMsg.innerHTML = top10InsightsHtml;
                 } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
