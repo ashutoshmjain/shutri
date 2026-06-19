@@ -35,7 +35,7 @@
                     <div class="terminal-status"></div>
                     deepMind@shutri:~$ query-terminal
                 </div>
-                <a href="https://notebooklm.google.com/notebook/134adc6f-b24f-40d8-86c9-c7c93072f042" target="_blank" class="notebook-btn-link">
+                <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-btn-link">
                     Explore NotebookLM
                 </a>
             </div>
@@ -129,7 +129,7 @@
                             <p>If accepted, the research is ingested into the deepDive deepMind database and published under the Mempool queue.</p>
                             <div class="step-details">
                                 <div class="step-details-inner">
-                                    <p>We process your content using our <a href="https://notebooklm.google.com/notebook/134adc6f-b24f-40d8-86c9-c7c93072f042" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique, not a verbatim copy—and host it in the Mempool. You will receive an immediate email notification with your draft's status.</p>
+                                    <p>We process your content using our <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique, not a verbatim copy—and host it in the Mempool. You will receive an immediate email notification with your draft's status.</p>
                                 </div>
                             </div>
                         </div>
@@ -193,6 +193,27 @@
             
             <form id="submission-form" onsubmit="handleFormSubmit(event)">
                 <div class="form-grid">
+                    <div class="track-selector-wrapper form-group-full">
+                        <span class="track-label">Select Ingestion Pipeline</span>
+                        <div class="track-selector">
+                            <button type="button" class="track-tab active" id="tab-research" onclick="setTrack('research')">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px; vertical-align: middle; display: inline-block;">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                </svg>
+                                Theoretical Research
+                            </button>
+                            <button type="button" class="track-tab" id="tab-startup" onclick="setTrack('startup')">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px; vertical-align: middle; display: inline-block;">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                    <polyline points="2 17 12 22 22 17"/>
+                                    <polyline points="2 12 12 17 22 12"/>
+                                </svg>
+                                Startup / Protocol Audit
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="submitter-name" class="form-label">Full Name</label>
                         <input type="text" id="submitter-name" class="form-input" placeholder="e.g., Ada Lovelace" required>
@@ -204,18 +225,23 @@
                     </div>
                     
                     <div class="form-group form-group-full">
-                        <label for="research-url" class="form-label">Research Link / Article URL</label>
+                        <label for="research-url" class="form-label" id="label-url">Research Link / Article URL</label>
                         <input type="url" id="research-url" class="form-input" placeholder="e.g., https://yourblog.com/quaternion-attention" required>
+                    </div>
+
+                    <div class="form-group form-group-full form-group-conditional" id="group-repo">
+                        <label for="code-repo-url" class="form-label">Open-Source Code / GitHub Repository URL</label>
+                        <input type="url" id="code-repo-url" class="form-input" placeholder="e.g., https://github.com/myproject/core">
                     </div>
                     
                     <div class="form-group form-group-full">
-                        <label for="research-desc" class="form-label">Abstract / TL;DR</label>
+                        <label for="research-desc" class="form-label" id="label-desc">Abstract / TL;DR</label>
                         <textarea id="research-desc" class="form-input form-textarea" placeholder="Briefly describe your thesis, math elements, or new insights..." required></textarea>
                     </div>
 
                     <div class="form-group form-group-full" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.5rem;">
                         <input type="checkbox" id="cc-agree" required style="margin-top: 0.3rem; cursor: pointer;">
-                        <label for="cc-agree" style="font-size: 0.825rem; color: var(--text-muted); cursor: pointer; user-select: none;">
+                        <label for="cc-agree" id="label-cc" style="font-size: 0.825rem; color: var(--text-muted); cursor: pointer; user-select: none;">
                             I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
                         </label>
                     </div>
@@ -262,6 +288,7 @@
     <script>
         // Track the current step of the preview panel
         let currentActiveStep = 1;
+        let currentTrack = 'research';
 
         // Extract metadata from a URL string
         function getUrlSlug(urlStr) {
@@ -279,73 +306,215 @@
             }
         }
 
+        function setTrack(track) {
+            currentTrack = track;
+            
+            // Toggle active tabs
+            const tabResearch = document.getElementById('tab-research');
+            const tabStartup = document.getElementById('tab-startup');
+            const submitBtn = document.getElementById('submit-button');
+            const groupRepo = document.getElementById('group-repo');
+            const inputRepo = document.getElementById('code-repo-url');
+            
+            if (track === 'research') {
+                if (tabResearch) tabResearch.classList.add('active');
+                if (tabStartup) tabStartup.classList.remove('active');
+                
+                // Form modifications
+                if (groupRepo) groupRepo.classList.remove('active');
+                if (inputRepo) {
+                    inputRepo.required = false;
+                    inputRepo.value = "";
+                }
+                
+                const labelUrl = document.getElementById('label-url');
+                const researchUrl = document.getElementById('research-url');
+                if (labelUrl) labelUrl.innerText = "Research Link / Article URL";
+                if (researchUrl) researchUrl.placeholder = "e.g., https://yourblog.com/quaternion-attention";
+                
+                const labelDesc = document.getElementById('label-desc');
+                const researchDesc = document.getElementById('research-desc');
+                if (labelDesc) labelDesc.innerText = "Abstract / TL;DR";
+                if (researchDesc) researchDesc.placeholder = "Briefly describe your thesis, math elements, or new insights...";
+                
+                const labelCc = document.getElementById('label-cc');
+                if (labelCc) {
+                    labelCc.innerHTML = `
+                        I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
+                    `;
+                }
+                
+                if (submitBtn) submitBtn.innerText = "Submit Ingestion Request";
+            } else {
+                if (tabResearch) tabResearch.classList.remove('active');
+                if (tabStartup) tabStartup.classList.add('active');
+                
+                // Form modifications
+                if (groupRepo) groupRepo.classList.add('active');
+                if (inputRepo) inputRepo.required = true;
+                
+                const labelUrl = document.getElementById('label-url');
+                const researchUrl = document.getElementById('research-url');
+                if (labelUrl) labelUrl.innerText = "Whitepaper / Technical Specification URL";
+                if (researchUrl) researchUrl.placeholder = "e.g., https://yourproject.io/whitepaper.pdf";
+                
+                const labelDesc = document.getElementById('label-desc');
+                const researchDesc = document.getElementById('research-desc');
+                if (labelDesc) labelDesc.innerText = "Protocol Architecture & Token Mechanics";
+                if (researchDesc) researchDesc.placeholder = "Summarize consensus protocol, economic design, and security assumptions...";
+                
+                const labelCc = document.getElementById('label-cc');
+                if (labelCc) {
+                    labelCc.innerHTML = `
+                        I consent to an objective, critical audit of our protocol/code, and understand that Shutri will publish a transparent review highlighting any vulnerabilities, centralization risks, or economic flaws alongside our strengths under CC ShareAlike.
+                    `;
+                }
+                
+                if (submitBtn) submitBtn.innerText = "Submit Audit Request";
+            }
+            
+            // Refresh preview sandbox
+            updateSandbox(currentActiveStep);
+        }
+
         // Generate sandbox templates dynamically based on input fields
         function getSandboxContent(stepNum) {
             const nameVal = document.getElementById('submitter-name').value || "Ada Lovelace";
-            const urlVal = document.getElementById('research-url').value || "https://yourblog.com/quaternion-attention";
-            const descVal = document.getElementById('research-desc').value || "An analysis of non-commutative Hamilton products in neural network attention.";
+            const urlVal = document.getElementById('research-url').value || (currentTrack === 'research' ? "https://yourblog.com/quaternion-attention" : "https://yourproject.io/whitepaper.pdf");
+            const descVal = document.getElementById('research-desc').value || (currentTrack === 'research' ? "An analysis of non-commutative Hamilton products in neural network attention." : "A decentralized consensus engine using verifiable delay functions and algorithmic game theory.");
+            const repoVal = document.getElementById('code-repo-url').value || "https://github.com/myproject/core";
             const slug = getUrlSlug(urlVal);
             const title = slug.charAt(0).toUpperCase() + slug.slice(1);
 
             switch (stepNum) {
                 case 1:
-                    return `
-                        <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 1: Ingestion Draft</div>
-                        <div class="state-mempool">
+                    if (currentTrack === 'research') {
+                        return `
+                            <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 1: Ingestion Draft (Research)</div>
+                            <div class="state-mempool">
 <strong>Target Submission Payload:</strong>
+type: "RESEARCH_INGESTION"
 url: <span style="color: var(--primary-accent)">${urlVal}</span>
 submitter: "${nameVal}"
 status: STAGED_FOR_INGESTION
 cc_consent: TRUE
 destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
-                        </div>
-                    `;
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 1: Ingestion Draft (Startup Audit)</div>
+                            <div class="state-mempool">
+<strong>Target Audit Payload:</strong>
+type: "STARTUP_PROTOCOL_AUDIT"
+spec_url: <span style="color: var(--secondary-accent)">${urlVal}</span>
+codebase: <span style="color: var(--primary-accent)">${repoVal}</span>
+submitter: "${nameVal}"
+status: STAGED_FOR_AUDIT
+audit_consent: TRUE
+destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
+                            </div>
+                        `;
+                    }
                 case 2:
-                    return `
-                        <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 2: Mempool</div>
-                        <div class="state-mempool">
+                    if (currentTrack === 'research') {
+                        return `
+                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 2: Mempool (Research)</div>
+                            <div class="state-mempool">
 <strong>NotebookLM deepMind Ingestion Review (Draft Critique):</strong>
 # deepMind Review of "${title}"
 - Input thesis evaluated: "${descVal.substring(0, 120)}${descVal.length > 120 ? '...' : ''}"
 - Synthesis: A customized review note exploring the mathematical accuracy and logical flow of ${nameVal}'s publication.
-<span class="commentary">// Note: Staged in NotebookLM. Copy archived to amj@shutri.com and notified via email. Status: MEMPOOL.</span>
-                        </div>
-                    `;
+<span class="commentary">// Note: Staged in NotebookLM. Copy archived to amj@shutri.com. Status: MEMPOOL_RESEARCH.</span>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 2: Mempool (Protocol Audit)</div>
+                            <div class="state-mempool">
+<strong>NotebookLM deepMind Ingestion Review (Technical Critique):</strong>
+# deepMind Audit of "${title}"
+- Scope: Analyzing spec at ${urlVal} & codebase at ${repoVal}.
+- Target analysis: Verifying consensus limits, token incentives, and centralized dependencies.
+- Synthesis: Critical analysis detailing trust assumptions and potential vulnerability vectors.
+<span class="commentary">// Note: Staged in NotebookLM. Copy archived to amj@shutri.com. Status: MEMPOOL_AUDIT.</span>
+                            </div>
+                        `;
+                    }
                 case 3:
-                    return `
-                        <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 3: Template (Media)</div>
-                        <div class="state-template">
-                            <div class="mock-player">
-                                <button class="mock-play-btn">▶</button>
-                                <div style="font-size:0.8rem; font-family: monospace; color: #fff;">Podcast: Summary of "${title}"</div>
-                                <div class="mock-waveform"></div>
+                    if (currentTrack === 'research') {
+                        return `
+                            <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 3: Template (Research Media)</div>
+                            <div class="state-template">
+                                <div class="mock-player">
+                                    <button class="mock-play-btn">▶</button>
+                                    <div style="font-size:0.8rem; font-family: monospace; color: #fff;">Podcast: Summary of "${title}"</div>
+                                    <div class="mock-waveform"></div>
+                                </div>
+                                <div class="mock-video-thumb"></div>
+                                <p style="font-size: 0.775rem; color: var(--text-muted); font-style: italic; margin-top: -0.25rem;">
+                                    3-day review window active for "${nameVal}". Broadcasted to Spotify & YouTube feedback queues.
+                                </p>
                             </div>
-                            <div class="mock-video-thumb"></div>
-                            <p style="font-size: 0.775rem; color: var(--text-muted); font-style: italic; margin-top: -0.25rem;">
-                                3-day review window active for "${nameVal}". Broadcasted to Spotify & TikTok feedback queues.
-                            </p>
-                        </div>
-                    `;
+                        `;
+                    } else {
+                        return `
+                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 3: Template (Audit Broadcast)</div>
+                            <div class="state-template">
+                                <div class="mock-player">
+                                    <button class="mock-play-btn" style="background: var(--secondary-accent);">▶</button>
+                                    <div style="font-size:0.8rem; font-family: monospace; color: #fff;">deepDive Deconstruction: ${title}</div>
+                                    <div class="mock-waveform"></div>
+                                </div>
+                                <div class="mock-video-thumb" style="border-color: var(--secondary-accent);"></div>
+                                <p style="font-size: 0.775rem; color: var(--text-muted); font-style: italic; margin-top: -0.25rem;">
+                                    Warning: Episode covers centralized control hooks and security boundaries of ${nameVal}'s protocol.
+                                </p>
+                            </div>
+                        `;
+                    }
                 case 4:
-                    return `
-                        <div class="preview-label" style="background: rgba(16, 185, 129, 0.15); color: var(--success-accent); border-color: rgba(16, 185, 129, 0.3);">Phase 4: Chain (Active)</div>
-                        <div class="state-chain">
-                            <div class="mock-sidebar">
-                                <div class="mock-sidebar-node">📖 deepDive</div>
-                                <div class="mock-sidebar-node indent-1">↳ chain</div>
-                                <div class="mock-sidebar-node indent-2">↳ block 1</div>
-                                <div class="mock-sidebar-node indent-2 active">↳ ${title.substring(0, 15)}</div>
-                            </div>
-                            <div class="mock-article">
-                                <span class="mock-badge">Minted Block Ledger</span>
-                                <h4>${title}</h4>
-                                <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem;">${descVal.substring(0, 150)}${descVal.length > 150 ? '...' : ''}</p>
-                                <div class="vector-engine-tag">
-                                    ⚡ INTEGRATED AS ACTIVE BASELINE IN DEEPMIND QUERY VECTOR ENGINE
+                    if (currentTrack === 'research') {
+                        return `
+                            <div class="preview-label" style="background: rgba(16, 185, 129, 0.15); color: var(--success-accent); border-color: rgba(16, 185, 129, 0.3);">Phase 4: Chain (Active Research)</div>
+                            <div class="state-chain">
+                                <div class="mock-sidebar">
+                                    <div class="mock-sidebar-node">📖 deepDive</div>
+                                    <div class="mock-sidebar-node indent-1">↳ chain</div>
+                                    <div class="mock-sidebar-node indent-2">↳ block 1</div>
+                                    <div class="mock-sidebar-node indent-2 active">↳ ${title.substring(0, 15)}</div>
+                                </div>
+                                <div class="mock-article">
+                                    <span class="mock-badge">Minted Block Ledger</span>
+                                    <h4>${title}</h4>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem;">${descVal.substring(0, 150)}${descVal.length > 150 ? '...' : ''}</p>
+                                    <div class="vector-engine-tag" style="background: rgba(16, 185, 129, 0.1); color: var(--success-accent); border-color: rgba(16, 185, 129, 0.2);">
+                                        ⚡ INTEGRATED AS ACTIVE BASELINE IN DEEPMIND QUERY VECTOR ENGINE
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `;
+                        `;
+                    } else {
+                        return `
+                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 4: Sandbox (Project Ledger)</div>
+                            <div class="state-chain">
+                                <div class="mock-sidebar">
+                                    <div class="mock-sidebar-node">📖 deepDive</div>
+                                    <div class="mock-sidebar-node indent-1">↳ sandbox</div>
+                                    <div class="mock-sidebar-node indent-2">↳ audit 1</div>
+                                    <div class="mock-sidebar-node indent-2 active" style="color: var(--secondary-accent); border-left-color: var(--secondary-accent);">↳ ${title.substring(0, 15)}</div>
+                                </div>
+                                <div class="mock-article">
+                                    <span class="mock-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.25);">Sandbox Audit Ledger</span>
+                                    <h4>${title}</h4>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem;">${descVal.substring(0, 150)}${descVal.length > 150 ? '...' : ''}</p>
+                                    <div class="vector-engine-tag" style="background: rgba(245, 158, 11, 0.08); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.15); border-style: dashed;">
+                                        ⚡ COMMITTED TO PROJECT SANDBOX (Isolated from core vector base)
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
                 default:
                     return '';
             }
@@ -377,22 +546,28 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             const statusText = document.getElementById('success-status-text');
 
             submitBtn.disabled = true;
-            submitBtn.innerText = "Processing Ingestion...";
+            submitBtn.innerText = currentTrack === 'research' ? "Processing Ingestion..." : "Processing Audit Ingestion...";
 
             // Animated step-by-step progress
             let step = 0;
-            const logMessages = [
+            const logMessages = currentTrack === 'research' ? [
                 "[1/5] Validating URL structure...",
                 "[2/5] Verifying Creative Commons agreement...",
                 "[3/5] Registering submitter metadata...",
                 "[4/5] Routing copy of payload notification to: amj@shutri.com...",
                 "[5/5] Queueing deepMind ingestion pipeline..."
+            ] : [
+                "[1/5] Checking open-source GitHub URL access...",
+                "[2/5] Verifying vulnerability & critical audit consent...",
+                "[3/5] Registering project audit metadata...",
+                "[4/5] Routing specs and repo hooks to: amj@shutri.com...",
+                "[5/5] Enforcing Vector Sandbox partition boundaries..."
             ];
             
             logElement.innerHTML = "";
             form.style.display = "none";
             successState.style.display = "block";
-            statusText.innerText = "Connecting to Shutri ingestion pipeline...";
+            statusText.innerText = currentTrack === 'research' ? "Connecting to Shutri ingestion pipeline..." : "Connecting to Shutri audit pipeline...";
 
             const interval = setInterval(() => {
                 if (step < logMessages.length) {
@@ -400,7 +575,11 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                     step++;
                 } else {
                     clearInterval(interval);
-                    statusText.innerHTML = `Your link has been staged in the <strong>Mempool</strong>. An ingestion review note will be drafted using NotebookLM and sent to you and <strong style="color: var(--primary-accent);">amj@shutri.com</strong>.`;
+                    if (currentTrack === 'research') {
+                        statusText.innerHTML = `Your link has been staged in the <strong>Mempool</strong>. An ingestion review note will be drafted using NotebookLM and sent to you and <strong style="color: var(--primary-accent);">amj@shutri.com</strong>.`;
+                    } else {
+                        statusText.innerHTML = `Your protocol has been staged in the <strong>Mempool (Audit Queue)</strong>. A critical audit review will be drafted using NotebookLM and sent to you and <strong style="color: var(--secondary-accent);">amj@shutri.com</strong>.`;
+                    }
                     
                     // Mark stepper steps completed to reflect success visual flow
                     const stepNodes = document.querySelectorAll('.step-node');
@@ -421,7 +600,10 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
             form.style.display = "block";
             successState.style.display = "none";
             submitBtn.disabled = false;
-            submitBtn.innerText = "Submit Ingestion Request";
+            submitBtn.innerText = currentTrack === 'research' ? "Submit Ingestion Request" : "Submit Audit Request";
+            
+            // Re-apply track state settings to reset elements
+            setTrack(currentTrack);
 
             const stepNodes = document.querySelectorAll('.step-node');
             stepNodes.forEach((node, idx) => {
@@ -592,7 +774,7 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
 
         // Add real-time input listeners to bind form changes directly to the visual preview
         window.addEventListener('DOMContentLoaded', () => {
-            const inputIds = ['submitter-name', 'research-url', 'research-desc'];
+            const inputIds = ['submitter-name', 'research-url', 'research-desc', 'code-repo-url'];
             inputIds.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) {
@@ -601,7 +783,9 @@ destination: <span style="color: var(--secondary-accent)">amj@shutri.com</span>
                     });
                 }
             });
-            updateSandbox(1);
+            
+            // Set initial state
+            setTrack('research');
 
             // Bind terminal form submission
             const termForm = document.getElementById('terminal-form');
