@@ -1,7 +1,0 @@
-SoX
-eXchange
-DAWs
-Neovim
-Toolchain
-toolchain
-Vimscript
