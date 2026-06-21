@@ -129,6 +129,9 @@ main {
     .form-group-full {
         grid-column: span 2;
     }
+    .track-selector-wrapper {
+        grid-column: span 2;
+    }
 }
 
 /* Glassmorphism Card Style */
@@ -1151,7 +1154,6 @@ footer {
 
 /* Track Selector Styles */
 .track-selector-wrapper {
-    grid-column: span 2;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
