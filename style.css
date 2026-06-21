@@ -902,14 +902,16 @@ footer {
     color: #fff;
 }
 
-.response-card a {
+.response-card a,
+.response-card a:visited {
     color: var(--secondary-accent);
     text-decoration: none;
     border-bottom: 1px dashed var(--secondary-accent);
     transition: all 0.2s ease;
 }
 
-.response-card a:hover {
+.response-card a:hover,
+.response-card a:active {
     color: #fff;
     border-bottom-style: solid;
 }
@@ -961,7 +963,8 @@ footer {
     margin-bottom: 0.75rem;
 }
 
-.hook-link {
+.hook-link,
+.hook-link:visited {
     color: var(--secondary-accent);
     font-weight: 600;
     text-decoration: none;
@@ -969,7 +972,8 @@ footer {
     transition: all 0.2s ease;
 }
 
-.hook-link:hover {
+.hook-link:hover,
+.hook-link:active {
     color: #fff;
     border-bottom-style: solid;
 }
