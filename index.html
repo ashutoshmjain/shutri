@@ -738,31 +738,31 @@ ${descVal}
                 } else if (normQuery.includes('workflow') || normQuery.includes('ingestion workflow') || normQuery.includes('3. workflow')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>The workflow operates in 4 stages: <strong>Submitter Draft</strong> &rarr; <strong>deepMind AI Co-Review</strong> &rarr; <strong>Open Review & Multimodal Synthesis</strong> &rarr; <strong>Vector Chain integration</strong>.</p>
+                            <p>The workflow operates in 4 stages: <strong>Submitter Draft</strong> &rarr; <strong>Mempool (AI Ingestion & Perspective)</strong> &rarr; <strong>Template (Human Review & Artifact Publishing)</strong> &rarr; <strong>Vector Chain Integration (Consensus & Minting)</strong>.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('submit') || normQuery.includes('how to submit') || normQuery.includes('4. how to submit')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Provide your article URL, name, email, and abstract in the <strong>Submission Portal</strong> at the bottom of the page. Ingestion is completely free.</p>
+                            <p>Provide your article URL, name, email, and abstract in the <strong>Submission Portal</strong> at the bottom of the page. Ingestion is completely free. Please note that acceptance is subject to deepMind review as well as a human reviewer signing off.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('mempool') || normQuery.includes('5. mempool')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Staged submissions undergo an initial AI co-review in Google NotebookLM. The draft review report is posted directly as a public comment on the staging GitHub Issue.</p>
+                            <p>Once accepted, we query the research in Gemini, construct our perspective, extract it using mdIngest, and publish it on deepDive under the <strong>Mempool</strong>. The submission is now active and looking for a human reviewer to collaboratively create the audio and infographic artifacts with the author.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('template') || normQuery.includes('6. template')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>A named human reviewer evaluates the co-review draft, publishes a detailed review, and builds custom NotebookLM podcasts and Mosaic animations as proof of understanding.</p>
+                            <p>Once the collaborative audio and infographic artifacts are completed by the reviewer and author, the research transitions to the <strong>Template</strong> phase, and the artifacts are published on public platforms (Spotify, YouTube, TikTok, etc.) for a public feedback window.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('chain') || normQuery.includes('7. chain')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Finalized open review reports are permanently minted to the <strong>deepDive blockchain</strong> and integrated as active reference baselines in the vector query engine.</p>
+                            <p>After the public review closes and the block size reaches 21 finalized articles, the research is committed to the <strong>deepDive blockchain</strong> (as the next block) and integrated as an active reference baseline in the deepMind vector query database.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('owner') || normQuery.includes('owns') || normQuery.includes('8. media ownership')) {
