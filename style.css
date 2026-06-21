@@ -909,14 +909,14 @@ footer {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    border-color: rgba(245, 158, 11, 0.2);
+    border-color: var(--border-color);
     background: linear-gradient(135deg, rgba(15, 22, 36, 0.8) 0%, rgba(99, 102, 241, 0.04) 100%);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .hook-banner:hover {
-    border-color: rgba(245, 158, 11, 0.4);
-    box-shadow: 0 8px 32px 0 rgba(245, 158, 11, 0.05);
+    border-color: var(--primary-accent);
+    box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05);
 }
 
 .hook-content {
@@ -927,13 +927,13 @@ footer {
 
 .hook-icon-wrap {
     padding: 0.75rem;
-    background: rgba(245, 158, 11, 0.1);
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border: 1px solid rgba(245, 158, 11, 0.15);
+    border: 1px solid var(--border-color);
 }
 
 .hook-text h2 {
@@ -978,7 +978,7 @@ footer {
 }
 
 .benefit-check {
-    color: var(--success-accent);
+    color: var(--primary-accent);
     font-weight: bold;
 }
 
@@ -988,25 +988,26 @@ footer {
 
 .hook-cta-btn {
     display: inline-block;
-    background: linear-gradient(135deg, var(--secondary-accent) 0%, #d97706 100%);
-    color: #0b0f17;
-    font-weight: 700;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-weight: 600;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
     transition: all 0.3s ease;
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
-    border: none;
     cursor: pointer;
 }
 
 .hook-cta-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--primary-accent);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
-    color: #000;
 }
 
 @media (max-width: 900px) {
