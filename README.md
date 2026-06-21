@@ -17,6 +17,10 @@ graph TD
 ---
 
 ## I. The Core Philosophy of Shutri
+
+> [!IMPORTANT]
+> **The Key Insight:** The *blockchain of knowledge* is not about adding information artifacts to a chronological blockchain of money (like Bitcoin or Ethereum). Instead, it is about building and structuring an LLM on sequential blocks of publicly verified research. The key is the open collaboration between humans and AI, followed by public commentary in broader social media. This ensures that *everyone has a stake in the knowledge*.
+
 Historically, peer review has been an insular, anonymous black box:
 * Reviewers are hidden from public view.
 * Review reports and critiques are permanently locked away.
