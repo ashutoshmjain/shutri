@@ -902,6 +902,18 @@ footer {
     color: #fff;
 }
 
+.response-card a {
+    color: var(--secondary-accent);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--secondary-accent);
+    transition: all 0.2s ease;
+}
+
+.response-card a:hover {
+    color: #fff;
+    border-bottom-style: solid;
+}
+
 /* Hook Banner Showcase styles */
 .hook-banner {
     display: flex;
