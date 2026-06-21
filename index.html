@@ -791,7 +791,13 @@ ${descVal}
                 } else if (normQuery.includes('podcast') || normQuery.includes('broadcast') || normQuery.includes('11. broadcasts')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Episodes stream across <strong>Spotify, Apple Podcasts, Fountain.fm, YouTube, TikTok, and Instagram</strong>. See the footer links below to subscribe.</p>
+                            <p>Episodes and visual summaries stream across <strong>Spotify, Apple Podcasts, Fountain.fm, YouTube, TikTok, and Instagram</strong>. See the footer links below to subscribe.</p>
+                            <p>Our content is segmented by format across channels:
+                            <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.9rem; color: var(--text-muted);">
+                                <li style="margin-bottom: 0.4rem;"><strong>Long-form deep dives (18–20 mins):</strong> Complete theoretical analyses streaming on Spotify, Apple Podcasts, Fountain.fm, and YouTube.</li>
+                                <li style="margin-bottom: 0.4rem;"><strong>Short-form highlights & infographics (2–3 mins):</strong> High-impact summaries and animations broadcasted on TikTok, Instagram, and YouTube Shorts.</li>
+                            </ul>
+                            </p>
                         </div>
                     `;
                 } else if (normQuery.includes('insight') || normQuery.includes('top 10') || normQuery.includes('top10')) {
