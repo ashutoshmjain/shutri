@@ -46,12 +46,13 @@
                 <button class="query-tag" onclick="submitQuickQuery('What is Shutri?')">2. What is Shutri?</button>
                 <button class="query-tag" onclick="submitQuickQuery('What is the ingestion workflow?')">3. Workflow</button>
                 <button class="query-tag" onclick="submitQuickQuery('How do I submit research?')">4. How to Submit</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the Mempool phase?')">5. Mempool Phase</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the Template phase?')">6. Template Phase</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the Chain phase?')">7. Chain Phase</button>
-                <button class="query-tag" onclick="submitQuickQuery('Who owns the synthesized media?')">8. Media Ownership</button>
-                <button class="query-tag" onclick="submitQuickQuery('Are there any submission fees?')">9. Fees</button>
-                <button class="query-tag" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">10. Broadcasts</button>
+                <button class="query-tag" onclick="submitQuickQuery('Why GitHub?')">5. Why GitHub?</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the Mempool phase?')">6. Mempool Phase</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the Template phase?')">7. Template Phase</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is the Chain phase?')">8. Chain Phase</button>
+                <button class="query-tag" onclick="submitQuickQuery('Who owns the synthesized media?')">9. Media Ownership</button>
+                <button class="query-tag" onclick="submitQuickQuery('Are there any submission fees?')">10. Fees</button>
+                <button class="query-tag" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">11. Broadcasts</button>
             </div>
 
             <div class="terminal-body" id="terminal-body">
@@ -747,37 +748,44 @@ ${descVal}
                             <p>Provide your article URL, name, email, and abstract in the <strong>Submission Portal</strong> at the bottom of the page. Ingestion is completely free. Please note that acceptance is subject to deepMind review as well as a human reviewer signing off.</p>
                         </div>
                     `;
-                } else if (normQuery.includes('mempool') || normQuery.includes('5. mempool')) {
+                } else if (normQuery.includes('github') || normQuery.includes('why github') || normQuery.includes('5. why github')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p><strong>GitHub Issue management</strong> is the most open and AI-friendly platform available. Additionally, we believe most of our research submitters and reviewers are already on GitHub.</p>
+                            <p>Even though we considered using Discord (for community features) and Nostr (for public open features), at the end we zeroed in on GitHub for its ease and ubiquity. Bottom line, we want to make the review process as easy for researchers and reviewers as possible.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('mempool') || normQuery.includes('6. mempool')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p>Once accepted, we query the research in Gemini, construct our perspective, extract it using mdIngest, and publish it on deepDive under the <strong>Mempool</strong>. The submission is now active and looking for a human reviewer to collaboratively create the audio and infographic artifacts with the author.</p>
                         </div>
                     `;
-                } else if (normQuery.includes('template') || normQuery.includes('6. template')) {
+                } else if (normQuery.includes('template') || normQuery.includes('7. template')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p>Once the collaborative audio and infographic artifacts are completed by the reviewer and author, the research transitions to the <strong>Template</strong> phase, and the artifacts are published on public platforms (Spotify, YouTube, TikTok, etc.) for a public feedback window.</p>
                         </div>
                     `;
-                } else if (normQuery.includes('chain') || normQuery.includes('7. chain')) {
+                } else if (normQuery.includes('chain') || normQuery.includes('8. chain')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p>After the public review closes and the block size reaches 21 finalized articles, the research is committed to the <strong>deepDive blockchain</strong> (as the next block) and integrated as an active reference baseline in the deepMind vector query database.</p>
                         </div>
                     `;
-                } else if (normQuery.includes('owner') || normQuery.includes('owns') || normQuery.includes('8. media ownership')) {
+                } else if (normQuery.includes('owner') || normQuery.includes('owns') || normQuery.includes('9. media ownership')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p>All review notes, audio, and visual assets are published under a <strong>Creative Commons Attribution-ShareAlike 4.0 International license</strong> to keep knowledge open.</p>
                         </div>
                     `;
-                } else if (normQuery.includes('fee') || normQuery.includes('cost') || normQuery.includes('9. fees')) {
+                } else if (normQuery.includes('fee') || normQuery.includes('cost') || normQuery.includes('10. fees')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p>No, ingestion and review are <strong>100% free</strong>. We aim to cultivate high-density, peer-reviewed collaborative intelligence.</p>
                         </div>
                     `;
-                } else if (normQuery.includes('podcast') || normQuery.includes('broadcast') || normQuery.includes('10. broadcasts')) {
+                } else if (normQuery.includes('podcast') || normQuery.includes('broadcast') || normQuery.includes('11. broadcasts')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p>Episodes stream across <strong>Spotify, Apple Podcasts, Fountain.fm, YouTube, TikTok, and Instagram</strong>. See the footer links below to subscribe.</p>
@@ -797,7 +805,7 @@ ${descVal}
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p><strong>Query received:</strong> "${query}"</p>
-                            <p style="color: var(--text-muted);">Database mapping initialized. Select one of the 10 FAQ Quick Queries above to learn about Shutri and the ingestion process.</p>
+                            <p style="color: var(--text-muted);">Database mapping initialized. Select one of the 11 FAQ Quick Queries above to learn about Shutri and the ingestion process.</p>
                         </div>
                     `;
                 }
