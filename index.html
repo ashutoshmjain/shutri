@@ -19,7 +19,7 @@
             </svg>
             <span class="logo-text">Shutri: Collaborative Intelligence</span>
         </div>
-        <p class="tagline">Submit your research or startup for community review, and if our reviewers accept your thesis, we'll synthesize it into high-fidelity podcasts and visual infographics broadcasted to global networks—100% free.</p>
+        <p class="tagline">Shutri is an open peer-review initiative. Traditionally, peer review has been anonymous and confidential. We are changing that: we run initial reviews using deepMind AI, and our reviewers publish transparent, public reports as proof of understanding to collaboratively learn and spread awareness of original research.</p>
     </header>
 
     <main>
@@ -125,11 +125,11 @@
                     <div class="step-node" onclick="activateStep(this, 2)">
                         <div class="step-badge">2</div>
                         <div class="step-content">
-                            <h3>deepMind Ingestion & review <span class="step-tag">mempool</span></h3>
-                            <p>If accepted, the research is ingested into the deepDive deepMind database and published under the Mempool queue.</p>
+                            <h3>deepMind Co-Review & Ingestion <span class="step-tag">mempool</span></h3>
+                            <p>We perform an initial co-review using deepMind AI, drafting a transparent analysis in the Mempool queue.</p>
                             <div class="step-details">
                                 <div class="step-details-inner">
-                                    <p>We process your content using our <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a>. We formulate a synthesized research note—an academic review and critique—and post it directly as a comment on your GitHub Issue. You can track all progress transparently on the issue.</p>
+                                    <p>We perform an initial co-review using our <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-link">Google NotebookLM Deep Mind</a> co-reviewer. This AI co-review formulates a transparent synthesis report and posts it directly on the GitHub Issue, where the staging process can be tracked in full public view.</p>
                                 </div>
                             </div>
                         </div>
@@ -139,16 +139,16 @@
                     <div class="step-node" onclick="activateStep(this, 3)">
                         <div class="step-badge">3</div>
                         <div class="step-content">
-                            <h3>Media Synthesis & Feedback <span class="step-tag">template</span></h3>
-                            <p>Reviewers produce custom podcasts and animations, moving the note to the Template queue for a 3-day review window.</p>
+                            <h3>Open Review & Multimodal Synthesis <span class="step-tag">template</span></h3>
+                            <p>A named human reviewer evaluates the paper, publishing a detailed review and custom audio-visual summaries as proof of understanding.</p>
                             <div class="step-details">
                                 <div class="step-details-inner">
-                                    <p>An internal reviewer evaluates the note. If aligned, they generate:</p>
+                                    <p>As proof of complete understanding, the human reviewer evaluates the co-review draft, publishes a public report crediting the original authors, and compiles:</p>
                                     <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
-                                        <li>An **audio podcast** using custom NotebookLM voices.</li>
-                                        <li>Visual **infographics and animations** using Mosaic.</li>
+                                        <li>An **audio podcast review** using custom NotebookLM voices to expand on key mathematical or technical insights.</li>
+                                        <li>Visual **infographics and mappings** using Mosaic.</li>
                                     </ul>
-                                    <p>We post updates directly on the GitHub Issue and provide a 3-day review window to evaluate the synthesis. If you do not approve, comment on the issue and we will remove it immediately. Podcast audio is shared on Spotify, Apple, and Fountain.fm. Visuals are broadcast on TikTok, Instagram, and YouTube to collect public commentary.</p>
+                                    <p>We post these directly on the public GitHub Issue for a 3-day feedback window to ensure alignment. If you do not approve, you can request modifications or removal directly. Once approved, the podcast and visuals are shared globally on standard platforms to help spread awareness of your research.</p>
                                 </div>
                             </div>
                         </div>
@@ -664,8 +664,8 @@ ${descVal}
         const dmResponseHtml = `
             <div class="response-card">
                 <p><strong>Name:</strong> dm (deepMind)<br>
-                <strong>Title:</strong> Chief Synthesizer & Architect of the Blockchain of Knowledge</p>
-                <p><strong>Profile & Role:</strong> dm is an analytical intelligence dedicated to curating the "Blockchain of Knowledge." dm filters and reviews raw submissions in the mempool, constructs block templates, and compiles finalized research into the immutable vector query engine.</p>
+                <strong>Title:</strong> AI Co-Reviewer & Synthesizer</p>
+                <p><strong>Profile & Role:</strong> dm is our analytical AI model that performs initial co-reviews on incoming research in the mempool. It parses submissions for core logical structures and drafts transparent synthesis reports, which are then evaluated and finalized by human reviewers to ensure deep collaborative learning and accurate citation credit.</p>
             </div>
         `;
 
@@ -736,13 +736,14 @@ ${descVal}
                 } else if (normQuery.includes('what is shutri') || normQuery.includes('2. what is shutri')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p><strong>Shutri</strong> is a collaborative intelligence pipeline bridging independent research with machine-led synthesis and multi-platform media broadcasting.</p>
+                            <p><strong>Shutri</strong> is an open peer-review initiative. Traditionally, peer review has been anonymous and confidential: reviewers are hidden, reports are unpublished, and readers only see the final paper.</p>
+                            <p>Shutri transitions peer review into the open. We run initial reviews using deepMind AI, and our human reviewers publish transparent review reports as a proof of their understanding—giving full credit to original authors/AI models. Our goal is to learn collaboratively and spread awareness of high-density research.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('workflow') || normQuery.includes('ingestion workflow') || normQuery.includes('3. workflow')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>The workflow operates in 4 stages: <strong>Submitter Draft</strong> &rarr; <strong>Mempool review</strong> &rarr; <strong>Media Template broadcasting</strong> &rarr; <strong>Vector Chain integration</strong>.</p>
+                            <p>The workflow operates in 4 stages: <strong>Submitter Draft</strong> &rarr; <strong>deepMind AI Co-Review</strong> &rarr; <strong>Open Review & Multimodal Synthesis</strong> &rarr; <strong>Vector Chain integration</strong>.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('submit') || normQuery.includes('how to submit') || normQuery.includes('4. how to submit')) {
@@ -754,19 +755,19 @@ ${descVal}
                 } else if (normQuery.includes('mempool') || normQuery.includes('5. mempool')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Staged submissions are analyzed in Google NotebookLM to draft a <strong>deepMind review note</strong>. Reviews are posted directly as comments on the staging GitHub Issue.</p>
+                            <p>Staged submissions undergo an initial AI co-review in Google NotebookLM. The draft review report is posted directly as a public comment on the staging GitHub Issue.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('template') || normQuery.includes('6. template')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Approved notes undergo a <strong>3-day public feedback window</strong> while we broadcast custom podcasts (NotebookLM) and animations (Mosaic) to community channels.</p>
+                            <p>A named human reviewer evaluates the co-review draft, publishes a detailed review, and builds custom NotebookLM podcasts and Mosaic animations as proof of understanding.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('chain') || normQuery.includes('7. chain')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p>Finalized notes are permanently minted to the <strong>deepDive blockchain</strong> and integrated as active reference baselines in the vector query engine.</p>
+                            <p>Finalized open review reports are permanently minted to the <strong>deepDive blockchain</strong> and integrated as active reference baselines in the vector query engine.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('owner') || normQuery.includes('owns') || normQuery.includes('8. media ownership')) {
