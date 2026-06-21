@@ -1006,6 +1006,12 @@ footer {
     color: #000;
 }
 
+@media (max-width: 900px) {
+    #sandbox-card {
+        display: none !important;
+    }
+}
+
 /* Mobile Optimization adjustments */
 @media (max-width: 600px) {
     header {
