@@ -53,6 +53,7 @@
                 <button class="query-tag" onclick="submitQuickQuery('Who owns the synthesized media?')">9. Media Ownership</button>
                 <button class="query-tag" onclick="submitQuickQuery('Are there any submission fees?')">10. Fees</button>
                 <button class="query-tag" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">11. Broadcasts</button>
+                <button class="query-tag" onclick="submitQuickQuery('What is in the name?')">12. Name Meaning</button>
             </div>
 
             <div class="terminal-body" id="terminal-body">
@@ -808,6 +809,14 @@ ${descVal}
                     `;
                 } else if (normQuery.includes('insight') || normQuery.includes('top 10') || normQuery.includes('top10')) {
                     systemMsg.innerHTML = top10InsightsHtml;
+                } else if (normQuery.includes('what is in the name') || normQuery.includes('what\'s in the name') || normQuery.includes('meaning') || normQuery.includes('12. name meaning') || normQuery.includes('hindi') || normQuery.includes('fable') || normQuery.includes('tall tale')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p><strong>What's in the name?</strong></p>
+                            <p>In many Hindi-speaking regions (especially rural North India), a <strong>Shutri (शुट्री)</strong> is a funny, wildly exaggerated, over-the-top narrative told for entertainment—essentially, a <strong>Tall Tale</strong> or a fable.</p>
+                            <p>But why name an open peer-review scientific platform after a Tall Tale? Because in today's world, science is a narrative too, isn't it? Models, formulas, and frameworks are the narratives we construct to make sense of the universe. By acknowledging that science is a collective, evolving narrative, Shutri brings peer-review into the open, inviting active human-AI collaboration and public verification to ensure our narratives are robust, transparent, and collaborative.</p>
+                        </div>
+                    `;
                 } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
                     systemMsg.innerHTML = `
                         <div class="response-card">
@@ -820,7 +829,7 @@ ${descVal}
                     systemMsg.innerHTML = `
                         <div class="response-card">
                             <p><strong>Query received:</strong> "${query}"</p>
-                            <p style="color: var(--text-muted);">Database mapping initialized. Select one of the 11 FAQ Quick Queries above to learn about Shutri and the ingestion process.</p>
+                            <p style="color: var(--text-muted);">Database mapping initialized. Select one of the 12 FAQ Quick Queries above to learn about Shutri and the ingestion process.</p>
                         </div>
                     `;
                 }
