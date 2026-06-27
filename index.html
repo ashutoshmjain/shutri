@@ -54,6 +54,7 @@
                 <button class="query-tag" onclick="submitQuickQuery('Are there any submission fees?')">10. Fees</button>
                 <button class="query-tag" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">11. Broadcasts</button>
                 <button class="query-tag" onclick="submitQuickQuery('What is in the name?')">12. Name Meaning</button>
+                <button class="query-tag" onclick="submitQuickQuery('Mobile Redirect Tip')">13. Mobile Redirect</button>
             </div>
 
             <div class="terminal-body" id="terminal-body">
@@ -815,6 +816,14 @@ ${descVal}
                             <p><strong>What's in the name?</strong></p>
                             <p>In many Hindi-speaking regions (especially rural North India), a <strong>Shutri (शुट्री)</strong> is a funny, wildly exaggerated, over-the-top narrative told for entertainment—essentially, a <strong>Tall Tale</strong> or a fable.</p>
                             <p>But why name an open peer-review scientific platform after a Tall Tale? Because in today's world, science is a narrative too, isn't it? Models, formulas, and frameworks are the narratives we construct to make sense of the universe. By acknowledging that science is a collective, evolving narrative, Shutri brings peer-review into the open, inviting active human-AI collaboration and public verification to ensure our narratives are robust, transparent, and collaborative.</p>
+                        </div>
+                    `;
+                } else if (normQuery.includes('mobile redirect') || normQuery.includes('mobile redirection') || normQuery.includes('13. mobile redirect') || normQuery.includes('phone') || normQuery.includes('tablet')) {
+                    systemMsg.innerHTML = `
+                        <div class="response-card">
+                            <p><strong>Mobile Redirection Behavior:</strong></p>
+                            <p>On mobile devices (phones and tablets), clicking the <strong>"Ask deepMind"</strong> link may automatically redirect you to the Google NotebookLM native app's home screen due to OS-level deep linking rules.</p>
+                            <p>To view the shared chat window preview directly in your mobile web browser, <strong>long-press the link</strong> and select <strong>"Open in New Tab"</strong> (or "Open in background"). This forces the OS to load the preview in the web browser instead of redirecting you to the app.</p>
                         </div>
                     `;
                 } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
