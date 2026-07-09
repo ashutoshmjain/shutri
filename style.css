@@ -19,6 +19,7 @@
     --terminal-bg: #eceff4;
     --terminal-text: #2e3440;
     --input-bg: rgba(255, 255, 255, 0.95);
+    --link-color: #5e81ac;
 }
 
 body.dark-mode {
@@ -39,6 +40,7 @@ body.dark-mode {
     --terminal-bg: #070b10;
     --terminal-text: #a5b4fc;
     --input-bg: rgba(17, 24, 39, 0.5);
+    --link-color: var(--secondary-accent);
 }
 
 /* Theme Toggle styles */
@@ -515,8 +517,8 @@ footer {
 .disclaimer-card {
     max-width: 700px;
     margin: 0 auto 1.5rem;
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px dashed rgba(255, 255, 255, 0.05);
+    background: var(--bg-card);
+    border: 1px dashed var(--border-color);
     padding: 1rem;
     border-radius: 8px;
 }
@@ -969,19 +971,20 @@ footer {
 
 .response-card hr {
     border: none;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid var(--border-color);
     margin: 1.25rem 0;
 }
 
 .response-card strong {
-    color: #fff;
+    color: var(--text-main);
+    font-weight: 700;
 }
 
 .response-card a,
 .response-card a:visited {
-    color: var(--secondary-accent);
+    color: var(--link-color);
     text-decoration: none;
-    border-bottom: 1px dashed var(--secondary-accent);
+    border-bottom: 1px dashed var(--link-color);
     transition: all 0.2s ease;
 }
 
@@ -1040,10 +1043,10 @@ footer {
 
 .hook-link,
 .hook-link:visited {
-    color: var(--secondary-accent);
+    color: var(--link-color);
     font-weight: 600;
     text-decoration: none;
-    border-bottom: 1px dashed var(--secondary-accent);
+    border-bottom: 1px dashed var(--link-color);
     transition: all 0.2s ease;
 }
 
