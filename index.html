@@ -19,7 +19,8 @@
             </svg>
             <span class="logo-text">Shutri: Collaborative Intelligence</span>
         </div>
-        <p class="tagline">Shutri is an open peer-review initiative. Traditionally, peer review has been anonymous and confidential. We are changing that: we run initial reviews using deepMind AI, and our reviewers publish transparent, public reports as proof of understanding to collaboratively learn and spread awareness of original research. You can explore the full architecture and README on the <a href="https://github.com/ashutoshmjain/shutri#readme" target="_blank" class="hook-link">GitHub Repository</a>.</p>
+        <p class="tagline hide-on-mobile">Shutri is an open peer-review initiative. Traditionally, peer review has been anonymous and confidential. We are changing that: we run initial reviews using deepMind AI, and our reviewers publish transparent, public reports as proof of understanding to collaboratively learn and spread awareness of original research. You can explore the full architecture and README on the <a href="https://github.com/ashutoshmjain/shutri#readme" target="_blank" class="hook-link">GitHub Repository</a>.</p>
+        <p class="tagline mobile-only-tagline">Open-source human-AI peer review registry & research portal.</p>
     </header>
 
     <main>
@@ -46,15 +47,15 @@
                 <button class="query-tag" onclick="submitQuickQuery('What is Shutri?')">2. What is Shutri?</button>
                 <button class="query-tag" onclick="submitQuickQuery('What is the ingestion workflow?')">3. Workflow</button>
                 <button class="query-tag" onclick="submitQuickQuery('How do I submit research?')">4. How to Submit</button>
-                <button class="query-tag" onclick="submitQuickQuery('Why GitHub?')">5. Why GitHub?</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the Mempool phase?')">6. Mempool Phase</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the Template phase?')">7. Template Phase</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the Chain phase?')">8. Chain Phase</button>
-                <button class="query-tag" onclick="submitQuickQuery('Who owns the synthesized media?')">9. Media Ownership</button>
-                <button class="query-tag" onclick="submitQuickQuery('Are there any submission fees?')">10. Fees</button>
-                <button class="query-tag" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">11. Broadcasts</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is in the name?')">12. Name Meaning</button>
-                <button class="query-tag" onclick="submitQuickQuery('Mobile Redirect Tip')">13. Mobile Redirect</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Why GitHub?')">5. Why GitHub?</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is the Mempool phase?')">6. Mempool Phase</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is the Template phase?')">7. Template Phase</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is the Chain phase?')">8. Chain Phase</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Who owns the synthesized media?')">9. Media Ownership</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Are there any submission fees?')">10. Fees</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">11. Broadcasts</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is in the name?')">12. Name Meaning</button>
+                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Mobile Redirect Tip')">13. Mobile Redirect</button>
             </div>
 
             <div class="terminal-body" id="terminal-body">
@@ -82,7 +83,7 @@
                 <div class="hook-text">
                     <h2>Explore the Peer-Reviewed Archive</h2>
                     <p>Shutri operates as a non-commercial, open-access journal for collaborative intelligence. We work as editorial partners to publish peer-reviewed papers, detailed theoretical critiques, and synthesized audio-visual deep dives. Every accepted submission is integrated as an active reference baseline in our permanent vector knowledge engine. You can browse the published volume at <a href="https://deepdive.shutri.com" target="_blank" class="hook-link">deepdive.shutri.com</a>.</p>
-                    <div class="hook-benefits">
+                    <div class="hook-benefits hide-on-mobile">
                         <div class="benefit-item">
                             <span class="benefit-check">▪</span>
                             <span><strong>Open-Access Publishing:</strong> Completely free, open-license, cookie-free, and fully accessible offline via our PWA.</span>
@@ -124,7 +125,7 @@
                 </div>
 
                 <!-- Card 2: LaTeX Presentation -->
-                <div class="vision-card">
+                <div class="vision-card hide-on-mobile">
                     <div class="vision-icon-wrap">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 7V4h16v3M9 20h6M12 4v16"/>
@@ -148,7 +149,7 @@
                 </div>
 
                 <!-- Card 4: On-Device Whisper Curation -->
-                <div class="vision-card">
+                <div class="vision-card hide-on-mobile">
                     <div class="vision-icon-wrap">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -342,7 +343,7 @@
         <div class="disclaimer-card">
             <span class="cc-badge">CC BY-SA 4.0</span>
             <p style="margin-bottom: 0.5rem; font-weight: 500;">No Guarantees & Creative Commons Terms</p>
-            <p style="font-size: 0.775rem; color: var(--text-muted);">This is a free community service powered by independent reviewers. We do not guarantee review timelines, selection, or subsequent podcast publication. All notes, critiques, and derived audio/video assets are published under a Creative Commons Attribution-ShareAlike 4.0 International license.</p>
+            <p class="hide-on-mobile" style="font-size: 0.775rem; color: var(--text-muted);">This is a free community service powered by independent reviewers. We do not guarantee review timelines, selection, or subsequent podcast publication. All notes, critiques, and derived audio/video assets are published under a Creative Commons Attribution-ShareAlike 4.0 International license.</p>
         </div>
         
         <p style="margin-bottom: 1rem; font-size: 0.85rem;">Tune into deepDive podcast broadcasts:</p>

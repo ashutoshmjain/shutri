@@ -1032,8 +1032,26 @@ footer {
     }
 }
 
+.mobile-only-tagline {
+    display: none;
+}
+
 /* Mobile Optimization adjustments */
 @media (max-width: 600px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+    
+    .mobile-only-tagline {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        max-width: 450px;
+        margin: 0.5rem auto 0;
+        font-weight: 300;
+        line-height: 1.4;
+    }
+
     header {
         padding: 1.5rem 1rem 1rem;
     }
