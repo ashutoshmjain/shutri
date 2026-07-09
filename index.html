@@ -36,7 +36,7 @@
                     <div class="terminal-status"></div>
                     deepMind@shutri:~$ query-terminal
                 </div>
-                <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-btn-link">
+                <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-btn-link hide-on-mobile">
                     Ask deepMind
                 </a>
             </div>
@@ -907,12 +907,56 @@ ${descVal}
                         </div>
                     `;
                 } else {
+                    const uniqueId = Date.now();
                     systemMsg.innerHTML = `
                         <div class="response-card">
-                            <p><strong>Query received:</strong> "${query}"</p>
-                            <p style="color: var(--text-muted);">Database mapping initialized. Select one of the 12 FAQ Quick Queries above to learn about Shutri and the ingestion process.</p>
+                            <p><strong>Processing Information Request:</strong> "${query}"</p>
+                            <div class="terminal-log-flow" style="font-family: monospace; font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-muted);">
+                                [1/4] Formatting query context... <span id="term-step-1-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span><br>
+                                [2/4] Authenticating with GitHub... <span id="term-step-2-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span><br>
+                                [3/4] Preparing secure payload... <span id="term-step-3-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span><br>
+                                [4/4] Opening GitHub Issues portal... <span id="term-step-4-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span>
+                            </div>
+                            <p id="term-status-desc-${uniqueId}" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-muted); display: none;">
+                                Opening a new GitHub Issue for your request. Please click <strong>"Submit new issue"</strong> on the opened GitHub page to authorize and finalize your request.
+                            </p>
                         </div>
                     `;
+                    
+                    const issueTitle = `[Information Request] ${query.length > 50 ? query.substring(0, 50) + '...' : query}`;
+                    const issueBody = `### Information Request
+- **Question / Query:** ${query}
+
+---
+*Generated via the Q&A Terminal on [shutri.com](https://shutri.com)*`;
+                    
+                    const githubIssueUrl = `https://github.com/ashutoshmjain/shutri/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
+
+                    setTimeout(() => {
+                        const step1 = document.getElementById(`term-step-1-${uniqueId}`);
+                        if (step1) step1.style.display = 'inline';
+                        body.scrollTop = body.scrollHeight;
+                        setTimeout(() => {
+                            const step2 = document.getElementById(`term-step-2-${uniqueId}`);
+                            if (step2) step2.style.display = 'inline';
+                            body.scrollTop = body.scrollHeight;
+                            setTimeout(() => {
+                                const step3 = document.getElementById(`term-step-3-${uniqueId}`);
+                                if (step3) step3.style.display = 'inline';
+                                body.scrollTop = body.scrollHeight;
+                                setTimeout(() => {
+                                    const step4 = document.getElementById(`term-step-4-${uniqueId}`);
+                                    const desc = document.getElementById(`term-status-desc-${uniqueId}`);
+                                    if (step4) step4.style.display = 'inline';
+                                    if (desc) desc.style.display = 'block';
+                                    body.scrollTop = body.scrollHeight;
+                                    
+                                    // Open GitHub Issues page
+                                    window.open(githubIssueUrl, '_blank');
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
                 }
                 body.scrollTop = body.scrollHeight;
             }, 600);
