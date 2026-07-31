@@ -16,27 +16,40 @@ graph TD
     SOUL --> Publish App["Pillar 2: Production App (deepDive)"]
     SOUL --> Promotion["Pillar 3: Media Automator (ddma)"]
 
-    Intake -->|Lossless Payload| Publish Engine
-    Publish Engine -->|Sanitized Ledger| Publish App
+    Intake -->|Issue Report & Handshake| Publish App
+    Publish Engine -->|Sanitized Rust Binary| Publish App
     Publish App -->|Text & Audio| Promotion
     Promotion -->|Square Video Carousels| Publish App
 ```
 
 ---
 
-## 🏛️ 2. The Deterministic Agent Operating Model
+## 🔢 2. Numbering & Staging Principles
 
-> **"Deterministic code is the house we build; the intelligent agent is the one navigating through this house."**
-
-1. **Token Efficiency:** Agents MUST NOT waste intelligence tokens doing manual string formatting, text parsing, or manual video slicing in memory. They invoke deterministic CLI tools.
-2. **Upstream Hardening Loop:** When an agent encounters a bug in production (`deepDive`), it **never applies a manual band-aid**. It patches the underlying deterministic codebase upstream (`mdIngest` or `ddma`), compiles the update, and re-executes.
-3. **Cross-Agent Synergy:** Agents collaborate across repository boundaries. An update to `ddma` respects the media format of `deepDive`; a patch in `mdIngest` serves as an open-source enhancement for all consumers.
+* **Mempool Filenames (Unnumbered Slugs):** Episodes in the Mempool use **strictly unnumbered slugs** prefixed with an underscore (e.g. `src/_quantum-memory-consensus.md`). Episode numbers are NEVER assigned in Mempool to prevent index collisions.
+* **Template Filenames (Numeric Episode Keys):** Episode numbers (e.g. `245`) ONLY exist when an episode enters the **Template** phase (Active Mining). Files in Template are named strictly by number: `src/245.md`.
 
 ---
 
-## 📈 3. The Language & Solution Maturity Model
+## 🤝 3. The Human-Agent Handshake & Verification Protocol
 
-The development of tools within SMS follows a strict two-phase maturity lifecycle:
+```
+  1. [Human Submitter] ➔ Creates Issue on shutri.com / GitHub
+  2. [Intake Agent (shutri)] ➔ Analyzes existing ledger/issues ➔ Posts Context Report for Human Editor
+  3. [Human Editor] ➔ Runs Master Packaging Prompt in Gemini ➔ Drops extract.py into Downloads/
+  4. [Human Editor] ➔ Directs deepDive Agent to publish
+  5. [deepDive Agent] ➔ Ingests file (src/245.md for Internal | src/_slug.md for External) ➔ Runs `mdbook build`
+  6. [Human Editor] ➔ Verifies publication build
+  7. [Intake Agent] ➔ Updates & closes GitHub Issue (ONLY after human confirmation!)
+```
+
+1. **Deterministic Navigation:** Agents invoke deterministic CLI tools (`md-publish`, `ddma.py`, `cargo build`, `mdbook build`) to conserve tokens.
+2. **Upstream Hardening Loop:** When an intake bug occurs in production (`deepDive`), agents patch the deterministic code upstream in `mdIngest` or `ddma` rather than applying downstream band-aids.
+3. **Human Verification Gate:** The Intake Agent NEVER updates or closes a GitHub Issue until the Human Editor explicitly verifies the build output.
+
+---
+
+## 📈 4. The Language & Solution Maturity Model
 
 ```
   ┌─────────────────────────────────────────────────────────────┐
@@ -53,18 +66,15 @@ The development of tools within SMS follows a strict two-phase maturity lifecycl
   │  • Zero-dependency compiled binary (e.g. md-publish)        │
   │  • Cross-platform portability (Windows, macOS, Linux)       │
   │  • Ultra-fast execution, zero environment drift             │
-  └──────────────────────────────┬──────────────────────────────┘
+  └──────────────────────────────┴──────────────────────────────┘
 ```
-
-* **Phase 1 (Python Prototyping):** New workflows (e.g., DDMA clip slicing, Whisper alignment, Mosaic AI calls) begin in Python for maximum speed of experimentation.
-* **Phase 2 (Rust/Go Binary Hardening):** Once a workflow matures and stabilizes (e.g., `mdIngest` / `md-publish`), it is re-engineered into a compiled, single-file binary (Rust or Go). This guarantees instant cross-platform distribution without Python environment or dependency setup issues.
 
 ---
 
-## 🛡️ 4. Mandatory Pre-Execution Directive for ALL Agents
+## 🛡️ 5. Mandatory Pre-Execution Directive for ALL Agents
 
 Before executing any task, every subagent or Antigravity agent session MUST enforce:
 
-1. **Read `SOUL.md` First:** Inspect this file (`SOUL.md`) to align with the global vision, maturity model, and multi-repo synergy.
-2. **Identify Solution Maturity:** Determine whether the tool being modified is in **Phase 1 (Python Prototype)** or **Phase 2 (Compiled Rust/Go Binary)**.
-3. **No Isolated Hacks:** Always trace bugs upstream to the deterministic engine rather than patching downstream content.
+1. **Read `SOUL.md` First:** Inspect this file (`shutri/SOUL.md`) to align with the global vision, maturity model, and multi-repo synergy.
+2. **Enforce Mempool vs Template Numbering:** Never assign episode numbers to Mempool files (`_slug.md`).
+3. **Require Human Verification Confirmation:** Never update or close GitHub Issues until human confirmation is received.
