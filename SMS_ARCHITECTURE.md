@@ -10,15 +10,15 @@ The **Shutri Media Solution (SMS)** is an end-to-end, comprehensive research, pu
 
 ```mermaid
 graph TD
-    subgraph Pillar 1: Research Intake (Staging & Review)
+    subgraph Pillar1["Pillar 1: Research Intake (Staging & Review)"]
         A["GitHub Issues & Portal"] -->|Mempool Triage & dm AI Review| B["shutri Repository"]
     end
 
-    subgraph Pillar 2: Research Publishing (Knowledge Ledger)
+    subgraph Pillar2["Pillar 2: Research Publishing (Knowledge Ledger)"]
         C["mdIngest (Upstream Engine: coolchain / md-publish)"] -->|Sanitizes & Indexes| D["deepDive (Production Application & PWA Ledger)"]
     end
 
-    subgraph Pillar 3: Research Promotion (Multi-Modal Media Engine)
+    subgraph Pillar3["Pillar 3: Research Promotion (Multi-Modal Media Engine)"]
         E["ddma (Media Automation Engine)"] -->|Whisper + 740x740 Square Video + Mosaic AI| F["Multi-Platform Syndication (Spotify, YouTube, Nostr <20MB, IG, TikTok)"]
     end
 
