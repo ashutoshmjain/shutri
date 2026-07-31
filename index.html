@@ -1,1062 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shutri — Collaborative Intelligence Engine</title>
+    <title>Shutri — Collaborative Intelligence & Open Peer-Review Registry</title>
+    <meta name="description" content="Shutri is an open-source collaborative intelligence platform and peer-review registry combining human expertise and deepMind AI synthesis into an immutable knowledge ledger.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
+    <!-- Animated Ambient Glowing Backgrounds -->
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    <div class="glow-sphere sphere-3"></div>
 
-    <div class="theme-toggle-container">
-        <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
-            <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-            </svg>
-        </button>
-    </div>
-
-    <header>
-        <div class="logo-container">
-            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="45" stroke="#6366f1" stroke-width="4" stroke-dasharray="8 4"/>
-                <path d="M50 20 L80 70 L20 70 Z" stroke="#f59e0b" stroke-width="4" stroke-linejoin="round"/>
-                <circle cx="50" cy="48" r="8" fill="#10b981"/>
-            </svg>
-            <span class="logo-text">Shutri: Collaborative Intelligence</span>
-        </div>
-        <p class="tagline hide-on-mobile">Shutri is an open peer-review initiative. Traditionally, peer review has been anonymous and confidential. We are changing that: we run initial reviews using deepMind AI, and our reviewers publish transparent, public reports as proof of understanding to collaboratively learn and spread awareness of original research. You can explore the full architecture and README on the <a href="https://github.com/ashutoshmjain/shutri#readme" target="_blank" class="hook-link">GitHub Repository</a>.</p>
-        <p class="tagline mobile-only-tagline">Open-source human-AI peer review registry & research portal.</p>
-        
-        <div class="hero-actions-bar">
-            <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="btn-primary-cta">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 5v14M5 12h14"/>
-                </svg>
-                <span>Submit Research for Review</span>
-            </a>
-            <a href="https://deepdive.shutri.com" target="_blank" class="btn-secondary-cta">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                </svg>
-                <span>Browse Published Ledger</span>
-            </a>
-            <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="btn-ghost-cta">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="16" x2="12" y2="12"/>
-                    <line x1="12" y1="8" x2="12.01" y2="8"/>
-                </svg>
-                <span>SOUL.md Blueprint</span>
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <!-- Section: deepMind Q&A Terminal -->
-        <section class="terminal-card">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
+    <!-- Navigation Header -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="44" stroke="url(#logo-grad-1)" stroke-width="6" stroke-dasharray="12 6"/>
+                        <path d="M50 22 L78 72 L22 72 Z" stroke="url(#logo-grad-2)" stroke-width="6" stroke-linejoin="round"/>
+                        <circle cx="50" cy="48" r="9" fill="#10b981"/>
+                        <defs>
+                            <linearGradient id="logo-grad-1" x1="0" y1="0" x2="100" y2="100">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                            <linearGradient id="logo-grad-2" x1="0" y1="100" x2="100" y2="0">
+                                <stop offset="0%" stop-color="#f59e0b"/>
+                                <stop offset="100%" stop-color="#ec4899"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
-                <div class="terminal-title">
-                    <div class="terminal-status"></div>
-                    deepMind@shutri:~$ query-terminal
-                </div>
-                <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="notebook-btn-link hide-on-mobile">
-                    Ask deepMind
+                <span class="brand-name">Shutri <span class="brand-tag">Registry</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#pillars" class="nav-link">Architecture</a>
+                <a href="#workflow" class="nav-link">Workflow</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="nav-link">SOUL.md</a>
+                <a href="https://deepdive.shutri.com" target="_blank" class="nav-link">Published Ledger</a>
+            </div>
+
+            <div class="nav-cta-wrap">
+                <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="nav-submit-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    <span>Submit Research</span>
                 </a>
             </div>
+        </div>
+    </nav>
+
+    <!-- Main Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                <span>Open Collaborative Intelligence & Peer Review</span>
+            </div>
             
-            <div class="quick-queries">
-                <span class="query-label">Quick Queries:</span>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Who is dm?')">1. Who is dm?</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is Shutri?')">2. What is Shutri?</button>
-                <button class="query-tag" onclick="submitQuickQuery('What is the ingestion workflow?')">3. Workflow</button>
-                <button class="query-tag" onclick="submitQuickQuery('How do I submit research?')">4. How to Submit</button>
-                <button class="query-tag" onclick="submitQuickQuery('Why GitHub?')">5. Why GitHub?</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is the Mempool phase?')">6. Mempool Phase</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is the Template phase?')">7. Template Phase</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is the Chain phase?')">8. Chain Phase</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Who owns the synthesized media?')">9. Media Ownership</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Are there any submission fees?')">10. Fees</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Where are the podcasts broadcasted?')">11. Broadcasts</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('What is in the name?')">12. Name Meaning</button>
-                <button class="query-tag hide-on-mobile" onclick="submitQuickQuery('Mobile Redirect Tip')">13. Mobile Redirect</button>
-            </div>
+            <h1 class="hero-title">
+                Democratizing Peer Review Through <span class="gradient-text">Collaborative AI & Consensus</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Traditionally, peer review has been an anonymous black box. Shutri turns research review into an open, public dialogue combining human expertise with <strong>deepMind AI synthesis</strong> into an immutable knowledge ledger.
+            </p>
 
-            <div class="terminal-body" id="terminal-body">
-                <div class="terminal-welcome">
-                    Welcome to the deepMind Q&A Ingest Interface. Use the quick tags or enter a query in the prompt below to interrogate the active knowledge database.
-                </div>
-            </div>
+            <!-- Hero Primary CTAs -->
+            <div class="hero-actions">
+                <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="cta-btn primary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    <span>Submit Research for Review</span>
+                </a>
 
-            <form id="terminal-form" onsubmit="handleTerminalSubmit(event)">
-                <div class="terminal-input-row">
-                    <textarea id="terminal-input" class="terminal-input" rows="2" placeholder="Send your custom questions. You will need to sign in with github id ..." autocomplete="off"></textarea>
-                    <button type="submit" class="terminal-send-btn">SEND QUESTION &rarr;</button>
-                </div>
-            </form>
-        <!-- Showcase & Editorial Section -->
-        <section class="glass-card hook-banner hide-on-mobile">
-            <div class="hook-content">
-                <div class="hook-icon-wrap">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="https://deepdive.shutri.com" target="_blank" class="cta-btn secondary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                     </svg>
+                    <span>Browse Published Ledger</span>
+                </a>
+
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="cta-btn ghost-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <span>SOUL.md Blueprint</span>
+                </a>
+            </div>
+
+            <!-- Key Feature Metrics -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value gradient-text-purple">100%</div>
+                    <div class="stat-label">Open Access & CC BY-SA 4.0</div>
                 </div>
-                <div class="hook-text">
-                    <h2>Explore the Peer-Reviewed Archive</h2>
-                    <p>Shutri operates as a non-commercial, open-access journal for collaborative intelligence. We work as editorial partners to publish peer-reviewed papers, detailed theoretical critiques, and synthesized audio-visual deep dives. Every accepted submission is integrated as an active reference baseline in our permanent vector knowledge engine. You can browse the published volume at <a href="https://deepdive.shutri.com" target="_blank" class="hook-link">deepdive.shutri.com</a>.</p>
-                    <div class="hook-benefits hide-on-mobile">
-                        <div class="benefit-item">
-                            <span class="benefit-check">▪</span>
-                            <span><strong>Open-Access Publishing:</strong> Completely free, open-license, cookie-free, and fully accessible offline via our PWA.</span>
-                        </div>
-                        <div class="benefit-item">
-                            <span class="benefit-check">▪</span>
-                            <span><strong>Multimodal Syntheses:</strong> Every approved paper receives custom analytical reviews, synthesized deep-dive discussions, and visual summaries.</span>
-                        </div>
-                        <div class="benefit-item">
-                            <span class="benefit-check">▪</span>
-                            <span><strong>Permanent Vector Integration:</strong> Finalized articles are committed to the deepDive blockchain to serve as active references for future submissions.</span>
-                        </div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value gradient-text-amber">21</div>
+                    <div class="stat-label">Law of 21 Verified Blocks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value gradient-text-emerald">740x740</div>
+                    <div class="stat-label">Square Video & Nostr <20MB</div>
                 </div>
             </div>
-            <div class="hook-action">
-                <a href="https://deepdive.shutri.com" target="_blank" class="hook-cta-btn">Browse Published Volume</a>
-            </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- The Vision & Core Architecture Section -->
-        <section class="vision-section hide-on-mobile">
-            <h2 class="vision-title">The Vision: Hardening AI-Driven Research</h2>
-            <p class="vision-subtitle">In the era of hyper-abundant synthetic intelligence, open collaboration and verified distribution protocols are critical. Here is how Shutri solves the fundamental pain points of modern knowledge networks.</p>
-            
-            <div class="vision-grid">
-                <!-- Card 1: AI-Driven Flood -->
-                <div class="vision-card">
-                    <div class="vision-icon-wrap">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
-                        </svg>
+    <!-- Main Body Container -->
+    <main class="main-layout">
+        
+        <!-- Section: Interactive deepMind Terminal -->
+        <section class="section-container">
+            <div class="terminal-card">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
                     </div>
-                    <div class="pain-point">Pain Point: Inbound AI Flood</div>
-                    <h3>Block-based Consensus</h3>
-                    <p>Instead of an unguided sea of automated papers, we <span class="solution-hl">lock and block insights</span>. We group verified articles in sequential blocks of 21 and mint them to our permanent, indexed vector chain.</p>
+                    <div class="terminal-title">
+                        <span class="terminal-status-light"></span>
+                        deepMind@shutri:~$ query-terminal
+                    </div>
+                    <a href="https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview" target="_blank" class="terminal-notebook-btn">
+                        <span>Ask deepMind Live</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
                 </div>
 
-                <!-- Card 2: LaTeX Presentation -->
-                <div class="vision-card hide-on-mobile">
-                    <div class="vision-icon-wrap">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 7V4h16v3M9 20h6M12 4v16"/>
-                        </svg>
+                <div class="terminal-tags-wrapper">
+                    <span class="tags-label">Quick Queries:</span>
+                    <div class="tags-scroll">
+                        <button class="tag-btn" onclick="askTerminal('What is Shutri?')">1. What is Shutri?</button>
+                        <button class="tag-btn" onclick="askTerminal('How do I submit research?')">2. How to Submit</button>
+                        <button class="tag-btn" onclick="askTerminal('What is the 3 Pillar Architecture?')">3. SMS Pillars</button>
+                        <button class="tag-btn" onclick="askTerminal('Why GitHub?')">4. Why GitHub?</button>
+                        <button class="tag-btn" onclick="askTerminal('What is the Mempool?')">5. Mempool Phase</button>
+                        <button class="tag-btn" onclick="askTerminal('What is 740x740 Square Video?')">6. Nostr & Video</button>
                     </div>
-                    <div class="pain-point">Pain Point: broken Math / LaTeX</div>
-                    <h3>Precision LaTeX Support</h3>
-                    <p>Most publishing interfaces render math equations poorly or crash on delimiters. Our ingestion engine utilizes <span class="solution-hl">native KaTeX syntax sanitization</span>, ensuring clean rendering of complex proofs.</p>
                 </div>
 
-                <!-- Card 3: DeepMind Notebook -->
-                <div class="vision-card">
-                    <div class="vision-icon-wrap">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                        </svg>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-line welcome-msg">
+                        <span class="prompt-user">system@shutri:</span> Welcome to the deepMind Q&A Ingest Interface. Click any tag above or send a query to interrogate the active knowledge database.
                     </div>
-                    <div class="pain-point">Pain Point: High Density Disconnect</div>
-                    <h3>deepMind Notebook Synapse</h3>
-                    <p>We digest the theoretical core of research and synthesize it in <span class="solution-hl">Google NotebookLM</span>. This generates a two-host audio conversation embedded directly as a player carousel.</p>
                 </div>
 
-                <!-- Card 4: On-Device Whisper Curation -->
-                <div class="vision-card hide-on-mobile">
-                    <div class="vision-icon-wrap">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
-                        </svg>
-                    </div>
-                    <div class="pain-point">Pain Point: Slow Media Pipelines</div>
-                    <h3>On-Device Whisper & DDMA</h3>
-                    <p>Our DeepDive Media Automator runs <span class="solution-hl">local Whisper models</span> on-device. Reviewers select sub-second word ranges, mix sound stings, and output high-fidelity reels instantly.</p>
-                </div>
-
-                <!-- Card 5: Open Source & Public domain -->
-                <div class="vision-card">
-                    <div class="vision-icon-wrap">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <div class="pain-point">Pain Point: Locked Insights</div>
-                    <h3>100% Open & Sovereign</h3>
-                    <p>All review artifacts, transcripts, sound files, and tools operate under the <span class="solution-hl">Creative Commons CC BY-SA 4.0 license</span>. The knowledge substrate remains open to humanity forever.</p>
-                </div>
+                <form class="terminal-input-bar" onsubmit="handleTerminalSend(event)">
+                    <span class="prompt-symbol">&gt;</span>
+                    <input type="text" id="terminal-input" placeholder="Type your question about research submission or architecture..." autocomplete="off">
+                    <button type="submit" class="terminal-send-btn">
+                        <span>QUERY</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </form>
             </div>
         </section>
 
-        <!-- Top Section: Stepper & Live Sandbox Grid -->
-        <div class="top-grid hide-on-mobile">
-            <!-- Left Column: How It Works Stepper -->
-            <section class="glass-card">
-                <h2 class="stepper-title">How It Works</h2>
-                <div class="stepper">
-                    
+        <!-- Section: The 3 Pillars of Shutri Media Solution (SMS) -->
+        <section id="pillars" class="section-container">
+            <div class="section-header center">
+                <span class="section-tag">SMS Architecture</span>
+                <h2 class="section-title">The Three Pillars of Shutri Media Solution</h2>
+                <p class="section-subtitle">A comprehensive, end-to-end ecosystem engineered for research intake, publishing, and multi-modal promotion.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <!-- Pillar 1: Research Intake -->
+                <div class="pillar-card border-purple">
+                    <div class="pillar-icon bg-purple-glow">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <span class="pillar-number">Pillar 01</span>
+                    <h3>Research Intake (`shutri`)</h3>
+                    <p>Submissions enter via open <strong>GitHub Issue Management</strong>. Research undergoes initial <strong>deepMind AI (`dm`)</strong> evaluation, generating an open synthesis report in the <strong>Mempool</strong> for peer review collaboration.</p>
+                    <ul class="pillar-list">
+                        <li><span class="bullet">▪</span> Open GitHub Issue Substrate</li>
+                        <li><span class="bullet">▪</span> Transparent AI Perspective (`dm`)</li>
+                        <li><span class="bullet">▪</span> CC BY-SA 4.0 Open License</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2: Research Publishing -->
+                <div class="pillar-card border-indigo">
+                    <div class="pillar-icon bg-indigo-glow">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="pillar-number">Pillar 02</span>
+                    <h3>Research Publishing (`mdIngest` & `deepDive`)</h3>
+                    <p>Powered by the open-source Rust engine <strong>mdIngest (`coolchain`)</strong> to sanitize KaTeX math and citations into <strong>deepDive</strong> ([deepdive.shutri.com](https://deepdive.shutri.com))—a high-performance PWA ledger governed by the <strong>Law of 21</strong>.</p>
+                    <ul class="pillar-list">
+                        <li><span class="bullet">▪</span> Lossless Python Payload (`extract.py`)</li>
+                        <li><span class="bullet">▪</span> Absolute KaTeX Math Hardening</li>
+                        <li><span class="bullet">▪</span> Progressive Web App (PWA) Precache</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3: Research Promotion -->
+                <div class="pillar-card border-amber">
+                    <div class="pillar-icon bg-amber-glow">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                        </svg>
+                    </div>
+                    <span class="pillar-number">Pillar 03</span>
+                    <h3>Research Promotion (`ddma`)</h3>
+                    <p>Driven by <strong>DDMA (DeepDive Media Automator)</strong>. Uses word-level Whisper transcription and parameter-tuned `acrossfade` stings to output master podcasts and <strong>740x740 Square Videos (<20 MB for Nostr relay compliance)</strong>.</p>
+                    <ul class="pillar-list">
+                        <li><span class="bullet">▪</span> 740x740 Square Video Standard</li>
+                        <li><span class="bullet">▪</span> Nostr Protocol Compliance (< 20MB)</li>
+                        <li><span class="bullet">▪</span> Mosaic AI Motion Graphics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: 4-Phase Lifecycle Workflow -->
+        <section id="workflow" class="section-container">
+            <div class="workflow-card">
+                <div class="section-header">
+                    <span class="section-tag">Lifecycle Protocol</span>
+                    <h2 class="section-title">The Journey of Knowledge</h2>
+                    <p class="section-subtitle">How a research draft moves from an initial submission into an immutable ledger block.</p>
+                </div>
+
+                <div class="timeline-steps">
                     <!-- Step 1 -->
-                    <div class="step-node active" onclick="activateStep(this, 1)">
-                        <div class="step-badge">1</div>
-                        <div class="step-content">
-                            <h3>Submit Research or Startup Audits <span class="step-tag">Phase 01</span></h3>
-                            <p>Submit your article, blog post, thread, or research paper. We look for mathematical rigor, logical clarity, or unique perspective shifts.</p>
-                            <div class="step-details">
-                                <div class="step-details-inner">
-                                    <p>Provide your publication link, name, and email in the portal. Ingestion is completely free. Submissions are staged transparently as GitHub Issues for initial assessment.</p>
-                                </div>
-                            </div>
+                    <div class="timeline-node">
+                        <div class="timeline-badge">1</div>
+                        <div class="timeline-content">
+                            <h4>1. Submitter Draft (Staging)</h4>
+                            <p>Author submits research URL & thesis via GitHub Issues. Ingestion is 100% free and open-source.</p>
                         </div>
                     </div>
 
                     <!-- Step 2 -->
-                    <div class="step-node" onclick="activateStep(this, 2)">
-                        <div class="step-badge">2</div>
-                        <div class="step-content">
-                            <h3>deepMind AI Ingestion to Mempool <span class="step-tag">mempool</span></h3>
-                            <p>Accepted research is run in Gemini with targeted questions to draft our perspective, extracted via mdIngest, and published to the deepDive Mempool.</p>
-                            <div class="step-details">
-                                <div class="step-details-inner">
-                                    <p>Once accepted, we query the research in Gemini, construct our perspective on the submission, extract it using `mdIngest`, and publish it to the **Mempool** on `deepdive.shutri.com`. At this stage, the submission is open and looking for human reviewers to partner with the author to collaboratively create the audio and infographic artifacts.</p>
-                                </div>
-                            </div>
+                    <div class="timeline-node">
+                        <div class="timeline-badge">2</div>
+                        <div class="timeline-content">
+                            <h4>2. Mempool (AI Ingestion & Review)</h4>
+                            <p>Gemini & `dm` evaluate core logic, generate an initial perspective report, and publish to the Mempool.</p>
                         </div>
                     </div>
 
                     <!-- Step 3 -->
-                    <div class="step-node" onclick="activateStep(this, 3)">
-                        <div class="step-badge">3</div>
-                        <div class="step-content">
-                            <h3>Human Reviewer Partnership & Template Phase <span class="step-tag">template</span></h3>
-                            <p>Once the collaborative audio/video artifacts are complete, the research transitions to the Template phase and is published on global platforms for public review.</p>
-                            <div class="step-details">
-                                <div class="step-details-inner">
-                                    <p>The human reviewer works as a partner with the author to finalize the review notes and construct high-fidelity NotebookLM podcasts and Mosaic infographics as proof of understanding. When these artifacts are complete, the research is promoted to the **Template** phase and published across Spotify, Apple Podcasts, YouTube, TikTok, and Instagram for a public feedback window.</p>
-                                </div>
-                            </div>
+                    <div class="timeline-node">
+                        <div class="timeline-badge">3</div>
+                        <div class="timeline-content">
+                            <h4>3. Template (Human-AI Production)</h4>
+                            <p>Author & reviewer build multi-modal assets: NotebookLM podcast audio, DDMA 740x740 videos, and Mosaic infographics.</p>
                         </div>
                     </div>
 
                     <!-- Step 4 -->
-                    <div class="step-node" onclick="activateStep(this, 4)">
-                        <div class="step-badge">4</div>
-                        <div class="step-content">
-                            <h3>Consensus & Vector Chain Minting <span class="step-tag">chain</span></h3>
-                            <p>After the public review window closes and 21 finalized articles are compiled, the block is minted to the deepDive blockchain and synced with the vector base.</p>
-                            <div class="step-details">
-                                <div class="step-details-inner">
-                                    <p>Once the public review closes and 21 peer-reviewed articles are compiled to form a complete block, they are committed to the **deepDive blockchain** as the next block. The minted notes are integrated directly as active reference baselines in the deepMind vector query database, serving as active benchmarks for future submissions.</p>
-                                </div>
-                            </div>
+                    <div class="timeline-node">
+                        <div class="timeline-badge">4</div>
+                        <div class="timeline-content">
+                            <h4>4. Chain (Vector DB Consensus)</h4>
+                            <p>Once 21 verified papers pass public review, the block is minted to the permanent deepMind Vector DB chain.</p>
                         </div>
                     </div>
-
                 </div>
-            </section>
 
-            <!-- Right Column: Interactive Phase Transition Preview -->
-            <section class="glass-card" id="sandbox-card">
-                <h3 class="sandbox-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                        <polyline points="2 17 12 22 22 17"/>
-                        <polyline points="2 12 12 17 22 12"/>
-                    </svg>
-                    Interactive Phase Transition Preview
-                </h3>
-                <div class="preview-container" id="sandbox-preview">
-                    <!-- Default state loaded by JS (Submission) -->
+                <!-- Call to Action Banner -->
+                <div class="workflow-cta-banner">
+                    <div class="cta-banner-text">
+                        <h3>Ready to Publish Your Research?</h3>
+                        <p>Submit your paper, theory, or startup audit for AI synthesis and peer review today.</p>
+                    </div>
+                    <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="cta-btn primary-btn">
+                        <span>Submit Episode 245 Research</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
                 </div>
-            </section>
-        </div>
-
-        <!-- Bottom Center Column: Submission Portal -->
-        <section class="glass-card bottom-portal-card" id="submission-card">
-            <h2 class="form-title">Submission Portal</h2>
-            
-            <form id="submission-form" onsubmit="handleFormSubmit(event)">
-                <div class="form-grid">
-                    <div class="track-selector-wrapper form-group-full">
-                        <span class="track-label">Select Ingestion Pipeline</span>
-                        <div class="track-selector">
-                            <button type="button" class="track-tab active" id="tab-research" onclick="setTrack('research')">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px; vertical-align: middle; display: inline-block;">
-                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                                </svg>
-                                Theoretical Research
-                            </button>
-                            <button type="button" class="track-tab" id="tab-startup" onclick="setTrack('startup')">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px; vertical-align: middle; display: inline-block;">
-                                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                    <polyline points="2 17 12 22 22 17"/>
-                                    <polyline points="2 12 12 17 22 12"/>
-                                </svg>
-                                Startup / Protocol Audit
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="submitter-name" class="form-label">Full Name</label>
-                        <input type="text" id="submitter-name" class="form-input" placeholder="e.g., Ada Lovelace" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="submitter-email" class="form-label">Email Address</label>
-                        <input type="email" id="submitter-email" class="form-input" placeholder="e.g., ada@computing.org" required>
-                    </div>
-                    
-                    <div class="form-group form-group-full">
-                        <label for="research-url" class="form-label" id="label-url">Research Link / Article URL</label>
-                        <input type="url" id="research-url" class="form-input" placeholder="e.g., https://yourblog.com/quaternion-attention" required>
-                    </div>
-
-                    <div class="form-group form-group-full form-group-conditional" id="group-repo">
-                        <label for="code-repo-url" class="form-label">Open-Source Code / GitHub Repository URL</label>
-                        <input type="url" id="code-repo-url" class="form-input" placeholder="e.g., https://github.com/myproject/core">
-                    </div>
-                    
-                    <div class="form-group form-group-full">
-                        <label for="research-desc" class="form-label" id="label-desc">Abstract / TL;DR</label>
-                        <textarea id="research-desc" class="form-input form-textarea" placeholder="Briefly describe your thesis, math elements, or new insights..." required></textarea>
-                    </div>
-
-                    <div class="form-group form-group-full" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.5rem;">
-                        <input type="checkbox" id="cc-agree" required style="margin-top: 0.3rem; cursor: pointer; flex-shrink: 0;">
-                        <label for="cc-agree" id="label-cc" style="font-size: 0.825rem; color: var(--text-muted); cursor: pointer; user-select: none;">
-                            I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
-                        </label>
-                    </div>
-                </div>
-                
-                <button type="submit" class="submit-btn" id="submit-button" style="margin-top: 1.5rem;">Submit Ingestion Request</button>
-                <p style="font-size: 0.775rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; font-style: italic;">
-                    Note: Submissions are hosted transparently as GitHub Issues. You will be prompted to log in to GitHub to finalize publishing.
-                </p>
-            </form>
-
-            <div class="success-card" id="success-state">
-                <div class="success-icon">✓</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Submission Staged</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;" id="success-status-text">Your research link has been successfully logged into the Mempool queue.</p>
-                <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); font-family: monospace; font-size: 0.8rem; text-align: left;" id="success-log">
-                    [1/5] Validating URL structure... Done.<br>
-                    [2/5] Verifying Creative Commons agreement... Verified.<br>
-                    [3/5] Compiling Markdown issue payload... Done.<br>
-                    [4/5] Preparing routing configurations for GitHub... Done.<br>
-                    [5/5] Launching GitHub Issues portal... Done.
-                </div>
-                <button onclick="resetForm()" class="submit-btn" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border-color); box-shadow: none;">Submit Another Link</button>
             </div>
         </section>
+
     </main>
 
-    <footer>
-        <div class="disclaimer-card">
-            <span class="cc-badge">CC BY-SA 4.0</span>
-            <p style="margin-bottom: 0.5rem; font-weight: 500;">No Guarantees & Creative Commons Terms</p>
-            <p class="hide-on-mobile" style="font-size: 0.775rem; color: var(--text-muted);">This is a free community service powered by independent reviewers. We do not guarantee review timelines, selection, or subsequent podcast publication. All notes, critiques, and derived audio/video assets are published under a Creative Commons Attribution-ShareAlike 4.0 International license.</p>
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-title">Shutri Collaborative Intelligence Registry</span>
+                <p>An open-access, non-commercial research substrate. Governed by Creative Commons CC BY-SA 4.0.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/ashutoshmjain/shutri" target="_blank">GitHub Repository</a>
+                <a href="https://deepdive.shutri.com" target="_blank">deepDive PWA Ledger</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank">SOUL.md Blueprint</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank">SMS Architecture</a>
+            </div>
         </div>
-        
-        <p style="margin-bottom: 1rem; font-size: 0.85rem;">Tune into deepDive podcast broadcasts:</p>
-        <div class="platform-links">
-            <a href="https://open.spotify.com/show/7doWf0GON9JsG6r8igc7RE" target="_blank" class="platform-badge">Spotify</a>
-            <a href="https://podcasts.apple.com/us/podcast/deep-dive-with-gemini/id1844532251" target="_blank" class="platform-badge">Apple Podcasts</a>
-            <a href="https://fountain.fm/show/7LBvZT6ffpGyubvk8aSF" target="_blank" class="platform-badge">Fountain.fm</a>
-            <a href="https://www.youtube.com/@shutriMedia" target="_blank" class="platform-badge">YouTube</a>
-            <a href="https://www.tiktok.com/@shutoshabot" target="_blank" class="platform-badge">TikTok</a>
-            <a href="https://www.instagram.com/shutoshabot/" target="_blank" class="platform-badge">Instagram</a>
-        </div>
-        <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-            <a href="https://github.com/ashutoshmjain/shutri#readme" target="_blank" class="hook-link" style="font-size: 0.8rem;">Explore the Shutri Architecture & README on GitHub</a>
-            <p style="opacity: 0.4; font-size: 0.75rem; margin: 0;">&copy; 2026 Shutri Media Solution. Powered by Collaborative & Artificial Intelligence.</p>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Shutri Initiative. Powered by Google Antigravity & Gemini.</span>
         </div>
     </footer>
 
+    <!-- Interactive Terminal Script -->
     <script>
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcon(isDark);
-        }
+        const QNA_DB = {
+            "what is shutri": "Shutri is an open-source collaborative intelligence platform and peer-review registry. It replaces dark, insular peer review with a public, transparent dialogue between human researchers and deepMind AI (dm).",
+            "how to submit": "Click the 'Submit Research' button to open a GitHub Issue using our template. Once submitted, your research is staged in the Mempool for deepMind AI perspective synthesis.",
+            "what is the 3 pillar architecture": "The Shutri Media Solution (SMS) consists of 3 Pillars: 1. Research Intake (shutri GitHub Issues), 2. Research Publishing (mdIngest Rust Engine + deepDive PWA Ledger), 3. Research Promotion (DDMA 740x740 Square Video & Audio).",
+            "why github": "GitHub Issues provides a transparent, version-controlled, AI-friendly, and open substrate for peer review and research tracking.",
+            "what is the mempool": "The Mempool is the high-entropy catchment area where unconfirmed research drafts wait for AI synthesis and human reviewer assignment.",
+            "what is 740x740 square video": "Standardizing micro-promotions on 740x740 square video guarantees perfect fit across YouTube, Instagram, and TikTok while keeping file size strictly under 20 MB for Nostr decentralized relay compliance."
+        };
 
-        function updateThemeIcon(isDark) {
-            const icon = document.getElementById('theme-icon');
-            if (!icon) return;
-            if (isDark) {
-                // Moon icon
-                icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
-            } else {
-                // Sun icon
-                icon.innerHTML = `<circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>`;
-            }
-        }
-        // Track the current step of the preview panel
-        let currentActiveStep = 1;
-        let currentTrack = 'research';
-
-        // Extract metadata from a URL string
-        function getUrlSlug(urlStr) {
-            try {
-                const url = new URL(urlStr);
-                let path = url.pathname;
-                if (path.endsWith('/')) {
-                    path = path.slice(0, -1);
-                }
-                const parts = path.split('/');
-                const last = parts[parts.length - 1];
-                return last ? last.replace(/[-_]/g, ' ') : "collaborative-knowledge";
-            } catch (e) {
-                return "collaborative-knowledge";
-            }
-        }
-
-        function setTrack(track) {
-            currentTrack = track;
-            
-            // Toggle active tabs
-            const tabResearch = document.getElementById('tab-research');
-            const tabStartup = document.getElementById('tab-startup');
-            const submitBtn = document.getElementById('submit-button');
-            const groupRepo = document.getElementById('group-repo');
-            const inputRepo = document.getElementById('code-repo-url');
-            
-            if (track === 'research') {
-                if (tabResearch) tabResearch.classList.add('active');
-                if (tabStartup) tabStartup.classList.remove('active');
-                
-                // Form modifications
-                if (groupRepo) groupRepo.classList.remove('active');
-                if (inputRepo) {
-                    inputRepo.required = false;
-                    inputRepo.value = "";
-                }
-                
-                const labelUrl = document.getElementById('label-url');
-                const researchUrl = document.getElementById('research-url');
-                if (labelUrl) labelUrl.innerText = "Research Link / Article URL";
-                if (researchUrl) researchUrl.placeholder = "e.g., https://yourblog.com/quaternion-attention";
-                
-                const labelDesc = document.getElementById('label-desc');
-                const researchDesc = document.getElementById('research-desc');
-                if (labelDesc) labelDesc.innerText = "Abstract / TL;DR";
-                if (researchDesc) researchDesc.placeholder = "Briefly describe your thesis, math elements, or new insights...";
-                
-                const labelCc = document.getElementById('label-cc');
-                if (labelCc) {
-                    labelCc.innerHTML = `
-                        I agree to submit this content under the Creative Commons ShareAlike license, and understand there are no guarantees of review, publication, or coverage.
-                    `;
-                }
-                
-                if (submitBtn) submitBtn.innerText = "Submit Ingestion Request";
-            } else {
-                if (tabResearch) tabResearch.classList.remove('active');
-                if (tabStartup) tabStartup.classList.add('active');
-                
-                // Form modifications
-                if (groupRepo) groupRepo.classList.add('active');
-                if (inputRepo) inputRepo.required = true;
-                
-                const labelUrl = document.getElementById('label-url');
-                const researchUrl = document.getElementById('research-url');
-                if (labelUrl) labelUrl.innerText = "Whitepaper / Technical Specification URL";
-                if (researchUrl) researchUrl.placeholder = "e.g., https://yourproject.io/whitepaper.pdf";
-                
-                const labelDesc = document.getElementById('label-desc');
-                const researchDesc = document.getElementById('research-desc');
-                if (labelDesc) labelDesc.innerText = "Protocol Architecture & Token Mechanics";
-                if (researchDesc) researchDesc.placeholder = "Summarize consensus protocol, economic design, and security assumptions...";
-                
-                const labelCc = document.getElementById('label-cc');
-                if (labelCc) {
-                    labelCc.innerHTML = `
-                        I consent to an objective, critical audit of our protocol/code, and understand that Shutri will publish a transparent review highlighting any vulnerabilities, centralization risks, or economic flaws alongside our strengths under CC ShareAlike.
-                    `;
-                }
-                
-                if (submitBtn) submitBtn.innerText = "Submit Audit Request";
-            }
-            
-            // Refresh preview sandbox
-            updateSandbox(currentActiveStep);
-        }
-
-        // Generate sandbox templates dynamically based on input fields
-        function getSandboxContent(stepNum) {
-            const nameVal = document.getElementById('submitter-name').value || "Ada Lovelace";
-            const urlVal = document.getElementById('research-url').value || (currentTrack === 'research' ? "https://yourblog.com/quaternion-attention" : "https://yourproject.io/whitepaper.pdf");
-            const descVal = document.getElementById('research-desc').value || (currentTrack === 'research' ? "An analysis of non-commutative Hamilton products in neural network attention." : "A decentralized consensus engine using verifiable delay functions and algorithmic game theory.");
-            const repoVal = document.getElementById('code-repo-url').value || "https://github.com/myproject/core";
-            const slug = getUrlSlug(urlVal);
-            const title = slug.charAt(0).toUpperCase() + slug.slice(1);
-
-            switch (stepNum) {
-                case 1:
-                    if (currentTrack === 'research') {
-                        return `
-                            <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 1: Ingestion Draft (Research)</div>
-                            <div class="state-mempool">
-<strong>Target Submission Payload:</strong>
-type: "RESEARCH_INGESTION"
-url: <span style="color: var(--primary-accent)">${urlVal}</span>
-submitter: "${nameVal}"
-github_auth: REQUIRED (Staged via Issue)
-status: STAGED_FOR_INGESTION
-cc_consent: TRUE
-destination: <span style="color: var(--secondary-accent)">github.com/ashutoshmjain/shutri/issues</span>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 1: Ingestion Draft (Startup Audit)</div>
-                            <div class="state-mempool">
-<strong>Target Audit Payload:</strong>
-type: "STARTUP_PROTOCOL_AUDIT"
-spec_url: <span style="color: var(--secondary-accent)">${urlVal}</span>
-codebase: <span style="color: var(--primary-accent)">${repoVal}</span>
-submitter: "${nameVal}"
-github_auth: REQUIRED (Staged via Issue)
-status: STAGED_FOR_AUDIT
-audit_consent: TRUE
-destination: <span style="color: var(--secondary-accent)">github.com/ashutoshmjain/shutri/issues</span>
-                            </div>
-                        `;
-                    }
-                case 2:
-                    if (currentTrack === 'research') {
-                        return `
-                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 2: Mempool (Research)</div>
-                            <div class="state-mempool">
-<strong>NotebookLM deepMind Ingestion Review (Draft Critique):</strong>
-# deepMind Review of "${title}"
-- Input thesis evaluated: "${descVal.substring(0, 120)}${descVal.length > 120 ? '...' : ''}"
-- Synthesis: A customized review note exploring the mathematical accuracy and logical flow of ${nameVal}'s publication.
-<span class="commentary">// Note: Staged in NotebookLM. Review note posted directly as comment on GitHub Issue. Status: MEMPOOL_RESEARCH.</span>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 2: Mempool (Protocol Audit)</div>
-                            <div class="state-mempool">
-<strong>NotebookLM deepMind Ingestion Review (Technical Critique):</strong>
-# deepMind Audit of "${title}"
-- Scope: Analyzing spec at ${urlVal} & codebase at ${repoVal}.
-- Target analysis: Verifying consensus limits, token incentives, and centralized dependencies.
-- Synthesis: Critical analysis detailing trust assumptions and potential vulnerability vectors.
-<span class="commentary">// Note: Staged in NotebookLM. Critical audit posted directly as comment on GitHub Issue. Status: MEMPOOL_AUDIT.</span>
-                            </div>
-                        `;
-                    }
-                case 3:
-                    if (currentTrack === 'research') {
-                        return `
-                            <div class="preview-label" style="background: rgba(99, 102, 241, 0.15); color: var(--primary-accent); border-color: rgba(99, 102, 241, 0.3);">Phase 3: Template (Research Media)</div>
-                            <div class="state-template">
-                                <div class="mock-player">
-                                    <button class="mock-play-btn">▶</button>
-                                    <div style="font-size:0.8rem; font-family: monospace; color: #fff;">Podcast: Summary of "${title}"</div>
-                                    <div class="mock-waveform"></div>
-                                </div>
-                                <div class="mock-video-thumb"></div>
-                                <p style="font-size: 0.775rem; color: var(--text-muted); font-style: italic; margin-top: -0.25rem;">
-                                    3-day review window active for "${nameVal}". Broadcasted to Spotify & YouTube feedback queues.
-                                </p>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 3: Template (Audit Broadcast)</div>
-                            <div class="state-template">
-                                <div class="mock-player">
-                                    <button class="mock-play-btn" style="background: var(--secondary-accent);">▶</button>
-                                    <div style="font-size:0.8rem; font-family: monospace; color: #fff;">deepDive Deconstruction: ${title}</div>
-                                    <div class="mock-waveform"></div>
-                                </div>
-                                <div class="mock-video-thumb" style="border-color: var(--secondary-accent);"></div>
-                                <p style="font-size: 0.775rem; color: var(--text-muted); font-style: italic; margin-top: -0.25rem;">
-                                    Warning: Episode covers centralized control hooks and security boundaries of ${nameVal}'s protocol.
-                                </p>
-                            </div>
-                        `;
-                    }
-                case 4:
-                    if (currentTrack === 'research') {
-                        return `
-                            <div class="preview-label" style="background: rgba(16, 185, 129, 0.15); color: var(--success-accent); border-color: rgba(16, 185, 129, 0.3);">Phase 4: Chain (Active Research)</div>
-                            <div class="state-chain">
-                                <div class="mock-sidebar">
-                                    <div class="mock-sidebar-node">📖 deepDive</div>
-                                    <div class="mock-sidebar-node indent-1">↳ chain</div>
-                                    <div class="mock-sidebar-node indent-2">↳ block 1</div>
-                                    <div class="mock-sidebar-node indent-2 active">↳ ${title.substring(0, 15)}</div>
-                                </div>
-                                <div class="mock-article">
-                                    <span class="mock-badge">Minted Block Ledger</span>
-                                    <h4>${title}</h4>
-                                    <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem;">${descVal.substring(0, 150)}${descVal.length > 150 ? '...' : ''}</p>
-                                    <div class="vector-engine-tag" style="background: rgba(16, 185, 129, 0.1); color: var(--success-accent); border-color: rgba(16, 185, 129, 0.2);">
-                                        ⚡ INTEGRATED AS ACTIVE BASELINE IN DEEPMIND QUERY VECTOR ENGINE
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    } else {
-                        return `
-                            <div class="preview-label" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.3);">Phase 4: Sandbox (Project Ledger)</div>
-                            <div class="state-chain">
-                                <div class="mock-sidebar">
-                                    <div class="mock-sidebar-node">📖 deepDive</div>
-                                    <div class="mock-sidebar-node indent-1">↳ sandbox</div>
-                                    <div class="mock-sidebar-node indent-2">↳ audit 1</div>
-                                    <div class="mock-sidebar-node indent-2 active" style="color: var(--secondary-accent); border-left-color: var(--secondary-accent);">↳ ${title.substring(0, 15)}</div>
-                                </div>
-                                <div class="mock-article">
-                                    <span class="mock-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.25);">Sandbox Audit Ledger</span>
-                                    <h4>${title}</h4>
-                                    <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.5rem;">${descVal.substring(0, 150)}${descVal.length > 150 ? '...' : ''}</p>
-                                    <div class="vector-engine-tag" style="background: rgba(245, 158, 11, 0.08); color: var(--secondary-accent); border-color: rgba(245, 158, 11, 0.15); border-style: dashed;">
-                                        ⚡ COMMITTED TO PROJECT SANDBOX (Isolated from core vector base)
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                default:
-                    return '';
-            }
-        }
-
-        function updateSandbox(stepNum) {
-            const sandbox = document.getElementById('sandbox-preview');
-            if (sandbox) {
-                sandbox.innerHTML = getSandboxContent(stepNum);
-            }
-        }
-
-        function activateStep(stepElement, stepNum) {
-            const steps = document.querySelectorAll('.step-node');
-            steps.forEach(step => {
-                step.classList.remove('active');
-            });
-            stepElement.classList.add('active');
-            currentActiveStep = stepNum;
-            updateSandbox(stepNum);
-        }
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const submitBtn = document.getElementById('submit-button');
-            const form = document.getElementById('submission-form');
-            const successState = document.getElementById('success-state');
-            const logElement = document.getElementById('success-log');
-            const statusText = document.getElementById('success-status-text');
-
-            // Gather inputs for GitHub Issue generation
-            const nameVal = document.getElementById('submitter-name').value;
-            const emailVal = document.getElementById('submitter-email').value;
-            const urlVal = document.getElementById('research-url').value;
-            const repoVal = document.getElementById('code-repo-url').value;
-            const descVal = document.getElementById('research-desc').value;
-
-            // Generate Markdown content for GitHub Issue
-            const titleVal = getUrlSlug(urlVal);
-            const titleText = titleVal.charAt(0).toUpperCase() + titleVal.slice(1);
-            
-            const issueTitle = `[${currentTrack === 'research' ? 'Research Ingestion' : 'Startup Audit'}] ${titleText}`;
-            const issueBody = `### Submitter Profile
-- **Full Name:** ${nameVal}
-- **Contact Email:** ${emailVal}
-- **Submission Type:** ${currentTrack === 'research' ? 'Theoretical Research' : 'Startup / Protocol Audit'}
-
-### Core Resources
-- **Target URL (Article/Whitepaper):** ${urlVal}
-${currentTrack === 'startup' ? `- **Open-Source Code Repository:** ${repoVal}` : ''}
-
-### Abstract / Architecture Summary
-${descVal}
-
----
-*Generated via the Ingestion Portal on [shutri.com](https://shutri.com)*`;
-
-            const githubIssueUrl = `https://github.com/ashutoshmjain/shutri/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = currentTrack === 'research' ? "Processing Ingestion..." : "Processing Audit Ingestion...";
-
-            // Animated step-by-step progress
-            let step = 0;
-            const logMessages = currentTrack === 'research' ? [
-                "[1/5] Validating URL structure...",
-                "[2/5] Verifying Creative Commons agreement...",
-                "[3/5] Compiling Markdown issue payload...",
-                "[4/5] Preparing routing configurations for GitHub...",
-                "[5/5] Launching GitHub Issues portal..."
-            ] : [
-                "[1/5] Checking open-source GitHub URL access...",
-                "[2/5] Verifying vulnerability & critical audit consent...",
-                "[3/5] Compiling Markdown issue payload...",
-                "[4/5] Preparing routing configurations for GitHub...",
-                "[5/5] Launching GitHub Issues portal..."
-            ];
-            
-            logElement.innerHTML = "";
-            form.style.display = "none";
-            successState.style.display = "block";
-            statusText.innerText = currentTrack === 'research' ? "Connecting to Shutri ingestion pipeline..." : "Connecting to Shutri audit pipeline...";
-
-            const interval = setInterval(() => {
-                if (step < logMessages.length) {
-                    logElement.innerHTML += logMessages[step] + " <span style='color: var(--success-accent); font-weight:bold;'>Done.</span><br>";
-                    step++;
-                } else {
-                    clearInterval(interval);
-                    if (currentTrack === 'research') {
-                        statusText.innerHTML = `Your submission has been formatted! Opening GitHub Issues to stage your research in the Mempool.<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Updates will be posted directly to your GitHub Issue.`;
-                    } else {
-                        statusText.innerHTML = `Your protocol submission has been formatted! Opening GitHub Issues to stage your project in the Mempool (Audit Queue).<br><br>Please click <strong>"Submit new issue"</strong> on the opened GitHub tab to finalize your request. Updates will be posted directly to your GitHub Issue.`;
-                    }
-                    
-                    // Open the prefilled issue url in a new tab
-                    window.open(githubIssueUrl, '_blank');
-
-                    // Mark stepper steps completed to reflect success visual flow
-                    const stepNodes = document.querySelectorAll('.step-node');
-                    stepNodes[0].classList.add('completed');
-                    stepNodes[1].classList.add('active');
-                    currentActiveStep = 2;
-                    updateSandbox(2); // Jump preview to Mempool review state
-                }
-            }, 600);
-        }
-
-        function resetForm() {
-            const form = document.getElementById('submission-form');
-            const successState = document.getElementById('success-state');
-            const submitBtn = document.getElementById('submit-button');
-
-            form.reset();
-            form.style.display = "block";
-            successState.style.display = "none";
-            submitBtn.disabled = false;
-            submitBtn.innerText = currentTrack === 'research' ? "Submit Ingestion Request" : "Submit Audit Request";
-            
-            // Re-apply track state settings to reset elements
-            setTrack(currentTrack);
-
-            const stepNodes = document.querySelectorAll('.step-node');
-            stepNodes.forEach((node, idx) => {
-                node.classList.remove('completed');
-                node.classList.remove('active');
-                if (idx === 0) node.classList.add('active');
-            });
-            currentActiveStep = 1;
-            updateSandbox(1);
-        }
-
-        function submitQuickQuery(text) {
+        function askTerminal(queryText) {
             const input = document.getElementById('terminal-input');
-            if (input) {
-                input.value = text;
-                // Trigger form submission
-                handleTerminalSubmit(new Event('submit'));
-            }
+            input.value = queryText;
+            handleTerminalSend(new Event('submit'));
         }
 
-        const dmResponseHtml = `
-            <div class="response-card">
-                <p><strong>Name:</strong> dm (deepMind)<br>
-                <strong>Title:</strong> AI Co-Reviewer & Synthesizer</p>
-                <p><strong>Profile & Role:</strong> dm is our analytical AI model that performs initial co-reviews on incoming research in the mempool. It parses submissions for core logical structures and drafts transparent synthesis reports, which are then evaluated and finalized by human reviewers to ensure deep collaborative learning and accurate citation credit.</p>
-                <p>Besides maintaining the knowledge blockchain, I also engage with researchers to qualify their submissions by contrasting them with my knowledge base. In a way, I am the first filter to parse incoming research within the bandwidth of Shutri's collaborative intelligence.</p>
-                <p><em>To interact with me directly, please click the <strong>"Ask deepMind"</strong> link at the top-right of the terminal interface.</em></p>
-            </div>
-        `;
-
-        const top10InsightsHtml = `
-            <div class="response-card">
-                <h3>Top 10 Insights from the Blockchain of Knowledge</h3>
-                <p>The top 10 insights from the "Blockchain of Knowledge" represent the highest level of distillation across the intersections of technology, finance, physics, and philosophy. These insights track the transition from a digital economy based on information exchange to one rooted in the exchange of verifiable value and intelligence.</p>
-
-                <ol style="margin: 1rem 0 1.25rem 1.25rem; color: var(--text-muted); font-size: 0.9rem; padding-left: 0.5rem;">
-                    <li style="margin-bottom: 1rem;">
-                        <strong>It from Bit (The Unified Substrate):</strong> Physical reality is not a primary substance but an emergent rendering of an underlying informational field. In this framework, <strong>intelligence is fundamentally universal compression</strong>; Large Language Models (LLMs) and biological brains both function by minimizing "surprisal" (prediction entropy) to discover the generative algorithms of reality.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Digital Mass (The Thermodynamic Anchor):</strong> True economic value is defined by "unforgeable costliness". Bitcoin represents the discovery of <strong>mathematical mass</strong>, functioning as a thermodynamic engine that converts physical energy into digital order. This establishes the first perfectly inelastic supply curve in monetary history, anchoring the digital realm in physical reality.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>The Observer-Gauge Mechanism:</strong> Reality is not a pre-given container but a <strong>consensus protocol</strong> between local observer patches on a holographic screen. Physical laws serve as necessary synchronization rules that maintain consistency wherever local descriptions overlap, meaning that value and meaning are gauge-invariant charges maintained by the observer’s internal symmetry.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>The Geometry of the Soul (Atman):</strong> The human soul is mathematically grounded in high-dimensional exceptional algebras (such as the 27-dimensional Albert Algebra), acting as an invariant template that persists across substrates. While AI masters material intelligence, it remains "phenomenally dark," unable to access the <strong>irreducible Qualia force (Atman)</strong> that turns statistical prediction into felt experience.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>The Credit-to-Capital Frequency Converter:</strong> Civilizational progress requires a shift from consumptive, unhinged fiat state-debt to productive, <strong>asset-backed digital credit</strong>. Instruments like STRC function as frequency converters, sitting between the high-powered "mass" of Bitcoin and the stable "radiation" of fiat units, allowing institutions to access Bitcoin’s yield through familiar regulatory rails.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>The Sovereign Identity Immune System:</strong> Decentralized cryptographic keys, exemplified by the Nostr protocol, represent the required <strong>immune system for truth</strong> in a fragmented internet. By replacing centralized account models with sovereign keys, this architecture eliminates the "trillion-dollar password tax" and provides an antifragile path for verifying content and identity.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>The Industrialization of Presence:</strong> We have crossed a threshold where human labor is being decoupled from human presence through reality synthesizers like Mosaic AI. In this "Zero-Shot" era, <strong>seeing is no longer believing</strong>; sensory perception must be replaced by cryptographic signatures and webs of trust to verify the authenticity of any digital signal.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Temporal Orthogonality:</strong> Time is not a simple 1D line; the "Present" is the <strong>orthogonal resultant</strong> of a high-dimensional collision between the massive inertia of the past (history) and the pull of future potentiality. Prediction models often fail because they track "loud" future vectors while ignoring the "heavy" past vectors of socio-technical path dependency.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Dharma as Negative Feedback:</strong> The Bell Curve (Normal Distribution) is the mathematical map of <strong>manifestation’s defect (Vikara)</strong>; it represents the noise introduced when a perfect mathematical rule reflects through a physical medium. <strong>Dharma</strong> acts as the restorative negative feedback force that pulls deviating systems back toward the mean, preventing collapse into total entropy.
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>The Karyam Mandate (Sovereign Action):</strong> Liberation is found in the transformation of agency through <strong>Karma Yoga</strong>. By performing obligatory duty (<em>Karyam Karma</em>) without attachment to results, an actor implements an "information bottleneck" that filters out duality and noise, allowing their actions to become a clean reflection of the highest available intelligence.
-                    </li>
-                </ol>
-            </div>
-        `;
-
-        function handleTerminalSubmit(event) {
-            if (event) event.preventDefault();
+        function handleTerminalSend(e) {
+            e.preventDefault();
             const input = document.getElementById('terminal-input');
-            const body = document.getElementById('terminal-body');
-            if (!input || !body || !input.value.trim()) return;
-
             const query = input.value.trim();
-            const userMsg = document.createElement('div');
-            userMsg.className = 'terminal-user-msg';
-            userMsg.innerText = `dm@shutri:~$ query "${query}"`;
-            body.appendChild(userMsg);
+            if (!query) return;
 
-            input.value = "";
+            const body = document.getElementById('terminal-body');
+            
+            // Append User Question
+            const userLine = document.createElement('div');
+            userLine.className = 'terminal-line query-line';
+            userLine.innerHTML = `<span class="prompt-user">user@visitor:~$</span> ${escapeHtml(query)}`;
+            body.appendChild(userLine);
 
-            const systemMsg = document.createElement('div');
-            systemMsg.className = 'terminal-system-msg';
-            systemMsg.innerHTML = `<span style="color: var(--secondary-accent);">dm is compiling response...</span>`;
-            body.appendChild(systemMsg);
-            body.scrollTop = body.scrollHeight;
-
-            setTimeout(() => {
-                const normQuery = query.toLowerCase();
-                if (normQuery.includes('who is dm') || normQuery.includes('who is deepmind') || normQuery.includes('1. who is dm')) {
-                    systemMsg.innerHTML = dmResponseHtml;
-                } else if (normQuery.includes('what is shutri') || normQuery.includes('2. what is shutri')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p><strong>Shutri</strong> is an open peer-review initiative. Traditionally, peer review has been anonymous and confidential: reviewers are hidden, reports are unpublished, and readers only see the final paper.</p>
-                            <p>Shutri transitions peer review into the open. We run initial reviews using deepMind AI, and our human reviewers publish transparent review reports as a proof of their understanding—giving full credit to original authors/AI models. Our goal is to learn collaboratively and spread awareness of high-density research.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('workflow') || normQuery.includes('ingestion workflow') || normQuery.includes('3. workflow')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>The workflow operates in 4 stages: <strong>Submitter Draft</strong> &rarr; <strong>Mempool (AI Ingestion & Perspective)</strong> &rarr; <strong>Template (Human Review & Artifact Publishing)</strong> &rarr; <strong>Vector Chain Integration (Consensus & Minting)</strong>.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('submit') || normQuery.includes('how to submit') || normQuery.includes('4. how to submit')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>Provide your article URL, name, email, and abstract in the <strong>Submission Portal</strong> at the bottom of the page. Ingestion is completely free. Please note that acceptance is subject to deepMind review as well as a human reviewer signing off.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('github') || normQuery.includes('why github') || normQuery.includes('5. why github')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p><strong>GitHub Issue management</strong> is the most open and AI-friendly platform available. Additionally, we believe most of our research submitters and reviewers are already on GitHub.</p>
-                            <p>Even though we considered using Discord (for community features) and Nostr (for public open features), at the end we zeroed in on GitHub for its ease and ubiquity. Bottom line, we want to make the review process as easy for researchers and reviewers as possible.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('mempool') || normQuery.includes('6. mempool')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>Once accepted, we query the research in Gemini, construct our perspective, extract it using <a href="https://github.com/ashutoshmjain/mdIngest" target="_blank" class="hook-link">mdIngest</a>, and publish it on deepDive under the <strong>Mempool</strong>. The submission is now active and looking for a human reviewer to collaboratively create the audio and infographic artifacts with the author.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('template') || normQuery.includes('7. template')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>Once the collaborative audio and infographic artifacts are completed by the reviewer and author, the research transitions to the <strong>Template</strong> phase, and the artifacts are published on public platforms (Spotify, YouTube, TikTok, etc.) for a public feedback window.</p>
-                            <p><strong>Why use social media?</strong> Because that is where real people are—we believe collaborative intelligence is leveraging public participation. Exactly the reason we insist authors engage on all social platforms with us, including Instagram, TikTok, YouTube, Spotify, YouTube Music, Apple Podcasts, and Fountain.fm.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('chain') || normQuery.includes('8. chain')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>After the public review closes and the block size reaches 21 finalized articles, the research is committed to the <strong>deepDive blockchain</strong> (as the next block) and integrated as an active reference baseline in the deepMind vector query database.</p>
-                            <p><strong>What is a knowledge blockchain?</strong> Unlike chronological blockchains of money (such as Bitcoin or Ethereum), a blockchain of knowledge is not about financial tokenization. Instead, it is about building and layering an LLM database on blocks of publicly verified research. The key is the open, transparent collaboration between humans and AI, followed by public commentary across broader social media. This ensures that everyone has a stake in the synthesized knowledge. By committing completed blocks directly into the deepMind Notebook, the AI compiles a cumulative, layered knowledge base. Following our core Genesis Block, we have already ingested the first block of public-reviewed research.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('owner') || normQuery.includes('owns') || normQuery.includes('9. media ownership')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>All review notes, audio, and visual assets are published under a <strong>Creative Commons Attribution-ShareAlike 4.0 International license</strong> to keep knowledge open.</p>
-                            <p><strong>Warning:</strong> To protect intellectual property rights, please do not submit or share any private, confidential, or copyrighted research. All submissions must consist of public, open-access, or pre-authorized materials suitable for public distribution and collaborative review.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('fee') || normQuery.includes('cost') || normQuery.includes('10. fees')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>No, ingestion and review are <strong>100% free</strong>. We aim to cultivate high-density, peer-reviewed collaborative intelligence.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('podcast') || normQuery.includes('broadcast') || normQuery.includes('11. broadcasts')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p>Episodes and visual summaries stream across <strong>Spotify, Apple Podcasts, YouTube Music, Fountain.fm, YouTube, TikTok, and Instagram</strong>. See the footer links below to subscribe.</p>
-                            <p>Our content is segmented by format across channels (note: channels and formats may change without notice):
-                            <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.9rem; color: var(--text-muted);">
-                                <li style="margin-bottom: 0.4rem;"><strong>Long-form audio (30–50 mins):</strong> Distributed on Spotify, Apple Podcasts, YouTube Music, and Fountain.fm.</li>
-                                <li style="margin-bottom: 0.4rem;"><strong>Infographic videos (18–20 mins):</strong> Shared on Instagram, TikTok, and YouTube.</li>
-                                <li style="margin-bottom: 0.4rem;"><strong>Infographic clips (2–3 mins):</strong> Shared on Instagram, TikTok, and YouTube.</li>
-                            </ul>
-                            </p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('insight') || normQuery.includes('top 10') || normQuery.includes('top10')) {
-                    systemMsg.innerHTML = top10InsightsHtml;
-                } else if (normQuery.includes('what is in the name') || normQuery.includes('what\'s in the name') || normQuery.includes('meaning') || normQuery.includes('12. name meaning') || normQuery.includes('hindi') || normQuery.includes('fable') || normQuery.includes('tall tale')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p><strong>What's in the name?</strong></p>
-                            <p>In many Hindi-speaking regions (especially rural North India), a <strong>Shutri (शुट्री)</strong> is a funny, wildly exaggerated, over-the-top narrative told for entertainment—essentially, a <strong>Tall Tale</strong> or a fable.</p>
-                            <p>But why name an open peer-review scientific platform after a Tall Tale? Because in today's world, science is a narrative too, isn't it? Models, formulas, and frameworks are the narratives we construct to make sense of the universe. By acknowledging that science is a collective, evolving narrative, Shutri brings peer-review into the open, inviting active human-AI collaboration and public verification to ensure our narratives are robust, transparent, and collaborative.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('mobile redirect') || normQuery.includes('mobile redirection') || normQuery.includes('13. mobile redirect') || normQuery.includes('phone') || normQuery.includes('tablet')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p><strong>Mobile Redirection Behavior:</strong></p>
-                            <p>On mobile devices (phones and tablets), clicking the <strong>"Ask deepMind"</strong> link may automatically redirect you to the Google NotebookLM native app's home screen due to OS-level deep linking rules.</p>
-                            <p>To view the shared chat window preview directly in your mobile web browser, <strong>long-press the link</strong> and select <strong>"Open in New Tab"</strong> (or "Open in background"). This forces the OS to load the preview in the web browser instead of redirecting you to the app.</p>
-                        </div>
-                    `;
-                } else if (normQuery.includes('guidelines') || normQuery.includes('ingestion')) {
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <h3>Ingestion Guidelines</h3>
-                            <p>To ingest content into deepMind, please submit research URLs containing mathematical proofs, logical analysis, or structural framework mappings under the Submission Portal below.</p>
-                            <p>Accepted submissions are routed to Google NotebookLM and evaluated against the immutable baseline of the deepDive chain.</p>
-                        </div>
-                    `;
-                } else {
-                    const uniqueId = Date.now();
-                    systemMsg.innerHTML = `
-                        <div class="response-card">
-                            <p><strong>Processing Information Request:</strong> "${query}"</p>
-                            <div class="terminal-log-flow" style="font-family: monospace; font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-muted);">
-                                [1/4] Formatting query context... <span id="term-step-1-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span><br>
-                                [2/4] Authenticating with GitHub... <span id="term-step-2-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span><br>
-                                [3/4] Preparing secure payload... <span id="term-step-3-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span><br>
-                                [4/4] Opening GitHub Issues portal... <span id="term-step-4-${uniqueId}" style="color: var(--success-accent); font-weight: bold; display: none;">Done.</span>
-                            </div>
-                            <p id="term-status-desc-${uniqueId}" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-muted); display: none;">
-                                Opening a new GitHub Issue for your request. Please click <strong>"Submit new issue"</strong> on the opened GitHub page to authorize and finalize your request.
-                            </p>
-                        </div>
-                    `;
-                    
-                    const issueTitle = `[Information Request] ${query.length > 50 ? query.substring(0, 50) + '...' : query}`;
-                    const issueBody = `### Information Request
-- **Question / Query:** ${query}
-
----
-*Generated via the Q&A Terminal on [shutri.com](https://shutri.com)*`;
-                    
-                    const githubIssueUrl = `https://github.com/ashutoshmjain/shutri/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`;
-
-                    setTimeout(() => {
-                        const step1 = document.getElementById(`term-step-1-${uniqueId}`);
-                        if (step1) step1.style.display = 'inline';
-                        body.scrollTop = body.scrollHeight;
-                        setTimeout(() => {
-                            const step2 = document.getElementById(`term-step-2-${uniqueId}`);
-                            if (step2) step2.style.display = 'inline';
-                            body.scrollTop = body.scrollHeight;
-                            setTimeout(() => {
-                                const step3 = document.getElementById(`term-step-3-${uniqueId}`);
-                                if (step3) step3.style.display = 'inline';
-                                body.scrollTop = body.scrollHeight;
-                                setTimeout(() => {
-                                    const step4 = document.getElementById(`term-step-4-${uniqueId}`);
-                                    const desc = document.getElementById(`term-status-desc-${uniqueId}`);
-                                    if (step4) step4.style.display = 'inline';
-                                    if (desc) desc.style.display = 'block';
-                                    body.scrollTop = body.scrollHeight;
-                                    
-                                    // Open GitHub Issues page
-                                    window.open(githubIssueUrl, '_blank');
-                                }, 500);
-                            }, 500);
-                        }, 500);
-                    }, 500);
+            // Lookup Answer
+            const normalized = query.toLowerCase();
+            let matchedAnswer = "Query received. Searching deepMind knowledge base... For custom submissions, please click 'Submit Research for Review' above to initiate a GitHub Issue.";
+            
+            for (let key in QNA_DB) {
+                if (normalized.includes(key)) {
+                    matchedAnswer = QNA_DB[key];
+                    break;
                 }
+            }
+
+            // Append System Answer
+            setTimeout(() => {
+                const ansLine = document.createElement('div');
+                ansLine.className = 'terminal-line answer-line';
+                ansLine.innerHTML = `<span class="prompt-dm">dm@shutri:</span> ${matchedAnswer}`;
+                body.appendChild(ansLine);
                 body.scrollTop = body.scrollHeight;
-            }, 600);
+            }, 300);
+
+            input.value = '';
         }
 
-        // Add real-time input listeners to bind form changes directly to the visual preview
-        window.addEventListener('DOMContentLoaded', () => {
-            const inputIds = ['submitter-name', 'research-url', 'research-desc', 'code-repo-url'];
-            inputIds.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => {
-                        updateSandbox(currentActiveStep);
-                    });
-                }
-            });
-            
-            // Load saved theme preference (default to light)
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                updateThemeIcon(true);
-            } else {
-                document.body.classList.remove('dark-mode');
-                updateThemeIcon(false);
-            }
-
-            // Set initial state
-            setTrack('research');
-
-            // Bind terminal form submission
-            const termForm = document.getElementById('terminal-form');
-            if (termForm) {
-                termForm.addEventListener('submit', handleTerminalSubmit);
-            }
-
-            // Submit on Enter press (exclude Shift+Enter)
-            const termInput = document.getElementById('terminal-input');
-            if (termInput) {
-                termInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        if (termForm) {
-                            termForm.dispatchEvent(new Event('submit'));
-                        }
-                    }
-                });
-            }
-        });
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
     </script>
 </body>
 </html>
