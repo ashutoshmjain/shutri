@@ -1,22 +1,29 @@
 # SOUL.md — The Soul of the Shutri Media Solution (SMS)
 
-> **The Foundational Core, Unified Vision, & Language Maturity Model**  
+> **Empowering the New Era of Citizen & AI-Assisted Research**  
 > *Every agent operating in any repository MUST derive its behavior from this document.*
 
 ---
 
-## 🌌 1. The Core Philosophy & Synergy
+## 🌟 1. The Core Purpose & Positive Vision
 
-The **Shutri Media Solution (SMS)** is a unified, collaborative ecosystem. Individual repositories and agents do NOT operate in isolation, nor do they work against each other. They are branches of a single organism designed to turn human and AI inquiry into an immutable ledger of knowledge and multi-modal media.
+Artificial Intelligence (Gemini, deepMind, ChatGPT) has unlocked a massive new frontier: **research is no longer confined to academic institutions, PhDs, or postdocs**. Everyday domain experts, engineers, and independent thinkers can now perform cutting-edge research powered by AI.
+
+However, because **human attention comes at a premium**, independent researchers struggle to find legitimate peer review and syndication for their work.
+
+**Shutri Media Solution (SMS)** exists to serve this expanding frontier:
+* **Open Platform for Citizen & AI-Assisted Research:** Providing an accessible, transparent, high-rigor peer-review registry for independent researchers.
+* **Human-AI Synergy:** Combining human domain expertise with **deepMind AI (`dm`)** synthesis to review, package, and syndicate original research.
+* **Multi-Modal Reach:** Transforming verified research into mathematical web ledgers (`deepDive`), audio podcasts, and **740x740 square videos (<20MB)** for Nostr and social platforms (`ddma`).
 
 ```mermaid
 graph TD
-    SOUL["SOUL.md (The Core Blueprint & Shared Soul)"] --> Intake["Pillar 1: Research Intake (shutri)"]
+    SOUL["SOUL.md (The Empowering Core Blueprint)"] --> Intake["Pillar 1: Research Intake (shutri)"]
     SOUL --> Publish Engine["Pillar 2: Open Engine (mdIngest)"]
     SOUL --> Publish App["Pillar 2: Production App (deepDive)"]
     SOUL --> Promotion["Pillar 3: Media Automator (ddma)"]
 
-    Intake -->|Issue Report & Handshake| Publish App
+    Intake -->|Context Report & Handshake| Publish App
     Publish Engine -->|Sanitized Rust Binary| Publish App
     Publish App -->|Text & Audio| Promotion
     Promotion -->|Square Video Carousels| Publish App
@@ -24,9 +31,9 @@ graph TD
 
 ---
 
-## 🔢 2. Numbering & Staging Principles
+## 🔢 2. Staging & Numbering Modalities
 
-* **Mempool Filenames (Unnumbered Slugs):** Episodes in the Mempool use **strictly unnumbered slugs** prefixed with an underscore (e.g. `src/_quantum-memory-consensus.md`). Episode numbers are NEVER assigned in Mempool to prevent index collisions.
+* **Mempool Filenames (Unnumbered Slugs):** Unconfirmed external research drafts in the Mempool use **strictly unnumbered slugs** prefixed with an underscore (e.g. `src/_quantum-memory-consensus.md`), preventing index collisions.
 * **Template Filenames (Numeric Episode Keys):** Episode numbers (e.g. `245`) ONLY exist when an episode enters the **Template** phase (Active Mining). Files in Template are named strictly by number: `src/245.md`.
 
 ---
