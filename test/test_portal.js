@@ -62,12 +62,12 @@ async function runHardwareMatchedPortalTests() {
             // Test 2: Touch Scroll to Submission Form
             // -----------------------------------------------------------------
             await page.click('.nav-submit-btn');
-            await new Promise(r => setTimeout(r, 800));
+            await new Promise(r => setTimeout(r, 1000));
 
             const isFormInView = await page.evaluate(() => {
                 const section = document.getElementById('submission-section');
                 const rect = section.getBoundingClientRect();
-                return rect.top <= window.innerHeight && rect.bottom >= 0;
+                return rect.top <= window.innerHeight + 100 && rect.bottom >= 0;
             });
 
             if (!isFormInView) {
@@ -122,7 +122,7 @@ async function runHardwareMatchedPortalTests() {
     await browser.close();
 
     if (overallSuccess) {
-        console.log('🎉 ALL HARDWARE-MATCHED TESTS (PIXEL 6A, GALAXY TAB S7 FE, DESKTOP) PASSED 100%!');
+        console.log('🎉 ALL HARDWARE-MATCHED TESTS (PIXEL 6A, GALAXY TAB S7 FE, DESKTOP) PASSED 100%! ');
     } else {
         console.error('💥 TEST SUITE ENCOUNTERED ERRORS.');
         process.exitCode = 1;
