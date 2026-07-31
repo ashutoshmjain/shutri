@@ -44,6 +44,7 @@
             </a>
 
             <div class="nav-links">
+                <a href="#submission-section" class="nav-link">Submit Research</a>
                 <a href="#pillars" class="nav-link">Architecture</a>
                 <a href="#workflow" class="nav-link">Workflow</a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="nav-link">SOUL.md</a>
@@ -51,7 +52,7 @@
             </div>
 
             <div class="nav-cta-wrap">
-                <button class="nav-submit-btn" onclick="openSubmissionModal()">
+                <button class="nav-submit-btn" onclick="scrollToSubmissionForm()">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -79,7 +80,7 @@
 
             <!-- Hero Primary CTAs -->
             <div class="hero-actions">
-                <button class="cta-btn primary-btn" onclick="openSubmissionModal()">
+                <button class="cta-btn primary-btn" onclick="scrollToSubmissionForm()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
@@ -173,7 +174,7 @@
             </div>
         </section>
 
-        <!-- Section: Native Submission Form Card -->
+        <!-- Section: Single Native Submission Form Card -->
         <section id="submission-section" class="section-container">
             <div class="submission-card">
                 <div class="section-header">
@@ -310,7 +311,7 @@
                         <div class="timeline-badge">1</div>
                         <div class="timeline-content">
                             <h4>1. Submitter Draft (Staging)</h4>
-                            <p>Author submits research URL & thesis via native form or GitHub Issues. Ingestion is 100% free.</p>
+                            <p>Author submits research URL & thesis via native form. Ingestion is 100% free.</p>
                         </div>
                     </div>
 
@@ -346,40 +347,6 @@
 
     </main>
 
-    <!-- Modal for Direct Submission -->
-    <div id="submission-modal" class="modal-backdrop" onclick="closeSubmissionModal(event)">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <h3>Submit Research for Review</h3>
-                <button class="close-btn" onclick="closeSubmissionModal(event)">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Fill in your paper details below to initiate deepMind AI synthesis and Mempool staging:</p>
-                <form onsubmit="handleModalSubmission(event)">
-                    <div class="form-group">
-                        <label>Author / Submitter Name *</label>
-                        <input type="text" id="modal-name" required placeholder="Dr. Alice Vance or @username">
-                    </div>
-                    <div class="form-group">
-                        <label>Research / Paper Title *</label>
-                        <input type="text" id="modal-title" required placeholder="Quantum Memory Limits in Distributed Consensus">
-                    </div>
-                    <div class="form-group">
-                        <label>Primary Article / Source URL *</label>
-                        <input type="url" id="modal-url" required placeholder="https://arxiv.org/abs/... or https://yourblog.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Abstract & Core Thesis *</label>
-                        <textarea id="modal-abstract" rows="3" required placeholder="State your core findings and takeaways..."></textarea>
-                    </div>
-                    <button type="submit" class="cta-btn primary-btn full-width" style="margin-top: 1rem;">
-                        <span>Submit to Mempool</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer-container">
         <div class="footer-content">
@@ -403,19 +370,18 @@
     <script>
         const QNA_DB = {
             "what is shutri": "Shutri is an open-source collaborative intelligence platform and peer-review registry. It replaces dark, insular peer review with a public, transparent dialogue between human researchers and deepMind AI (dm).",
-            "how to submit": "You can use the submission form right on this page or click 'Submit Research' in the header to open our native intake modal.",
-            "what is the 3 pillar architecture": "The Shutri Media Solution (SMS) consists of 3 Pillars: 1. Research Intake (shutri GitHub Issues/Form), 2. Research Publishing (mdIngest Rust Engine + deepDive PWA Ledger), 3. Research Promotion (DDMA 740x740 Square Video & Audio).",
+            "how to submit": "Simply scroll down to the submission form on this page or click 'Submit Research' in the top header.",
+            "what is the 3 pillar architecture": "The Shutri Media Solution (SMS) consists of 3 Pillars: 1. Research Intake (shutri Form/GitHub), 2. Research Publishing (mdIngest Rust Engine + deepDive PWA Ledger), 3. Research Promotion (DDMA 740x740 Square Video & Audio).",
             "why github": "GitHub Issues provides a transparent, version-controlled, AI-friendly, and open substrate for peer review and research tracking.",
             "what is the mempool": "The Mempool is the high-entropy catchment area where unconfirmed research drafts wait for AI synthesis and human reviewer assignment.",
             "what is 740x740 square video": "Standardizing micro-promotions on 740x740 square video guarantees perfect fit across YouTube, Instagram, and TikTok while keeping file size strictly under 20 MB for Nostr decentralized relay compliance."
         };
 
-        function openSubmissionModal() {
-            document.getElementById('submission-modal').style.display = 'flex';
-        }
-
-        function closeSubmissionModal(e) {
-            document.getElementById('submission-modal').style.display = 'none';
+        function scrollToSubmissionForm() {
+            const section = document.getElementById('submission-section');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         function askTerminal(queryText) {
@@ -467,19 +433,6 @@
             const abstract = document.getElementById('research-abstract').value;
 
             triggerIntakePipeline(name, title, url, codeUrl, abstract);
-        }
-
-        function handleModalSubmission(e) {
-            e.preventDefault();
-            const name = document.getElementById('modal-name').value;
-            const title = document.getElementById('modal-title').value;
-            const url = document.getElementById('modal-url').value;
-            const abstract = document.getElementById('modal-abstract').value;
-
-            closeSubmissionModal();
-            // Scroll to form section
-            document.getElementById('submission-section').scrollIntoView({ behavior: 'smooth' });
-            triggerIntakePipeline(name, title, url, '', abstract);
         }
 
         function triggerIntakePipeline(name, title, url, codeUrl, abstract) {
