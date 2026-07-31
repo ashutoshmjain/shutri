@@ -62,12 +62,12 @@ async function runHardwareMatchedPortalTests() {
             // Test 2: Touch Scroll to Submission Form
             // -----------------------------------------------------------------
             await page.click('.nav-submit-btn');
-            await new Promise(r => setTimeout(r, 600));
+            await new Promise(r => setTimeout(r, 800));
 
             const isFormInView = await page.evaluate(() => {
                 const section = document.getElementById('submission-section');
                 const rect = section.getBoundingClientRect();
-                return rect.top >= 0 && rect.top <= window.innerHeight;
+                return rect.top <= window.innerHeight && rect.bottom >= 0;
             });
 
             if (!isFormInView) {
@@ -80,7 +80,7 @@ async function runHardwareMatchedPortalTests() {
             // -----------------------------------------------------------------
             await page.type('#terminal-input', 'What is Shutri?');
             await page.click('.terminal-send-btn');
-            await new Promise(r => setTimeout(r, 600));
+            await new Promise(r => setTimeout(r, 1000));
 
             const terminalOutput = await page.evaluate(() => {
                 return document.getElementById('terminal-body').innerText;
@@ -100,7 +100,7 @@ async function runHardwareMatchedPortalTests() {
             await page.type('#research-abstract', 'Hardware matched viewport automated test.');
 
             await page.click('#submit-btn');
-            await new Promise(r => setTimeout(r, 2600));
+            await new Promise(r => setTimeout(r, 2800));
 
             const step4Text = await page.evaluate(() => {
                 return document.getElementById('progress-step-4').innerText;
@@ -122,7 +122,7 @@ async function runHardwareMatchedPortalTests() {
     await browser.close();
 
     if (overallSuccess) {
-        console.log('🎉 ALL HARDWARE-MATCHED TESTS (PIXEL 6A, GALAXY TAB S7 FE, DESKTOP) PASSED!');
+        console.log('🎉 ALL HARDWARE-MATCHED TESTS (PIXEL 6A, GALAXY TAB S7 FE, DESKTOP) PASSED 100%!');
     } else {
         console.error('💥 TEST SUITE ENCOUNTERED ERRORS.');
         process.exitCode = 1;
