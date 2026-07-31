@@ -19,14 +19,14 @@ However, because **human attention comes at a premium**, independent researchers
 ```mermaid
 graph TD
     SOUL["SOUL.md (The Empowering Core Blueprint)"] --> Intake["Pillar 1: Research Intake (shutri)"]
-    SOUL --> Publish Engine["Pillar 2: Open Engine (mdIngest)"]
-    SOUL --> Publish App["Pillar 2: Production App (deepDive)"]
+    SOUL --> PublishEngine["Pillar 2: Open Engine (mdIngest)"]
+    SOUL --> PublishApp["Pillar 2: Production App (deepDive)"]
     SOUL --> Promotion["Pillar 3: Media Automator (ddma)"]
 
-    Intake -->|Context Report & Handshake| Publish App
-    Publish Engine -->|Sanitized Rust Binary| Publish App
-    Publish App -->|Text & Audio| Promotion
-    Promotion -->|Square Video Carousels| Publish App
+    Intake -->|Context Report & Handshake| PublishApp
+    PublishEngine -->|Sanitized Rust Binary| PublishApp
+    PublishApp -->|Text & Audio| Promotion
+    Promotion -->|Square Video Carousels| PublishApp
 ```
 
 ---
