@@ -1548,10 +1548,92 @@ footer {
     }
 }
 
-/* Align PC and Mobile interfaces: hide intermediate segments globally */
-.hook-banner, .vision-section, .top-grid {
-    display: none !important;
+/* Hero Actions Bar & Submit CTA Styles */
+.hero-actions-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
 }
+
+.btn-primary-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+}
+
+.btn-secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.4rem;
+    background: var(--bg-card);
+    color: var(--text-main) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-cta:hover {
+    border-color: var(--primary-accent);
+    color: var(--primary-accent) !important;
+    transform: translateY(-2px);
+}
+
+.btn-ghost-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.4rem;
+    background: transparent;
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 1px dashed var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.btn-ghost-cta:hover {
+    color: var(--text-main) !important;
+    border-color: var(--secondary-accent);
+}
+
+@media (max-width: 600px) {
+    .hero-actions-bar {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+    }
+    .btn-primary-cta, .btn-secondary-cta, .btn-ghost-cta {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 
 
 
