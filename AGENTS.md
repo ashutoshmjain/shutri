@@ -43,7 +43,14 @@ graph TD
 - **Human Packaging:** Human Editor copies Master Packaging Prompt, runs it in Gemini Deep Research, and drops `extract.py` into `Downloads/`.
 - **Human Verification Gate:** The Intake Agent NEVER updates or closes a GitHub Issue until the Human Editor explicitly verifies the build output from the `deepDive` agent.
 
-### 2. Reviewer Promotion Trigger (`/approve [NUM]`)
+### 2. Automated E2E Testing Directive (Puppeteer Test Suite)
+- **Deterministic UI Verification:** After making any edits to `index.html`, `style.css`, or portal scripts, the agent MUST run the Puppeteer test suite:
+  ```bash
+  node test/test_portal.js
+  ```
+- **Test Coverage:** Verifies CTA smooth-scrolling, terminal Q&A execution, and the 4-step intake progress pipeline before presenting changes to the human editor.
+
+### 3. Reviewer Promotion Trigger (`/approve [NUM]`)
 - When a human reviewer posts `/approve 245` on the GitHub Issue (explicitly specifying target episode number `245`):
   - Detect `/approve 245` signal.
   - Direct `deepDive` agent to execute: `md-publish --unpark _slug 245`.
