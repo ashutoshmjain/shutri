@@ -139,10 +139,10 @@
                         <span class="terminal-status-light"></span>
                         deepMind@shutri:~$ query-terminal
                     </div>
-                    <a id="notebook-link" href="https://www.google.com/url?q=https%3A%2F%2Fnotebooklm.google.com%2Fnotebook%2F423ab1b2-3722-4e3f-875c-3ea1606ef4fc%2Fpreview" target="_blank" rel="noopener noreferrer" class="terminal-notebook-btn">
+                    <button onclick="handleDeepMindLiveClick(event)" class="terminal-notebook-btn">
                         <span>Ask deepMind Live</span>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="terminal-tags-wrapper">
@@ -347,6 +347,39 @@
 
     </main>
 
+    <!-- Mobile deepMind Live Option Modal -->
+    <div id="mobile-notebook-modal" class="modal-backdrop" onclick="closeMobileModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>📱 Open deepMind Public Notebook</h3>
+                <button class="close-btn" onclick="closeMobileModal(event)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Select how you would like to interact with the public <strong>deepMind Notebook</strong> containing all episode sources:</p>
+                
+                <div class="mobile-option-list">
+                    <!-- Option 1: NotebookLM App -->
+                    <div class="mobile-option-card" onclick="launchNotebookApp()">
+                        <div class="option-title">1. Open in NotebookLM App (Recommended)</div>
+                        <div class="option-desc">Opens the native app. Tap <strong>"Add Notebook"</strong> when prompted to save the shared notebook to your mobile account library.</div>
+                    </div>
+
+                    <!-- Option 2: Browser Mode -->
+                    <div class="mobile-option-card" onclick="launchNotebookWeb()">
+                        <div class="option-title">2. Open Web Browser Chat</div>
+                        <div class="option-desc">Loads the public chat interface directly in your Chrome browser tab.</div>
+                    </div>
+
+                    <!-- Option 3: Instant Terminal Q&A -->
+                    <div class="mobile-option-card" onclick="focusOnPageTerminal()">
+                        <div class="option-title">3. Ask deepMind Here on Shutri.com</div>
+                        <div class="option-desc">Query deepMind AI directly right on this page via the Q&A terminal.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer-container">
         <div class="footer-content">
@@ -377,10 +410,52 @@
             "what is 740x740 square video": "Standardizing micro-promotions on 740x740 square video guarantees perfect fit across YouTube, Instagram, and TikTok while keeping file size strictly under 20 MB for Nostr decentralized relay compliance."
         };
 
+        const DIRECT_NOTEBOOK_URL = "https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview";
+        const PROXY_NOTEBOOK_URL = "https://www.google.com/url?q=" + encodeURIComponent(DIRECT_NOTEBOOK_URL);
+
         function scrollToSubmissionForm() {
             const section = document.getElementById('submission-section');
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleDeepMindLiveClick(e) {
+            e.preventDefault();
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Show Mobile Option Helper Modal on Mobile/Tablet devices
+                document.getElementById('mobile-notebook-modal').style.display = 'flex';
+            } else {
+                // Open directly on Desktop
+                window.open(DIRECT_NOTEBOOK_URL, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        function closeMobileModal(e) {
+            document.getElementById('mobile-notebook-modal').style.display = 'none';
+        }
+
+        function launchNotebookApp() {
+            closeMobileModal();
+            window.open(DIRECT_NOTEBOOK_URL, '_blank');
+        }
+
+        function launchNotebookWeb() {
+            closeMobileModal();
+            window.open(PROXY_NOTEBOOK_URL, '_blank', 'noopener,noreferrer');
+        }
+
+        function focusOnPageTerminal() {
+            closeMobileModal();
+            const input = document.getElementById('terminal-input');
+            const termSection = document.getElementById('terminal-section');
+            if (termSection) {
+                termSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            if (input) {
+                input.focus();
             }
         }
 
