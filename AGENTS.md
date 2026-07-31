@@ -13,27 +13,44 @@ Peer review is an open, transparent, collaborative dialogue between human resear
 ```mermaid
 graph TD
     SOUL["shutri/SOUL.md (Foundational Blueprint)"] --> Shutri["shutri Agent (Pillar 1 Intake)"]
-    Submitter["Author / Researcher"] -->|GitHub Issues| Mempool["1. Mempool Staging"]
-    Mempool -->|dm AI Analysis & Reviewer| Template["2. Collaborative Template"]
-    Template -->|Audio & Video Syndication| Media["3. Multi-Platform Syndication"]
-    Media -->|Public Feedback & Validation| Chain["4. Vector DB Consensus Chain"]
+    Submitter["Author / Researcher"] -->|GitHub Issue / Form| Check{"Author Routing"}
+    Check -->|Internal: ashutoshmjain| Template["1. Template Track (src/XXX.md)"]
+    Check -->|External Author| Mempool["1. Mempool Track (src/_XXX.md)"]
+    Template --> H2["2. Human runs Master Packaging Prompt in Gemini"]
+    Mempool --> H2
+    H2 -->|Downloads/extract.py| CLI["3. Agent runs md-publish"]
+    Mempool -->|4. Team Reviewer posts /approve| Promote["md-publish --unpark XXX XXX"]
+    Promote --> Template
 ```
+
+---
+
+## 🔢 Modalities & Staging Governance
+
+| Modality | Target Bucket | Filename Format | Tree Location in `SUMMARY.md` | Author Type |
+|---|---|---|---|---|
+| **`template`** | Active Mining | `src/XXX.md` (e.g. `245.md`) | `# Recent ..` / `# block template` | Internal Core Team (`ashutoshmjain`) |
+| **`mempool`** | Unconfirmed Staging | `src/_XXX.md` (e.g. `_245.md`) | `# The Mempool (Unconfirmed)` | External Author / Community |
 
 ---
 
 ## 🤖 Antigravity Agent Directives
 
-### 1. Derivation from `SOUL.md`
-- Always verify that intake activities align with the broader SMS ecosystem.
-- Recognize that intake drafts will transition to **Pillar 2 (`mdIngest`/`deepDive`)** via the Lossless Python Payload and eventually to **Pillar 3 (`ddma`)**.
+### 1. Human-in-the-Loop Protocol
+- The agent recognizes that running prompts inside a live browser Gemini Deep Research session requires human action.
+- **Human Step:** Submitter/editor copies the **Master Packaging Prompt**, pastes it in Gemini, and drops the generated self-extracting script (`extract.py`) into `Downloads/`.
+- **Agent Step:** Agent executes `python Downloads/extract.py` and calls `md-publish` in `deepDive`.
 
-### 2. Deterministic Navigation Principle
-- **Minimize Token Consumption:** The Antigravity agent MUST NOT waste intelligence tokens on manual string manipulation of issue drafts.
-- **CLI & Script Execution:** Use deterministic commands (`git`, `gh`, issue parsers) to inspect and process intake items.
-- **Upstream Hardening Loop:** If an intake parser fails during triage, patch the script upstream, recompile, and re-run.
+### 2. Intake & Routing Logic
+- Inspect submitter username:
+  - If **Internal (`ashutoshmjain`)**: Assigns clean key `XXX`, executes `md-publish --text XXX` $\rightarrow$ `src/XXX.md` in `template`.
+  - If **External**: Assigns parked key `_XXX`, executes `md-publish --text XXX` followed by `md-publish --park XXX` $\rightarrow$ `src/_XXX.md` in `mempool`.
 
-### 3. The 4-Phase Intake Lifecycle
-1. **Submitter Draft (Staging):** Submissions enter via GitHub Issues. Verify safety boundaries—ensure no private or copyrighted content is ingested.
-2. **Mempool (AI Ingestion & Perspective):** `deepMind` (`dm`) parses the submission and drafts an open synthesis report.
-3. **Template (Human-AI Production):** Author and reviewer collaborate to build media assets.
-4. **Chain (Vector Database Consensus):** When 21 papers reach final consensus, the block is minted into the permanent `deepMind` Notebook Vector Database ledger.
+### 3. Reviewer Approval & Promotion (`/approve`)
+- When a human reviewer posts `/approve` on the GitHub Issue (or adds the `approved` label):
+  - Detect `/approve` signal.
+  - Execute in `deepDive`:
+    ```bash
+    md-publish --unpark XXX XXX
+    ```
+  - **Result:** Promotes `src/_XXX.md` $\rightarrow$ `src/XXX.md`, moves episode from `# Mempool` into `# Recent ..`, and closes the GitHub Issue.
