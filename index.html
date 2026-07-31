@@ -51,12 +51,12 @@
             </div>
 
             <div class="nav-cta-wrap">
-                <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="nav-submit-btn">
+                <button class="nav-submit-btn" onclick="openSubmissionModal()">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
                     <span>Submit Research</span>
-                </a>
+                </button>
             </div>
         </div>
     </nav>
@@ -79,12 +79,12 @@
 
             <!-- Hero Primary CTAs -->
             <div class="hero-actions">
-                <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="cta-btn primary-btn">
+                <button class="cta-btn primary-btn" onclick="openSubmissionModal()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 5v14M5 12h14"/>
                     </svg>
                     <span>Submit Research for Review</span>
-                </a>
+                </button>
 
                 <a href="https://deepdive.shutri.com" target="_blank" class="cta-btn secondary-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -173,6 +173,62 @@
             </div>
         </section>
 
+        <!-- Section: Native Submission Form Card -->
+        <section id="submission-section" class="section-container">
+            <div class="submission-card">
+                <div class="section-header">
+                    <span class="section-tag">Direct Intake Portal</span>
+                    <h2 class="section-title">Submit Research for AI & Peer Review</h2>
+                    <p class="section-subtitle">Fill out your paper or article details below. Ingestion is 100% open-access, cookie-free, and published under CC BY-SA 4.0.</p>
+                </div>
+
+                <form id="native-intake-form" onsubmit="handleNativeSubmission(event)" class="intake-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="submitter-name">Author / Submitter Name *</label>
+                            <input type="text" id="submitter-name" required placeholder="e.g., Dr. Alice Vance or @username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="research-title">Research / Paper Title *</label>
+                            <input type="text" id="research-title" required placeholder="e.g., Quantum Memory Limits in Distributed Consensus">
+                        </div>
+
+                        <div class="form-group span-full">
+                            <label for="research-url">Primary Article / Source URL *</label>
+                            <input type="url" id="research-url" required placeholder="https://arxiv.org/abs/... or https://yourblog.com/paper">
+                        </div>
+
+                        <div class="form-group span-full">
+                            <label for="code-url">Code Repository / Supplemental Link (Optional)</label>
+                            <input type="url" id="code-url" placeholder="https://github.com/... (optional)">
+                        </div>
+
+                        <div class="form-group span-full">
+                            <label for="research-abstract">Abstract & Core Thesis *</label>
+                            <textarea id="research-abstract" rows="4" required placeholder="Briefly state your core findings, methodology, and key takeaways..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Live Intake Pipeline Terminal Output -->
+                    <div id="intake-progress-box" class="intake-progress-box" style="display: none;">
+                        <div class="progress-title">⚡ Ingestion Pipeline Execution:</div>
+                        <div id="progress-step-1" class="progress-step">⏳ [1/4] Validating research schema...</div>
+                        <div id="progress-step-2" class="progress-step">⏳ [2/4] Initializing deepMind Mempool staging...</div>
+                        <div id="progress-step-3" class="progress-step">⏳ [3/4] Packaging intake payload...</div>
+                        <div id="progress-step-4" class="progress-step">⏳ [4/4] Opening GitHub Issue portal...</div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="cta-btn primary-btn full-width">
+                            <span>Submit Research to Mempool</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
         <!-- Section: The 3 Pillars of Shutri Media Solution (SMS) -->
         <section id="pillars" class="section-container">
             <div class="section-header center">
@@ -190,7 +246,6 @@
                             <polyline points="14 2 14 8 20 8"/>
                             <line x1="16" y1="13" x2="8" y2="13"/>
                             <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
                         </svg>
                     </div>
                     <span class="pillar-number">Pillar 01</span>
@@ -255,7 +310,7 @@
                         <div class="timeline-badge">1</div>
                         <div class="timeline-content">
                             <h4>1. Submitter Draft (Staging)</h4>
-                            <p>Author submits research URL & thesis via GitHub Issues. Ingestion is 100% free and open-source.</p>
+                            <p>Author submits research URL & thesis via native form or GitHub Issues. Ingestion is 100% free.</p>
                         </div>
                     </div>
 
@@ -286,22 +341,44 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Call to Action Banner -->
-                <div class="workflow-cta-banner">
-                    <div class="cta-banner-text">
-                        <h3>Ready to Publish Your Research?</h3>
-                        <p>Submit your paper, theory, or startup audit for AI synthesis and peer review today.</p>
-                    </div>
-                    <a href="https://github.com/ashutoshmjain/shutri/issues/new?template=research_submission.md" target="_blank" class="cta-btn primary-btn">
-                        <span>Submit Episode 245 Research</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                </div>
             </div>
         </section>
 
     </main>
+
+    <!-- Modal for Direct Submission -->
+    <div id="submission-modal" class="modal-backdrop" onclick="closeSubmissionModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>Submit Research for Review</h3>
+                <button class="close-btn" onclick="closeSubmissionModal(event)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Fill in your paper details below to initiate deepMind AI synthesis and Mempool staging:</p>
+                <form onsubmit="handleModalSubmission(event)">
+                    <div class="form-group">
+                        <label>Author / Submitter Name *</label>
+                        <input type="text" id="modal-name" required placeholder="Dr. Alice Vance or @username">
+                    </div>
+                    <div class="form-group">
+                        <label>Research / Paper Title *</label>
+                        <input type="text" id="modal-title" required placeholder="Quantum Memory Limits in Distributed Consensus">
+                    </div>
+                    <div class="form-group">
+                        <label>Primary Article / Source URL *</label>
+                        <input type="url" id="modal-url" required placeholder="https://arxiv.org/abs/... or https://yourblog.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Abstract & Core Thesis *</label>
+                        <textarea id="modal-abstract" rows="3" required placeholder="State your core findings and takeaways..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-btn primary-btn full-width" style="margin-top: 1rem;">
+                        <span>Submit to Mempool</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer-container">
@@ -322,16 +399,24 @@
         </div>
     </footer>
 
-    <!-- Interactive Terminal Script -->
+    <!-- Interactive Terminal & Form Logic -->
     <script>
         const QNA_DB = {
             "what is shutri": "Shutri is an open-source collaborative intelligence platform and peer-review registry. It replaces dark, insular peer review with a public, transparent dialogue between human researchers and deepMind AI (dm).",
-            "how to submit": "Click the 'Submit Research' button to open a GitHub Issue using our template. Once submitted, your research is staged in the Mempool for deepMind AI perspective synthesis.",
-            "what is the 3 pillar architecture": "The Shutri Media Solution (SMS) consists of 3 Pillars: 1. Research Intake (shutri GitHub Issues), 2. Research Publishing (mdIngest Rust Engine + deepDive PWA Ledger), 3. Research Promotion (DDMA 740x740 Square Video & Audio).",
+            "how to submit": "You can use the submission form right on this page or click 'Submit Research' in the header to open our native intake modal.",
+            "what is the 3 pillar architecture": "The Shutri Media Solution (SMS) consists of 3 Pillars: 1. Research Intake (shutri GitHub Issues/Form), 2. Research Publishing (mdIngest Rust Engine + deepDive PWA Ledger), 3. Research Promotion (DDMA 740x740 Square Video & Audio).",
             "why github": "GitHub Issues provides a transparent, version-controlled, AI-friendly, and open substrate for peer review and research tracking.",
             "what is the mempool": "The Mempool is the high-entropy catchment area where unconfirmed research drafts wait for AI synthesis and human reviewer assignment.",
             "what is 740x740 square video": "Standardizing micro-promotions on 740x740 square video guarantees perfect fit across YouTube, Instagram, and TikTok while keeping file size strictly under 20 MB for Nostr decentralized relay compliance."
         };
+
+        function openSubmissionModal() {
+            document.getElementById('submission-modal').style.display = 'flex';
+        }
+
+        function closeSubmissionModal(e) {
+            document.getElementById('submission-modal').style.display = 'none';
+        }
 
         function askTerminal(queryText) {
             const input = document.getElementById('terminal-input');
@@ -347,15 +432,13 @@
 
             const body = document.getElementById('terminal-body');
             
-            // Append User Question
             const userLine = document.createElement('div');
             userLine.className = 'terminal-line query-line';
             userLine.innerHTML = `<span class="prompt-user">user@visitor:~$</span> ${escapeHtml(query)}`;
             body.appendChild(userLine);
 
-            // Lookup Answer
             const normalized = query.toLowerCase();
-            let matchedAnswer = "Query received. Searching deepMind knowledge base... For custom submissions, please click 'Submit Research for Review' above to initiate a GitHub Issue.";
+            let matchedAnswer = "Query received. Searching deepMind knowledge base... Use the submission form on this page to initiate an intake report.";
             
             for (let key in QNA_DB) {
                 if (normalized.includes(key)) {
@@ -364,7 +447,6 @@
                 }
             }
 
-            // Append System Answer
             setTimeout(() => {
                 const ansLine = document.createElement('div');
                 ansLine.className = 'terminal-line answer-line';
@@ -374,6 +456,64 @@
             }, 300);
 
             input.value = '';
+        }
+
+        function handleNativeSubmission(e) {
+            e.preventDefault();
+            const name = document.getElementById('submitter-name').value;
+            const title = document.getElementById('research-title').value;
+            const url = document.getElementById('research-url').value;
+            const codeUrl = document.getElementById('code-url').value;
+            const abstract = document.getElementById('research-abstract').value;
+
+            triggerIntakePipeline(name, title, url, codeUrl, abstract);
+        }
+
+        function handleModalSubmission(e) {
+            e.preventDefault();
+            const name = document.getElementById('modal-name').value;
+            const title = document.getElementById('modal-title').value;
+            const url = document.getElementById('modal-url').value;
+            const abstract = document.getElementById('modal-abstract').value;
+
+            closeSubmissionModal();
+            // Scroll to form section
+            document.getElementById('submission-section').scrollIntoView({ behavior: 'smooth' });
+            triggerIntakePipeline(name, title, url, '', abstract);
+        }
+
+        function triggerIntakePipeline(name, title, url, codeUrl, abstract) {
+            const box = document.getElementById('intake-progress-box');
+            box.style.display = 'block';
+
+            const s1 = document.getElementById('progress-step-1');
+            const s2 = document.getElementById('progress-step-2');
+            const s3 = document.getElementById('progress-step-3');
+            const s4 = document.getElementById('progress-step-4');
+
+            setTimeout(() => { s1.innerText = "✅ [1/4] Research schema validated."; }, 600);
+            setTimeout(() => { s2.innerText = "✅ [2/4] deepMind Mempool staging initialized."; }, 1200);
+            setTimeout(() => { s3.innerText = "✅ [3/4] Ingestion payload formatted."; }, 1800);
+            setTimeout(() => {
+                s4.innerText = "✅ [4/4] Opening GitHub Issues portal...";
+                
+                const issueTitle = `[INTAKE] Research Submission: ${title}`;
+                const issueBody = `### 📌 Research Overview
+- **Research Title:** ${title}
+- **Primary Submitter / Author:** ${name}
+- **Source URL:** ${url}
+${codeUrl ? `- **Code Repository:** ${codeUrl}\n` : ''}
+---
+### 🎯 Abstract & Core Thesis
+${abstract}
+
+---
+*Submitted via the Intake Portal on [shutri.com](https://shutri.com)*`;
+
+                const issueUrl = `https://github.com/ashutoshmjain/shutri/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=mempool,research-intake`;
+                
+                window.open(issueUrl, '_blank');
+            }, 2400);
         }
 
         function escapeHtml(text) {

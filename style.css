@@ -802,3 +802,165 @@ body {
         justify-content: center;
     }
 }
+
+/* ==========================================================================
+   Native Intake Form & Modal Styles
+   ========================================================================== */
+.submission-card {
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glow);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: var(--card-shadow);
+}
+
+.intake-form {
+    margin-top: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.span-full {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-group input, .form-group textarea {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent-indigo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.full-width {
+    width: 100%;
+    justify-content: center;
+}
+
+.form-actions {
+    margin-top: 2rem;
+}
+
+.intake-progress-box {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: #070b14;
+    border: 1px solid var(--accent-indigo);
+    border-radius: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.progress-title {
+    color: var(--accent-amber);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.progress-step {
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+/* Modal Styling */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(6, 9, 17, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.modal-card {
+    background: #0f172a;
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    animation: modalSlide 0.3s ease-out;
+}
+
+@keyframes modalSlide {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-body p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .submission-card {
+        padding: 1.5rem;
+    }
+}
+

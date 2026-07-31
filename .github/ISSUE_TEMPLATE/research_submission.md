@@ -1,16 +1,16 @@
 ---
-name: "🔬 Research Intake Submission (Episode Intake)"
+name: "🔬 Research Intake Submission"
 about: "Submit a research paper, article, thread, or theory for Shutri AI + Human peer review and SMS media publication."
-title: "[INTAKE] Episode 245: <Proposed Research Title>"
+title: "[INTAKE] Research Submission: <Research Title>"
 labels: "mempool, research-intake"
 assignees: "ashutoshmjain"
 ---
 
 ## 📌 Research Overview
-- **Proposed Episode Number:** 245
 - **Research Title:** 
 - **Primary Authors / Sources:** 
 - **Source URL(s):** 
+- **Code / Supplemental Repo (Optional):** 
 
 ---
 
@@ -30,8 +30,8 @@ List any mathematical proofs, formulas, or formal definitions that require KaTeX
 
 ---
 
-## 🎧 Media & Syndication Target
-- [x] **Text Article:** `deepDive/src/245.md` (mdBook PWA Ledger)
+## 🎧 Media & Syndication Targets
+- [x] **Text Article:** `deepDive/src/` (mdBook PWA Ledger)
 - [x] **Audio Podcast:** NotebookLM / Spotify / Apple / Fountain
 - [x] **Square Video (740x740):** DDMA / YouTube / Instagram / TikTok / Nostr (<20MB)
 
