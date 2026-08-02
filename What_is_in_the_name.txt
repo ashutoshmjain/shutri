@@ -1,33 +1,37 @@
-# What is in the Name? The Philosophical Origin of Shutri
+# What is in the Name? The Philosophical & Structural Origin of Shutri
 
-> *"Knowledge was never meant to be locked away in ink; it lives in the acoustic, collaborative dialogue between mind and medium."*
+> *"Knowledge was never meant to be locked away in ink; it lives in the auspicious trinity of mind, medium, and multi-modal transmission."*
 
 ---
 
-## 🌌 I. The Etymological & Conceptual Genesis
+## 🌌 I. Etymological Decomposition: Shu (शु) + Tri (त्रि)
 
-The name **Shutri** derives its soul from the ancient Sanskrit concept of **Śruti (श्रुति)**, literally translating to *"that which is heard"*. 
+The name **Shutri** carries a dual etymological foundation combining root Sanskrit elements:
 
-Historically, *Śruti* represented foundational, direct, and uncorrupted truth transmitted through open oral dialogue, active listening, and collective recitation. Unlike insular text locked behind academic paywalls, *Śruti* required an acoustic substrate—a medium where knowledge was actively voiced, heard, and verified by the community.
+1. **"Shu" (शु / शुभ):** Means **Auspicious, Pious, Virtuous, and Pure**. It reflects the sacred intent of open science—publishing uncorrupted, transparent research free from insular academic paywalls or corporate gatekeeping.
+2. **"Tri" (त्रि):** Represents **The Three Pillars (Trinity)** of the ecosystem:
+   * **Pillar 1:** Research Intake & Peer Review (`shutri`)
+   * **Pillar 2:** Knowledge Publishing & Ledger Hardening (`mdIngest` & `deepDive`)
+   * **Pillar 3:** Multi-Modal Promotion & Audio/Visual Resonance (`ddma`)
 
-**Shutri** synthesizes **Śruti** ("that which is heard") with **Sūtra** (the structured thread of code & logic) to build a modern **Blockchain of Knowledge** for citizen and AI-assisted research.
+Together with its phonetic kinship to **Śruti (श्रुति)**—*"that which is heard"*—**Shutri** signifies the **Auspicious Trinity of Open Knowledge Intake, Immutable Publishing, and Auditory Syndication**.
 
 ---
 
 ## 🏛️ II. Connecting "Shutri" to the Three Pillars of SMS
 
-The etymological progression from *hearing* to *structuring* to *broadcasting* maps directly onto the **Three Operational Pillars of the Shutri Media Solution (SMS)**:
+The progression from *hearing* to *structuring* to *broadcasting* maps directly onto the **Three Operational Pillars**:
 
 ```mermaid
 graph LR
-    Pillar1["<b>Pillar 1: Research Intake (shutri)</b><br/><i>'Hearing the Inquiry'</i><br/>Mempool & AI Synthesis"] --> Pillar2["<b>Pillar 2: Publishing (mdIngest / deepDive)</b><br/><i>'Threading the Sūtra'</i><br/>Immutable Knowledge Ledger"]
-    Pillar2 --> Pillar3["<b>Pillar 3: Promotion (ddma)</b><br/><i>'Resonating the Sound'</i><br/>Podcasts & Nostr Square Video"]
+    Pillar1["<b>Pillar 1: Research Intake (shutri)</b><br/><i>'Shu: Hearing the Inquiry'</i><br/>Mempool & AI Synthesis"] --> Pillar2["<b>Pillar 2: Publishing (mdIngest / deepDive)</b><br/><i>'Tri: Threading the Sūtra'</i><br/>Immutable Knowledge Ledger"]
+    Pillar2 --> Pillar3["<b>Pillar 3: Promotion (ddma)</b><br/><i>'Nāda: Resonating the Sound'</i><br/>Podcasts & Nostr Square Video"]
 ```
 
 ### 1. Pillar 1: Research Intake (`shutri`) — *"Hearing the Inquiry"*
-* **The Concept:** Before knowledge can be codified, it must first be heard.
+* **The Concept:** Before knowledge can be codified, it must be received with auspicious intent (*Shu*).
 * **The Substrate:** Submissions enter via open **GitHub Issue Management**. The AI model **deepMind (`dm`)** acts as an initial listener, parsing core logical structures and drafting an open synthesis report in the **Mempool**.
-* **The Śruti Alignment:** Peer review ceases to be a hidden black box. It becomes an open acoustic room where submitters, human editors, and AI agents listen to and refine original research together.
+* **The Śruti Alignment:** Peer review ceases to be a hidden black box; it becomes an open acoustic room where submitters, human editors, and AI agents listen to and refine original research together.
 
 ### 2. Pillar 2: Research Publishing (`mdIngest` + `deepDive`) — *"Threading the Sūtra"*
 * **The Concept:** Once heard and verified, dynamic dialogue must be crystallized into a deterministic thread (*Sūtra*).
@@ -35,7 +39,7 @@ graph LR
 * **The Śruti Alignment:** Every 21 verified articles form a "minted" knowledge block, layering structured, high-density insights into the AI's active memory base.
 
 ### 3. Pillar 3: Research Promotion (`ddma`) — *"Resonating the Sound"*
-* **The Concept:** Fulfilling the true promise of *Śruti*—returning knowledge back to spoken sound and visual resonance.
+* **The Concept:** Fulfilling the true promise of *Śruti*—returning knowledge back to spoken sound (*Nāda*) and visual resonance.
 * **The Substrate:** **DDMA (DeepDive Media Automator)** ingests research payloads, executes word-level Whisper transcriptions, tunes `acrossfade` stings, and renders **master audio podcasts** and **740x740 Square Videos (<20MB for Nostr compliance)**.
 * **The Śruti Alignment:** Research is broadcast to where real human beings congregate—Spotify, Apple Podcasts, Nostr relays, YouTube, TikTok, and Instagram—ensuring that complex research is *heard, seen, and experienced by all*.
 
@@ -43,8 +47,8 @@ graph LR
 
 ## 💡 III. Summary Table
 
-| Pillar | Operational Module | Sanskrit Root Alignment | Functional Purpose |
+| Element | Sanskrit Root Alignment | Operational Module | Functional Purpose |
 |---|---|---|---|
-| **Pillar 01** | **`shutri`** (Intake) | **Śruti** (*Direct Hearing*) | Open GitHub issue staging, Mempool triage, and human-AI peer review synthesis. |
-| **Pillar 02** | **`mdIngest` / `deepDive`** (Publishing) | **Sūtra** (*Structured Thread*) | Deterministic Rust math sanitization and Progressive Web App ledger governance (*Law of 21*). |
-| **Pillar 03** | **`ddma`** (Promotion) | **Nāda** (*Resonance & Voice*) | Multi-modal audio podcasting, Whisper transcription, and 740x740 Nostr square video reels. |
+| **Shu (शु)** | **Shubh / Auspicious** | Open Intention | Pious, uncorrupted, open-access research substrate free from paywalls. |
+| **Tri (त्रि)** | **Trinity of Pillars** | SMS Architecture | Integration of Pillar 1 (Intake), Pillar 2 (Publishing), and Pillar 3 (Promotion). |
+| **Śruti (श्रुति)** | **"That Which is Heard"** | Auditory & Visual Reach | Multi-modal podcasting, Whisper transcription, and Nostr 740x740 video reels. |

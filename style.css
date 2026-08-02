@@ -1045,4 +1045,113 @@ body {
     line-height: 1.4;
 }
 
+/* ==========================================================================
+   Etymology & Sacred Geometry Box
+   ========================================================================== */
+.name-etymology-box {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.etymology-badge-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.etymology-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a855f7;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+}
+
+.etymology-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.gradient-text-alt {
+    background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.etymology-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.etym-card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.25s ease;
+}
+
+.etym-card:hover {
+    transform: translateY(-3px);
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.border-purple-subtle:hover { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.12); }
+.border-indigo-subtle:hover { border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.12); }
+.border-amber-subtle:hover { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.12); }
+
+.span-full-etym {
+    grid-column: 1 / -1;
+}
+
+.etym-root-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.sanskrit-character {
+    font-size: 1.4rem;
+    font-weight: 800;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e2e8f0;
+}
+
+.root-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.etym-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .etymology-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
