@@ -554,6 +554,10 @@ body {
 }
 
 .pillar-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
     background: var(--bg-card);
     backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-subtle);
@@ -561,16 +565,24 @@ body {
     padding: 2rem;
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
 .pillar-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     background: var(--bg-card-hover);
 }
 
-.border-purple:hover { border-color: var(--accent-purple); box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15); }
-.border-indigo:hover { border-color: var(--accent-indigo); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15); }
-.border-amber:hover { border-color: var(--accent-amber); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); }
+.border-purple:hover { border-color: var(--accent-purple); box-shadow: 0 12px 35px rgba(168, 85, 247, 0.2); }
+.border-indigo:hover { border-color: var(--accent-indigo); box-shadow: 0 12px 35px rgba(99, 102, 241, 0.2); }
+.border-amber:hover { border-color: var(--accent-amber); box-shadow: 0 12px 35px rgba(245, 158, 11, 0.2); }
+
+.pillar-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
 
 .pillar-icon {
     width: 56px;
@@ -579,7 +591,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.25rem;
 }
 
 .bg-purple-glow { background: rgba(168, 85, 247, 0.12); }
@@ -587,9 +598,6 @@ body {
 .bg-amber-glow { background: rgba(245, 158, 11, 0.12); }
 
 .pillar-number {
-    position: absolute;
-    top: 1.75rem;
-    right: 1.75rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -600,6 +608,7 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
+    color: var(--text-primary);
 }
 
 .pillar-card p {
@@ -609,8 +618,19 @@ body {
     line-height: 1.5;
 }
 
+.inline-site-link {
+    color: #818cf8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.inline-site-link:hover {
+    color: #a5b4fc;
+}
+
 .pillar-list {
     list-style: none;
+    margin-bottom: 1.5rem;
 }
 
 .pillar-list li {
@@ -623,6 +643,32 @@ body {
 }
 
 .bullet { color: var(--accent-indigo); }
+
+.pillar-repo-link {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    transition: all 0.25s ease;
+}
+
+.border-purple:hover .pillar-repo-link { color: var(--accent-purple); }
+.border-indigo:hover .pillar-repo-link { color: var(--accent-indigo); }
+.border-amber:hover .pillar-repo-link { color: var(--accent-amber); }
+
+.pillar-repo-link svg {
+    transition: transform 0.25s ease;
+}
+
+.pillar-card:hover .pillar-repo-link svg {
+    transform: translate(2px, -2px);
+}
 
 /* ==========================================================================
    Workflow Timeline Card

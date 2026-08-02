@@ -12,9 +12,9 @@ Artificial Intelligence (Gemini, deepMind, ChatGPT) has unlocked a massive new f
 However, because **human attention comes at a premium**, independent researchers struggle to find legitimate peer review and syndication for their work.
 
 **Shutri Media Solution (SMS)** exists to serve this expanding frontier:
-* **Open Platform for Citizen & AI-Assisted Research:** Providing an accessible, transparent, high-rigor peer-review registry for independent researchers.
-* **Human-AI Synergy:** Combining human domain expertise with **deepMind AI (`dm`)** synthesis to review, package, and syndicate original research.
-* **Multi-Modal Reach:** Transforming verified research into mathematical web ledgers (`deepDive`), audio podcasts, and **740x740 square videos (<20MB)** for Nostr and social platforms (`ddma`).
+* **Open Platform for Citizen & AI-Assisted Research ([Pillar 1: `shutri`](https://github.com/ashutoshmjain/shutri) | [README](https://github.com/ashutoshmjain/shutri/blob/main/README.md)):** Providing an accessible, transparent, high-rigor peer-review registry for independent researchers.
+* **Human-AI Synergy ([Pillar 2: `mdIngest`](https://github.com/ashutoshmjain/mdIngest) | [README](https://github.com/ashutoshmjain/mdIngest/blob/master/README.md)):** Combining human domain expertise with **deepMind AI (`dm`)** synthesis to review, package, and syndicate original research using Rust ingestion binaries.
+* **Multi-Modal Reach ([Pillar 2: `deepDive`](https://github.com/ashutoshmjain/deepDive) | [README](https://github.com/ashutoshmjain/deepDive/blob/master/README.md) & [Pillar 3: `ddma`](https://github.com/ashutoshmjain/ddma) | [README](https://github.com/ashutoshmjain/ddma/blob/main/README.md)):** Transforming verified research into mathematical web ledgers ([`deepDive`](https://github.com/ashutoshmjain/deepDive)), audio podcasts, and **740x740 square videos (<20MB)** for Nostr and social platforms ([`ddma`](https://github.com/ashutoshmjain/ddma)).
 
 ```mermaid
 graph TD

@@ -30,6 +30,27 @@ Historically, peer review has been an insular, anonymous black box:
 
 ---
 
+## 🏛️ The Pillars of Shutri Media Solution (SMS)
+
+The ecosystem is driven by three interconnected operational pillars:
+
+1. **Pillar 1: Research Intake & Peer Review Stage**
+   - **Repository:** [`ashutoshmjain/shutri`](https://github.com/ashutoshmjain/shutri)
+   - **Documentation:** [`shutri/README.md`](https://github.com/ashutoshmjain/shutri/blob/main/README.md)
+   - *Role:* Manages submitter staging, Mempool triage, AI (`dm`) synthesis reports, and community peer review consensus via GitHub Issues.
+
+2. **Pillar 2: Research Publishing Engine & Application**
+   - **Engine Repo:** [`ashutoshmjain/mdIngest`](https://github.com/ashutoshmjain/mdIngest) • **Documentation:** [`mdIngest/README.md`](https://github.com/ashutoshmjain/mdIngest/blob/master/README.md)
+   - **Application Repo:** [`ashutoshmjain/deepDive`](https://github.com/ashutoshmjain/deepDive) • **Documentation:** [`deepDive/README.md`](https://github.com/ashutoshmjain/deepDive/blob/master/README.md)
+   - *Role:* Deterministic Rust ingestion pipeline (`md-publish`) sanitizing and indexing research into the consumer-facing Progressive Web App ledger ([deepdive.shutri.com](https://deepdive.shutri.com)).
+
+3. **Pillar 3: Research Promotion & Multi-Modal Engine**
+   - **Repository:** [`ashutoshmjain/ddma`](https://github.com/ashutoshmjain/ddma)
+   - **Documentation:** [`ddma/README.md`](https://github.com/ashutoshmjain/ddma/blob/main/README.md)
+   - *Role:* Automates audio processing, Whisper transcriptions, crossfading, and rendering 740x740 square videos for Nostr and social platforms.
+
+---
+
 ## II. The Ingest Pipeline & Lifecycle of Knowledge
 
 The journey of research through Shutri is structured like a decentralized transaction pipeline:
