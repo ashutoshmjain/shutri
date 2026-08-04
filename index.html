@@ -44,7 +44,7 @@
             </a>
 
             <div class="nav-links">
-                <a href="#submission-section" class="nav-link">Submit Research</a>
+                <a href="#manifesto" class="nav-link">Manifesto</a>
                 <a href="#pillars" class="nav-link">Architecture</a>
                 <a href="#workflow" class="nav-link">Workflow</a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="nav-link">SOUL.md</a>
@@ -77,48 +77,22 @@
             <p class="hero-subtitle">
                 With AI, cutting-edge research is no longer limited to institutional labs—everyday domain experts can innovate. Shutri provides an open, accessible registry combining human expertise with <strong>deepMind AI synthesis</strong> to review, verify, and syndicate independent research worldwide.
             </p>
-
-            <!-- Hero Primary CTAs -->
-            <div class="hero-actions">
-                <button class="cta-btn primary-btn" onclick="scrollToSubmissionForm()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                    <span>Submit Research for Review</span>
-                </button>
-
-                <a href="https://deepdive.shutri.com" target="_blank" class="cta-btn secondary-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                    </svg>
-                    <span>Browse Published Ledger</span>
-                </a>
-
-                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="cta-btn ghost-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="16" x2="12" y2="12"/>
-                        <line x1="12" y1="8" x2="12.01" y2="8"/>
-                    </svg>
-                    <span>SOUL.md Blueprint</span>
-                </a>
-            </div>
-
-            <!-- Key Feature Metrics -->
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <div class="stat-value gradient-text-purple">100%</div>
-                    <div class="stat-label">Open Access & CC BY-SA 4.0</div>
+            
+            <!-- Hero Manifesto Insight Callout (Anthropic Light Editorial Style) -->
+            <div class="hero-manifesto-card" style="background: #ffffff; border: 1px solid #e7e5e4; border-radius: 12px; padding: 1.75rem 2rem; max-width: 850px; margin: 0 auto; text-align: left; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; border-bottom: 1px solid #f3efe9; padding-bottom: 0.75rem;">
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: #4f46e5; font-weight: 700; letter-spacing: 0.08em;">Manifesto v0.1 Core Goal</span>
+                    <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" style="color: #44403c; font-size: 0.8rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem;">
+                        <span>Read manifesto.md</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value gradient-text-amber">21</div>
-                    <div class="stat-label">Law of 21 Verified Blocks</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value gradient-text-emerald">740x740</div>
-                    <div class="stat-label">Square Video & Nostr <20MB</div>
-                </div>
+                <p style="font-size: 1.05rem; color: #1c1917; font-weight: 600; line-height: 1.6; margin-bottom: 0.75rem;">
+                    "Artificial Intelligence has substantially reduced the cost of generating knowledge. The challenge is no longer generating information—<strong>the challenge is reviewing it.</strong>"
+                </p>
+                <p style="font-size: 0.95rem; color: #44403c; line-height: 1.65;">
+                    Shutri is built for domain experts who want to <strong>start peer review services in their own domain of expertise</strong>. While we operate <code>deepDive</code> as a reference ledger and welcome research submissions, our true goal is to democratize the peer review process itself so any community can instantiate its own open review node.
+                </p>
             </div>
         </div>
     </header>
@@ -127,7 +101,7 @@
     <main class="main-layout">
         
         <!-- Section: Interactive deepMind Terminal -->
-        <section class="section-container" id="terminal-section">
+        <section class="section-container section-dark" id="terminal-section">
             <div class="terminal-card">
                 <div class="terminal-header">
                     <div class="terminal-dots">
@@ -149,11 +123,12 @@
                     <span class="tags-label">Quick Queries:</span>
                     <div class="tags-scroll">
                         <button class="tag-btn" onclick="askTerminal('What is Shutri?')">1. What is Shutri?</button>
-                        <button class="tag-btn" onclick="askTerminal('How do I submit research?')">2. How to Submit</button>
-                        <button class="tag-btn" onclick="askTerminal('What is the 3 Pillar Architecture?')">3. SMS Pillars</button>
-                        <button class="tag-btn" onclick="askTerminal('Why GitHub?')">4. Why GitHub?</button>
-                        <button class="tag-btn" onclick="askTerminal('What is the Mempool?')">5. Mempool Phase</button>
-                        <button class="tag-btn" onclick="askTerminal('What is 740x740 Square Video?')">6. Nostr & Video</button>
+                        <button class="tag-btn" onclick="askTerminal('What is the Shutri Manifesto?')">2. The Manifesto</button>
+                        <button class="tag-btn" onclick="askTerminal('How do I submit research?')">3. How to Submit</button>
+                        <button class="tag-btn" onclick="askTerminal('What is the 3 Pillar Architecture?')">4. SMS Pillars</button>
+                        <button class="tag-btn" onclick="askTerminal('Why GitHub?')">5. Why GitHub?</button>
+                        <button class="tag-btn" onclick="askTerminal('What is the Mempool?')">6. Mempool Phase</button>
+                        <button class="tag-btn" onclick="askTerminal('What is 740x740 Square Video?')">7. Nostr & Video</button>
                     </div>
                 </div>
 
@@ -175,7 +150,7 @@
         </section>
 
         <!-- Section: Single Native Submission Form Card -->
-        <section id="submission-section" class="section-container">
+        <section id="submission-section" class="section-container section-light">
             <div class="submission-card">
                 <div class="section-header">
                     <span class="section-tag">Direct Intake Portal</span>
@@ -230,8 +205,84 @@
             </div>
         </section>
 
+        <!-- Section: The Shutri Manifesto (v0.1) -->
+        <section id="manifesto" class="section-container section-dark">
+            <div class="submission-card border-indigo" style="background: rgba(15, 23, 42, 0.75);">
+                <div class="section-header">
+                    <span class="section-tag">Reference Architecture (v0.1)</span>
+                    <h2 class="section-title">The Shutri Manifesto</h2>
+                    <p class="section-subtitle">As the cost of generating research approaches zero, the limiting factor becomes expert review. The Shutri Manifesto defines a practical reference architecture for conducting open, AI-assisted research review using freely available tools.</p>
+                </div>
+
+                <!-- Democratizing Peer Review Banner -->
+                <div style="background: rgba(79, 70, 229, 0.12); border: 1px solid rgba(129, 140, 248, 0.3); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem;">
+                    <h4 style="color: #a5b4fc; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Empowering Domain Experts to Launch Independent Peer Review Services</span>
+                    </h4>
+                    <p style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.6;">
+                        Shutri is built for domain experts, independent researchers, and specialized communities who want to <strong>start peer review services in their own domain of expertise</strong>. We operate <code>deepDive</code> as an open reference ledger and authors are welcome to submit research, but the true goal is to <strong>democratize the peer review process itself</strong>—enabling anyone to operate an open, AI-assisted review node in their own discipline.
+                    </p>
+                </div>
+
+                <div class="etymology-cards-grid" style="margin-bottom: 1.5rem;">
+                    <div class="etym-card border-purple-subtle">
+                        <div class="etym-root-badge">
+                            <span class="root-title">⚡ Zero Operational Cost</span>
+                        </div>
+                        <p>Minimizes recurring infrastructure costs so that participation is limited only by reviewer attention, not financial resources.</p>
+                    </div>
+
+                    <div class="etym-card border-indigo-subtle">
+                        <div class="etym-root-badge">
+                            <span class="root-title">🔓 Public by Default</span>
+                        </div>
+                        <p>Research, discussions, revisions, and published ledgers remain publicly accessible without paywalls.</p>
+                    </div>
+
+                    <div class="etym-card border-amber-subtle">
+                        <div class="etym-root-badge">
+                            <span class="root-title">🧩 Modular & Extensible</span>
+                        </div>
+                        <p>Independent capabilities (mdIngest, DDMA, mdBook) can be replaced or adapted to any discipline's workflow.</p>
+                    </div>
+
+                    <div class="etym-card border-purple-subtle">
+                        <div class="etym-root-badge">
+                            <span class="root-title">🤝 AI-Assisted, Human-Reviewed</span>
+                        </div>
+                        <p>AI accelerates discovery & synthesis while human reviewers remain strictly responsible for every published conclusion.</p>
+                    </div>
+
+                    <div class="etym-card border-indigo-subtle span-full-etym">
+                        <div class="etym-root-badge">
+                            <span class="root-title">🧠 Proof of Attention</span>
+                        </div>
+                        <p>Reviewer contributions generate visible public artifacts (publications, podcasts, diagrams) constituting a verifiable, open record of careful intellectual work.</p>
+                    </div>
+                </div>
+
+                <div class="hero-actions" style="justify-content: flex-start; gap: 1rem;">
+                    <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" class="cta-btn primary-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        <span>Read Full Manifesto (manifesto.md)</span>
+                    </a>
+
+                    <a href="https://deepdive.shutri.com" target="_blank" class="cta-btn secondary-btn">
+                        <span>Explore deepDive Reference Deployment</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Section: The 3 Pillars of Shutri Media Solution (SMS) -->
-        <section id="pillars" class="section-container">
+        <section id="pillars" class="section-container section-light">
             <div class="section-header center">
                 <span class="section-tag">SMS Architecture</span>
                 <h2 class="section-title">The Three Pillars of Shutri Media Solution</h2>
@@ -315,7 +366,7 @@
         </section>
 
         <!-- Section: 4-Phase Lifecycle Workflow -->
-        <section id="workflow" class="section-container">
+        <section id="workflow" class="section-container section-dark">
             <div class="workflow-card">
                 <div class="section-header">
                     <span class="section-tag">Lifecycle Protocol</span>
@@ -438,11 +489,26 @@
             </div>
             <div class="footer-links">
                 <a href="https://github.com/ashutoshmjain/shutri" target="_blank">GitHub Repository</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank">The Shutri Manifesto (v0.1)</a>
                 <a href="https://deepdive.shutri.com" target="_blank">deepDive PWA Ledger</a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank">SOUL.md Blueprint</a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank">SMS Architecture</a>
             </div>
         </div>
+
+        <div class="footer-social-section" style="max-width: 1200px; margin: 0 auto 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Podcast & Social Syndication Channels:</span>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <a href="https://open.spotify.com/show/7doWf0GON9JsG6r8igc7RE" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #1db954; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(29, 185, 84, 0.1); border: 1px solid rgba(29, 185, 84, 0.25); border-radius: 20px;">Spotify</a>
+                <a href="https://podcasts.apple.com/us/podcast/deep-dive-with-gemini/id1844532251" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #c084fc; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(192, 132, 252, 0.1); border: 1px solid rgba(192, 132, 252, 0.25); border-radius: 20px;">Apple Podcasts</a>
+                <a href="https://music.youtube.com/playlist?list=PLIX4sFsmu37qtJMlv-VzMYWM26M1QyXTe" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #f87171; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.25); border-radius: 20px;">YouTube Music</a>
+                <a href="https://www.youtube.com/playlist?list=PLIX4sFsmu37q8rU8HKTLhdLPZQadcvx-K" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #ef4444; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 20px;">YouTube</a>
+                <a href="https://fountain.fm/show/7LBvZT6ffpGyubvk8aSF" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #fbbf24; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 20px;">Fountain.fm</a>
+                <a href="https://www.tiktok.com/@shutoshabot" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #38bdf8; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 20px;">TikTok</a>
+                <a href="https://www.instagram.com/shutoshabot/" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #f472b6; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(244, 114, 182, 0.1); border: 1px solid rgba(244, 114, 182, 0.25); border-radius: 20px;">Instagram</a>
+            </div>
+        </div>
+
         <div class="footer-bottom">
             <span>&copy; 2026 Shutri Initiative. Powered by Google Antigravity & Gemini.</span>
         </div>
@@ -452,6 +518,8 @@
     <script>
         const QNA_DB = {
             "what is shutri": "Shutri is an open-source collaborative intelligence platform and peer-review registry. It replaces dark, insular peer review with a public, transparent dialogue between human researchers and deepMind AI (dm).",
+            "manifesto": "The Shutri Manifesto (v0.1) specifies a reference architecture for open AI-assisted research review. It outlines zero operational cost, public-by-default review, modular tools (Publication Utilities, DDMA Social Automation, Knowledge Ledger), and Proof of Attention.",
+            "what is the shutri manifesto": "The Shutri Manifesto (v0.1) specifies a reference architecture for open AI-assisted research review. It outlines zero operational cost, public-by-default review, modular tools (Publication Utilities, DDMA Social Automation, Knowledge Ledger), and Proof of Attention.",
             "how to submit": "Simply scroll down to the submission form on this page or click 'Submit Research' in the top header.",
             "what is the 3 pillar architecture": "The Shutri Media Solution (SMS) consists of 3 Pillars: 1. Research Intake (shutri Form/GitHub), 2. Research Publishing (mdIngest Rust Engine + deepDive PWA Ledger), 3. Research Promotion (DDMA 740x740 Square Video & Audio).",
             "why github": "GitHub Issues provides a transparent, version-controlled, AI-friendly, and open substrate for peer review and research tracking.",
