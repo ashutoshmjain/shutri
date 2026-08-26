@@ -23,8 +23,122 @@
     <div class="glow-sphere sphere-2"></div>
     <div class="glow-sphere sphere-3"></div>
 
+    <!-- Mobile Header -->
+    <header class="mobile-header mobile-only">
+        <a href="#" class="brand-wordmark">S H U T R I</a>
+        <button class="menu-trigger" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </header>
+
+    <!-- Mobile Hero Section -->
+    <section class="mobile-hero mobile-only">
+        <h1 class="mobile-hero-title">A reference architecture for open peer review.</h1>
+        <div class="accent-divider"></div>
+        <p class="mobile-hero-tagline">
+            Independent. Composable. Verifiable.<br>
+            Built for reviewers, by reviewers.
+        </p>
+    </section>
+
+    <!-- Mobile Architecture Flow Section -->
+    <section class="mobile-arch-section mobile-only" id="mobile-arch">
+        <span class="section-label">THE ARCHITECTURE</span>
+        
+        <div class="arch-cards-row">
+            <span class="arch-flow-arrow arrow-1">→</span>
+            <span class="arch-flow-arrow arrow-2">→</span>
+
+            <!-- Publication Card -->
+            <a href="https://github.com/ashutoshmjain/mdIngest" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
+                <span class="arch-card-heading">PUBLICATION</span>
+                <div class="arch-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="arch-stack-list">
+                    <span class="arch-stack-item">mdIngest</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">mdBook</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">PWA</span>
+                </div>
+            </a>
+
+            <!-- Social Card -->
+            <a href="https://github.com/ashutoshmjain/ddma" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
+                <span class="arch-card-heading">SOCIAL</span>
+                <div class="arch-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </div>
+                <div class="arch-stack-list">
+                    <span class="arch-stack-item">DDMA</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item" style="font-size:0.65rem;">740x740</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item" style="font-size:0.65rem;">Nostr</span>
+                </div>
+            </a>
+
+            <!-- Knowledge Ledger Card -->
+            <a href="https://github.com/ashutoshmjain/shutri" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
+                <span class="arch-card-heading" style="font-size:0.55rem;">KNOWLEDGE LEDGER</span>
+                <div class="arch-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <div class="arch-stack-list">
+                    <span class="arch-stack-item">Mempool</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">Template</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">Chain</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="arch-bottom-loop">
+            <span class="loop-line"></span>
+            <span>ACCUMULATED KNOWLEDGE</span>
+            <span class="loop-line"></span>
+        </div>
+    </section>
+
+    <!-- Mobile Reference Deployment Section -->
+    <section class="mobile-deployment-section mobile-only" id="mobile-deepdive">
+        <span class="section-label">REFERENCE DEPLOYMENT</span>
+
+        <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="deployment-card">
+            <div class="deployment-icon-wrap">
+                🧭
+            </div>
+            <div class="deployment-info">
+                <div class="deployment-title">deepDive</div>
+                <div class="deployment-desc">A working example of the complete system.</div>
+            </div>
+            <div class="deployment-arrow">→</div>
+        </a>
+    </section>
+
+    <!-- Mobile Manifesto Callout Section -->
+    <section class="mobile-manifesto-section mobile-only" id="mobile-manifesto">
+        <span class="section-label">MANIFESTO</span>
+
+        <div class="manifesto-quote-box">
+            <p class="manifesto-text">
+                Shutri is not a platform.<br>
+                It is a reference architecture.<br>
+                For a peer review ecosystem owned by no one,<br>
+                and usable by everyone.
+            </p>
+        </div>
+
+        <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" rel="noopener noreferrer" class="manifesto-link-btn">
+            <span>READ THE MANIFESTO</span>
+            <span>→</span>
+        </a>
+    </section>
+
     <!-- Navigation Header -->
-    <nav class="nav-container">
+    <nav class="nav-container desktop-only">
         <div class="nav-content">
             <a href="#" class="brand-logo">
                 <div class="logo-icon">
@@ -67,7 +181,7 @@
     </nav>
 
     <!-- Main Hero Section -->
-    <header class="hero-section">
+    <header class="hero-section desktop-only">
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="pulse-dot"></span>
@@ -106,7 +220,7 @@
     </header>
 
     <!-- Main Body Container -->
-    <main class="main-layout">
+    <main class="main-layout desktop-only">
         
         <!-- Section: Interactive deepMind Terminal -->
         <section class="section-container section-dark" id="terminal-section">
@@ -546,6 +660,104 @@
             </div>
         </div>
 
+    <!-- Slide-out Mobile Menu Drawer -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()">
+        <div class="mobile-menu-drawer" onclick="event.stopPropagation()">
+            <div class="mobile-menu-header">
+                <span class="brand-wordmark">S H U T R I</span>
+                <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
+            </div>
+            <div class="mobile-menu-links">
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">📜</span>
+                    <span>Manifesto (manifesto.md)</span>
+                </a>
+                <a href="#mobile-arch" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">🏛️</span>
+                    <span>Shutri Architecture</span>
+                </a>
+                <a href="https://deepdive.shutri.com" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">🧭</span>
+                    <span>deepDive Publication</span>
+                </a>
+                <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">🎬</span>
+                    <span>Editor Preview (Infographics)</span>
+                </a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">📐</span>
+                    <span>SOUL.md Blueprint</span>
+                </a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">⚙️</span>
+                    <span>SMS Master Architecture</span>
+                </a>
+                <a href="https://github.com/ashutoshmjain/shutri" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">📦</span>
+                    <span>GitHub Repository</span>
+                </a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="menu-action-btn primary" onclick="toggleMobileMenu(); window.open('https://github.com/ashutoshmjain/shutri/issues', '_blank');">
+                    <span>Submit Research via GitHub</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Bottom Navigation Bar -->
+    <nav class="bottom-nav-bar mobile-only">
+        <a href="#" class="nav-tab active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>HOME</span>
+        </a>
+        <a href="#mobile-arch" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>ARCH</span>
+        </a>
+        <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>DEEPDIVE</span>
+        </a>
+        <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" rel="noopener noreferrer" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>MANIFESTO</span>
+        </a>
+        <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" rel="noopener noreferrer" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            <span>INFOGRAPHICS</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-title">Shutri Collaborative Intelligence Registry</span>
+                <p>An open-access, non-commercial research substrate. Governed by Creative Commons CC BY-SA 4.0.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/ashutoshmjain/shutri" target="_blank">GitHub Repository</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank">The Shutri Manifesto (v0.1)</a>
+                <a href="https://deepdive.shutri.com" target="_blank">deepDive PWA Ledger</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank">SOUL.md Blueprint</a>
+                <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank">SMS Architecture</a>
+            </div>
+        </div>
+
+        <div class="footer-social-section" style="max-width: 1200px; margin: 0 auto 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <span style="font-size: 0.8rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Podcast &amp; Social Syndication Channels:</span>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <a href="https://open.spotify.com/show/7doWf0GON9JsG6r8igc7RE" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #1db954; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(29, 185, 84, 0.1); border: 1px solid rgba(29, 185, 84, 0.25); border-radius: 20px;">Spotify</a>
+                <a href="https://podcasts.apple.com/us/podcast/deep-dive-with-gemini/id1844532251" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #c084fc; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(192, 132, 252, 0.1); border: 1px solid rgba(192, 132, 252, 0.25); border-radius: 20px;">Apple Podcasts</a>
+                <a href="https://music.youtube.com/playlist?list=PLIX4sFsmu37qtJMlv-VzMYWM26M1QyXTe" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #f87171; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.25); border-radius: 20px;">YouTube Music</a>
+                <a href="https://www.youtube.com/playlist?list=PLIX4sFsmu37q8rU8HKTLhdLPZQadcvx-K" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #ef4444; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 20px;">YouTube</a>
+                <a href="https://fountain.fm/show/7LBvZT6ffpGyubvk8aSF" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #fbbf24; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 20px;">Fountain.fm</a>
+                <a href="https://www.tiktok.com/@shutoshabot" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #38bdf8; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 20px;">TikTok</a>
+                <a href="https://www.instagram.com/shutoshabot/" target="_blank" style="font-size: 0.775rem; font-weight: 600; color: #f472b6; text-decoration: none; padding: 0.3rem 0.75rem; background: rgba(244, 114, 182, 0.1); border: 1px solid rgba(244, 114, 182, 0.25); border-radius: 20px;">Instagram</a>
+            </div>
+        </div>
+
         <div class="footer-bottom">
             <span>&copy; 2026 Shutri Initiative. Powered by Google Antigravity & Gemini.</span>
         </div>
@@ -553,6 +765,17 @@
 
     <!-- Interactive Terminal & Form Logic -->
     <script>
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            if (overlay) {
+                overlay.classList.toggle('active');
+                if (overlay.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+        }
         const QNA_DB = {
             "what is shutri": "Shutri is an open-source collaborative intelligence platform and peer-review registry. It replaces dark, insular peer review with a public, transparent dialogue between human researchers and deepMind AI (dm).",
             "manifesto": "The Shutri Manifesto (v0.1) specifies a reference architecture for open AI-assisted research review. It outlines zero operational cost, public-by-default review, modular tools (Publication Utilities, DDMA Social Automation, Knowledge Ledger), and Proof of Attention.",

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shutri — Minimalist Mobile Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #fbf9f5;
+            --bg-card: #ffffff;
+            --border-subtle: #e7e5e4;
+            --text-main: #1c1917;
+            --text-muted: #78716c;
+            --accent-amber: #c2410c;
+            --accent-indigo: #4f46e5;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 1.5rem 1.25rem 6rem;
+            max-width: 480px;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Brand Header */
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            padding-top: 0.5rem;
+        }
+
+        .brand-wordmark {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            color: var(--text-main);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .menu-trigger {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem;
+        }
+
+        /* Hero Section */
+        .hero-title {
+            font-family: var(--font-sans);
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.18;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
+        }
+
+        .accent-divider {
+            width: 42px;
+            height: 2px;
+            background-color: #d97706;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-tagline {
+            font-size: 0.95rem;
+            color: #57534e;
+            line-height: 1.5;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        /* Section Headings */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* The 3 Architecture Cards Row */
+        .arch-flow-container {
+            margin-bottom: 3rem;
+        }
+
+        .arch-cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+            position: relative;
+        }
+
+        .arch-flow-arrow {
+            position: absolute;
+            top: 40%;
+            font-size: 0.8rem;
+            color: #a8a29e;
+            transform: translateY(-50%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .arrow-1 { left: 31.5%; }
+        .arrow-2 { left: 64.8%; }
+
+        .arch-mini-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .arch-mini-card:active {
+            transform: scale(0.97);
+            border-color: #6366f1;
+        }
+
+        .arch-card-heading {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #44403c;
+            margin-bottom: 0.75rem;
+        }
+
+        .arch-card-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.85rem;
+            color: #1c1917;
+        }
+
+        .arch-stack-list {
+            font-size: 0.75rem;
+            color: #57534e;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .arch-stack-item {
+            font-weight: 500;
+        }
+
+        .arch-stack-sep {
+            font-size: 0.6rem;
+            color: #d6d3d1;
+        }
+
+        .arch-bottom-loop {
+            margin-top: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #a8a29e;
+        }
+
+        .loop-line {
+            height: 1px;
+            flex: 1;
+            border-top: 1px dashed #d6d3d1;
+        }
+
+        /* Reference Deployment Card */
+        .deployment-section {
+            margin-bottom: 3rem;
+        }
+
+        .deployment-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 1.25rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+
+        .deployment-card:active {
+            transform: scale(0.98);
+            border-color: #4f46e5;
+        }
+
+        .deployment-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f3efe9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .deployment-info {
+            flex: 1;
+        }
+
+        .deployment-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.15rem;
+        }
+
+        .deployment-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .deployment-arrow {
+            font-size: 1.1rem;
+            color: #78716c;
+            transition: transform 0.2s ease;
+        }
+
+        /* Manifesto Callout */
+        .manifesto-section {
+            margin-bottom: 3rem;
+        }
+
+        .manifesto-quote-box {
+            border-left: 2.5px solid #d97706;
+            padding-left: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .manifesto-text {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .manifesto-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #b45309;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .manifesto-link-btn:active {
+            color: #78350f;
+        }
+
+        /* Bottom Fixed Navigation Bar */
+        .bottom-nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(251, 249, 245, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0.5rem calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+            z-index: 100;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .nav-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            text-decoration: none;
+            color: #78716c;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            transition: color 0.15s ease;
+        }
+
+        .nav-tab svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
+
+        .nav-tab.active {
+            color: #b45309;
+        }
+
+        .nav-tab:active {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="mobile-header">
+        <a href="#" class="brand-wordmark">S H U T R I</a>
+        <button class="menu-trigger" onclick="alert('Menu: Manifesto, Architecture, Infographics, Publication, Submit')" aria-label="Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </header>
+
+    <!-- Hero Title -->
+    <section>
+        <h1 class="hero-title">A reference architecture for open peer review.</h1>
+        <div class="accent-divider"></div>
+        <p class="hero-tagline">
+            Independent. Composable. Verifiable.<br>
+            Built for reviewers, by reviewers.
+        </p>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="arch-flow-container" id="arch">
+        <span class="section-label">THE ARCHITECTURE</span>
+        
+        <div class="arch-cards-row">
+            <span class="arch-flow-arrow arrow-1">→</span>
+            <span class="arch-flow-arrow arrow-2">→</span>
+
+            <!-- Publication Card -->
+            <a href="https://github.com/ashutoshmjain/mdIngest" target="_blank" class="arch-mini-card">
+                <span class="arch-card-heading">PUBLICATION</span>
+                <div class="arch-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="arch-stack-list">
+                    <span class="arch-stack-item">mdIngest</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">mdBook</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">PWA</span>
+                </div>
+            </a>
+
+            <!-- Social Card -->
+            <a href="https://github.com/ashutoshmjain/ddma" target="_blank" class="arch-mini-card">
+                <span class="arch-card-heading">SOCIAL</span>
+                <div class="arch-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </div>
+                <div class="arch-stack-list">
+                    <span class="arch-stack-item">DDMA</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item" style="font-size:0.65rem;">740x740</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item" style="font-size:0.65rem;">Nostr</span>
+                </div>
+            </a>
+
+            <!-- Knowledge Ledger Card -->
+            <a href="https://github.com/ashutoshmjain/shutri" target="_blank" class="arch-mini-card">
+                <span class="arch-card-heading" style="font-size:0.55rem;">KNOWLEDGE LEDGER</span>
+                <div class="arch-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <div class="arch-stack-list">
+                    <span class="arch-stack-item">Mempool</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">Template</span>
+                    <span class="arch-stack-sep">│</span>
+                    <span class="arch-stack-item">Chain</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="arch-bottom-loop">
+            <span class="loop-line"></span>
+            <span>ACCUMULATED KNOWLEDGE</span>
+            <span class="loop-line"></span>
+        </div>
+    </section>
+
+    <!-- Reference Deployment Section -->
+    <section class="deployment-section" id="deepdive">
+        <span class="section-label">REFERENCE DEPLOYMENT</span>
+
+        <a href="https://deepdive.shutri.com" target="_blank" class="deployment-card">
+            <div class="deployment-icon-wrap">
+                🧭
+            </div>
+            <div class="deployment-info">
+                <div class="deployment-title">deepDive</div>
+                <div class="deployment-desc">A working example of the complete system.</div>
+            </div>
+            <div class="deployment-arrow">→</div>
+        </a>
+    </section>
+
+    <!-- Manifesto Callout Section -->
+    <section class="manifesto-section" id="manifesto">
+        <span class="section-label">MANIFESTO</span>
+
+        <div class="manifesto-quote-box">
+            <p class="manifesto-text">
+                Shutri is not a platform.<br>
+                It is a reference architecture.<br>
+                For a peer review ecosystem owned by no one,<br>
+                and usable by everyone.
+            </p>
+        </div>
+
+        <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" class="manifesto-link-btn">
+            <span>READ THE MANIFESTO</span>
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Sticky Bottom Nav Bar -->
+    <nav class="bottom-nav-bar">
+        <a href="#" class="nav-tab active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>HOME</span>
+        </a>
+        <a href="#arch" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>ARCH</span>
+        </a>
+        <a href="https://deepdive.shutri.com" target="_blank" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>DEEPDIVE</span>
+        </a>
+        <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>MANIFESTO</span>
+        </a>
+        <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            <span>INFOGRAPHICS</span>
+        </a>
+    </nav>
+
+</body>
+</html>
