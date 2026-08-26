@@ -876,15 +876,15 @@ body {
 }
 
 /* ==========================================================================
-   Footer
+   Footer (Harmonized Warm Light Sand Editorial Theme)
    ========================================================================== */
 .footer-container {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: #060911;
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-light);
     padding: 3.5rem 1.5rem 2.5rem;
     position: relative;
     z-index: 1;
-    color: #f8fafc;
+    color: var(--text-dark-primary);
 }
 
 .footer-content {
@@ -907,12 +907,12 @@ body {
     font-weight: 700;
     display: block;
     margin-bottom: 0.5rem;
-    color: #ffffff;
+    color: var(--text-dark-primary);
 }
 
 .footer-brand p {
     font-size: 0.875rem;
-    color: #94a3b8;
+    color: var(--text-dark-muted);
     line-height: 1.6;
 }
 
@@ -924,7 +924,7 @@ body {
 }
 
 .footer-links a {
-    color: #cbd5e1;
+    color: var(--text-dark-secondary);
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -932,7 +932,7 @@ body {
 }
 
 .footer-links a:hover {
-    color: #818cf8;
+    color: #b45309;
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -941,7 +941,7 @@ body {
     max-width: 1200px;
     margin: 0 auto 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -950,17 +950,17 @@ body {
 }
 
 .footer-social-section span {
-    color: #94a3b8 !important;
+    color: var(--text-dark-muted) !important;
 }
 
 .footer-bottom {
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid var(--border-light);
     text-align: center;
     font-size: 0.8rem;
-    color: #64748b;
+    color: var(--text-dark-muted);
 }
 
 /* ==========================================================================
@@ -1651,30 +1651,39 @@ body {
         bottom: 0;
         left: 0;
         right: 0;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
         background: rgba(251, 249, 245, 0.96);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-top: 1px solid var(--border-light);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(231, 229, 228, 0.9);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
         display: flex;
+        align-items: center;
         justify-content: space-around;
-        padding: 0.5rem 0.5rem calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
+        padding: 0.4rem 0.25rem calc(env(safe-area-inset-bottom, 0px) + 0.35rem);
         z-index: 1000;
+        box-sizing: border-box;
     }
 
     .nav-tab {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.2rem;
+        justify-content: center;
+        flex: 1;
+        gap: 0.15rem;
         text-decoration: none;
         color: #78716c;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         font-weight: 600;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        padding: 0.3rem 0.5rem;
+        padding: 0.25rem 0.2rem;
         border-radius: 8px;
-        transition: color 0.15s ease;
+        transition: color 0.15s ease, transform 0.15s ease;
+        text-align: center;
     }
 
     .nav-tab svg {
@@ -1685,6 +1694,12 @@ body {
 
     .nav-tab.active {
         color: #b45309;
+        font-weight: 700;
+    }
+
+    .nav-tab:active {
+        color: var(--text-dark-primary);
+        transform: scale(0.95);
     }
 
     /* Slide-out Mobile Menu Drawer */
