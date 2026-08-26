@@ -10,51 +10,46 @@ The **Shutri Media Solution (SMS)** is an end-to-end, comprehensive research, pu
 
 ```mermaid
 graph TD
-    subgraph Pillar1["Pillar 1: Research Intake (Staging & Review)"]
+    Roof["🏛️ Architecture Roof: deepDive Publication (deepdive.shutri.com)<br/>Immutable Ledger • PWA • Law of 21 • Multi-Modal Audio & Infographics"]
+    
+    subgraph Pillar1["Pillar 1: Research Intake"]
         A["GitHub Issues & Portal"] -->|Mempool Triage & dm AI Review| B["shutri Repository"]
     end
 
-    subgraph Pillar2["Pillar 2: Research Publishing (Knowledge Ledger)"]
-        C["mdIngest (Upstream Engine: coolchain / md-publish)"] -->|Sanitizes & Indexes| D["deepDive (Production Application & PWA Ledger)"]
+    subgraph Pillar2["Pillar 2: Research Publishing"]
+        C["mdIngest Repository<br/>(Rust CLI: coolchain / md-publish)"]
     end
 
-    subgraph Pillar3["Pillar 3: Research Promotion (Multi-Modal Media Engine)"]
-        E["ddma (Media Automation Engine)"] -->|Whisper + 740x740 Square Video + Mosaic AI| F["Multi-Platform Syndication (Spotify, YouTube, Nostr <20MB, IG, TikTok)"]
+    subgraph Pillar3["Pillar 3: Research Dissemination"]
+        E["ddma Repository<br/>(Media Automation & 740x740 Engine)"]
     end
 
     B -->|Lossless Python Payload| C
-    D -->|Episode Audio & Text| E
-    E -->|Square Video Carousel & Podcast Links| D
+    C -->|Sanitizes, Hardens KaTeX & Compiles| Roof
+    Roof -->|Episode Transcripts & Audio| E
+    E -->|740x740 Square Videos & Nostr Syndication| Roof
 ```
 
 ## 📐 2. The Three Operational Pillars & "Open Restaurant vs. Kitchen" Model
 
-The architecture decouples **Public Open-Source Engine Codebases** ("The Open Restaurants") from the **Master Production Ledger & Asset Kitchen** ("The Kitchen"):
+The architecture decouples **The Roof (Reference Publication)** from **The Three Foundational Open-Source Engine Pillars**:
 
-* **Public Open-Source Engine Codebases:**
-  * **[`mdIngest`](https://github.com/ashutoshmjain/mdIngest):** Upstream Rust publishing CLI (`md-publish`). Holds **zero episode content or media assets**.
-  * **[`ddma`](https://github.com/ashutoshmjain/ddma):** Upstream Python media automator codebase (`ddma.py`, `curator.html`). Holds the open-source media rendering engine tool.
-  * **[`shutri`](https://github.com/ashutoshmjain/shutri):** Public intake portal and peer review registry substrate.
+* **🏛️ The Architecture Roof — Reference Publication & Master Ledger ([`deepDive`](https://github.com/ashutoshmjain/deepDive) | [deepdive.shutri.com](https://deepdive.shutri.com)):**
+  * The living production ledger containing the 200+ `mdBook` episode ledger (`src/`, `SUMMARY.md`, PWA), KaTeX mathematical rigor, and the integrated Editor Preview infographics player.
+  * **Repository:** [`ashutoshmjain/deepDive`](https://github.com/ashutoshmjain/deepDive) • **Live Site:** [deepdive.shutri.com](https://deepdive.shutri.com)
 
-* **Master Production Ledger & Asset Kitchen ([`deepDive`](https://github.com/ashutoshmjain/deepDive)):**
-  * Serves as the single repository containing **both** the 200+ `mdBook` episode ledger (`src/`, `SUMMARY.md`, PWA) and the integrated **`deepDive/ddma/`** app instance holding all generated podcast audio, Nostr 740x740 square video clips, and infographic assets.
+* **Pillar 1: Research Intake ([`shutri`](https://github.com/ashutoshmjain/shutri) | [README](https://github.com/ashutoshmjain/shutri/blob/main/README.md))**
+  * **Role:** Intake staging, peer review, and community consensus.
+  * **Substrate:** Uses **GitHub Issue Management** as an open, transparent substrate where submitters lodge research drafts, AI (`deepMind`/`dm`) generates synthesis reports, human reviewers collaborate, and verified papers enter the **Mempool**.
+  * **Repository:** [`ashutoshmjain/shutri`](https://github.com/ashutoshmjain/shutri)
 
----
+* **Pillar 2: Research Publishing ([`mdIngest`](https://github.com/ashutoshmjain/mdIngest) | [README](https://github.com/ashutoshmjain/mdIngest/blob/master/README.md))**
+  * **Role:** A lean, platform-agnostic Rust CLI (`coolchain` / `md-publish`) and Python extractor (`extract.py`). Holds zero episode content; holds deterministic sanitization, KaTeX hardening, and mdBook preprocessor logic.
+  * **Repository:** [`ashutoshmjain/mdIngest`](https://github.com/ashutoshmjain/mdIngest)
 
-### Pillar 1: Research Intake ([`shutri`](https://github.com/ashutoshmjain/shutri) | [README](https://github.com/ashutoshmjain/shutri/blob/main/README.md))
-* **Role:** Intake staging, peer review, and community consensus.
-* **Substrate:** Uses **GitHub Issue Management** as an open, transparent substrate where submitters lodge research drafts, AI (`deepMind`/`dm`) generates synthesis reports, human reviewers collaborate, and verified papers enter the **Mempool**.
-* **Repository:** [`ashutoshmjain/shutri`](https://github.com/ashutoshmjain/shutri) • **Documentation:** [`shutri/README.md`](https://github.com/ashutoshmjain/shutri/blob/main/README.md)
-
-### Pillar 2: Research Publishing Engine & Master Ledger
-* **Upstream Open Engine ([`mdIngest`](https://github.com/ashutoshmjain/mdIngest) | [README](https://github.com/ashutoshmjain/mdIngest/blob/master/README.md)):** A lean, platform-agnostic Rust CLI (`coolchain` / `md-publish`). Holds zero episode content; holds only deterministic sanitization, KaTeX hardening, and indexer logic.
-  * **Repository:** [`ashutoshmjain/mdIngest`](https://github.com/ashutoshmjain/mdIngest) • **Documentation:** [`mdIngest/README.md`](https://github.com/ashutoshmjain/mdIngest/blob/master/README.md)
-* **Master Ledger & PWA ([`deepDive`](https://github.com/ashutoshmjain/deepDive) | [README](https://github.com/ashutoshmjain/deepDive/blob/master/README.md)):** The live, consumer-facing Progressive Web App ([deepdive.shutri.com](https://deepdive.shutri.com)) holding the 200+ episode ledger, PWA service workers, `SUMMARY.md` tree, and integrated media kitchen (`deepDive/ddma/`).
-  * **Repository:** [`ashutoshmjain/deepDive`](https://github.com/ashutoshmjain/deepDive) • **Documentation:** [`deepDive/README.md`](https://github.com/ashutoshmjain/deepDive/blob/master/README.md)
-
-### Pillar 3: Research Promotion & Integrated Media Kitchen ([`ddma`](https://github.com/ashutoshmjain/ddma) | [README](https://github.com/ashutoshmjain/ddma/blob/main/README.md))
-* **Public Engine Repo:** [`ashutoshmjain/ddma`](https://github.com/ashutoshmjain/ddma) — Open-source Python automation tool (`ddma.py`, Whisper, FFmpeg, Curator UI).
-* **Production Kitchen Instance:** Integrated inside [`deepDive/ddma/`](file:///c:/Users/ashut/OneDrive/Desktop/github/deepDive/ddma/) holding the live app and all episode media assets (podcasts, Nostr 740x740 square videos, title cards).
+* **Pillar 3: Research Dissemination ([`ddma`](https://github.com/ashutoshmjain/ddma) | [README](https://github.com/ashutoshmjain/ddma/blob/main/README.md))**
+  * **Role:** DeepDive Media Automator (`ddma.py`, Whisper, FFmpeg, Curator UI). Drives 740x740 square video rendering, Nostr protocol compliance (&lt; 20MB), audio crossfades, and dynamic motion graphics.
+  * **Repository:** [`ashutoshmjain/ddma`](https://github.com/ashutoshmjain/ddma)
 
 
 ---

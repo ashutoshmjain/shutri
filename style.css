@@ -549,6 +549,127 @@ body {
 }
 
 /* ==========================================================================
+   Architecture Roof / Pediment Card
+   ========================================================================== */
+.architecture-roof-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.08) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.architecture-roof-card:hover {
+    border-color: rgba(99, 102, 241, 0.45);
+    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.12);
+}
+.section-light .architecture-roof-card {
+    background: #ffffff;
+    border: 1px solid #e7e5e4;
+    box-shadow: var(--card-shadow-light);
+}
+.section-light .architecture-roof-card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.12);
+}
+
+.roof-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+.roof-tag-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--accent-indigo);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    margin-bottom: 0.25rem;
+}
+.roof-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark-primary);
+    margin: 0;
+}
+.inline-roof-link {
+    color: var(--accent-indigo);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.inline-roof-link:hover {
+    text-decoration: underline;
+    color: #4338ca;
+}
+
+.roof-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.roof-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.roof-btn-primary {
+    background: var(--accent-indigo);
+    color: #ffffff;
+    border: 1px solid var(--accent-indigo);
+}
+.roof-btn-primary:hover {
+    background: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    transform: translateY(-1px);
+}
+.roof-btn-repo {
+    background: rgba(15, 23, 42, 0.05);
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+.roof-btn-repo:hover {
+    background: rgba(15, 23, 42, 0.1);
+    color: #0f172a;
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+}
+
+.roof-description {
+    font-size: 0.95rem;
+    color: var(--text-dark-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.roof-features-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.roof-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
    Pillars Grid
    ========================================================================== */
 .pillars-grid {

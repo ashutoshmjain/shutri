@@ -293,8 +293,37 @@
         <section id="pillars" class="section-container section-light">
             <div class="section-header center">
                 <span class="section-tag">Shutri Research Architecture</span>
-                <h2 class="section-title">The Three Pillars of Open Peer Review</h2>
+                <h2 class="section-title">The Three Pillars &amp; Reference Implementation</h2>
                 <p class="section-subtitle">An end-to-end open-source ecosystem engineered for research <strong>Ingestion</strong>, <strong>Publication</strong>, and multi-modal <strong>Dissemination</strong>.</p>
+            </div>
+
+            <!-- Architectural Roof / Pediment: deepDive Publication -->
+            <div class="architecture-roof-card">
+                <div class="roof-header-row">
+                    <div class="roof-badge-wrap">
+                        <span class="roof-tag-badge">🏛️ Architecture Roof &amp; Reference Implementation</span>
+                        <h3 class="roof-title">deepDive Publication (<a href="https://deepdive.shutri.com" target="_blank" class="inline-roof-link">deepdive.shutri.com</a>)</h3>
+                    </div>
+                    <div class="roof-actions">
+                        <a href="https://deepdive.shutri.com" target="_blank" class="roof-btn roof-btn-primary" title="Open live peer-reviewed publication ledger">
+                            <span>🌐 Live Publication</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                        <a href="https://github.com/ashutoshmjain/deepDive" target="_blank" class="roof-btn roof-btn-repo" title="View deepDive GitHub repository">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            <span>ashutoshmjain/deepDive</span>
+                        </a>
+                    </div>
+                </div>
+                <p class="roof-description">
+                    The living reference implementation resting atop all three architectural pillars. An immutable, peer-reviewed knowledge ledger and Progressive Web App (PWA) governed by the <strong>Law of 21</strong>, featuring verified research synthesis, mathematical KaTeX hardening, interactive multi-modal audio waveforms, and 740x740 video infographics.
+                </p>
+                <div class="roof-features-row">
+                    <span class="roof-pill">📜 Law of 21 Consensus</span>
+                    <span class="roof-pill">⚡ PWA Offline Precache</span>
+                    <span class="roof-pill">📐 KaTeX LaTeX Hardening</span>
+                    <span class="roof-pill">🎧 Multi-Modal Infographics &amp; Audio</span>
+                </div>
             </div>
 
             <div class="pillars-grid">
@@ -334,12 +363,12 @@
                         </div>
                         <span class="pillar-number">Pillar 02</span>
                     </div>
-                    <h3>Research Publishing (`mdIngest` & `deepDive`)</h3>
-                    <p>Powered by the open-source Rust engine <strong>mdIngest (`coolchain`)</strong> to sanitize KaTeX math and citations into <strong>deepDive</strong> (<span class="inline-site-link" onclick="event.stopPropagation(); window.open('https://deepdive.shutri.com', '_blank');">deepdive.shutri.com</span>)—a high-performance PWA ledger governed by the <strong>Law of 21</strong>.</p>
+                    <h3>Research Publishing (`mdIngest`)</h3>
+                    <p>Powered by the open-source Rust engine <strong>mdIngest (`coolchain`)</strong> and Python extractor (`extract.py`). Sanitizes LaTeX/KaTeX math, validates citations, and structures multi-modal book chapters for automated mdBook compilation.</p>
                     <ul class="pillar-list">
                         <li><span class="bullet">▪</span> Lossless Python Payload (`extract.py`)</li>
                         <li><span class="bullet">▪</span> Absolute KaTeX Math Hardening</li>
-                        <li><span class="bullet">▪</span> Progressive Web App (PWA) Precache</li>
+                        <li><span class="bullet">▪</span> Rust mdBook Preprocessor Engine</li>
                     </ul>
                     <div class="pillar-repo-link">
                         <span>ashutoshmjain/mdIngest</span>
@@ -359,7 +388,7 @@
                         <span class="pillar-number">Pillar 03</span>
                     </div>
                     <h3>Research Dissemination (`ddma`)</h3>
-                    <p>Driven by <strong>DDMA (DeepDive Media Automator)</strong>. Uses word-level Whisper transcription and parameter-tuned `acrossfade` stings to output master podcasts and <strong>740x740 Square Videos (<20 MB for Nostr relay compliance)</strong>.</p>
+                    <p>Driven by <strong>DDMA (DeepDive Media Automator)</strong>. Uses word-level Whisper transcription and parameter-tuned `acrossfade` stings to output master podcasts and <strong>740x740 Square Videos (&lt;20 MB for Nostr relay compliance)</strong>.</p>
                     <ul class="pillar-list">
                         <li><span class="bullet">▪</span> 740x740 Square Video Standard</li>
                         <li><span class="bullet">▪</span> Nostr Protocol Compliance (&lt; 20MB)</li>
@@ -439,7 +468,7 @@
                                 <span class="sanskrit-character">त्रि</span>
                                 <span class="root-title">Tri = The Three Pillars</span>
                             </div>
-                            <p>Represents the SMS operational trinity: <strong>Pillar 1 Intake (`shutri`)</strong>, <strong>Pillar 2 Publishing (`mdIngest`/`deepDive`)</strong>, and <strong>Pillar 3 Promotion (`ddma`)</strong>.</p>
+                            <p>Represents the SMS operational trinity: <strong>Pillar 1 Intake (`shutri`)</strong>, <strong>Pillar 2 Publishing (`mdIngest`)</strong>, and <strong>Pillar 3 Promotion (`ddma`)</strong>.</p>
                         </div>
                         <div class="etym-card border-amber-subtle span-full-etym">
                             <div class="etym-root-badge">
