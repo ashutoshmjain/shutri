@@ -43,6 +43,7 @@ body {
     max-width: 1080px;
     margin: 0 auto;
     padding: 2.25rem 2rem 5rem;
+    width: 100%;
 }
 
 /* ==========================================================================
@@ -55,6 +56,7 @@ body {
     padding-bottom: 2.5rem;
     margin-bottom: 3.5rem;
     border-bottom: 1px solid var(--border-light);
+    width: 100%;
 }
 
 .brand-wordmark {
@@ -75,40 +77,25 @@ body {
 .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
+    gap: 2.25rem;
 }
 
 .nav-tab-link {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.08em;
-    color: var(--text-dark-muted);
+    color: var(--text-dark-secondary);
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.4rem 0.2rem;
     position: relative;
     transition: color 0.2s ease;
+    cursor: pointer;
 }
 
 .nav-tab-link:hover {
-    color: var(--text-dark-primary);
-}
-
-.nav-tab-link.active {
     color: var(--accent-amber-dark);
-    font-weight: 700;
-}
-
-.nav-tab-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--accent-amber);
-    border-radius: 2px;
 }
 
 .desktop-header-action {
@@ -155,7 +142,7 @@ body {
 }
 
 /* ==========================================================================
-   Hero Section
+   Hero Section (Single Row Headline on Desktop)
    ========================================================================== */
 .hero-section {
     margin-bottom: 4.5rem;
@@ -165,14 +152,15 @@ body {
 
 .hero-title {
     font-family: var(--font-sans);
-    font-size: 3.35rem;
+    font-size: clamp(1.8rem, 2.75vw, 2.7rem);
     font-weight: 400;
-    line-height: 1.16;
+    line-height: 1.2;
     letter-spacing: -0.025em;
     color: var(--text-dark-primary);
     margin-bottom: 1.5rem;
     width: 100%;
     max-width: 100%;
+    white-space: nowrap;
 }
 
 .accent-divider {
@@ -184,7 +172,7 @@ body {
 }
 
 .hero-tagline {
-    font-size: 1.25rem;
+    font-size: 1.225rem;
     color: var(--text-dark-secondary);
     line-height: 1.65;
     font-weight: 400;
@@ -211,6 +199,7 @@ body {
    ========================================================================== */
 .arch-section {
     margin-bottom: 4.5rem;
+    width: 100%;
 }
 
 .arch-cards-row {
@@ -218,6 +207,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
     position: relative;
+    width: 100%;
 }
 
 .arch-flow-arrow {
@@ -246,6 +236,7 @@ body {
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
 }
 
 .arch-mini-card:hover {
@@ -305,6 +296,7 @@ body {
     font-weight: 700;
     color: var(--text-dark-muted);
     letter-spacing: 0.1em;
+    width: 100%;
 }
 
 .loop-line {
@@ -318,6 +310,7 @@ body {
    ========================================================================== */
 .deployment-section {
     margin-bottom: 4.5rem;
+    width: 100%;
 }
 
 .deployment-card {
@@ -332,6 +325,7 @@ body {
     color: inherit;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
 }
 
 .deployment-card:hover {
@@ -385,12 +379,14 @@ body {
    ========================================================================== */
 .manifesto-section {
     margin-bottom: 4.5rem;
+    width: 100%;
 }
 
 .manifesto-quote-box {
     border-left: 3px solid var(--accent-amber);
     padding-left: 1.5rem;
     margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .manifesto-text {
@@ -399,6 +395,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark-primary);
     font-weight: 400;
+    width: 100%;
 }
 
 .manifesto-link-btn {
@@ -420,13 +417,14 @@ body {
 }
 
 /* ==========================================================================
-   Footer
+   Footer (Unbroken Width)
    ========================================================================== */
 .footer-container {
     border-top: 1px solid var(--border-light);
     padding-top: 3.5rem;
     margin-top: 2rem;
     color: var(--text-dark-primary);
+    width: 100%;
 }
 
 .footer-content {
@@ -436,22 +434,24 @@ body {
     gap: 3rem;
     flex-wrap: wrap;
     margin-bottom: 2.5rem;
+    width: 100%;
 }
 
 .footer-brand {
-    max-width: 440px;
+    flex: 1 1 360px;
+    max-width: 580px;
 }
 
 .footer-title {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 700;
     display: block;
     margin-bottom: 0.4rem;
     color: var(--text-dark-primary);
 }
 
-.footer-brand p {
-    font-size: 0.85rem;
+.footer-desc {
+    font-size: 0.875rem;
     color: var(--text-dark-muted);
     line-height: 1.6;
 }
@@ -486,6 +486,7 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .social-label {
@@ -529,6 +530,176 @@ body {
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-dark-muted);
+    width: 100%;
+}
+
+/* ==========================================================================
+   Mobile NotebookLM Instruction Modal
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 440px;
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    position: relative;
+    transform: translateY(15px);
+    transition: transform 0.25s ease;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+.modal-header-icon {
+    font-size: 1.6rem;
+}
+
+.modal-header-text {
+    flex: 1;
+}
+
+.modal-header-text h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark-primary);
+}
+
+.modal-header-text p {
+    font-size: 0.78rem;
+    color: var(--text-dark-muted);
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-dark-secondary);
+    padding: 0.25rem;
+}
+
+.modal-lead {
+    font-size: 0.9rem;
+    color: var(--text-dark-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+.modal-instructions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.75rem;
+}
+
+.modal-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+}
+
+.step-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #f5f5f4;
+    color: var(--accent-amber-dark);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.step-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.step-text strong {
+    font-size: 0.85rem;
+    color: var(--text-dark-primary);
+}
+
+.step-text span {
+    font-size: 0.75rem;
+    color: var(--text-dark-muted);
+    line-height: 1.4;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-modal-action {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: all 0.15s ease;
+}
+
+.btn-modal-action.primary {
+    background: #1c1917;
+    color: #ffffff;
+}
+
+.btn-modal-action.primary:hover {
+    background: #292524;
+}
+
+.btn-modal-action.secondary {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark-primary);
+}
+
+.btn-modal-action.secondary:hover {
+    background: #f5f5f4;
 }
 
 /* ==========================================================================
@@ -676,6 +847,7 @@ body {
         font-size: 2.15rem;
         line-height: 1.2;
         margin-bottom: 1.15rem;
+        white-space: normal;
     }
 
     .accent-divider {
@@ -785,7 +957,7 @@ body {
         gap: 0.75rem;
     }
 
-    /* Sticky Bottom Nav Bar (Mobile Screens) */
+    /* Sticky Bottom Nav Bar (Mobile Screens - 3 Core Tabs) */
     .bottom-nav-bar {
         position: fixed !important;
         bottom: 0 !important;
@@ -814,12 +986,12 @@ body {
         align-items: center !important;
         justify-content: center !important;
         flex: 1 1 0px !important;
-        width: 20% !important;
+        width: 33.33% !important;
         min-width: 0 !important;
         gap: 3px !important;
         text-decoration: none !important;
         color: #78716c !important;
-        font-size: 0.55rem !important;
+        font-size: 0.6rem !important;
         font-weight: 600 !important;
         letter-spacing: 0.03em !important;
         text-transform: uppercase !important;
@@ -839,18 +1011,13 @@ body {
 
     .nav-tab span {
         display: block !important;
-        font-size: 0.55rem !important;
+        font-size: 0.58rem !important;
         line-height: 1 !important;
         white-space: nowrap !important;
     }
 
-    .nav-tab.active {
-        color: var(--accent-amber-dark) !important;
-        font-weight: 700 !important;
-    }
-
     .nav-tab:active {
-        color: var(--text-dark-primary) !important;
+        color: var(--accent-amber-dark) !important;
         transform: scale(0.95) !important;
     }
 }

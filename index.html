@@ -21,15 +21,13 @@
     <div class="page-container">
         <!-- Site Header & Navigation Bar -->
         <header class="site-header">
-            <a href="#" class="brand-wordmark">S H U T R I</a>
+            <a href="#" class="brand-wordmark" title="Shutri Home">S H U T R I</a>
 
             <!-- Desktop Nav Links -->
             <nav class="desktop-nav">
-                <a href="#" class="nav-tab-link active">HOME</a>
-                <a href="#arch" class="nav-tab-link">ARCH</a>
                 <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="nav-tab-link">PUBLICATION</a>
-                <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" rel="noopener noreferrer" class="nav-tab-link">MANIFESTO</a>
                 <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" rel="noopener noreferrer" class="nav-tab-link">INFOGRAPHICS</a>
+                <a href="#" onclick="handleNotebookClick(event)" class="nav-tab-link">NOTEBOOKLM</a>
             </nav>
 
             <!-- Desktop Right CTA Action -->
@@ -156,7 +154,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="footer-title">Shutri Collaborative Intelligence Registry</span>
-                    <p>An open-access, non-commercial research substrate. Governed by Creative Commons CC BY-SA 4.0.</p>
+                    <p class="footer-desc">An open-access, non-commercial research substrate. Governed by Creative Commons CC BY-SA 4.0.</p>
                 </div>
                 <div class="footer-links">
                     <a href="https://github.com/ashutoshmjain/shutri" target="_blank">GitHub Repository</a>
@@ -187,6 +185,48 @@
         </footer>
     </div>
 
+    <!-- Mobile NotebookLM Instruction Modal -->
+    <div id="mobile-notebook-modal" class="modal-overlay" onclick="closeNotebookModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-header-icon">📓</div>
+                <div class="modal-header-text">
+                    <h3>Google NotebookLM</h3>
+                    <p>Shutri Shared Research Intelligence</p>
+                </div>
+                <button class="modal-close-btn" onclick="closeNotebookModal()" aria-label="Close modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-lead">Access the interactive AI deepMind research dialogue directly on your mobile device:</p>
+                <div class="modal-instructions-list">
+                    <div class="modal-step">
+                        <span class="step-badge">Option 1</span>
+                        <div class="step-text">
+                            <strong>Open in NotebookLM App / Web</strong>
+                            <span>Launch directly in your mobile browser or Google NotebookLM app.</span>
+                        </div>
+                    </div>
+                    <div class="modal-step">
+                        <span class="step-badge">Option 2</span>
+                        <div class="step-text">
+                            <strong>Copy Direct Shared Link</strong>
+                            <span>Paste the link into your preferred browser or NotebookLM app.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal-action primary" onclick="launchNotebookDirect()">
+                    <span>Open NotebookLM</span>
+                    <span>↗</span>
+                </button>
+                <button class="btn-modal-action secondary" onclick="copyNotebookLink(this)">
+                    <span>Copy Link</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Slide-out Mobile Menu Drawer -->
     <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()">
         <div class="mobile-menu-drawer" onclick="event.stopPropagation()">
@@ -199,21 +239,21 @@
                     <span class="menu-icon">🏠</span>
                     <span>Home</span>
                 </a>
-                <a href="#arch" class="menu-item" onclick="toggleMobileMenu()">
-                    <span class="menu-icon">🏛️</span>
-                    <span>Shutri Architecture</span>
-                </a>
                 <a href="https://deepdive.shutri.com" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">🧭</span>
-                    <span>deepDive Publication</span>
+                    <span>Publication (deepDive)</span>
+                </a>
+                <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">🎬</span>
+                    <span>Infographics (DDMA 740x740)</span>
+                </a>
+                <a href="#" class="menu-item" onclick="toggleMobileMenu(); handleNotebookClick(event);">
+                    <span class="menu-icon">📓</span>
+                    <span>NotebookLM Research Chat</span>
                 </a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">📜</span>
                     <span>Manifesto (manifesto.md)</span>
-                </a>
-                <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
-                    <span class="menu-icon">🎬</span>
-                    <span>Infographics (DDMA)</span>
                 </a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">📐</span>
@@ -221,7 +261,7 @@
                 </a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">⚙️</span>
-                    <span>SMS Master Architecture</span>
+                    <span>SMS Architecture</span>
                 </a>
                 <a href="https://github.com/ashutoshmjain/shutri" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">📦</span>
@@ -238,29 +278,59 @@
 
     <!-- Sticky Bottom Navigation Bar (Mobile Screens Only) -->
     <nav class="bottom-nav-bar">
-        <a href="#" class="nav-tab active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span>HOME</span>
-        </a>
-        <a href="#arch" class="nav-tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            <span>ARCH</span>
-        </a>
         <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="nav-tab">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
             <span>PUBLICATION</span>
-        </a>
-        <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" rel="noopener noreferrer" class="nav-tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            <span>MANIFESTO</span>
         </a>
         <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" rel="noopener noreferrer" class="nav-tab">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
             <span>INFOGRAPHICS</span>
         </a>
+        <a href="#" onclick="handleNotebookClick(event)" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>NOTEBOOKLM</span>
+        </a>
     </nav>
 
     <script>
+        const DIRECT_NOTEBOOK_URL = "https://notebooklm.google.com/notebook/423ab1b2-3722-4e3f-875c-3ea1606ef4fc/preview";
+
+        function isMobileDevice() {
+            return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function handleNotebookClick(e) {
+            if (e) e.preventDefault();
+            if (isMobileDevice()) {
+                const modal = document.getElementById('mobile-notebook-modal');
+                if (modal) modal.classList.add('active');
+            } else {
+                window.open(DIRECT_NOTEBOOK_URL, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        function closeNotebookModal(e) {
+            const modal = document.getElementById('mobile-notebook-modal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function launchNotebookDirect() {
+            closeNotebookModal();
+            window.open(DIRECT_NOTEBOOK_URL, '_blank');
+        }
+
+        function copyNotebookLink(btn) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(DIRECT_NOTEBOOK_URL).then(() => {
+                    const origText = btn.innerHTML;
+                    btn.innerHTML = "<span>✓ Copied!</span>";
+                    setTimeout(() => { btn.innerHTML = origText; }, 2000);
+                });
+            } else {
+                prompt("Copy NotebookLM link:", DIRECT_NOTEBOOK_URL);
+            }
+        }
+
         function toggleMobileMenu() {
             const overlay = document.getElementById('mobile-menu-overlay');
             if (overlay) {
