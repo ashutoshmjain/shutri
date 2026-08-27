@@ -170,13 +170,130 @@ html, body {
 }
 
 /* ==========================================================================
-   Architecture Flow Section (Ingestion -> Knowledge -> Dissemination)
+   Temple Architecture (Dual-Layered Roof + 3 Pillars + Base Substrate)
    ========================================================================== */
 .arch-section {
     margin-bottom: 4.5rem;
     width: 100%;
 }
 
+.arch-temple-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+/* Dual Roof Stack */
+.arch-roof-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    width: 100%;
+}
+
+.arch-roof-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.arch-roof-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-light-hover);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+.arch-roof-card.apex-roof {
+    border-color: rgba(217, 119, 6, 0.35);
+    background: linear-gradient(180deg, #ffffff 0%, #fffdfa 100%);
+}
+
+.arch-roof-card.apex-roof:hover {
+    border-color: var(--accent-amber);
+}
+
+.roof-badge-col {
+    display: flex;
+    align-items: center;
+}
+
+.roof-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.badge-apex {
+    background: rgba(217, 119, 6, 0.1);
+    color: var(--accent-amber-dark);
+}
+
+.badge-ref {
+    background: #f5f5f4;
+    color: var(--text-dark-secondary);
+}
+
+.roof-content-row {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+}
+
+.roof-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #f5f5f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+.roof-text-box {
+    flex: 1;
+}
+
+.roof-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark-primary);
+    margin-bottom: 0.2rem;
+}
+
+.roof-desc {
+    font-size: 0.85rem;
+    color: var(--text-dark-muted);
+    line-height: 1.45;
+}
+
+.roof-action-arrow {
+    font-size: 1.25rem;
+    color: #a8a29e;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.arch-roof-card:hover .roof-action-arrow {
+    transform: translateX(3px);
+    color: var(--text-dark-primary);
+}
+
+/* Three Pillars Row */
 .arch-cards-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -224,7 +341,7 @@ html, body {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     color: var(--text-dark-secondary);
     margin-bottom: 1.15rem;
 }
@@ -266,7 +383,7 @@ html, body {
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
@@ -279,75 +396,6 @@ html, body {
     flex: 1;
     height: 1px;
     background: var(--border-light);
-}
-
-/* ==========================================================================
-   Reference Deployment Section
-   ========================================================================== */
-.deployment-section {
-    margin-bottom: 4.5rem;
-    width: 100%;
-}
-
-.deployment-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 14px;
-    padding: 1.5rem 1.75rem;
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    width: 100%;
-}
-
-.deployment-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-light-hover);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
-}
-
-.deployment-icon-wrap {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: #f5f5f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    flex-shrink: 0;
-}
-
-.deployment-info {
-    flex: 1;
-}
-
-.deployment-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-dark-primary);
-    margin-bottom: 0.25rem;
-}
-
-.deployment-desc {
-    font-size: 0.9rem;
-    color: var(--text-dark-muted);
-    line-height: 1.45;
-}
-
-.deployment-arrow {
-    font-size: 1.35rem;
-    color: #a8a29e;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.deployment-card:hover .deployment-arrow {
-    transform: translateX(4px);
-    color: var(--text-dark-primary);
 }
 
 /* ==========================================================================
@@ -1036,6 +1084,24 @@ html, body {
         margin-bottom: 2.75rem;
     }
 
+    .arch-roof-card {
+        padding: 1rem 1.15rem;
+    }
+
+    .roof-icon-box {
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
+    }
+
+    .roof-title {
+        font-size: 0.95rem;
+    }
+
+    .roof-desc {
+        font-size: 0.78rem;
+    }
+
     .arch-cards-row {
         gap: 0.45rem;
     }
@@ -1072,31 +1138,8 @@ html, body {
 
     .arch-bottom-loop {
         font-size: 0.58rem;
-        margin-top: 1rem;
+        margin-top: 0.75rem;
         gap: 0.5rem;
-    }
-
-    .deployment-section {
-        margin-bottom: 2.75rem;
-    }
-
-    .deployment-card {
-        padding: 1.15rem 1.25rem;
-        border-radius: 12px;
-    }
-
-    .deployment-icon-wrap {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-
-    .deployment-title {
-        font-size: 0.95rem;
-    }
-
-    .deployment-desc {
-        font-size: 0.78rem;
     }
 
     .submission-section {

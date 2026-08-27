@@ -46,83 +46,102 @@
             </p>
         </section>
 
-        <!-- Architecture Flow Section -->
+        <!-- Temple Architecture Section (Dual-Layered Roof + 3 Pillars) -->
         <section class="arch-section" id="arch">
             <span class="section-label">THE ARCHITECTURE</span>
-            
-            <div class="arch-cards-row">
-                <span class="arch-flow-arrow arrow-1">→</span>
-                <span class="arch-flow-arrow arrow-2">→</span>
 
-                <!-- Pillar 01: Ingestion Card -->
-                <a href="https://github.com/ashutoshmjain/mdIngest" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
-                    <span class="arch-card-heading">INGESTION</span>
-                    <div class="arch-card-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    </div>
-                    <div class="arch-stack-list">
-                        <span class="arch-stack-item">mdIngest</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">mdBook</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">PWA</span>
-                    </div>
-                </a>
+            <div class="arch-temple-wrap">
+                <!-- Dual-Layered Roof Group -->
+                <div class="arch-roof-stack">
+                    <!-- Roof Layer 1 (Apex): Google NotebookLM -->
+                    <a href="#" onclick="handleNotebookClick(event)" class="arch-roof-card apex-roof">
+                        <div class="roof-badge-col">
+                            <span class="roof-badge badge-apex">APEX &bull; FINAL PRODUCT</span>
+                        </div>
+                        <div class="roof-content-row">
+                            <div class="roof-icon-box">📓</div>
+                            <div class="roof-text-box">
+                                <div class="roof-title">Google NotebookLM</div>
+                                <div class="roof-desc">Interactive DeepMind AI Knowledgebase &mdash; Question, cross-examine, and verify findings across all accumulated research episodes.</div>
+                            </div>
+                            <div class="roof-action-arrow">↗</div>
+                        </div>
+                    </a>
 
-                <!-- Pillar 02: Knowledge Card -->
-                <a href="https://github.com/ashutoshmjain/shutri" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
-                    <span class="arch-card-heading">KNOWLEDGE</span>
-                    <div class="arch-card-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                    </div>
-                    <div class="arch-stack-list">
-                        <span class="arch-stack-item">Mempool</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">Template</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">Chain</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">NotebookLM</span>
-                    </div>
-                </a>
-
-                <!-- Pillar 03: Dissemination Card -->
-                <a href="https://github.com/ashutoshmjain/ddma" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
-                    <span class="arch-card-heading">DISSEMINATION</span>
-                    <div class="arch-card-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                    </div>
-                    <div class="arch-stack-list">
-                        <span class="arch-stack-item">DDMA</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">Mosaic</span>
-                        <span class="arch-stack-sep">│</span>
-                        <span class="arch-stack-item">Infographics</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="arch-bottom-loop">
-                <span class="loop-line"></span>
-                <span>ACCUMULATED KNOWLEDGE</span>
-                <span class="loop-line"></span>
-            </div>
-        </section>
-
-        <!-- Reference Deployment Section -->
-        <section class="deployment-section" id="publication">
-            <span class="section-label">REFERENCE DEPLOYMENT</span>
-
-            <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="deployment-card">
-                <div class="deployment-icon-wrap">
-                    🧭
+                    <!-- Roof Layer 2 (Main Roof): deepDive Publication -->
+                    <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="arch-roof-card main-roof">
+                        <div class="roof-badge-col">
+                            <span class="roof-badge badge-ref">REFERENCE IMPLEMENTATION</span>
+                        </div>
+                        <div class="roof-content-row">
+                            <div class="roof-icon-box">🧭</div>
+                            <div class="roof-text-box">
+                                <div class="roof-title">deepDive Publication</div>
+                                <div class="roof-desc">A complete working deployment: automated markdown ingestion, offline PWA registry, and locked 740&times;740 infographics.</div>
+                            </div>
+                            <div class="roof-action-arrow">→</div>
+                        </div>
+                    </a>
                 </div>
-                <div class="deployment-info">
-                    <div class="deployment-title">deepDive Publication</div>
-                    <div class="deployment-desc">A working example of the complete system: automated markdown-driven ingestion, locked-clip infographics, and decentralized publishing.</div>
+
+                <!-- Three Supporting Pillars Row -->
+                <div class="arch-cards-row">
+                    <span class="arch-flow-arrow arrow-1">→</span>
+                    <span class="arch-flow-arrow arrow-2">→</span>
+
+                    <!-- Pillar 01: Ingestion Card -->
+                    <a href="https://github.com/ashutoshmjain/mdIngest" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
+                        <span class="arch-card-heading">01 &bull; INGESTION</span>
+                        <div class="arch-card-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div class="arch-stack-list">
+                            <span class="arch-stack-item">mdIngest</span>
+                            <span class="arch-stack-sep">│</span>
+                            <span class="arch-stack-item">mdBook</span>
+                            <span class="arch-stack-sep">│</span>
+                            <span class="arch-stack-item">PWA</span>
+                        </div>
+                    </a>
+
+                    <!-- Pillar 02: Knowledge Card -->
+                    <a href="https://github.com/ashutoshmjain/shutri" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
+                        <span class="arch-card-heading">02 &bull; KNOWLEDGE</span>
+                        <div class="arch-card-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <div class="arch-stack-list">
+                            <span class="arch-stack-item">Mempool</span>
+                            <span class="arch-stack-sep">│</span>
+                            <span class="arch-stack-item">Template</span>
+                            <span class="arch-stack-sep">│</span>
+                            <span class="arch-stack-item">Chain</span>
+                        </div>
+                    </a>
+
+                    <!-- Pillar 03: Dissemination Card -->
+                    <a href="https://github.com/ashutoshmjain/ddma" target="_blank" rel="noopener noreferrer" class="arch-mini-card">
+                        <span class="arch-card-heading">03 &bull; DISSEMINATION</span>
+                        <div class="arch-card-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        </div>
+                        <div class="arch-stack-list">
+                            <span class="arch-stack-item">DDMA</span>
+                            <span class="arch-stack-sep">│</span>
+                            <span class="arch-stack-item">Mosaic</span>
+                            <span class="arch-stack-sep">│</span>
+                            <span class="arch-stack-item">Infographics</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="deployment-arrow">→</div>
-            </a>
+
+                <!-- Foundation Base Loop -->
+                <div class="arch-bottom-loop">
+                    <span class="loop-line"></span>
+                    <span>ACCUMULATED KNOWLEDGE SUBSTRATE</span>
+                    <span class="loop-line"></span>
+                </div>
+            </div>
         </section>
 
         <!-- Research Intake Submission Section -->
@@ -246,19 +265,27 @@
                 <h4>Core Objective</h4>
                 <p>Shutri is an open-access, non-commercial substrate designed for domain experts who wish to launch independent, peer-reviewed registries. While we operate <code>deepDive</code> as a reference implementation, our primary mission is to democratize the peer review process itself.</p>
 
-                <h4>The Three Pillars</h4>
+                <h4>The Architectural Model</h4>
                 <div class="about-pillars-grid">
+                    <div class="about-pillar-box" style="border-color: rgba(217, 119, 6, 0.4);">
+                        <strong>Apex Layer &bull; Google NotebookLM</strong>
+                        <span>Final interactive intelligence layer &mdash; questioning and cross-examining the accumulated research knowledgebase.</span>
+                    </div>
+                    <div class="about-pillar-box" style="border-color: rgba(217, 119, 6, 0.25);">
+                        <strong>Main Roof Tier &bull; deepDive Publication</strong>
+                        <span>Living reference implementation &mdash; automated markdown ingestion, offline PWA registry, and locked 740&times;740 infographics.</span>
+                    </div>
                     <div class="about-pillar-box">
-                        <strong>01. Ingestion</strong>
+                        <strong>01. Ingestion Pillar</strong>
                         <span>Automated ingestion engine (<code>mdIngest</code>), static mdBook builds, and offline PWA publication.</span>
                     </div>
                     <div class="about-pillar-box">
-                        <strong>02. Knowledge</strong>
-                        <span>Open GitHub Issue Mempool staging, structured schema templates, immutable chain recording, and interactive Google NotebookLM synthesis.</span>
+                        <strong>02. Knowledge Pillar</strong>
+                        <span>Open GitHub Issue Mempool staging, structured schema templates, and immutable chain recording.</span>
                     </div>
                     <div class="about-pillar-box">
-                        <strong>03. Dissemination</strong>
-                        <span>DDMA automation generating 740&times;740 multi-modal video infographics, storyboard mosaics, and social broadcast feeds.</span>
+                        <strong>03. Dissemination Pillar</strong>
+                        <span>DDMA automation generating 740&times;740 video infographics, storyboard mosaics, and social syndication.</span>
                     </div>
                 </div>
 
