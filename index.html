@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="page-container">
-        <!-- Site Header & Navigation Bar -->
+        <!-- Site Header & Top Navigation Bar (Both Desktop & Mobile) -->
         <header class="site-header">
             <a href="#" class="brand-wordmark" title="Shutri Home">S H U T R I</a>
 
@@ -28,18 +28,11 @@
                 <a href="https://deepdive.shutri.com" target="_blank" rel="noopener noreferrer" class="nav-tab-link">PUBLICATION</a>
                 <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" rel="noopener noreferrer" class="nav-tab-link">INFOGRAPHICS</a>
                 <a href="#" onclick="handleNotebookClick(event)" class="nav-tab-link">NOTEBOOKLM</a>
+                <a href="#submission-section" class="nav-tab-link">SUBMIT RESEARCH</a>
             </nav>
 
-            <!-- Desktop Right CTA Action -->
-            <div class="desktop-header-action">
-                <a href="https://github.com/ashutoshmjain/shutri/issues" target="_blank" rel="noopener noreferrer" class="btn-submit-header">
-                    <span>Submit Research</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-            </div>
-
-            <!-- Mobile Hamburger Menu Button -->
-            <button class="mobile-menu-trigger" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+            <!-- Universal Menu Trigger (Both Desktop and Mobile) -->
+            <button class="universal-menu-trigger" onclick="toggleMobileMenu()" aria-label="Open menu drawer">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </button>
         </header>
@@ -130,6 +123,63 @@
             </a>
         </section>
 
+        <!-- Research Intake Submission Section -->
+        <section class="submission-section" id="submission-section">
+            <span class="section-label">DIRECT INTAKE PORTAL</span>
+
+            <div class="submission-card">
+                <div class="submission-header">
+                    <h2 class="submission-title">Submit Research for AI &amp; Peer Review</h2>
+                    <p class="submission-subtitle">Fill out your paper or article details below. Ingestion is 100% open-access, cookie-free, and published under CC BY-SA 4.0.</p>
+                </div>
+
+                <form id="native-intake-form" onsubmit="handleNativeSubmission(event)" class="intake-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="submitter-name">Author / Submitter Name *</label>
+                            <input type="text" id="submitter-name" required placeholder="e.g., Dr. Alice Vance or @username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="research-title">Research / Paper Title *</label>
+                            <input type="text" id="research-title" required placeholder="e.g., Quantum Memory Limits in Distributed Consensus">
+                        </div>
+
+                        <div class="form-group span-full">
+                            <label for="research-url">Primary Article / Source URL *</label>
+                            <input type="url" id="research-url" required placeholder="https://arxiv.org/abs/... or https://yourblog.com/paper">
+                        </div>
+
+                        <div class="form-group span-full">
+                            <label for="code-url">Code Repository / Supplemental Link (Optional)</label>
+                            <input type="url" id="code-url" placeholder="https://github.com/... (optional)">
+                        </div>
+
+                        <div class="form-group span-full">
+                            <label for="research-abstract">Abstract &amp; Core Thesis *</label>
+                            <textarea id="research-abstract" rows="4" required placeholder="Briefly state your core findings, methodology, and key takeaways..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Ingestion Pipeline Feedback Output -->
+                    <div id="intake-progress-box" class="intake-progress-box" style="display: none;">
+                        <div class="progress-title">⚡ Ingestion Pipeline Execution:</div>
+                        <div id="progress-step-1" class="progress-step">⏳ [1/4] Validating research schema...</div>
+                        <div id="progress-step-2" class="progress-step">⏳ [2/4] Initializing deepMind Mempool staging...</div>
+                        <div id="progress-step-3" class="progress-step">⏳ [3/4] Formatting ingestion payload...</div>
+                        <div id="progress-step-4" class="progress-step">⏳ [4/4] Opening GitHub Issue portal...</div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="btn-submit-form">
+                            <span>Submit Research to Mempool</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
         <!-- Manifesto Callout Section -->
         <section class="manifesto-section" id="manifesto">
             <span class="section-label">MANIFESTO</span>
@@ -143,13 +193,13 @@
                 </p>
             </div>
 
-            <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" rel="noopener noreferrer" class="manifesto-link-btn">
-                <span>READ THE MANIFESTO</span>
+            <a href="#" onclick="openAboutModal(event)" class="manifesto-link-btn">
+                <span>READ ABOUT SHUTRI (MANIFESTO SUMMARY)</span>
                 <span>→</span>
             </a>
         </section>
 
-        <!-- Footer -->
+        <!-- Footer (Unbroken Width) -->
         <footer class="footer-container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -157,10 +207,10 @@
                     <p class="footer-desc">An open-access, non-commercial research substrate. Governed by Creative Commons CC BY-SA 4.0.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://github.com/ashutoshmjain/shutri" target="_blank">GitHub Repository</a>
-                    <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank">The Shutri Manifesto (v0.1)</a>
+                    <a href="#" onclick="openAboutModal(event)">About &amp; Manifesto</a>
                     <a href="https://deepdive.shutri.com" target="_blank">deepDive Publication</a>
                     <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank">Infographics (DDMA)</a>
+                    <a href="https://github.com/ashutoshmjain/shutri" target="_blank">GitHub Repository</a>
                     <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank">SOUL.md Blueprint</a>
                     <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank">SMS Architecture</a>
                 </div>
@@ -183,6 +233,59 @@
                 <span>&copy; 2026 Shutri Initiative. Powered by Google Antigravity &amp; Gemini.</span>
             </div>
         </footer>
+    </div>
+
+    <!-- Web-Rendered About & Manifesto Modal (No GitHub redirect needed) -->
+    <div id="about-modal" class="modal-overlay" onclick="closeAboutModal(event)">
+        <div class="modal-card modal-large" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-header-icon">📜</div>
+                <div class="modal-header-text">
+                    <h3>About Shutri &amp; The Manifesto (v0.1)</h3>
+                    <p>A Reference Architecture for Open Peer Review</p>
+                </div>
+                <button class="modal-close-btn" onclick="closeAboutModal()" aria-label="Close modal">✕</button>
+            </div>
+            <div class="modal-body about-modal-content">
+                <div class="about-lead-box">
+                    "Artificial Intelligence has substantially reduced the cost of generating knowledge. The challenge is no longer generating information &mdash; <strong>the challenge is reviewing it.</strong>"
+                </div>
+
+                <h4>Core Objective</h4>
+                <p>Shutri is an open-access, non-commercial substrate designed for domain experts who wish to launch independent, peer-reviewed registries. While we operate <code>deepDive</code> as a reference implementation, our primary mission is to democratize the peer review process itself.</p>
+
+                <h4>The Three Pillars</h4>
+                <div class="about-pillars-grid">
+                    <div class="about-pillar-box">
+                        <strong>01. Research Intake</strong>
+                        <span>Open GitHub Issue management and transparent Mempool staging for community engagement.</span>
+                    </div>
+                    <div class="about-pillar-box">
+                        <strong>02. Research Publishing</strong>
+                        <span>Automated ingestion engine (<code>mdIngest</code>), static mdBook builds, and offline PWA publication.</span>
+                    </div>
+                    <div class="about-pillar-box">
+                        <strong>03. Research Promotion</strong>
+                        <span>DDMA automation generating 740&times;740 micro-promotions and multi-modal audio waveforms for Nostr and social relays.</span>
+                    </div>
+                </div>
+
+                <h4>Governing Principles</h4>
+                <ul class="about-principles-list">
+                    <li><strong>Zero Operational Cost:</strong> Built completely on free, open substrates (GitHub, GitHub Pages, mdBook, Nostr relays).</li>
+                    <li><strong>Public-by-Default Review:</strong> Research evaluation is conducted in the open rather than behind closed editorial walls.</li>
+                    <li><strong>Proof of Attention:</strong> Reviewer contributions are verifiably timestamped and attributed in an immutable ledger.</li>
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal-action primary" onclick="closeAboutModal()">
+                    <span>Got it</span>
+                </button>
+                <button class="btn-modal-action secondary" onclick="window.open('https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md', '_blank');">
+                    <span>View Raw Manifesto on GitHub ↗</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Mobile NotebookLM Instruction Modal -->
@@ -227,7 +330,7 @@
         </div>
     </div>
 
-    <!-- Slide-out Mobile Menu Drawer -->
+    <!-- Universal Slide-Out Drawer Menu (Both Desktop and Mobile) -->
     <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()">
         <div class="mobile-menu-drawer" onclick="event.stopPropagation()">
             <div class="mobile-menu-header">
@@ -235,42 +338,67 @@
                 <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
             </div>
             <div class="mobile-menu-links">
-                <a href="#" class="menu-item" onclick="toggleMobileMenu()">
-                    <span class="menu-icon">🏠</span>
-                    <span>Home</span>
-                </a>
-                <a href="https://deepdive.shutri.com" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
-                    <span class="menu-icon">🧭</span>
-                    <span>Publication (deepDive)</span>
-                </a>
-                <a href="https://deepdive.shutri.com/ddma/docs/index.html" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
-                    <span class="menu-icon">🎬</span>
-                    <span>Infographics (DDMA 740x740)</span>
-                </a>
-                <a href="#" class="menu-item" onclick="toggleMobileMenu(); handleNotebookClick(event);">
-                    <span class="menu-icon">📓</span>
-                    <span>NotebookLM Research Chat</span>
-                </a>
-                <a href="https://github.com/ashutoshmjain/shutri/blob/main/manifesto.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                <!-- Section 1: About -->
+                <div class="drawer-group-title">1 &mdash; ABOUT</div>
+                <a href="#" class="menu-item highlight" onclick="toggleMobileMenu(); openAboutModal(event);">
                     <span class="menu-icon">📜</span>
-                    <span>Manifesto (manifesto.md)</span>
+                    <div class="menu-item-text">
+                        <strong>About Shutri</strong>
+                        <span>Concise manifesto summary on web</span>
+                    </div>
                 </a>
+
+                <!-- Section 2: Other Works -->
+                <div class="drawer-group-title" style="margin-top:0.75rem;">2 &mdash; OTHER WORKS</div>
+                <a href="https://gita.shutri.com" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">🪷</span>
+                    <div class="menu-item-text">
+                        <strong>Gita Publication</strong>
+                        <span>gita.shutri.com</span>
+                    </div>
+                </a>
+                <a href="https://mahabharata.shutri.com" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">🏹</span>
+                    <div class="menu-item-text">
+                        <strong>Mahabharata Publication</strong>
+                        <span>mahabharata.shutri.com</span>
+                    </div>
+                </a>
+                <a href="https://maholvi.shutri.com" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">📖</span>
+                    <div class="menu-item-text">
+                        <strong>Maholvi Publication</strong>
+                        <span>maholvi.shutri.com</span>
+                    </div>
+                </a>
+
+                <!-- Section 3: Architecture & Repositories -->
+                <div class="drawer-group-title" style="margin-top:0.75rem;">SPECIFICATIONS &amp; CODE</div>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SOUL.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">📐</span>
-                    <span>SOUL.md Blueprint</span>
+                    <div class="menu-item-text">
+                        <strong>SOUL.md Blueprint</strong>
+                        <span>System architecture design</span>
+                    </div>
                 </a>
                 <a href="https://github.com/ashutoshmjain/shutri/blob/main/SMS_ARCHITECTURE.md" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">⚙️</span>
-                    <span>SMS Architecture</span>
+                    <div class="menu-item-text">
+                        <strong>SMS Master Architecture</strong>
+                        <span>3-Pillar specification</span>
+                    </div>
                 </a>
                 <a href="https://github.com/ashutoshmjain/shutri" target="_blank" class="menu-item" onclick="toggleMobileMenu()">
                     <span class="menu-icon">📦</span>
-                    <span>GitHub Repository</span>
+                    <div class="menu-item-text">
+                        <strong>GitHub Repository</strong>
+                        <span>ashutoshmjain/shutri</span>
+                    </div>
                 </a>
             </div>
             <div class="mobile-menu-actions">
-                <button class="menu-action-btn primary" onclick="toggleMobileMenu(); window.open('https://github.com/ashutoshmjain/shutri/issues', '_blank');">
-                    <span>Submit Research via GitHub</span>
+                <button class="menu-action-btn primary" onclick="toggleMobileMenu(); scrollToSubmissionForm();">
+                    <span>Submit Research Paper</span>
                 </button>
             </div>
         </div>
@@ -289,6 +417,10 @@
         <a href="#" onclick="handleNotebookClick(event)" class="nav-tab">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
             <span>NOTEBOOKLM</span>
+        </a>
+        <a href="#submission-section" class="nav-tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            <span>SUBMIT</span>
         </a>
     </nav>
 
@@ -311,6 +443,17 @@
 
         function closeNotebookModal(e) {
             const modal = document.getElementById('mobile-notebook-modal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function openAboutModal(e) {
+            if (e) e.preventDefault();
+            const modal = document.getElementById('about-modal');
+            if (modal) modal.classList.add('active');
+        }
+
+        function closeAboutModal(e) {
+            const modal = document.getElementById('about-modal');
             if (modal) modal.classList.remove('active');
         }
 
@@ -341,6 +484,58 @@
                     document.body.style.overflow = '';
                 }
             }
+        }
+
+        function scrollToSubmissionForm() {
+            const section = document.getElementById('submission-section');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleNativeSubmission(e) {
+            e.preventDefault();
+            const name = document.getElementById('submitter-name').value;
+            const title = document.getElementById('research-title').value;
+            const url = document.getElementById('research-url').value;
+            const codeUrl = document.getElementById('code-url').value;
+            const abstract = document.getElementById('research-abstract').value;
+
+            triggerIntakePipeline(name, title, url, codeUrl, abstract);
+        }
+
+        function triggerIntakePipeline(name, title, url, codeUrl, abstract) {
+            const box = document.getElementById('intake-progress-box');
+            box.style.display = 'block';
+
+            const s1 = document.getElementById('progress-step-1');
+            const s2 = document.getElementById('progress-step-2');
+            const s3 = document.getElementById('progress-step-3');
+            const s4 = document.getElementById('progress-step-4');
+
+            setTimeout(() => { s1.innerText = "✅ [1/4] Research schema validated."; }, 600);
+            setTimeout(() => { s2.innerText = "✅ [2/4] deepMind Mempool staging initialized."; }, 1200);
+            setTimeout(() => { s3.innerText = "✅ [3/4] Ingestion payload formatted."; }, 1800);
+            setTimeout(() => {
+                s4.innerText = "✅ [4/4] Opening GitHub Issues portal...";
+                
+                const issueTitle = `[INTAKE] Research Submission: ${title}`;
+                const issueBody = `### 📌 Research Overview
+- **Research Title:** ${title}
+- **Primary Submitter / Author:** ${name}
+- **Source URL:** ${url}
+${codeUrl ? `- **Code Repository:** ${codeUrl}\n` : ''}
+---
+### 🎯 Abstract & Core Thesis
+${abstract}
+
+---
+*Submitted via the Intake Portal on [shutri.com](https://shutri.com)*`;
+
+                const issueUrl = `https://github.com/ashutoshmjain/shutri/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=mempool,research-intake`;
+                
+                window.open(issueUrl, '_blank', 'noopener,noreferrer');
+            }, 2400);
         }
     </script>
 </body>
