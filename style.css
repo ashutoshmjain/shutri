@@ -59,6 +59,12 @@ html, body {
     width: 100%;
 }
 
+.brand-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
 .brand-wordmark {
     font-family: var(--font-sans);
     font-size: 1.35rem;
@@ -68,10 +74,21 @@ html, body {
     text-transform: uppercase;
     text-decoration: none;
     transition: opacity 0.2s ease;
+    line-height: 1.1;
 }
 
 .brand-wordmark:hover {
     opacity: 0.8;
+}
+
+.brand-byline {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-dark-muted);
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .desktop-nav {
@@ -1056,6 +1073,15 @@ html, body {
     .site-header {
         padding-bottom: 1.25rem;
         margin-bottom: 2.25rem;
+    }
+
+    .brand-wordmark {
+        font-size: 1.2rem;
+        letter-spacing: 0.3em;
+    }
+
+    .brand-byline {
+        font-size: 0.6rem;
     }
 
     .desktop-nav {

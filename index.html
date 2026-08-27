@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -21,7 +21,10 @@
     <div class="page-container">
         <!-- Site Header & Top Navigation Bar (Both Desktop & Mobile) -->
         <header class="site-header">
-            <a href="#" class="brand-wordmark" title="Shutri Home">S H U T R I</a>
+            <div class="brand-group">
+                <a href="#" class="brand-wordmark" title="Shutri Home">S H U T R I</a>
+                <span class="brand-byline">Information + Attention = Knowledge</span>
+            </div>
 
             <!-- Desktop Nav Links -->
             <nav class="desktop-nav">
@@ -344,7 +347,10 @@
     <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()">
         <div class="mobile-menu-drawer" onclick="event.stopPropagation()">
             <div class="mobile-menu-header">
-                <span class="brand-wordmark">S H U T R I</span>
+                <div class="brand-group">
+                    <span class="brand-wordmark">S H U T R I</span>
+                    <span class="brand-byline">Information + Attention = Knowledge</span>
+                </div>
                 <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
             </div>
             <div class="mobile-menu-links">
