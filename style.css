@@ -551,6 +551,188 @@ html, body {
 }
 
 /* ==========================================================================
+   Creation Suite / Open Source Apps Showcase Section
+   ========================================================================== */
+.apps-section {
+    margin-bottom: 4.5rem;
+    width: 100%;
+}
+
+.apps-header-wrap {
+    margin-bottom: 2rem;
+}
+
+.apps-main-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark-primary);
+    margin-bottom: 0.5rem;
+}
+
+.apps-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-dark-secondary);
+    line-height: 1.6;
+}
+
+.apps-screen-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(217, 119, 6, 0.08);
+    color: var(--accent-amber-dark);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    width: 100%;
+}
+
+.app-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-light-hover);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.app-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9.5;
+    background: #0f172a;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.app-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.app-card:hover .app-screenshot {
+    transform: scale(1.02);
+}
+
+.app-badge-overlay {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.app-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    flex: 1;
+}
+
+.app-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.app-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark-primary);
+}
+
+.app-version-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-dark-muted);
+    background: #f5f5f4;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.app-description {
+    font-size: 0.875rem;
+    color: var(--text-dark-secondary);
+    line-height: 1.55;
+    flex: 1;
+}
+
+.app-features-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.app-feat-pill {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dark-muted);
+    background: #fafaf9;
+    border: 1px solid var(--border-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+}
+
+.app-actions {
+    margin-top: 0.5rem;
+}
+
+.btn-app-repo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #f5f5f4;
+    border: 1px solid var(--border-light);
+    color: var(--text-dark-primary);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+}
+
+.btn-app-repo:hover {
+    background: #e7e5e4;
+    border-color: var(--border-light-hover);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
    Footer (Streamlined & Minimalist)
    ========================================================================== */
 .footer-container {
@@ -1145,6 +1327,32 @@ html, body {
         gap: 0.85rem;
     }
 
+    /* Apps section mobile adjustments */
+    .apps-section {
+        margin-bottom: 2.75rem;
+    }
+
+    .apps-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .apps-main-title {
+        font-size: 1.35rem;
+    }
+
+    .apps-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .app-content {
+        padding: 1.15rem;
+    }
+
+    .app-title {
+        font-size: 1.1rem;
+    }
+
     .footer-container {
         padding-top: 2rem;
         margin-top: 1rem;
@@ -1154,7 +1362,7 @@ html, body {
         margin-bottom: 1.5rem;
     }
 
-    /* Sticky Bottom Nav Bar (Mobile Screens - 4 Core Tabs) */
+    /* Sticky Bottom Nav Bar (Mobile Screens - 4 Core Tabs with APPS) */
     .bottom-nav-bar {
         position: fixed !important;
         bottom: 0 !important;
