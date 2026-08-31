@@ -1362,7 +1362,7 @@ html, body {
         margin-bottom: 1.5rem;
     }
 
-    /* Sticky Bottom Nav Bar (Mobile Screens - 4 Core Tabs with APPS) */
+    /* Sticky Bottom Nav Bar (Mobile Screens - 4 Core Tabs with SLOPCAST) */
     .bottom-nav-bar {
         position: fixed !important;
         bottom: 0 !important;
